@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>2026-03-12 | St. X. Time Trial 01</title>
+  
+    <style>
+      body { font-family: Arial, sans-serif; margin: 24px; }
+      a { color: #0b5fff; text-decoration: none; }
+      a:hover { text-decoration: underline; }
+      .muted { color: #666; }
+      .topbar { display:flex; justify-content:space-between; align-items:flex-start; gap:16px; margin-bottom: 8px; }
+      .titlewrap { min-width: 240px; }
+      .date { font-size: 18px; font-weight: 700; line-height: 1.1; margin: 0 0 6px 0; white-space: normal; }
+      .meetname { font-size: 28px; font-weight: 800; line-height: 1.1; margin: 0 0 6px 0; white-space: normal; }
+      .subline { margin: 0; }
+      .athlete-profile-links { margin: 4px 0 8px 0; font-size: 14px; font-weight: 700; }
+      .athlete-profile-links a { margin-right: 15px; }
+      .meet-links { margin: 4px 0 10px 0; font-size: 14px; font-weight: 700; }
+      .meet-links a { margin-right: 15px; }
+      .nav { text-align: right; white-space: nowrap; font-size: 14px; }
+      .nav a.home-link, .nav span.home-link { font-size: 18px; font-weight: 800; }
+      .nav a.records-link, .nav span.records-link,
+      .nav a.depth-link, .nav span.depth-link,
+      .nav a.pre-race-link, .nav span.pre-race-link,
+      .nav a.comparison-link, .nav span.comparison-link {
+        font-size: 16px;
+        font-weight: 700;
+        margin-left: 12px;
+      }
+      .nav span { color: #333; }
+      .card { border:1px solid #e6e6e6; border-radius:10px; padding:16px; margin:14px 0; }
+      .twocol { display:flex; gap:16px; align-items:flex-start; }
+      .col { flex: 1 1 0; min-width: 320px; }
+      @media (max-width: 900px) { .twocol { flex-direction: column; } }
+      .table-wrap { overflow-x: auto; max-width: 100%; }
+      table { border-collapse: collapse; width: auto; table-layout: auto; margin-top: 8px; }
+      th, td { border: 1px solid #ddd; padding: 6px 8px; font-size: 14px; white-space: nowrap; }
+      th { background: #f4f4f4; position: sticky; top: 0; text-align: left; }
+      tr:nth-child(even) { background: #fafafa; }
+      .fastest { background-color: #D4EDDA; color: #155724; font-weight: 600; }
+      .slowest { background-color: #F8D7DA; color: #721C24; font-weight: 600; }
+      .pr { background-color: #FFDAB9; color: #A0522D; font-weight: 700; }
+      .bestpr { background-color: #D4EDDA; color: #155724; font-weight: 700; }
+      .stx-team-highlight { background-color: #fcf8e3; }
+      .warning-big { margin: 6px 0 10px 0; font-size: 28px; font-weight: 900; color: #b00020; letter-spacing: 0.5px; }
+      .footer { margin-top: 24px; color: #777; font-size: 12px; }
+      code { background:#f6f6f6; padding:2px 6px; border-radius:6px; }
+      .filterbar { display:flex; align-items:center; gap:14px; margin: 10px 0 0 0; flex-wrap: wrap; }
+      .filterbar label { cursor:pointer; }
+      .pill { display:inline-block; padding:4px 10px; border-radius:999px; background:#f2f2f2; font-size:12px; }
+      .splits-col { display: none; }
+      .show-splits .splits-col { display: table-cell; }
+      .tabs { display:flex; gap:8px; margin: 8px 0 10px 0; flex-wrap: wrap; }
+      .tabbtn { border:1px solid #ddd; background:#fff; border-radius: 999px; padding:6px 10px; font-size: 13px; cursor:pointer; }
+      .tabbtn.active { background:#f2f2f2; font-weight: 700; }
+      .tabpane { display:none; }
+      .tabpane.active { display:block; }
+      .section-title { margin: 24px 0 0 0; font-size: 18px; font-weight: 800; border-top: 1px solid #eee; padding-top: 16px; }
+      .athletes-grid { display:flex; gap: 16px; align-items:flex-start; flex-wrap: wrap; }
+      .athletes-grid .ath-col { flex: 1 1 0; min-width: 280px; }
+      .ath-col h3 { margin: 0 0 6px 0; }
+      .rankcell { font-weight: 800; }
+      .chart-container { position: relative; height: 320px; width: 100%; max-width: 900px; margin: 20px 0 0 0; }
+      .hide-graphs .chart-container { display: none; }
+
+      /* Meet page filter: hide non-StX rows when toggled */
+      body.stx-only .non-stx-row { display: none; }
+
+      /* On athlete pages, we still show non-StX history for allow-listed athletes */
+      .non-stx-row { opacity: 0.80; }
+
+      /* PR section header rows (Track / XC) */
+      .sporthdr { background: #efefef; font-weight: 900; }
+    </style>
+    
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+</head>
+<body>
+
+    <div class="topbar">
+      <div class="titlewrap">
+        <div class="date">2026-03-12</div>
+        <div class="meetname">St. X. Time Trial 01</div>
+        
+        <p class="subline muted">Outdoor</p>
+      </div>
+      <div class="nav">
+        <a class='home-link' href='../index.html'>Home</a> <a class='records-link' href='../records.html'>StX Records</a> <a class='depth-link' href='../depth_chart.html'>Depth Chart</a> <a class='pre-race-link' href='../pre_race.html'>Pre-Race</a> <a class='comparison-link' href='../athlete_comparison.html'>Athlete Comparison</a>
+      </div>
+    </div>
+    
+    <div class="filterbar" style="margin: 4px 0 10px 0;">
+      <label>
+        <input type="checkbox" id="stxOnlyToggle" onchange="toggleStxOnly(this)" checked>
+        StX Athletes Only
+      </label>
+    </div>
+    <script>
+      function toggleStxOnly(checkbox) {
+        if (checkbox.checked) {
+          document.body.classList.add('stx-only');
+        } else {
+          document.body.classList.remove('stx-only');
+        }
+      }
+      document.addEventListener('DOMContentLoaded', () => {
+        const checkbox = document.getElementById('stxOnlyToggle');
+        if (checkbox) {
+          toggleStxOnly(checkbox);
+        }
+      });
+    </script>
+    <div class='card'><h2>300 Meters</h2><div class="table-wrap"><table><thead><tr><th>Athlete</th><th>Team</th><th>Group</th><th>Place</th><th>Previous PR</th><th>Result</th></tr></thead><tbody><tr><td><a href='../athletes/nick_sanders.html'>Nick Sanders</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>1</td><td></td><td>0:37.2</td></tr><tr><td><a href='../athletes/anthony_passafiume.html'>Anthony Passafiume</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>2</td><td></td><td>0:37.6</td></tr><tr><td><a href='../athletes/tony_parilli.html'>Tony Parilli</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>3</td><td></td><td>0:38.5</td></tr><tr><td><a href='../athletes/thomas_norton.html'>Thomas Norton</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>4</td><td></td><td>0:39.7</td></tr><tr><td><a href='../athletes/james_george.html'>James George</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>5</td><td></td><td>0:39.8</td></tr><tr><td><a href='../athletes/levi_roach.html'>Levi Roach</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>6</td><td></td><td>0:40.0</td></tr><tr><td><a href='../athletes/sam_schweickhardt.html'>Sam Schweickhardt</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>7</td><td></td><td>0:40.5</td></tr><tr><td><a href='../athletes/jack_clifford.html'>Jack Clifford</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>8</td><td></td><td>0:40.5</td></tr><tr><td><a href='../athletes/colin_bozich.html'>Colin Bozich</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>9</td><td></td><td>0:40.6</td></tr><tr><td><a href='../athletes/baron_staab.html'>Baron Staab</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>10</td><td></td><td>0:40.9</td></tr><tr><td><a href='../athletes/matthew_frick.html'>Matthew Frick</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>11</td><td></td><td>0:41.0</td></tr><tr><td><a href='../athletes/parker_lesshafft.html'>Parker Lesshafft</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>12</td><td></td><td>0:41.0</td></tr><tr><td><a href='../athletes/everett_derrick.html'>Everett Derrick</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>13</td><td></td><td>0:41.8</td></tr><tr><td><a href='../athletes/james_bush.html'>James Bush</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>14</td><td></td><td>0:42.7</td></tr><tr><td><a href='../athletes/ian_obryan.html'>Ian O'Bryan</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>15</td><td></td><td>0:42.8</td></tr><tr><td><a href='../athletes/cooper_hogan.html'>Cooper Hogan</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>16</td><td></td><td>0:43.0</td></tr><tr><td><a href='../athletes/owen_mayes.html'>Owen Mayes</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>17</td><td></td><td>0:43.3</td></tr><tr><td><a href='../athletes/nolan_crider.html'>Nolan Crider</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>18</td><td></td><td>0:43.8</td></tr><tr><td><a href='../athletes/thomas_dusza.html'>Thomas Dusza</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>19</td><td></td><td>0:44.1</td></tr><tr><td><a href='../athletes/tyler_hogan.html'>Tyler Hogan</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>20</td><td></td><td>0:44.3</td></tr><tr><td><a href='../athletes/quenton_horton.html'>Quenton Horton</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>21</td><td></td><td>0:44.7</td></tr><tr><td><a href='../athletes/evan_pfeffer.html'>Evan Pfeffer</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>22</td><td></td><td>0:45.2</td></tr><tr><td><a href='../athletes/leo_falk.html'>Leo Falk</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>23</td><td></td><td>0:45.2</td></tr><tr><td><a href='../athletes/jimmy_greer.html'>Jimmy Greer</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>24</td><td></td><td>0:46.0</td></tr><tr><td><a href='../athletes/sam_church.html'>Sam Church</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>25</td><td></td><td>0:46.1</td></tr><tr><td><a href='../athletes/xavier_mudd.html'>Xavier Mudd</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>26</td><td></td><td>0:46.2</td></tr><tr><td><a href='../athletes/owen_derrick.html'>Owen Derrick</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>27</td><td></td><td>0:46.2</td></tr><tr><td><a href='../athletes/ian_vickerstaff.html'>Ian Vickerstaff</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>28</td><td></td><td>0:47.1</td></tr><tr><td><a href='../athletes/john_hagedorn.html'>John Hagedorn</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>29</td><td></td><td>0:47.4</td></tr><tr><td><a href='../athletes/levi_thornton.html'>Levi Thornton</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>30</td><td></td><td>0:47.9</td></tr><tr><td><a href='../athletes/ryder_garcia.html'>Ryder Garcia</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>31</td><td></td><td>0:48.5</td></tr><tr><td><a href='../athletes/nick_wolff.html'>Nick Wolff</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>32</td><td></td><td>0:49.0</td></tr><tr><td><a href='../athletes/ben_lewis.html'>Ben Lewis</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>33</td><td></td><td>0:49.9</td></tr><tr><td><a href='../athletes/owen_mattingly.html'>Owen Mattingly</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>34</td><td></td><td>0:52.2</td></tr><tr><td><a href='../athletes/jonah_roach.html'>Jonah Roach</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>35</td><td></td><td>0:52.9</td></tr><tr><td><a href='../athletes/trevor_onan.html'>Trevor O'Nan</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>36</td><td></td><td>0:54.5</td></tr></tbody></table></div></div><div class='card'><h2>600 Meters</h2><div class="table-wrap"><table><thead><tr><th>Athlete</th><th>Team</th><th>Group</th><th>Place</th><th>Previous PR</th><th>Result</th></tr></thead><tbody><tr><td><a href='../athletes/nick_sanders.html'>Nick Sanders</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>1</td><td></td><td>1:21.5</td></tr><tr><td><a href='../athletes/anthony_passafiume.html'>Anthony Passafiume</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>2</td><td></td><td>1:25.2</td></tr><tr><td><a href='../athletes/tony_parilli.html'>Tony Parilli</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>3</td><td></td><td>1:26.4</td></tr><tr><td><a href='../athletes/matthew_frick.html'>Matthew Frick</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>4</td><td></td><td>1:28.6</td></tr><tr><td><a href='../athletes/sam_schweickhardt.html'>Sam Schweickhardt</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>5</td><td></td><td>1:29.9</td></tr><tr><td><a href='../athletes/parker_lesshafft.html'>Parker Lesshafft</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>6</td><td></td><td>1:30.2</td></tr><tr><td><a href='../athletes/thomas_norton.html'>Thomas Norton</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>7</td><td></td><td>1:30.7</td></tr><tr><td><a href='../athletes/james_george.html'>James George</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>8</td><td></td><td>1:31.0</td></tr><tr><td><a href='../athletes/ian_obryan.html'>Ian O'Bryan</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>9</td><td></td><td>1:31.2</td></tr><tr><td><a href='../athletes/jack_clifford.html'>Jack Clifford</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>10</td><td></td><td>1:31.4</td></tr><tr><td><a href='../athletes/levi_roach.html'>Levi Roach</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>11</td><td></td><td>1:31.6</td></tr><tr><td><a href='../athletes/nolan_crider.html'>Nolan Crider</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>12</td><td></td><td>1:32.3</td></tr><tr><td><a href='../athletes/tyler_hogan.html'>Tyler Hogan</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>13</td><td></td><td>1:32.3</td></tr><tr><td><a href='../athletes/everett_derrick.html'>Everett Derrick</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>14</td><td></td><td>1:32.5</td></tr><tr><td><a href='../athletes/cooper_hogan.html'>Cooper Hogan</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>15</td><td></td><td>1:33.0</td></tr><tr><td><a href='../athletes/colin_bozich.html'>Colin Bozich</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>16</td><td></td><td>1:33.5</td></tr><tr><td><a href='../athletes/baron_staab.html'>Baron Staab</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>17</td><td></td><td>1:34.1</td></tr><tr><td><a href='../athletes/owen_mayes.html'>Owen Mayes</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>18</td><td></td><td>1:35.5</td></tr><tr><td><a href='../athletes/quenton_horton.html'>Quenton Horton</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>19</td><td></td><td>1:37.6</td></tr><tr><td><a href='../athletes/bobby_poston.html'>Bobby Poston</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>20</td><td></td><td>1:37.9</td></tr><tr><td><a href='../athletes/leo_falk.html'>Leo Falk</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>21</td><td></td><td>1:38.2</td></tr><tr><td><a href='../athletes/xavier_mudd.html'>Xavier Mudd</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>22</td><td></td><td>1:40.4</td></tr><tr><td><a href='../athletes/jimmy_greer.html'>Jimmy Greer</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>23</td><td></td><td>1:41.8</td></tr><tr><td><a href='../athletes/thomas_dusza.html'>Thomas Dusza</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>24</td><td></td><td>1:41.9</td></tr><tr><td><a href='../athletes/sam_church.html'>Sam Church</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>25</td><td></td><td>1:42.0</td></tr><tr><td><a href='../athletes/levi_thorton.html'>Levi Thorton</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>26</td><td></td><td>1:42.3</td></tr><tr><td><a href='../athletes/ryder_garcia.html'>Ryder Garcia</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>27</td><td></td><td>1:44.6</td></tr><tr><td><a href='../athletes/owen_derrick.html'>Owen Derrick</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>28</td><td></td><td>1:47.0</td></tr><tr><td><a href='../athletes/evan_pfeffer.html'>Evan Pfeffer</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>29</td><td></td><td>1:47.5</td></tr><tr><td><a href='../athletes/ian_vickerstaff.html'>Ian Vickerstaff</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>30</td><td></td><td>1:49.2</td></tr><tr><td><a href='../athletes/john_hagedorn.html'>John Hagedorn</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>31</td><td></td><td>1:50.2</td></tr><tr><td><a href='../athletes/ben_lewis.html'>Ben Lewis</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>32</td><td></td><td>1:50.2</td></tr><tr><td><a href='../athletes/nick_wolff.html'>Nick Wolff</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>33</td><td></td><td>1:53.1</td></tr><tr><td><a href='../athletes/owen_mattingly.html'>Owen Mattingly</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>34</td><td></td><td>1:54.5</td></tr><tr><td><a href='../athletes/henry_metzger.html'>Henry Metzger</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>35</td><td></td><td>1:55.2</td></tr><tr><td><a href='../athletes/trevor_onan.html'>Trevor O'Nan</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>36</td><td></td><td>1:56.3</td></tr><tr><td><a href='../athletes/jonah_roach.html'>Jonah Roach</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>37</td><td></td><td>1:56.7</td></tr></tbody></table></div></div><div class="footer">Generated at <code>2026-03-13 21:47:49</code> from <code>C:\\Users\\Bob\\OneDrive\\StX_XC_Track\\data\\stx_track.db</code></div>
+</body>
+</html>
