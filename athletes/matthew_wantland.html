@@ -22,7 +22,8 @@
       .nav a.home-link, .nav span.home-link { font-size: 18px; font-weight: 800; }
       .nav a.records-link, .nav span.records-link,
       .nav a.depth-link, .nav span.depth-link,
-      .nav a.pre-race-link, .nav span.pre-race-link {
+      .nav a.pre-race-link, .nav span.pre-race-link,
+      .nav a.comparison-link, .nav span.comparison-link {
         font-size: 16px;
         font-weight: 700;
         margin-left: 12px;
@@ -62,15 +63,13 @@
       .rankcell { font-weight: 800; }
       .chart-container { position: relative; height: 320px; width: 100%; max-width: 900px; margin: 20px 0 0 0; }
       .hide-graphs .chart-container { display: none; }
-
       /* Meet page filter: hide non-StX rows when toggled */
       body.stx-only .non-stx-row { display: none; }
-
       /* On athlete pages, we still show non-StX history for allow-listed athletes */
       .non-stx-row { opacity: 0.80; }
-
       /* PR section header rows (Track / XC) */
       .sporthdr { background: #efefef; font-weight: 900; }
+      .dimmed-pr { color: #999; font-weight: normal; }
     </style>
     
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -89,7 +88,6 @@
         <a class='home-link' href='../index.html'>Home</a> <a class='records-link' href='../records.html'>StX Records</a> <a class='depth-link' href='../depth_chart.html'>Depth Chart</a> <a class='pre-race-link' href='../pre_race.html'>Pre-Race</a> <a class='comparison-link' href='../athlete_comparison.html'>Athlete Comparison</a>
       </div>
     </div>
-
     <div class="card">
       <h2>Personal Records</h2>
       <p class="muted">Track shows Indoor + Outdoor. XC shows Outdoor only. Best (lowest) is highlighted where applicable.</p>
@@ -100,7 +98,6 @@
       <div class="tabpane" id="pane-pr"><div class="table-wrap"><table><thead><tr><th>Event</th><th>Indoor</th><th>Outdoor</th></tr></thead><tbody><tr class='sporthdr'><td colspan='3'>TRACK</td></tr><tr><td>800 Meters</td><td></td><td class="bestpr">2:11.7</td></tr><tr><td>1600 Meters</td><td></td><td class="bestpr">4:35.7</td></tr><tr><td>1 Mile</td><td class="bestpr">4:39.8</td><td>4:57.1</td></tr><tr><td>3200 Meters</td><td>9:59.5</td><td class="bestpr">9:56.3</td></tr><tr><td>2 Miles</td><td></td><td class="bestpr">9:58.5</td></tr><tr><td>1500 Meters</td><td class="bestpr">4:18.3</td><td></td></tr><tr><td>3000 Meters</td><td class="bestpr">9:22.6</td><td></td></tr><tr class='sporthdr'><td colspan='3'>XC</td></tr><tr><td>3 Miles</td><td>—</td><td class="bestpr">17:03.0</td></tr><tr><td>3000 Meters</td><td>—</td><td class="bestpr">10:12.8</td></tr><tr><td>4000 Meter Run</td><td>—</td><td class="bestpr">14:08.3</td></tr><tr><td>5000 Meters</td><td>—</td><td class="bestpr">16:32.8</td></tr></tbody></table></div></div>
       <div class="tabpane" id="pane-pryear"><h3 style='margin:10px 0 0 0;'>TRACK</h3><div class="table-wrap"><table><thead><tr><th>Year</th><th>Event</th><th>Indoor</th><th>Outdoor</th></tr></thead><tbody><tr><td>2021</td><td>800 Meters</td><td></td><td class="bestpr">2:11.7</td></tr><tr><td>2021</td><td>1600 Meters</td><td></td><td class="bestpr">4:35.7</td></tr><tr><td>2021</td><td>1 Mile</td><td class="bestpr">4:39.8</td><td></td></tr><tr><td>2021</td><td>3200 Meters</td><td>9:59.5</td><td class="bestpr">9:56.3</td></tr><tr><td>2021</td><td>2 Miles</td><td></td><td class="bestpr">9:58.5</td></tr><tr><td>2021</td><td>1500 Meters</td><td class="bestpr">4:18.3</td><td></td></tr><tr><td>2021</td><td>3000 Meters</td><td class="bestpr">9:22.6</td><td></td></tr><tr><td>2019</td><td>1600 Meters</td><td></td><td class="bestpr">4:57.1</td></tr><tr><td>2019</td><td>1 Mile</td><td></td><td class="bestpr">4:57.1</td></tr><tr><td>2019</td><td>3200 Meters</td><td></td><td class="bestpr">10:36.2</td></tr><tr><td>2018</td><td>1600 Meters</td><td></td><td class="bestpr">5:28.1</td></tr><tr><td>2018</td><td>1 Mile</td><td></td><td class="bestpr">5:37.4</td></tr></tbody></table></div><h3 style='margin:18px 0 0 0;'>XC</h3><div class="table-wrap"><table><thead><tr><th>Year</th><th>Event</th><th>Indoor</th><th>Outdoor</th></tr></thead><tbody><tr><td>2020</td><td>3000 Meters</td><td></td><td class="bestpr">10:12.8</td></tr><tr><td>2020</td><td>5000 Meters</td><td></td><td class="bestpr">16:32.8</td></tr><tr><td>2019</td><td>3 Miles</td><td></td><td class="bestpr">17:03.0</td></tr><tr><td>2019</td><td>5000 Meters</td><td></td><td class="bestpr">16:49.4</td></tr><tr><td>2018</td><td>5000 Meters</td><td></td><td class="bestpr">17:59.9</td></tr><tr><td>2017</td><td>4000 Meter Run</td><td></td><td class="bestpr">14:08.3</td></tr><tr><td>2017</td><td>5000 Meters</td><td></td><td class="bestpr">17:50.5</td></tr></tbody></table></div></div>
     </div>
-
     <div class="card">
       <h2>All Results</h2>
       <div class="filterbar">
@@ -118,8 +115,7 @@
       <div id="athlete-results-wrap"><h3 class='section-title'>800 Meters</h3><div class="table-wrap"><table><thead><tr><th>Year</th><th>Date</th><th>Meet</th><th>Loc</th><th>Event</th><th>Group</th><th>Place</th><th>Result</th></tr></thead><tbody><tr><td>2021</td><td>2021-05-04</td><td><a href='../meets/104_all.html'>St. Xavier Master Meet #5</a></td><td>Outdoor</td><td>800 Meters</td><td>1</td><td>12</td><td>2:11.7</td></tr><tr><td>2021</td><td>2021-04-20</td><td><a href='../meets/101_all.html'>St. X Master Meet #4</a></td><td>Outdoor</td><td>800 Meters</td><td>1</td><td>11</td><td>2:15.9</td></tr></tbody></table></div><div class="chart-container"><canvas id="chart-800_meters"></canvas></div><h3 class='section-title'>1600 Meters / 1 Mile</h3><div class="table-wrap"><table><thead><tr><th>Year</th><th>Date</th><th>Meet</th><th>Loc</th><th>Event</th><th>Group</th><th>Place</th><th>Result</th></tr></thead><tbody><tr><td>2021</td><td>2021-05-26</td><td><a href='../meets/108_all.html'>Louisville Meet of Champions</a></td><td>Outdoor</td><td>1600 Meters</td><td>1</td><td>7</td><td>4:35.7</td></tr><tr><td>2021</td><td>2021-04-20</td><td><a href='../meets/101_all.html'>St. X Master Meet #4</a></td><td>Outdoor</td><td>1600 Meters</td><td>1</td><td>5</td><td>4:42.9</td></tr><tr><td>2021</td><td>2021-04-10</td><td><a href='../meets/99_all.html'>Johnny Conn Invitational</a></td><td>Outdoor</td><td>1600 Meters</td><td>1</td><td>6</td><td>4:41.6</td></tr><tr><td>2021</td><td>2021-04-06</td><td><a href='../meets/98_all.html'>St. X Master Meet #3</a></td><td>Outdoor</td><td>1600 Meters</td><td>1</td><td>2</td><td>4:38.4</td></tr><tr><td>2021</td><td>2021-03-19</td><td><a href='../meets/389_all.html'>Bruin Relays</a></td><td>Indoor</td><td>1 Mile</td><td>1</td><td>1</td><td>4:50.0</td></tr><tr><td>2021</td><td>2021-03-07</td><td><a href='../meets/313_all.html'>KTCCCA Age Group Meet Afternoon Session</a></td><td>Indoor</td><td>1 Mile</td><td>1</td><td>1</td><td>4:39.8</td></tr><tr><td>2019</td><td>2019-05-14</td><td><a href='../meets/304_all.html'>St. X Master Meet 3</a></td><td>Outdoor</td><td>1 Mile</td><td>1</td><td>32</td><td>5:02.6</td></tr><tr><td>2019</td><td>2019-04-23</td><td><a href='../meets/120_all.html'>Male All Comers Meet</a></td><td>Outdoor</td><td>1600 Meters</td><td>1</td><td>3</td><td>4:57.1</td></tr><tr><td>2019</td><td>2019-04-09</td><td><a href='../meets/117_all.html'>St. Xavier All Comers</a></td><td>Outdoor</td><td>1 Mile</td><td>1</td><td>9</td><td>4:57.1</td></tr><tr><td>2019</td><td>2019-03-26</td><td><a href='../meets/115_all.html'>St. Xavier All Comers Meet</a></td><td>Outdoor</td><td>1 Mile</td><td>1</td><td>19</td><td>5:02.5</td></tr><tr><td>2018</td><td>2018-05-02</td><td><a href='../meets/305_all.html'>Male All-Comers</a></td><td>Outdoor</td><td>1600 Meters</td><td>1</td><td>34</td><td>5:28.1</td></tr><tr><td>2018</td><td>2018-04-17</td><td><a href='../meets/133_all.html'>St. Xavier Master Schedule Meet</a></td><td>Outdoor</td><td>1 Mile</td><td>1</td><td>29</td><td>5:37.4</td></tr></tbody></table></div><div class="chart-container"><canvas id="chart-1600_meters_1_mile"></canvas></div><h3 class='section-title'>3200 Meters / 2 Miles</h3><div class="table-wrap"><table><thead><tr><th>Year</th><th>Date</th><th>Meet</th><th>Loc</th><th>Event</th><th>Group</th><th>Place</th><th>Result</th></tr></thead><tbody><tr><td>2021</td><td>2021-05-26</td><td><a href='../meets/108_all.html'>Louisville Meet of Champions</a></td><td>Outdoor</td><td>3200 Meters</td><td>1</td><td>6</td><td>9:56.9</td></tr><tr><td>2021</td><td>2021-05-22</td><td><a href='../meets/106_all.html'>Run for the Roses 3200</a></td><td>Outdoor</td><td>3200 Meters</td><td>1</td><td>6</td><td>9:56.9</td></tr><tr><td>2021</td><td>2021-05-08</td><td><a href='../meets/105_all.html'>Eastern Relays</a></td><td>Outdoor</td><td>3200 Meters</td><td>1</td><td>36</td><td>9:56.3</td></tr><tr><td>2021</td><td>2021-04-24</td><td><a href='../meets/102_all.html'>Brother Borgia/Coach Cooper Invitational (FULL)</a></td><td>Outdoor</td><td>2 Miles</td><td>1</td><td>6</td><td>9:58.5</td></tr><tr><td>2021</td><td>2021-04-10</td><td><a href='../meets/99_all.html'>Johnny Conn Invitational</a></td><td>Outdoor</td><td>3200 Meters</td><td>1</td><td>1</td><td>10:14.9</td></tr><tr><td>2021</td><td>2021-03-13</td><td><a href='../meets/95_all.html'>St. Xavier Invitational</a></td><td>Outdoor</td><td>3200 Meters</td><td>1</td><td>3</td><td>10:10.1</td></tr><tr><td>2021</td><td>2021-03-07</td><td><a href='../meets/313_all.html'>KTCCCA Age Group Meet Afternoon Session</a></td><td>Indoor</td><td>3200 Meters</td><td>1</td><td>1</td><td>9:59.5</td></tr><tr><td>2019</td><td>2019-04-27</td><td><a href='../meets/121_all.html'>Brother Borgia/Coach Cooper Invitational</a></td><td>Outdoor</td><td>3200 Meters</td><td>1</td><td>33</td><td>10:36.2</td></tr><tr><td>2019</td><td>2019-04-19</td><td><a href='../meets/119_all.html'>Eastern Relays</a></td><td>Outdoor</td><td>3200 Meters</td><td>2</td><td>12</td><td>11:02.6</td></tr><tr><td>2019</td><td>2019-04-13</td><td><a href='../meets/118_all.html'>Johnny Conn Invitational</a></td><td>Outdoor</td><td>3200 Meters</td><td>1</td><td>18</td><td>10:38.2</td></tr><tr><td>2019</td><td>2019-04-05</td><td><a href='../meets/116_all.html'>Mobile Challenge of Champions</a></td><td>Outdoor</td><td>3200 Meters</td><td>2</td><td>19</td><td>10:43.0</td></tr><tr><td>2019</td><td>2019-03-13</td><td><a href='../meets/112_all.html'>Male All Comers Meet</a></td><td>Outdoor</td><td>3200 Meters</td><td>1</td><td>3</td><td>10:59.0</td></tr></tbody></table></div><div class="chart-container"><canvas id="chart-3200_meters_2_miles"></canvas></div><h3 class='section-title'>1500 Meters</h3><div class="table-wrap"><table><thead><tr><th>Year</th><th>Date</th><th>Meet</th><th>Loc</th><th>Event</th><th>Group</th><th>Place</th><th>Result</th></tr></thead><tbody><tr><td>2021</td><td>2021-03-06</td><td><a href='../meets/211_all.html'>KTCCCA Class AAA Indoor State Championships</a></td><td>Indoor</td><td>1500 Meters</td><td>1</td><td>6</td><td>4:18.3</td></tr></tbody></table></div><div class="chart-container"><canvas id="chart-1500_meters"></canvas></div><h3 class='section-title'>3 Miles</h3><div class="table-wrap"><table><thead><tr><th>Year</th><th>Date</th><th>Meet</th><th>Loc</th><th>Event</th><th>Group</th><th>Place</th><th>Result</th></tr></thead><tbody><tr><td>2019</td><td>2019-09-28</td><td><a href='../meets/935_all.html'>Palatine Invite</a></td><td>Outdoor</td><td>3 Miles</td><td>xc</td><td>110</td><td>17:03.0</td></tr></tbody></table></div><div class="chart-container"><canvas id="chart-3_miles"></canvas></div><h3 class='section-title'>3000 Meters</h3><div class="table-wrap"><table><thead><tr><th>Year</th><th>Date</th><th>Meet</th><th>Loc</th><th>Event</th><th>Group</th><th>Place</th><th>Result</th></tr></thead><tbody><tr><td>2021</td><td>2021-03-19</td><td><a href='../meets/389_all.html'>Bruin Relays</a></td><td>Indoor</td><td>3000 Meters</td><td>1</td><td>3</td><td>9:22.6</td></tr><tr><td>2021</td><td>2021-02-21</td><td><a href='../meets/209_all.html'>KTCCCA Age Group Meet</a></td><td>Indoor</td><td>3000 Meters</td><td>1</td><td>9</td><td>9:25.2</td></tr><tr><td>2020</td><td>2020-09-11</td><td><a href='../meets/957_all.html'>Rumble Through the Jungle</a></td><td>Outdoor</td><td>3000 Meters</td><td>xc</td><td>15</td><td>10:12.8</td></tr></tbody></table></div><div class="chart-container"><canvas id="chart-3000_meters"></canvas></div><h3 class='section-title'>4000 Meter Run</h3><div class="table-wrap"><table><thead><tr><th>Year</th><th>Date</th><th>Meet</th><th>Loc</th><th>Event</th><th>Group</th><th>Place</th><th>Result</th></tr></thead><tbody><tr><td>2017</td><td>2017-08-26</td><td><a href='../meets/1029_all.html'>Tiger Run</a></td><td>Outdoor</td><td>4000 Meter Run</td><td>xc</td><td>7</td><td>14:08.3</td></tr></tbody></table></div><div class="chart-container"><canvas id="chart-4000_meter_run"></canvas></div><h3 class='section-title'>5000 Meters</h3><div class="table-wrap"><table><thead><tr><th>Year</th><th>Date</th><th>Meet</th><th>Loc</th><th>Event</th><th>Group</th><th>Place</th><th>Result</th></tr></thead><tbody><tr><td>2020</td><td>2020-10-30</td><td><a href='../meets/845_all.html'>Kentucky State Cross Country Meet</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>45</td><td>17:38.5</td></tr><tr><td>2020</td><td>2020-10-24</td><td><a href='../meets/784_all.html'>KHSAA Region 3 Class AAA</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>5</td><td>16:44.0</td></tr><tr><td>2020</td><td>2020-10-17</td><td><a href='../meets/792_all.html'>KTCCCA High School Meet of Champions CLASS AAA</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>12</td><td>16:48.4</td></tr><tr><td>2020</td><td>2020-10-02</td><td><a href='../meets/872_all.html'>Louisville XC Classic</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>13</td><td>16:32.8</td></tr><tr><td>2020</td><td>2020-09-19</td><td><a href='../meets/1049_all.html'>Trinity / Valkyrie Invitational (HS)</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>50</td><td>16:53.4</td></tr><tr><td>2019</td><td>2019-11-30</td><td><a href='../meets/914_all.html'>Nike Cross Nationals Southeast Regional</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>53</td><td>17:01.3</td></tr><tr><td>2019</td><td>2019-11-02</td><td><a href='../meets/844_all.html'>Kentucky State Cross Country Meet</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>89</td><td>17:36.0</td></tr><tr><td>2019</td><td>2019-10-05</td><td><a href='../meets/747_all.html'>Great American Cross Country Festival</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>11</td><td>16:49.4</td></tr><tr><td>2019</td><td>2019-09-21</td><td><a href='../meets/1048_all.html'>Trinity / Valkyrie Invitational (HS)</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>91</td><td>17:18.4</td></tr><tr><td>2019</td><td>2019-09-14</td><td><a href='../meets/731_all.html'>Franklin County Invitational</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>24</td><td>17:29.1</td></tr><tr><td>2019</td><td>2019-09-07</td><td><a href='../meets/956_all.html'>Rumble Through the Jungle</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>28</td><td>17:30.1</td></tr><tr><td>2019</td><td>2019-08-24</td><td><a href='../meets/1031_all.html'>Tiger Run</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>76</td><td>17:46.6</td></tr><tr><td>2018</td><td>2018-11-24</td><td><a href='../meets/913_all.html'>Nike Cross Nationals Southeast Regional</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>260</td><td>18:17.8</td></tr><tr><td>2018</td><td>2018-10-25</td><td><a href='../meets/864_all.html'>Louisville Area JV Championships</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>31</td><td>18:01.5</td></tr><tr><td>2018</td><td>2018-10-13</td><td><a href='../meets/925_all.html'>Oldham County Haunted Woods Classic</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>7</td><td>17:59.9</td></tr><tr><td>2018</td><td>2018-10-06</td><td><a href='../meets/1034_all.html'>Titan Classic</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>12</td><td>20:39.0</td></tr><tr><td>2018</td><td>2018-09-22</td><td><a href='../meets/1010_all.html'>The Atherton Invitational</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>16</td><td>19:31.7</td></tr><tr><td>2018</td><td>2018-09-15</td><td><a href='../meets/1047_all.html'>Trinity / Valkyrie Invitational (HS)</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>109</td><td>18:54.6</td></tr><tr><td>2018</td><td>2018-08-25</td><td><a href='../meets/1030_all.html'>Tiger Run</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>12</td><td>18:38.0</td></tr><tr><td>2017</td><td>2017-10-26</td><td><a href='../meets/863_all.html'>Louisville Area JV Championships</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>29</td><td>17:50.5</td></tr><tr><td>2017</td><td>2017-10-14</td><td><a href='../meets/1073_all.html'>Woodford County Invitational</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>5</td><td>18:26.9</td></tr><tr><td>2017</td><td>2017-10-07</td><td><a href='../meets/862_all.html'>Lexington Catholic Invitational</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>8</td><td>18:33.5</td></tr><tr><td>2017</td><td>2017-09-29</td><td><a href='../meets/764_all.html'>Greater Louisville Classic</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>17</td><td>17:51.7</td></tr><tr><td>2017</td><td>2017-09-23</td><td><a href='../meets/1038_all.html'>Titan Cross Country Classic</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>9</td><td>18:40.0</td></tr><tr><td>2017</td><td>2017-09-16</td><td><a href='../meets/1046_all.html'>Trinity / Valkyrie Invitational (HS)</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>11</td><td>18:09.9</td></tr><tr><td>2017</td><td>2017-09-09</td><td><a href='../meets/954_all.html'>Rumble Through the Jungle</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>12</td><td>18:45.5</td></tr></tbody></table></div><div class="chart-container"><canvas id="chart-5000_meters"></canvas></div></div>
       <p class="muted">When splits are shown: fastest lap is green, slowest lap is red.</p>
     </div>
-
-    <div class="footer">Generated at <code>2026-03-23 16:03:06</code> from <code>C:\\Users\\Bob\\OneDrive\\StX_XC_Track\\data\\stx_track.db</code></div>
+    <div class="footer">Generated at <code>2026-03-29 12:00:57</code> from <code>C:\\Users\\Bob\\OneDrive\\StX_XC_Track\\data\\stx_track.db</code></div>
     
     <script>
       function activateTab(tabId) {
@@ -127,23 +123,27 @@
         const panes = document.querySelectorAll('.tabpane');
         btns.forEach(b => b.classList.remove('active'));
         panes.forEach(p => p.classList.remove('active'));
+
         const btn = document.getElementById('btn-' + tabId);
         const pane = document.getElementById('pane-' + tabId);
         if (btn) btn.classList.add('active');
         if (pane) pane.classList.add('active');
       }
+
       function toggleSplits(cb) {
         const wrap = document.getElementById('athlete-results-wrap');
         if (!wrap) return;
         if (cb.checked) wrap.classList.add('show-splits');
         else wrap.classList.remove('show-splits');
       }
+
       function toggleGraphs(cb) {
         const wrap = document.getElementById('athlete-results-wrap');
         if (!wrap) return;
         if (cb.checked) wrap.classList.remove('hide-graphs');
         else wrap.classList.add('hide-graphs');
       }
+
       document.addEventListener('DOMContentLoaded', () => {
         activateTab('pr');
         const splitCb = document.getElementById('splitToggle');
@@ -463,15 +463,18 @@
     }
   ]
 };
+
       function formatChartTime(seconds) {
         if (seconds === null || seconds === undefined) return '';
         const mins = Math.floor(seconds / 60);
         const secs = (seconds % 60).toFixed(2);
         return `${mins}:${secs.padStart(5, '0')}`;
       }
+
       function createChart(canvasId, data) {
         const canvas = document.getElementById(canvasId);
         if (!canvas || !data || data.length === 0) return;
+
         new Chart(canvas, {
           type: 'line',
           data: {
@@ -520,6 +523,7 @@
           }
         });
       }
+
       document.addEventListener('DOMContentLoaded', () => {
         for (const canvasId in allChartData) {
           createChart(canvasId, allChartData[canvasId]);

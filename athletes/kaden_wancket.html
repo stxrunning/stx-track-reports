@@ -14,16 +14,21 @@
       .date { font-size: 18px; font-weight: 700; line-height: 1.1; margin: 0 0 6px 0; white-space: normal; }
       .meetname { font-size: 28px; font-weight: 800; line-height: 1.1; margin: 0 0 6px 0; white-space: normal; }
       .subline { margin: 0; }
+      .athlete-profile-links { margin: 4px 0 8px 0; font-size: 14px; font-weight: 700; }
+      .athlete-profile-links a { margin-right: 15px; }
+      .meet-links { margin: 4px 0 10px 0; font-size: 14px; font-weight: 700; }
+      .meet-links a { margin-right: 15px; }
       .nav { text-align: right; white-space: nowrap; font-size: 14px; }
       .nav a.home-link, .nav span.home-link { font-size: 18px; font-weight: 800; }
       .nav a.records-link, .nav span.records-link,
       .nav a.depth-link, .nav span.depth-link,
-      .nav a.pre-race-link, .nav span.pre-race-link {
+      .nav a.pre-race-link, .nav span.pre-race-link,
+      .nav a.comparison-link, .nav span.comparison-link {
         font-size: 16px;
         font-weight: 700;
         margin-left: 12px;
       }
-      .nav span { color: #333; } /* Style for the current, non-linked page */
+      .nav span { color: #333; }
       .card { border:1px solid #e6e6e6; border-radius:10px; padding:16px; margin:14px 0; }
       .twocol { display:flex; gap:16px; align-items:flex-start; }
       .col { flex: 1 1 0; min-width: 320px; }
@@ -37,13 +42,8 @@
       .slowest { background-color: #F8D7DA; color: #721C24; font-weight: 600; }
       .pr { background-color: #FFDAB9; color: #A0522D; font-weight: 700; }
       .bestpr { background-color: #D4EDDA; color: #155724; font-weight: 700; }
-      .warning-big {
-        margin: 6px 0 10px 0;
-        font-size: 28px;
-        font-weight: 900;
-        color: #b00020;
-        letter-spacing: 0.5px;
-      }
+      .stx-team-highlight { background-color: #fcf8e3; }
+      .warning-big { margin: 6px 0 10px 0; font-size: 28px; font-weight: 900; color: #b00020; letter-spacing: 0.5px; }
       .footer { margin-top: 24px; color: #777; font-size: 12px; }
       code { background:#f6f6f6; padding:2px 6px; border-radius:6px; }
       .filterbar { display:flex; align-items:center; gap:14px; margin: 10px 0 0 0; flex-wrap: wrap; }
@@ -52,47 +52,51 @@
       .splits-col { display: none; }
       .show-splits .splits-col { display: table-cell; }
       .tabs { display:flex; gap:8px; margin: 8px 0 10px 0; flex-wrap: wrap; }
-      .tabbtn {
-        border:1px solid #ddd; background:#fff; border-radius: 999px;
-        padding:6px 10px; font-size: 13px; cursor:pointer;
-      }
+      .tabbtn { border:1px solid #ddd; background:#fff; border-radius: 999px; padding:6px 10px; font-size: 13px; cursor:pointer; }
       .tabbtn.active { background:#f2f2f2; font-weight: 700; }
       .tabpane { display:none; }
       .tabpane.active { display:block; }
-      .section-title { margin: 10px 0 0 0; font-size: 18px; font-weight: 800; }
-      .viewtoggle b { font-weight: 800; }
-      .viewtoggle a { font-weight: 600; }
+      .section-title { margin: 24px 0 0 0; font-size: 18px; font-weight: 800; border-top: 1px solid #eee; padding-top: 16px; }
       .athletes-grid { display:flex; gap: 16px; align-items:flex-start; flex-wrap: wrap; }
       .athletes-grid .ath-col { flex: 1 1 0; min-width: 280px; }
       .ath-col h3 { margin: 0 0 6px 0; }
       .rankcell { font-weight: 800; }
+      .chart-container { position: relative; height: 320px; width: 100%; max-width: 900px; margin: 20px 0 0 0; }
+      .hide-graphs .chart-container { display: none; }
+      /* Meet page filter: hide non-StX rows when toggled */
+      body.stx-only .non-stx-row { display: none; }
+      /* On athlete pages, we still show non-StX history for allow-listed athletes */
+      .non-stx-row { opacity: 0.80; }
+      /* PR section header rows (Track / XC) */
+      .sporthdr { background: #efefef; font-weight: 900; }
+      .dimmed-pr { color: #999; font-weight: normal; }
     </style>
     
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
 </head>
 <body>
 
     <div class="topbar">
       <div class="titlewrap">
         <div class="meetname">Kaden Wancket</div>
-        <p class="subline muted">StX athlete profile • Showing results from 1960+</p>
+        <div class="athlete-profile-links"><a href="https://ky.milesplit.com/athletes/13683411-kaden-wancket" target="_blank">Milesplit Profile</a></div>
+        <p class="subline muted">StX athlete profile • Showing results from 1900+</p>
+        
       </div>
       <div class="nav">
-        <a class='home-link' href='../index.html'>Home</a> <a class='records-link' href='../records.html'>StX Records</a> <a class='depth-link' href='../depth_chart.html'>Depth Chart</a> <a class='pre-race-link' href='../pre_race.html'>Pre-Race</a>
+        <a class='home-link' href='../index.html'>Home</a> <a class='records-link' href='../records.html'>StX Records</a> <a class='depth-link' href='../depth_chart.html'>Depth Chart</a> <a class='pre-race-link' href='../pre_race.html'>Pre-Race</a> <a class='comparison-link' href='../athlete_comparison.html'>Athlete Comparison</a>
       </div>
     </div>
     <div class="card">
       <h2>Personal Records</h2>
-      <p class="muted">Best (lowest) of Indoor/Outdoor is highlighted.</p>
+      <p class="muted">Track shows Indoor + Outdoor. XC shows Outdoor only. Best (lowest) is highlighted where applicable.</p>
       <div class="tabs">
-        <button class="tabbtn" id="btn-pr" onclick="activateTab('pr')">PR (Indoor/Outdoor)</button>
-        <button class="tabbtn" id="btn-pryear" onclick="activateTab('pryear')">PR by Year</button>
+        <button class="tabbtn" id="btn-pr" onclick="activateTab('pr')">PR (Track + XC)</button>
+        <button class="tabbtn" id="btn-pryear" onclick="activateTab('pryear')">PR by Year (Track + XC)</button>
       </div>
-      <div class="tabpane" id="pane-pr">
-        <div class="table-wrap"><table><thead><tr><th>Event</th><th>Indoor</th><th>Outdoor</th></tr></thead><tbody><tr><td>800 Meters</td><td class="bestpr">2:12.6</td><td></td></tr><tr><td>1 Mile</td><td class="bestpr">4:41.5</td><td></td></tr><tr><td>4x800 Relay</td><td>8:51.9</td><td class="bestpr">8:39.9</td></tr><tr><td>1500 Meters</td><td class="bestpr">4:25.2</td><td></td></tr></tbody></table></div>
-      </div>
-      <div class="tabpane" id="pane-pryear">
-        <div class="table-wrap"><table><thead><tr><th>Year</th><th>Event</th><th>Indoor</th><th>Outdoor</th></tr></thead><tbody><tr><td>2023</td><td>800 Meters</td><td class="bestpr">2:12.6</td><td></td></tr><tr><td>2023</td><td>1 Mile</td><td class="bestpr">4:41.5</td><td></td></tr><tr><td>2023</td><td>4x800 Relay</td><td>8:51.9</td><td class="bestpr">8:39.9</td></tr><tr><td>2023</td><td>1500 Meters</td><td class="bestpr">4:25.2</td><td></td></tr></tbody></table></div>
-      </div>
+      <div class="tabpane" id="pane-pr"><div class="table-wrap"><table><thead><tr><th>Event</th><th>Indoor</th><th>Outdoor</th></tr></thead><tbody><tr class='sporthdr'><td colspan='3'>TRACK</td></tr><tr><td>800 Meters</td><td class="bestpr">2:12.6</td><td></td></tr><tr><td>1 Mile</td><td class="bestpr">4:41.5</td><td></td></tr><tr><td>4x800 Relay</td><td>8:51.9</td><td class="bestpr">8:39.9</td></tr><tr><td>1500 Meters</td><td class="bestpr">4:25.2</td><td></td></tr><tr class='sporthdr'><td colspan='3'>XC</td></tr><tr><td colspan='3' class='muted'>No data.</td></tr></tbody></table></div></div>
+      <div class="tabpane" id="pane-pryear"><h3 style='margin:10px 0 0 0;'>TRACK</h3><div class="table-wrap"><table><thead><tr><th>Year</th><th>Event</th><th>Indoor</th><th>Outdoor</th></tr></thead><tbody><tr><td>2023</td><td>800 Meters</td><td class="bestpr">2:12.6</td><td></td></tr><tr><td>2023</td><td>1 Mile</td><td class="bestpr">4:41.5</td><td></td></tr><tr><td>2023</td><td>4x800 Relay</td><td>8:51.9</td><td class="bestpr">8:39.9</td></tr><tr><td>2023</td><td>1500 Meters</td><td class="bestpr">4:25.2</td><td></td></tr></tbody></table></div><h3 style='margin:18px 0 0 0;'>XC</h3><p class='muted'>No XC yearly PR data.</p></div>
     </div>
     <div class="card">
       <h2>All Results</h2>
@@ -101,18 +105,17 @@
           <input type="checkbox" id="splitToggle" onchange="toggleSplits(this)" checked >
           Show Splits
         </label>
+        <label style="margin-left: 15px;">
+          <input type="checkbox" id="graphToggle" onchange="toggleGraphs(this)" checked>
+          Show Graph
+        </label>
         <span class="muted">(default on)</span>
       </div>
       
-      <div id="athlete-results-wrap">
-        <h3 class='section-title'>800 Meters</h3><div class="table-wrap"><table><thead><tr><th>Year</th><th>Date</th><th>Meet</th><th>Loc</th><th>Event</th><th>Place</th><th>Result</th><th class="splits-col">Lap 1</th><th class="splits-col">Lap 2</th><th class="splits-col">Lap 3</th><th class="splits-col">Lap 4</th></tr></thead><tbody><tr><td>2023</td><td>2023-06-22</td><td><a href='../meets/312_stx.html'>Coaches Classic - Age Group Presented by KTCCCA</a></td><td>Indoor</td><td>800 Meters</td><td>12</td><td>2:15.3</td><td class="splits-col"></td><td class="splits-col"></td><td class="splits-col"></td><td class="splits-col"></td></tr><tr><td>2023</td><td>2023-02-11</td><td><a href='../meets/30_stx.html'>Eastern Indoors Invitational</a></td><td>Indoor</td><td>800 Meters</td><td>59</td><td>2:12.6</td><td class="splits-col fastest">31.04</td><td class="splits-col">33.91</td><td class="splits-col slowest">34.56</td><td class="splits-col">33.06</td></tr></tbody></table></div>
-<h3 class='section-title'>1600 Meters / 1 Mile</h3><div class="table-wrap"><table><thead><tr><th>Year</th><th>Date</th><th>Meet</th><th>Loc</th><th>Event</th><th>Place</th><th>Result</th><th class="splits-col">Lap 1</th><th class="splits-col">Lap 2</th><th class="splits-col">Lap 3</th><th class="splits-col">Lap 4</th><th class="splits-col">Lap 5</th><th class="splits-col">Lap 6</th><th class="splits-col">Lap 7</th><th class="splits-col">Lap 8</th></tr></thead><tbody><tr><td>2023</td><td>2023-02-11</td><td><a href='../meets/30_stx.html'>Eastern Indoors Invitational</a></td><td>Indoor</td><td>1 Mile</td><td>50</td><td>4:41.5</td><td class="splits-col">34.55</td><td class="splits-col fastest">34.09</td><td class="splits-col">35.16</td><td class="splits-col slowest">35.99</td><td class="splits-col">35.73</td><td class="splits-col">35.90</td><td class="splits-col">35.72</td><td class="splits-col">34.32</td></tr></tbody></table></div>
-<h3 class='section-title'>1500 Meters</h3><div class="table-wrap"><table><thead><tr><th>Year</th><th>Date</th><th>Meet</th><th>Loc</th><th>Event</th><th>Place</th><th>Result</th><th class="splits-col">Lap 1</th><th class="splits-col">Lap 2</th><th class="splits-col">Lap 3</th><th class="splits-col">Lap 4</th><th class="splits-col">Lap 5</th><th class="splits-col">Lap 6</th><th class="splits-col">Lap 7</th><th class="splits-col">Lap 8</th></tr></thead><tbody><tr><td>2023</td><td>2023-06-22</td><td><a href='../meets/312_stx.html'>Coaches Classic - Age Group Presented by KTCCCA</a></td><td>Indoor</td><td>1500 Meters</td><td>3</td><td>4:25.2</td><td class="splits-col"></td><td class="splits-col"></td><td class="splits-col"></td><td class="splits-col"></td><td class="splits-col"></td><td class="splits-col"></td><td class="splits-col"></td><td class="splits-col"></td></tr></tbody></table></div>
-<h3 class='section-title'>4x800 Relay</h3><div class="table-wrap"><table><thead><tr><th>Year</th><th>Date</th><th>Meet</th><th>Loc</th><th>Event</th><th>team_raw</th><th>Leg</th><th>Place</th><th>Result</th><th>Total_Laps</th><th class="splits-col">Lap 1</th><th class="splits-col">Lap 2</th><th class="splits-col">Lap 3</th><th class="splits-col">Lap 4</th></tr></thead><tbody><tr><td>2023</td><td>2023-02-11</td><td><a href='../meets/30_stx.html'>Eastern Indoors Invitational</a></td><td>Indoor</td><td>4x800 Relay</td><td>St Xavier (KY)</td><td>2</td><td>9</td><td>8:51.9</td><td></td><td class="splits-col"></td><td class="splits-col"></td><td class="splits-col"></td><td class="splits-col"></td></tr><tr><td>2023</td><td>2023-02-04</td><td><a href='../meets/253_stx.html'>Louisville Indoor Games</a></td><td>Outdoor</td><td>4x800 Relay</td><td>St Xavier (KY)</td><td>4</td><td>3</td><td>8:39.9</td><td></td><td class="splits-col"></td><td class="splits-col"></td><td class="splits-col"></td><td class="splits-col"></td></tr></tbody></table></div>
-      </div>
+      <div id="athlete-results-wrap"><h3 class='section-title'>800 Meters</h3><div class="table-wrap"><table><thead><tr><th>Year</th><th>Date</th><th>Meet</th><th>Loc</th><th>Event</th><th>Group</th><th>Place</th><th>Result</th><th class="splits-col">Lap 1</th><th class="splits-col">Lap 2</th><th class="splits-col">Lap 3</th><th class="splits-col">Lap 4</th></tr></thead><tbody><tr><td>2023</td><td>2023-02-10</td><td><a href='../meets/30_all.html'>Eastern Indoors Invitational</a></td><td>Indoor</td><td>800 Meters</td><td>1</td><td>59</td><td>2:12.6</td><td class="splits-col fastest">31.04</td><td class="splits-col">33.91</td><td class="splits-col slowest">34.56</td><td class="splits-col">33.06</td></tr><tr><td>2023</td><td>2023-01-22</td><td><a href='../meets/312_all.html'>Coaches Classic - Age Group Presented by KTCCCA</a></td><td>Indoor</td><td>800 Meters</td><td>1</td><td>12</td><td>2:15.3</td><td class="splits-col"></td><td class="splits-col"></td><td class="splits-col"></td><td class="splits-col"></td></tr></tbody></table></div><div class="chart-container"><canvas id="chart-800_meters"></canvas></div><h3 class='section-title'>1600 Meters / 1 Mile</h3><div class="table-wrap"><table><thead><tr><th>Year</th><th>Date</th><th>Meet</th><th>Loc</th><th>Event</th><th>Group</th><th>Place</th><th>Result</th><th class="splits-col">Lap 1</th><th class="splits-col">Lap 2</th><th class="splits-col">Lap 3</th><th class="splits-col">Lap 4</th><th class="splits-col">Lap 5</th><th class="splits-col">Lap 6</th><th class="splits-col">Lap 7</th><th class="splits-col">Lap 8</th></tr></thead><tbody><tr><td>2023</td><td>2023-02-10</td><td><a href='../meets/30_all.html'>Eastern Indoors Invitational</a></td><td>Indoor</td><td>1 Mile</td><td>1</td><td>50</td><td>4:41.5</td><td class="splits-col">34.55</td><td class="splits-col fastest">34.09</td><td class="splits-col">35.16</td><td class="splits-col slowest">35.99</td><td class="splits-col">35.73</td><td class="splits-col">35.90</td><td class="splits-col">35.72</td><td class="splits-col">34.32</td></tr></tbody></table></div><div class="chart-container"><canvas id="chart-1600_meters_1_mile"></canvas></div><h3 class='section-title'>1500 Meters</h3><div class="table-wrap"><table><thead><tr><th>Year</th><th>Date</th><th>Meet</th><th>Loc</th><th>Event</th><th>Group</th><th>Place</th><th>Result</th><th class="splits-col">Lap 1</th><th class="splits-col">Lap 2</th><th class="splits-col">Lap 3</th><th class="splits-col">Lap 4</th><th class="splits-col">Lap 5</th><th class="splits-col">Lap 6</th><th class="splits-col">Lap 7</th><th class="splits-col">Lap 8</th></tr></thead><tbody><tr><td>2023</td><td>2023-01-22</td><td><a href='../meets/312_all.html'>Coaches Classic - Age Group Presented by KTCCCA</a></td><td>Indoor</td><td>1500 Meters</td><td>1</td><td>3</td><td>4:25.2</td><td class="splits-col"></td><td class="splits-col"></td><td class="splits-col"></td><td class="splits-col"></td><td class="splits-col"></td><td class="splits-col"></td><td class="splits-col"></td><td class="splits-col"></td></tr></tbody></table></div><div class="chart-container"><canvas id="chart-1500_meters"></canvas></div><h3 class='section-title'>4x800 Relay</h3><div class="table-wrap"><table><thead><tr><th>Year</th><th>Date</th><th>Meet</th><th>Loc</th><th>Event</th><th>Group</th><th>team_raw</th><th>Leg</th><th>Place</th><th>Result</th><th>Total_Laps</th><th class="splits-col">Lap 1</th><th class="splits-col">Lap 2</th><th class="splits-col">Lap 3</th><th class="splits-col">Lap 4</th></tr></thead><tbody><tr><td>2023</td><td>2023-02-10</td><td><a href='../meets/30_all.html'>Eastern Indoors Invitational</a></td><td>Indoor</td><td>4x800 Relay</td><td>1</td><td>St Xavier (KY)</td><td>2</td><td>9</td><td>8:51.9</td><td></td><td class="splits-col"></td><td class="splits-col"></td><td class="splits-col"></td><td class="splits-col"></td></tr><tr><td>2023</td><td>2023-02-04</td><td><a href='../meets/253_all.html'>Louisville Indoor Games</a></td><td>Outdoor</td><td>4x800 Relay</td><td>1</td><td>St Xavier (KY)</td><td>4</td><td>3</td><td>8:39.9</td><td></td><td class="splits-col"></td><td class="splits-col"></td><td class="splits-col"></td><td class="splits-col"></td></tr></tbody></table></div><div class="chart-container"><canvas id="chart-4x800_relay"></canvas></div></div>
       <p class="muted">When splits are shown: fastest lap is green, slowest lap is red.</p>
     </div>
-    <div class="footer">Generated at <code>2026-02-03 11:13:21</code> from <code>C:\\Users\\Bob\\OneDrive\\StX_XC_Track\\data\\stx_track.db</code></div>
+    <div class="footer">Generated at <code>2026-03-29 11:58:56</code> from <code>C:\\Users\\Bob\\OneDrive\\StX_XC_Track\\data\\stx_track.db</code></div>
     
     <script>
       function activateTab(tabId) {
@@ -120,21 +123,143 @@
         const panes = document.querySelectorAll('.tabpane');
         btns.forEach(b => b.classList.remove('active'));
         panes.forEach(p => p.classList.remove('active'));
+
         const btn = document.getElementById('btn-' + tabId);
         const pane = document.getElementById('pane-' + tabId);
         if (btn) btn.classList.add('active');
         if (pane) pane.classList.add('active');
       }
+
       function toggleSplits(cb) {
         const wrap = document.getElementById('athlete-results-wrap');
         if (!wrap) return;
         if (cb.checked) wrap.classList.add('show-splits');
         else wrap.classList.remove('show-splits');
       }
+
+      function toggleGraphs(cb) {
+        const wrap = document.getElementById('athlete-results-wrap');
+        if (!wrap) return;
+        if (cb.checked) wrap.classList.remove('hide-graphs');
+        else wrap.classList.add('hide-graphs');
+      }
+
       document.addEventListener('DOMContentLoaded', () => {
         activateTab('pr');
-        const cb = document.getElementById('splitToggle');
-        if (cb) toggleSplits(cb);
+        const splitCb = document.getElementById('splitToggle');
+        if (splitCb) toggleSplits(splitCb);
+        const graphCb = document.getElementById('graphToggle');
+        if (graphCb) toggleGraphs(graphCb);
+      });
+    </script>
+    
+    
+    <script>
+      const allChartData = {
+  "chart-800_meters": [
+    {
+      "x": "2023-01-22",
+      "y": 135.33,
+      "meet": "<a href='../meets/312_all.html'>Coaches Classic - Age Group Presented by KTCCCA</a>"
+    },
+    {
+      "x": "2023-02-10",
+      "y": 132.572,
+      "meet": "<a href='../meets/30_all.html'>Eastern Indoors Invitational</a>"
+    }
+  ],
+  "chart-1600_meters_1_mile": [
+    {
+      "x": "2023-02-10",
+      "y": 281.469,
+      "meet": "<a href='../meets/30_all.html'>Eastern Indoors Invitational</a>"
+    }
+  ],
+  "chart-1500_meters": [
+    {
+      "x": "2023-01-22",
+      "y": 265.17,
+      "meet": "<a href='../meets/312_all.html'>Coaches Classic - Age Group Presented by KTCCCA</a>"
+    }
+  ],
+  "chart-4x800_relay": [
+    {
+      "x": "2023-02-04",
+      "y": 519.87,
+      "meet": "<a href='../meets/253_all.html'>Louisville Indoor Games</a>"
+    },
+    {
+      "x": "2023-02-10",
+      "y": 531.94,
+      "meet": "<a href='../meets/30_all.html'>Eastern Indoors Invitational</a>"
+    }
+  ]
+};
+
+      function formatChartTime(seconds) {
+        if (seconds === null || seconds === undefined) return '';
+        const mins = Math.floor(seconds / 60);
+        const secs = (seconds % 60).toFixed(2);
+        return `${mins}:${secs.padStart(5, '0')}`;
+      }
+
+      function createChart(canvasId, data) {
+        const canvas = document.getElementById(canvasId);
+        if (!canvas || !data || data.length === 0) return;
+
+        new Chart(canvas, {
+          type: 'line',
+          data: {
+            datasets: [{
+              label: 'Performance',
+              data: data,
+              borderColor: '#0b5fff',
+              backgroundColor: 'rgba(11, 95, 255, 0.1)',
+              fill: false,
+              tension: 0.1
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              x: {
+                type: 'time',
+                time: { unit: 'year' },
+                title: { display: true, text: 'Date' }
+              },
+              y: {
+                title: { display: true, text: 'Time' },
+                ticks: {
+                  callback: function(value) { return formatChartTime(value); }
+                }
+              }
+            },
+            plugins: {
+              legend: { display: false },
+              tooltip: {
+                callbacks: {
+                  title: function(context) {
+                    const raw = context[0].raw;
+                    const meetName = raw.meet.replace(/<[^>]*>?/gm, '');
+                    return meetName;
+                  },
+                  label: function(context) {
+                    const date = new Date(context.parsed.x);
+                    const dateStr = date.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
+                    return `Date: ${dateStr}\nTime: ${formatChartTime(context.parsed.y)}`;
+                  }
+                }
+              }
+            }
+          }
+        });
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        for (const canvasId in allChartData) {
+          createChart(canvasId, allChartData[canvasId]);
+        }
       });
     </script>
     

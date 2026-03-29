@@ -22,7 +22,8 @@
       .nav a.home-link, .nav span.home-link { font-size: 18px; font-weight: 800; }
       .nav a.records-link, .nav span.records-link,
       .nav a.depth-link, .nav span.depth-link,
-      .nav a.pre-race-link, .nav span.pre-race-link {
+      .nav a.pre-race-link, .nav span.pre-race-link,
+      .nav a.comparison-link, .nav span.comparison-link {
         font-size: 16px;
         font-weight: 700;
         margin-left: 12px;
@@ -62,15 +63,13 @@
       .rankcell { font-weight: 800; }
       .chart-container { position: relative; height: 320px; width: 100%; max-width: 900px; margin: 20px 0 0 0; }
       .hide-graphs .chart-container { display: none; }
-
       /* Meet page filter: hide non-StX rows when toggled */
       body.stx-only .non-stx-row { display: none; }
-
       /* On athlete pages, we still show non-StX history for allow-listed athletes */
       .non-stx-row { opacity: 0.80; }
-
       /* PR section header rows (Track / XC) */
       .sporthdr { background: #efefef; font-weight: 900; }
+      .dimmed-pr { color: #999; font-weight: normal; }
     </style>
     
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -111,6 +110,6 @@
         }
       });
     </script>
-    <div class='card'><h2>5000 Meters</h2><div class="table-wrap"><table><thead><tr><th>Athlete</th><th>Team</th><th>Group</th><th>Place</th><th>Previous PR</th><th>Result</th></tr></thead><tbody><tr><td><a href='../athletes/grady_shiflet.html'>Grady Shiflet</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>xc</td><td>127</td><td>15:33.1</td><td>16:39.3</td></tr><tr><td><a href='../athletes/will_perrone.html'>Will Perrone</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>xc</td><td>148</td><td>16:23.2</td><td>16:47.2</td></tr><tr><td><a href='../athletes/walker_bunch.html'>Walker Bunch</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>xc</td><td>172</td><td>17:35.9</td><td>17:45.7</td></tr><tr><td><a href='../athletes/andrew_norton.html'>Andrew Norton</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>xc</td><td>187</td><td>16:59.3</td><td>17:09.1</td></tr><tr><td><a href='../athletes/noah_berger.html'>Noah Berger</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>xc</td><td>221</td><td>17:06.8</td><td>17:29.9</td></tr><tr><td><a href='../athletes/shawn_payne.html'>Shawn Payne</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>xc</td><td>246</td><td>17:13.7</td><td>17:57.6</td></tr><tr><td><a href='../athletes/ryan_burchett.html'>Ryan Burchett</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>xc</td><td>247</td><td>17:46.3</td><td>18:12.3</td></tr><tr><td><a href='../athletes/matthew_wantland.html'>Matthew Wantland</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>xc</td><td>260</td><td>17:50.5</td><td>18:17.8</td></tr><tr><td><a href='../athletes/connor_kessinger.html'>Connor Kessinger</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>xc</td><td>319</td><td>17:27.6</td><td>18:42.8</td></tr><tr><td><a href='../athletes/benjamin_sheehan.html'>Benjamin Sheehan</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>xc</td><td>335</td><td>18:07.3</td><td>18:49.1</td></tr></tbody></table></div></div><div class="footer">Generated at <code>2026-03-23 15:26:25</code> from <code>C:\\Users\\Bob\\OneDrive\\StX_XC_Track\\data\\stx_track.db</code></div>
+    <div class='card'><h2>5000 Meters</h2><div class="table-wrap"><table><thead><tr><th>Athlete</th><th>Team</th><th>Group</th><th>Place</th><th class="dimmed-pr">Indoor PR</th><th>Outdoor PR</th><th>Result</th></tr></thead><tbody><tr><td><a href='../athletes/grady_shiflet.html'>Grady Shiflet</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>xc</td><td>127</td><td class="dimmed-pr"></td><td>15:33.1</td><td>16:39.3</td></tr><tr><td><a href='../athletes/will_perrone.html'>Will Perrone</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>xc</td><td>148</td><td class="dimmed-pr"></td><td>16:23.2</td><td>16:47.2</td></tr><tr><td><a href='../athletes/walker_bunch.html'>Walker Bunch</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>xc</td><td>172</td><td class="dimmed-pr"></td><td>17:35.9</td><td>17:45.7</td></tr><tr><td><a href='../athletes/andrew_norton.html'>Andrew Norton</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>xc</td><td>187</td><td class="dimmed-pr"></td><td>16:59.3</td><td>17:09.1</td></tr><tr><td><a href='../athletes/noah_berger.html'>Noah Berger</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>xc</td><td>221</td><td class="dimmed-pr"></td><td>17:06.8</td><td>17:29.9</td></tr><tr><td><a href='../athletes/shawn_payne.html'>Shawn Payne</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>xc</td><td>246</td><td class="dimmed-pr"></td><td>17:13.7</td><td>17:57.6</td></tr><tr><td><a href='../athletes/ryan_burchett.html'>Ryan Burchett</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>xc</td><td>247</td><td class="dimmed-pr"></td><td>17:46.3</td><td>18:12.3</td></tr><tr><td><a href='../athletes/matthew_wantland.html'>Matthew Wantland</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>xc</td><td>260</td><td class="dimmed-pr"></td><td>17:50.5</td><td>18:17.8</td></tr><tr><td><a href='../athletes/connor_kessinger.html'>Connor Kessinger</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>xc</td><td>319</td><td class="dimmed-pr"></td><td>17:27.6</td><td>18:42.8</td></tr><tr><td><a href='../athletes/benjamin_sheehan.html'>Benjamin Sheehan</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>xc</td><td>335</td><td class="dimmed-pr"></td><td>18:07.3</td><td>18:49.1</td></tr></tbody></table></div></div><div class="footer">Generated at <code>2026-03-29 11:41:08</code> from <code>C:\\Users\\Bob\\OneDrive\\StX_XC_Track\\data\\stx_track.db</code></div>
 </body>
 </html>

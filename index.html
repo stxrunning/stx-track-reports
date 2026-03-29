@@ -63,15 +63,13 @@
       .rankcell { font-weight: 800; }
       .chart-container { position: relative; height: 320px; width: 100%; max-width: 900px; margin: 20px 0 0 0; }
       .hide-graphs .chart-container { display: none; }
-
       /* Meet page filter: hide non-StX rows when toggled */
       body.stx-only .non-stx-row { display: none; }
-
       /* On athlete pages, we still show non-StX history for allow-listed athletes */
       .non-stx-row { opacity: 0.80; }
-
       /* PR section header rows (Track / XC) */
       .sporthdr { background: #efefef; font-weight: 900; }
+      .dimmed-pr { color: #999; font-weight: normal; }
     </style>
     
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -83,14 +81,12 @@
       <div class="titlewrap">
         <div class="meetname">Track Reports</div>
         <p class="subline muted">Meet + athlete data shown from <b>1900+</b> • StX team: <b>St Xavier (KY)</b></p>
-
         <div class="filterbar">
           <span class="pill">Sport</span>
           <label><input type="radio" name="sportfilter" value="All"> All</label>
           <label><input type="radio" name="sportfilter" value="xc"> XC</label>
           <label><input type="radio" name="sportfilter" value="track" checked> Track</label>
         </div>
-
         <div class="filterbar">
           <span class="pill">Meet Filter</span>
           <label><input type="radio" name="locfilter" value="All" checked> All</label>
@@ -135,25 +131,21 @@
         </div>
       </div>
     </div>
-    <div class="footer">Generated at <code>2026-03-29 09:43:46</code> from <code>C:\\Users\\Bob\\OneDrive\\StX_XC_Track\\data\\stx_track.db</code></div>
+    <div class="footer">Generated at <code>2026-03-29 11:37:36</code> from <code>C:\\Users\\Bob\\OneDrive\\StX_XC_Track\\data\\stx_track.db</code></div>
     
     <script>
       function applyFilters() {
         const items = document.querySelectorAll('.meet-item');
-
         const sportRadio = document.querySelector('input[name="sportfilter"]:checked');
         const locRadio = document.querySelector('input[name="locfilter"]:checked');
-
         const sportVal = sportRadio ? sportRadio.value.toLowerCase() : 'all';
         const locVal = locRadio ? locRadio.value.toLowerCase() : 'all';
 
         items.forEach(li => {
           const sport = (li.getAttribute('data-sport') || '').toLowerCase();
           const loc = (li.getAttribute('data-location') || '').toLowerCase();
-
           const sportOk = (sportVal === 'all') ? true : (sport === sportVal);
           const locOk = (locVal === 'all') ? true : (loc === locVal);
-
           li.style.display = (sportOk && locOk) ? '' : 'none';
         });
       }
@@ -161,10 +153,8 @@
       document.addEventListener('DOMContentLoaded', () => {
         const sportRadios = document.querySelectorAll('input[name="sportfilter"]');
         const locRadios = document.querySelectorAll('input[name="locfilter"]');
-
         sportRadios.forEach(r => r.addEventListener('change', applyFilters));
         locRadios.forEach(r => r.addEventListener('change', applyFilters));
-
         applyFilters();
       });
     </script>

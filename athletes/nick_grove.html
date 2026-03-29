@@ -22,7 +22,8 @@
       .nav a.home-link, .nav span.home-link { font-size: 18px; font-weight: 800; }
       .nav a.records-link, .nav span.records-link,
       .nav a.depth-link, .nav span.depth-link,
-      .nav a.pre-race-link, .nav span.pre-race-link {
+      .nav a.pre-race-link, .nav span.pre-race-link,
+      .nav a.comparison-link, .nav span.comparison-link {
         font-size: 16px;
         font-weight: 700;
         margin-left: 12px;
@@ -62,15 +63,13 @@
       .rankcell { font-weight: 800; }
       .chart-container { position: relative; height: 320px; width: 100%; max-width: 900px; margin: 20px 0 0 0; }
       .hide-graphs .chart-container { display: none; }
-
       /* Meet page filter: hide non-StX rows when toggled */
       body.stx-only .non-stx-row { display: none; }
-
       /* On athlete pages, we still show non-StX history for allow-listed athletes */
       .non-stx-row { opacity: 0.80; }
-
       /* PR section header rows (Track / XC) */
       .sporthdr { background: #efefef; font-weight: 900; }
+      .dimmed-pr { color: #999; font-weight: normal; }
     </style>
     
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -89,7 +88,6 @@
         <a class='home-link' href='../index.html'>Home</a> <a class='records-link' href='../records.html'>StX Records</a> <a class='depth-link' href='../depth_chart.html'>Depth Chart</a> <a class='pre-race-link' href='../pre_race.html'>Pre-Race</a> <a class='comparison-link' href='../athlete_comparison.html'>Athlete Comparison</a>
       </div>
     </div>
-
     <div class="card">
       <h2>Personal Records</h2>
       <p class="muted">Track shows Indoor + Outdoor. XC shows Outdoor only. Best (lowest) is highlighted where applicable.</p>
@@ -100,7 +98,6 @@
       <div class="tabpane" id="pane-pr"><div class="table-wrap"><table><thead><tr><th>Event</th><th>Indoor</th><th>Outdoor</th></tr></thead><tbody><tr class='sporthdr'><td colspan='3'>TRACK</td></tr><tr><td>800 Meters</td><td>2:13.5</td><td class="bestpr">2:11.0</td></tr><tr><td>1600 Meters</td><td>4:55.9</td><td class="bestpr">4:54.1</td></tr><tr><td>1 Mile</td><td></td><td class="bestpr">4:45.1</td></tr><tr><td>3200 Meters</td><td></td><td class="bestpr">10:19.1</td></tr><tr class='sporthdr'><td colspan='3'>XC</td></tr><tr><td>5000 Meters</td><td>—</td><td class="bestpr">17:05.5</td></tr></tbody></table></div></div>
       <div class="tabpane" id="pane-pryear"><h3 style='margin:10px 0 0 0;'>TRACK</h3><div class="table-wrap"><table><thead><tr><th>Year</th><th>Event</th><th>Indoor</th><th>Outdoor</th></tr></thead><tbody><tr><td>2016</td><td>800 Meters</td><td>2:13.5</td><td class="bestpr">2:11.0</td></tr><tr><td>2016</td><td>1600 Meters</td><td></td><td class="bestpr">4:54.1</td></tr><tr><td>2016</td><td>1 Mile</td><td></td><td class="bestpr">4:45.1</td></tr><tr><td>2016</td><td>3200 Meters</td><td></td><td class="bestpr">10:19.1</td></tr><tr><td>2015</td><td>800 Meters</td><td class="bestpr">2:17.3</td><td></td></tr><tr><td>2015</td><td>1600 Meters</td><td class="bestpr">4:55.9</td><td>5:12.1</td></tr><tr><td>2015</td><td>3200 Meters</td><td></td><td class="bestpr">10:42.1</td></tr><tr><td>2014</td><td>800 Meters</td><td></td><td class="bestpr">2:30.9</td></tr><tr><td>2014</td><td>1600 Meters</td><td></td><td class="bestpr">5:35.0</td></tr><tr><td>2013</td><td>1600 Meters</td><td></td><td class="bestpr">6:10.8</td></tr></tbody></table></div><h3 style='margin:18px 0 0 0;'>XC</h3><div class="table-wrap"><table><thead><tr><th>Year</th><th>Event</th><th>Indoor</th><th>Outdoor</th></tr></thead><tbody><tr><td>2015</td><td>5000 Meters</td><td></td><td class="bestpr">17:05.5</td></tr><tr><td>2014</td><td>5000 Meters</td><td></td><td class="bestpr">18:16.0</td></tr><tr><td>2013</td><td>5000 Meters</td><td></td><td class="bestpr">18:38.4</td></tr></tbody></table></div></div>
     </div>
-
     <div class="card">
       <h2>All Results</h2>
       <div class="filterbar">
@@ -118,8 +115,7 @@
       <div id="athlete-results-wrap"><h3 class='section-title'>800 Meters</h3><div class="table-wrap"><table><thead><tr><th>Year</th><th>Date</th><th>Meet</th><th>Loc</th><th>Event</th><th>Group</th><th>Place</th><th>Result</th></tr></thead><tbody><tr><td>2016</td><td>2016-05-14</td><td><a href='../meets/161_all.html'>Trooper Cameron Ponder North Hardin Invitational</a></td><td>Outdoor</td><td>800 Meters</td><td>1</td><td>23</td><td>2:18.5</td></tr><tr><td>2016</td><td>2016-04-23</td><td><a href='../meets/310_all.html'>Brother Borgia/Coach Cooper Invitational</a></td><td>Outdoor</td><td>800 Meters</td><td>1</td><td>28</td><td>2:11.0</td></tr><tr><td>2016</td><td>2016-02-13</td><td><a href='../meets/316_all.html'>Indiana Open Indoor Meet</a></td><td>Indoor</td><td>800 Meters</td><td>1</td><td>17</td><td>2:13.5</td></tr><tr><td>2015</td><td>2015-04-18</td><td><a href='../meets/394_all.html'>Brother Borgia/Coach Cooper Invitational 2015</a></td><td>Indoor</td><td>800 Meters</td><td>1</td><td>19</td><td>2:17.3</td></tr><tr><td>2014</td><td>2014-04-29</td><td><a href='../meets/654_all.html'>St. Xavier All-Comers 2014</a></td><td>Outdoor</td><td>800 Meters</td><td>1</td><td>8</td><td>2:30.9</td></tr><tr><td>2014</td><td>2014-04-08</td><td><a href='../meets/612_all.html'>St. Xavier Master Schedule Meet</a></td><td>Outdoor</td><td>800 Meters</td><td>1</td><td>6</td><td>2:37.0</td></tr></tbody></table></div><div class="chart-container"><canvas id="chart-800_meters"></canvas></div><h3 class='section-title'>1600 Meters / 1 Mile</h3><div class="table-wrap"><table><thead><tr><th>Year</th><th>Date</th><th>Meet</th><th>Loc</th><th>Event</th><th>Group</th><th>Place</th><th>Result</th></tr></thead><tbody><tr><td>2016</td><td>2016-04-29</td><td><a href='../meets/159_all.html'>Eastern Relays</a></td><td>Outdoor</td><td>1 Mile</td><td>2</td><td>17</td><td>4:45.1</td></tr><tr><td>2016</td><td>2016-03-26</td><td><a href='../meets/153_all.html'>Lenny Lyles Invitational</a></td><td>Outdoor</td><td>1600 Meters</td><td>1</td><td>13</td><td>4:54.1</td></tr><tr><td>2015</td><td>2015-04-22</td><td><a href='../meets/395_all.html'>St. Xavier Master Schedule Meet 2015</a></td><td>Indoor</td><td>1600 Meters</td><td>1</td><td>6</td><td>4:55.9</td></tr><tr><td>2015</td><td>2015-04-01</td><td><a href='../meets/613_all.html'>St. Xavier Master Schedule Meet</a></td><td>Outdoor</td><td>1600 Meters</td><td>1</td><td>2</td><td>5:12.1</td></tr><tr><td>2014</td><td>2014-04-22</td><td><a href='../meets/596_all.html'>St. X/Male/Trinity</a></td><td>Outdoor</td><td>1600 Meters</td><td>1</td><td>12</td><td>5:35.0</td></tr><tr><td>2013</td><td>2013-04-30</td><td><a href='../meets/600_all.html'>St. X/Trinity JV Dual</a></td><td>Outdoor</td><td>1600 Meters</td><td>1</td><td>19</td><td>6:10.8</td></tr><tr><td>2013</td><td>2013-04-23</td><td><a href='../meets/610_all.html'>St. Xavier Master Schedule Meet</a></td><td>Outdoor</td><td>1600 Meters</td><td>1</td><td>9</td><td>6:20.2</td></tr><tr><td>2013</td><td>2013-04-16</td><td><a href='../meets/599_all.html'>St. X/Trinity Dual</a></td><td>Outdoor</td><td>1600 Meters</td><td>1</td><td>12</td><td>6:17.4</td></tr><tr><td>2013</td><td>2013-04-09</td><td><a href='../meets/592_all.html'>St. X JV Meet</a></td><td>Outdoor</td><td>1600 Meters</td><td>1</td><td>16</td><td>6:28.6</td></tr></tbody></table></div><div class="chart-container"><canvas id="chart-1600_meters_1_mile"></canvas></div><h3 class='section-title'>3200 Meters / 2 Miles</h3><div class="table-wrap"><table><thead><tr><th>Year</th><th>Date</th><th>Meet</th><th>Loc</th><th>Event</th><th>Group</th><th>Place</th><th>Result</th></tr></thead><tbody><tr><td>2016</td><td>2016-05-03</td><td><a href='../meets/614_all.html'>St. Xavier Master Schedule Meet</a></td><td>Outdoor</td><td>3200 Meters</td><td>1</td><td>1</td><td>10:19.1</td></tr><tr><td>2015</td><td>2015-04-29</td><td><a href='../meets/656_all.html'>Male Invitational 2015</a></td><td>Outdoor</td><td>3200 Meters</td><td>1</td><td>16</td><td>10:42.1</td></tr></tbody></table></div><div class="chart-container"><canvas id="chart-3200_meters_2_miles"></canvas></div><h3 class='section-title'>5000 Meters</h3><div class="table-wrap"><table><thead><tr><th>Year</th><th>Date</th><th>Meet</th><th>Loc</th><th>Event</th><th>Group</th><th>Place</th><th>Result</th></tr></thead><tbody><tr><td>2015</td><td>2015-11-28</td><td><a href='../meets/910_all.html'>Nike Cross Nationals Southeast Regional</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>47</td><td>17:12.6</td></tr><tr><td>2015</td><td>2015-10-17</td><td><a href='../meets/860_all.html'>Lexington Catholic Invitational</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>69</td><td>17:05.5</td></tr><tr><td>2015</td><td>2015-10-10</td><td><a href='../meets/1036_all.html'>Titan Cross Country Classic</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>20</td><td>18:12.0</td></tr><tr><td>2015</td><td>2015-10-02</td><td><a href='../meets/762_all.html'>Greater Louisville Classic</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>18</td><td>18:10.3</td></tr><tr><td>2015</td><td>2015-09-26</td><td><a href='../meets/686_all.html'>Atherton Invitational</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>19</td><td>18:36.9</td></tr><tr><td>2015</td><td>2015-08-29</td><td><a href='../meets/1027_all.html'>Tiger Run</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>64</td><td>17:57.3</td></tr><tr><td>2014</td><td>2014-10-29</td><td><a href='../meets/866_all.html'>Louisville Area JV Regional</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>35</td><td>18:16.0</td></tr><tr><td>2014</td><td>2014-10-18</td><td><a href='../meets/859_all.html'>Lexington Catholic Invitational</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>43</td><td>18:45.1</td></tr><tr><td>2014</td><td>2014-09-24</td><td><a href='../meets/1060_all.html'>Trinity/St. X/South Oldham Tri-Meet</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>19</td><td>20:02.1</td></tr><tr><td>2014</td><td>2014-09-20</td><td><a href='../meets/1067_all.html'>Trinity/Valkyrie Invitational (HS)</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>79</td><td>19:11.8</td></tr><tr><td>2014</td><td>2014-09-13</td><td><a href='../meets/972_all.html'>Rumble through the Jungle</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>46</td><td>19:34.3</td></tr><tr><td>2014</td><td>2014-08-30</td><td><a href='../meets/1026_all.html'>Tiger Run</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>42</td><td>20:15.8</td></tr><tr><td>2013</td><td>2013-10-26</td><td><a href='../meets/892_all.html'>Metro Meet of Champions</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>47</td><td>18:38.4</td></tr><tr><td>2013</td><td>2013-10-19</td><td><a href='../meets/858_all.html'>Lexington Catholic Invitational</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>45</td><td>19:44.1</td></tr><tr><td>2013</td><td>2013-10-17</td><td><a href='../meets/1005_all.html'>St. Xavier Master Schedule Meet</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>72</td><td>20:26.6</td></tr><tr><td>2013</td><td>2013-10-01</td><td><a href='../meets/1004_all.html'>St. Xavier Master Schedule Meet</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>26</td><td>19:58.0</td></tr><tr><td>2013</td><td>2013-09-21</td><td><a href='../meets/1066_all.html'>Trinity/Valkyrie Invitational (HS)</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>121</td><td>19:36.9</td></tr><tr><td>2013</td><td>2013-09-17</td><td><a href='../meets/1003_all.html'>St. Xavier Master Schedule Meet</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>25</td><td>20:49.0</td></tr><tr><td>2013</td><td>2013-09-14</td><td><a href='../meets/971_all.html'>Rumble through the Jungle</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>59</td><td>20:10.6</td></tr><tr><td>2013</td><td>2013-08-31</td><td><a href='../meets/1025_all.html'>Tiger Run</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>85</td><td>21:58.9</td></tr></tbody></table></div><div class="chart-container"><canvas id="chart-5000_meters"></canvas></div></div>
       <p class="muted">When splits are shown: fastest lap is green, slowest lap is red.</p>
     </div>
-
-    <div class="footer">Generated at <code>2026-03-23 16:04:57</code> from <code>C:\\Users\\Bob\\OneDrive\\StX_XC_Track\\data\\stx_track.db</code></div>
+    <div class="footer">Generated at <code>2026-03-29 12:02:01</code> from <code>C:\\Users\\Bob\\OneDrive\\StX_XC_Track\\data\\stx_track.db</code></div>
     
     <script>
       function activateTab(tabId) {
@@ -127,23 +123,27 @@
         const panes = document.querySelectorAll('.tabpane');
         btns.forEach(b => b.classList.remove('active'));
         panes.forEach(p => p.classList.remove('active'));
+
         const btn = document.getElementById('btn-' + tabId);
         const pane = document.getElementById('pane-' + tabId);
         if (btn) btn.classList.add('active');
         if (pane) pane.classList.add('active');
       }
+
       function toggleSplits(cb) {
         const wrap = document.getElementById('athlete-results-wrap');
         if (!wrap) return;
         if (cb.checked) wrap.classList.add('show-splits');
         else wrap.classList.remove('show-splits');
       }
+
       function toggleGraphs(cb) {
         const wrap = document.getElementById('athlete-results-wrap');
         if (!wrap) return;
         if (cb.checked) wrap.classList.remove('hide-graphs');
         else wrap.classList.add('hide-graphs');
       }
+
       document.addEventListener('DOMContentLoaded', () => {
         activateTab('pr');
         const splitCb = document.getElementById('splitToggle');
@@ -350,15 +350,18 @@
     }
   ]
 };
+
       function formatChartTime(seconds) {
         if (seconds === null || seconds === undefined) return '';
         const mins = Math.floor(seconds / 60);
         const secs = (seconds % 60).toFixed(2);
         return `${mins}:${secs.padStart(5, '0')}`;
       }
+
       function createChart(canvasId, data) {
         const canvas = document.getElementById(canvasId);
         if (!canvas || !data || data.length === 0) return;
+
         new Chart(canvas, {
           type: 'line',
           data: {
@@ -407,6 +410,7 @@
           }
         });
       }
+
       document.addEventListener('DOMContentLoaded', () => {
         for (const canvasId in allChartData) {
           createChart(canvasId, allChartData[canvasId]);

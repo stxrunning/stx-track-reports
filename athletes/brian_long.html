@@ -22,7 +22,8 @@
       .nav a.home-link, .nav span.home-link { font-size: 18px; font-weight: 800; }
       .nav a.records-link, .nav span.records-link,
       .nav a.depth-link, .nav span.depth-link,
-      .nav a.pre-race-link, .nav span.pre-race-link {
+      .nav a.pre-race-link, .nav span.pre-race-link,
+      .nav a.comparison-link, .nav span.comparison-link {
         font-size: 16px;
         font-weight: 700;
         margin-left: 12px;
@@ -62,15 +63,13 @@
       .rankcell { font-weight: 800; }
       .chart-container { position: relative; height: 320px; width: 100%; max-width: 900px; margin: 20px 0 0 0; }
       .hide-graphs .chart-container { display: none; }
-
       /* Meet page filter: hide non-StX rows when toggled */
       body.stx-only .non-stx-row { display: none; }
-
       /* On athlete pages, we still show non-StX history for allow-listed athletes */
       .non-stx-row { opacity: 0.80; }
-
       /* PR section header rows (Track / XC) */
       .sporthdr { background: #efefef; font-weight: 900; }
+      .dimmed-pr { color: #999; font-weight: normal; }
     </style>
     
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -89,7 +88,6 @@
         <a class='home-link' href='../index.html'>Home</a> <a class='records-link' href='../records.html'>StX Records</a> <a class='depth-link' href='../depth_chart.html'>Depth Chart</a> <a class='pre-race-link' href='../pre_race.html'>Pre-Race</a> <a class='comparison-link' href='../athlete_comparison.html'>Athlete Comparison</a>
       </div>
     </div>
-
     <div class="card">
       <h2>Personal Records</h2>
       <p class="muted">Track shows Indoor + Outdoor. XC shows Outdoor only. Best (lowest) is highlighted where applicable.</p>
@@ -100,7 +98,6 @@
       <div class="tabpane" id="pane-pr"><div class="table-wrap"><table><thead><tr><th>Event</th><th>Indoor</th><th>Outdoor</th></tr></thead><tbody><tr class='sporthdr'><td colspan='3'>TRACK</td></tr><tr><td>800 Meters</td><td></td><td class="bestpr">1:59.4</td></tr><tr><td>1600 Meters</td><td></td><td class="bestpr">4:15.7</td></tr><tr><td>1 Mile</td><td class="bestpr">4:27.4</td><td></td></tr><tr><td>3200 Meters</td><td></td><td class="bestpr">9:16.2</td></tr><tr><td>2 Miles</td><td class="bestpr">9:16.5</td><td></td></tr><tr><td>4x800 Relay</td><td></td><td class="bestpr">8:19.5</td></tr><tr><td>1500 Meters</td><td class="bestpr">4:08.2</td><td></td></tr><tr><td>3000 Meters</td><td></td><td class="bestpr">8:24.4</td></tr><tr class='sporthdr'><td colspan='3'>XC</td></tr><tr><td>5000 Meters</td><td>—</td><td class="bestpr">15:36.0</td></tr></tbody></table></div></div>
       <div class="tabpane" id="pane-pryear"><h3 style='margin:10px 0 0 0;'>TRACK</h3><div class="table-wrap"><table><thead><tr><th>Year</th><th>Event</th><th>Indoor</th><th>Outdoor</th></tr></thead><tbody><tr><td>2007</td><td>800 Meters</td><td></td><td class="bestpr">1:59.4</td></tr><tr><td>2007</td><td>1600 Meters</td><td></td><td class="bestpr">4:15.7</td></tr><tr><td>2007</td><td>3200 Meters</td><td></td><td class="bestpr">9:16.2</td></tr><tr><td>2007</td><td>2 Miles</td><td class="bestpr">9:16.5</td><td></td></tr><tr><td>2007</td><td>4x800 Relay</td><td></td><td class="bestpr">8:19.5</td></tr><tr><td>2007</td><td>1500 Meters</td><td class="bestpr">4:08.2</td><td></td></tr><tr><td>2007</td><td>3000 Meters</td><td></td><td class="bestpr">8:24.4</td></tr><tr><td>2006</td><td>1600 Meters</td><td></td><td class="bestpr">4:21.5</td></tr><tr><td>2006</td><td>1 Mile</td><td class="bestpr">4:27.4</td><td></td></tr><tr><td>2006</td><td>3200 Meters</td><td></td><td class="bestpr">9:23.3</td></tr><tr><td>2006</td><td>1500 Meters</td><td class="bestpr">4:16.3</td><td></td></tr><tr><td>2005</td><td>1600 Meters</td><td></td><td class="bestpr">4:31.5</td></tr><tr><td>2005</td><td>3200 Meters</td><td></td><td class="bestpr">9:50.5</td></tr></tbody></table></div><h3 style='margin:18px 0 0 0;'>XC</h3><div class="table-wrap"><table><thead><tr><th>Year</th><th>Event</th><th>Indoor</th><th>Outdoor</th></tr></thead><tbody><tr><td>2006</td><td>5000 Meters</td><td></td><td class="bestpr">15:56.0</td></tr><tr><td>2005</td><td>5000 Meters</td><td></td><td class="bestpr">15:36.0</td></tr><tr><td>2004</td><td>5000 Meters</td><td></td><td class="bestpr">16:52.2</td></tr></tbody></table></div></div>
     </div>
-
     <div class="card">
       <h2>All Results</h2>
       <div class="filterbar">
@@ -118,8 +115,7 @@
       <div id="athlete-results-wrap"><h3 class='section-title'>800 Meters</h3><div class="table-wrap"><table><thead><tr><th>Year</th><th>Date</th><th>Meet</th><th>Loc</th><th>Event</th><th>Group</th><th>Place</th><th>Result</th></tr></thead><tbody><tr><td>2007</td><td>2007-05-22</td><td><a href='../meets/195_all.html'>Region 2 AAA</a></td><td>Outdoor</td><td>800 Meters</td><td>1</td><td>4.0</td><td>2:01.5</td></tr><tr><td>2007</td><td>2007-05-15</td><td><a href='../meets/355_all.html'>Jefferson County Meet of Champions</a></td><td>Outdoor</td><td>800 Meters</td><td>1</td><td>2.0</td><td>2:00.9</td></tr><tr><td>2007</td><td>2007-05-12</td><td><a href='../meets/578_all.html'>North Hardin Invitational</a></td><td>Outdoor</td><td>800 Meters</td><td>1</td><td>1.0</td><td>1:59.9</td></tr><tr><td>2007</td><td>2007-04-19</td><td><a href='../meets/340_all.html'>Male Invitational</a></td><td>Outdoor</td><td>800 Meters</td><td>1</td><td>1.0</td><td>1:59.4</td></tr></tbody></table></div><div class="chart-container"><canvas id="chart-800_meters"></canvas></div><h3 class='section-title'>1600 Meters / 1 Mile</h3><div class="table-wrap"><table><thead><tr><th>Year</th><th>Date</th><th>Meet</th><th>Loc</th><th>Event</th><th>Group</th><th>Place</th><th>Result</th></tr></thead><tbody><tr><td>2007</td><td>2007-06-01</td><td><a href='../meets/196_all.html'>Kentucky State Track Meet</a></td><td>Outdoor</td><td>1600 Meters</td><td>1</td><td>1.0</td><td>4:26.1</td></tr><tr><td>2007</td><td>2007-05-22</td><td><a href='../meets/195_all.html'>Region 2 AAA</a></td><td>Outdoor</td><td>1600 Meters</td><td>1</td><td>1.0</td><td>4:28.9</td></tr><tr><td>2007</td><td>2007-05-15</td><td><a href='../meets/355_all.html'>Jefferson County Meet of Champions</a></td><td>Outdoor</td><td>1600 Meters</td><td>1</td><td>1.0</td><td>4:29.6</td></tr><tr><td>2007</td><td>2007-05-07</td><td><a href='../meets/362_all.html'>Bardstown/St. Xavier/Trinity</a></td><td>Outdoor</td><td>1600 Meters</td><td>1</td><td>1.0</td><td>4:15.7</td></tr><tr><td>2007</td><td>2007-03-31</td><td><a href='../meets/539_all.html'>Lenny Lyles Invitational</a></td><td>Outdoor</td><td>1600 Meters</td><td>1</td><td>1.0</td><td>4:24.5</td></tr><tr><td>2006</td><td>2006-06-02</td><td><a href='../meets/198_all.html'>Kentucky State Track Meet</a></td><td>Outdoor</td><td>1600 Meters</td><td>3</td><td>2.0</td><td>4:21.5</td></tr><tr><td>2006</td><td>2006-05-22</td><td><a href='../meets/269_all.html'>Region 2 AAA</a></td><td>Outdoor</td><td>1600 Meters</td><td>1</td><td>2.0</td><td>4:28.6</td></tr><tr><td>2006</td><td>2006-05-16</td><td><a href='../meets/645_all.html'>Area 3 Meet of Champions</a></td><td>Outdoor</td><td>1600 Meters</td><td>1</td><td>1.0</td><td>4:29.8</td></tr><tr><td>2006</td><td>2006-05-13</td><td><a href='../meets/577_all.html'>North Hardin Invitational</a></td><td>Outdoor</td><td>1600 Meters</td><td>1</td><td>2.0</td><td>4:34.6</td></tr><tr><td>2006</td><td>2006-04-29</td><td><a href='../meets/342_all.html'>Eastern Relays</a></td><td>Outdoor</td><td>1600 Meters</td><td>1</td><td>2.0</td><td>4:26.8</td></tr><tr><td>2006</td><td>2006-04-22</td><td><a href='../meets/326_all.html'>Male Bulldog Classic</a></td><td>Outdoor</td><td>1600 Meters</td><td>1</td><td>3.0</td><td>4:25.0</td></tr><tr><td>2006</td><td>2006-04-15</td><td><a href='../meets/197_all.html'>Midwest Prep Classic</a></td><td>Outdoor</td><td>1600 Meters</td><td>1</td><td>5.0</td><td>4:27.9</td></tr><tr><td>2006</td><td>2006-04-01</td><td><a href='../meets/498_all.html'>Camel Classic</a></td><td>Outdoor</td><td>1600 Meters</td><td>1</td><td>2.0</td><td>4:40.1</td></tr><tr><td>2006</td><td>2006-02-18</td><td><a href='../meets/371_all.html'>UK High School Indoor Invitational</a></td><td>Indoor</td><td>1 Mile</td><td>1</td><td>12.0</td><td>4:27.4</td></tr><tr><td>2005</td><td>2005-05-18</td><td><a href='../meets/527_all.html'>Jefferson County Meet of Champions</a></td><td>Outdoor</td><td>1600 Meters</td><td>1</td><td>1.0</td><td>4:31.5</td></tr></tbody></table></div><div class="chart-container"><canvas id="chart-1600_meters_1_mile"></canvas></div><h3 class='section-title'>3200 Meters / 2 Miles</h3><div class="table-wrap"><table><thead><tr><th>Year</th><th>Date</th><th>Meet</th><th>Loc</th><th>Event</th><th>Group</th><th>Place</th><th>Result</th></tr></thead><tbody><tr><td>2007</td><td>2007-06-01</td><td><a href='../meets/196_all.html'>Kentucky State Track Meet</a></td><td>Outdoor</td><td>3200 Meters</td><td>1</td><td>7.0</td><td>9:52.1</td></tr><tr><td>2007</td><td>2007-05-22</td><td><a href='../meets/195_all.html'>Region 2 AAA</a></td><td>Outdoor</td><td>3200 Meters</td><td>1</td><td>1.0</td><td>9:52.6</td></tr><tr><td>2007</td><td>2007-05-15</td><td><a href='../meets/355_all.html'>Jefferson County Meet of Champions</a></td><td>Outdoor</td><td>3200 Meters</td><td>1</td><td>1.0</td><td>9:46.3</td></tr><tr><td>2007</td><td>2007-05-12</td><td><a href='../meets/578_all.html'>North Hardin Invitational</a></td><td>Outdoor</td><td>3200 Meters</td><td>1</td><td>1.0</td><td>9:55.3</td></tr><tr><td>2007</td><td>2007-04-13</td><td><a href='../meets/361_all.html'>Taco Bell Classic</a></td><td>Outdoor</td><td>3200 Meters</td><td>1</td><td>1.0</td><td>9:16.2</td></tr><tr><td>2007</td><td>2007-03-09</td><td><a href='../meets/240_all.html'>National Scholastic Indoor Championships</a></td><td>Indoor</td><td>2 Miles</td><td>1</td><td>3.0</td><td>9:16.5</td></tr><tr><td>2007</td><td>2007-02-17</td><td><a href='../meets/626_all.html'>UK High School Invitational</a></td><td>Indoor</td><td>2 Miles</td><td>1</td><td>1.0</td><td>9:21.7</td></tr><tr><td>2007</td><td>2007-01-27</td><td><a href='../meets/637_all.html'>Wildcat Invitational</a></td><td>Indoor</td><td>2 Miles</td><td>1</td><td>1.0</td><td>9:23.7</td></tr><tr><td>2006</td><td>2006-06-02</td><td><a href='../meets/198_all.html'>Kentucky State Track Meet</a></td><td>Outdoor</td><td>3200 Meters</td><td>3</td><td>10.0</td><td>10:03.6</td></tr><tr><td>2006</td><td>2006-05-22</td><td><a href='../meets/269_all.html'>Region 2 AAA</a></td><td>Outdoor</td><td>3200 Meters</td><td>1</td><td>1.0</td><td>9:23.3</td></tr><tr><td>2006</td><td>2006-05-16</td><td><a href='../meets/645_all.html'>Area 3 Meet of Champions</a></td><td>Outdoor</td><td>3200 Meters</td><td>1</td><td>1.0</td><td>9:28.2</td></tr><tr><td>2006</td><td>2006-05-13</td><td><a href='../meets/577_all.html'>North Hardin Invitational</a></td><td>Outdoor</td><td>3200 Meters</td><td>1</td><td>1.0</td><td>9:39.1</td></tr><tr><td>2005</td><td>2005-06-03</td><td><a href='../meets/199_all.html'>Kentucky State Track Meet</a></td><td>Outdoor</td><td>3200 Meters</td><td>3</td><td>6.0</td><td>10:00.4</td></tr><tr><td>2005</td><td>2005-05-23</td><td><a href='../meets/270_all.html'>Region 2 Class AAA</a></td><td>Outdoor</td><td>3200 Meters</td><td>1</td><td>3.0</td><td>9:55.2</td></tr><tr><td>2005</td><td>2005-04-30</td><td><a href='../meets/343_all.html'>Eastern Relays</a></td><td>Outdoor</td><td>3200 Meters</td><td>1</td><td>2.0</td><td>9:50.5</td></tr></tbody></table></div><div class="chart-container"><canvas id="chart-3200_meters_2_miles"></canvas></div><h3 class='section-title'>1500 Meters</h3><div class="table-wrap"><table><thead><tr><th>Year</th><th>Date</th><th>Meet</th><th>Loc</th><th>Event</th><th>Group</th><th>Place</th><th>Result</th></tr></thead><tbody><tr><td>2007</td><td>2007-05-02</td><td><a href='../meets/347_all.html'>Mason Dixon Games</a></td><td>Indoor</td><td>1500 Meters</td><td>1</td><td>1.0</td><td>4:08.2</td></tr><tr><td>2007</td><td>2007-03-02</td><td><a href='../meets/553_all.html'>Mason-Dixon Games</a></td><td>Indoor</td><td>1500 Meters</td><td>1</td><td>1.0</td><td>4:08.2</td></tr><tr><td>2006</td><td>2006-03-04</td><td><a href='../meets/382_all.html'>Mason Dixon Games</a></td><td>Indoor</td><td>1500 Meters</td><td>1</td><td>2.0</td><td>4:16.3</td></tr></tbody></table></div><div class="chart-container"><canvas id="chart-1500_meters"></canvas></div><h3 class='section-title'>3000 Meters</h3><div class="table-wrap"><table><thead><tr><th>Year</th><th>Date</th><th>Meet</th><th>Loc</th><th>Event</th><th>Group</th><th>Place</th><th>Result</th></tr></thead><tbody><tr><td>2007</td><td>2007-04-26</td><td><a href='../meets/586_all.html'>Penn Relays Carnival</a></td><td>Outdoor</td><td>3000 Meters</td><td>1</td><td>1.0</td><td>8:24.4</td></tr></tbody></table></div><div class="chart-container"><canvas id="chart-3000_meters"></canvas></div><h3 class='section-title'>4x800 Relay</h3><div class="table-wrap"><table><thead><tr><th>Year</th><th>Date</th><th>Meet</th><th>Loc</th><th>Event</th><th>Group</th><th>team_raw</th><th>Leg</th><th>Place</th><th>Result</th><th>Total_Laps</th></tr></thead><tbody><tr><td>2007</td><td>2007-05-22</td><td><a href='../meets/195_all.html'>Region 2 AAA</a></td><td>Outdoor</td><td>4x800 Relay</td><td>1</td><td>St Xavier (KY)</td><td>2</td><td>3.0</td><td>8:19.5</td><td></td></tr></tbody></table></div><div class="chart-container"><canvas id="chart-4x800_relay"></canvas></div><h3 class='section-title'>5000 Meters</h3><div class="table-wrap"><table><thead><tr><th>Year</th><th>Date</th><th>Meet</th><th>Loc</th><th>Event</th><th>Group</th><th>Place</th><th>Result</th></tr></thead><tbody><tr><td>2006</td><td>2006-11-25</td><td><a href='../meets/721_all.html'>Foot Locker South Regional</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td></td><td>16:19.0</td></tr><tr><td>2006</td><td>2006-11-11</td><td><a href='../meets/831_all.html'>Kentucky State Cross Country Meet</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>1.0</td><td>16:05.3</td></tr><tr><td>2006</td><td>2006-10-21</td><td><a href='../meets/919_all.html'>North Hardin Invitational</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>1.0</td><td>16:17.8</td></tr><tr><td>2006</td><td>2006-10-14</td><td><a href='../meets/853_all.html'>Lexington Catholic Invitational</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>2.0</td><td>15:56.0</td></tr><tr><td>2006</td><td>2006-10-07</td><td><a href='../meets/772_all.html'>Hillbilly Run</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>5.0</td><td>16:30.3</td></tr><tr><td>2006</td><td>2006-08-26</td><td><a href='../meets/1018_all.html'>Tiger Run</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>1.0</td><td>16:05.4</td></tr><tr><td>2005</td><td>2005-12-03</td><td><a href='../meets/917_all.html'>Nike Team Nationals</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>48.0</td><td>17:34.5</td></tr><tr><td>2005</td><td>2005-11-26</td><td><a href='../meets/720_all.html'>Foot Locker South Regional</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td></td><td>15:36.0</td></tr><tr><td>2005</td><td>2005-11-12</td><td><a href='../meets/830_all.html'>Kentucky State Cross Country Meet</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>8.0</td><td>16:30.1</td></tr><tr><td>2005</td><td>2005-11-05</td><td><a href='../meets/942_all.html'>Region 2 AAA</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>4.0</td><td>16:54.8</td></tr><tr><td>2005</td><td>2005-10-29</td><td><a href='../meets/885_all.html'>Metro Meet of Champions</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>2.0</td><td>15:50.2</td></tr><tr><td>2005</td><td>2005-10-15</td><td><a href='../meets/852_all.html'>Lexington Catholic Invitational</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>7.0</td><td>16:21.2</td></tr><tr><td>2005</td><td>2005-10-01</td><td><a href='../meets/728_all.html'>Franklin County Invitational</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>7.0</td><td>16:14.9</td></tr><tr><td>2005</td><td>2005-09-24</td><td><a href='../meets/749_all.html'>Great American XC Festival</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>22.0</td><td>16:00.1</td></tr><tr><td>2005</td><td>2005-09-10</td><td><a href='../meets/962_all.html'>Rumble in the Jungle</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>4.0</td><td>16:50.1</td></tr><tr><td>2005</td><td>2005-08-27</td><td><a href='../meets/1017_all.html'>Tiger Run</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>3.0</td><td>15:55.0</td></tr><tr><td>2004</td><td>2004-11-13</td><td><a href='../meets/829_all.html'>Kentucky State Cross Country Meet</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>20.0</td><td>17:14.8</td></tr><tr><td>2004</td><td>2004-10-16</td><td><a href='../meets/851_all.html'>Lexington Catholic Invitational</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td></td><td>17:10.4</td></tr><tr><td>2004</td><td>2004-10-02</td><td><a href='../meets/727_all.html'>Franklin County Invitational</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td></td><td>16:52.2</td></tr><tr><td>2004</td><td>2004-09-25</td><td><a href='../meets/739_all.html'>Gatorland</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>19.0</td><td>17:13.9</td></tr><tr><td>2004</td><td>2004-09-18</td><td><a href='../meets/1055_all.html'>Trinity Invitational</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>17.0</td><td>17:03.0</td></tr><tr><td>2004</td><td>2004-09-04</td><td><a href='../meets/1016_all.html'>Tiger Run</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>22.0</td><td>16:55.3</td></tr></tbody></table></div><div class="chart-container"><canvas id="chart-5000_meters"></canvas></div></div>
       <p class="muted">When splits are shown: fastest lap is green, slowest lap is red.</p>
     </div>
-
-    <div class="footer">Generated at <code>2026-03-23 15:51:33</code> from <code>C:\\Users\\Bob\\OneDrive\\StX_XC_Track\\data\\stx_track.db</code></div>
+    <div class="footer">Generated at <code>2026-03-29 11:51:18</code> from <code>C:\\Users\\Bob\\OneDrive\\StX_XC_Track\\data\\stx_track.db</code></div>
     
     <script>
       function activateTab(tabId) {
@@ -127,23 +123,27 @@
         const panes = document.querySelectorAll('.tabpane');
         btns.forEach(b => b.classList.remove('active'));
         panes.forEach(p => p.classList.remove('active'));
+
         const btn = document.getElementById('btn-' + tabId);
         const pane = document.getElementById('pane-' + tabId);
         if (btn) btn.classList.add('active');
         if (pane) pane.classList.add('active');
       }
+
       function toggleSplits(cb) {
         const wrap = document.getElementById('athlete-results-wrap');
         if (!wrap) return;
         if (cb.checked) wrap.classList.add('show-splits');
         else wrap.classList.remove('show-splits');
       }
+
       function toggleGraphs(cb) {
         const wrap = document.getElementById('athlete-results-wrap');
         if (!wrap) return;
         if (cb.checked) wrap.classList.remove('hide-graphs');
         else wrap.classList.add('hide-graphs');
       }
+
       document.addEventListener('DOMContentLoaded', () => {
         activateTab('pr');
         const splitCb = document.getElementById('splitToggle');
@@ -476,15 +476,18 @@
     }
   ]
 };
+
       function formatChartTime(seconds) {
         if (seconds === null || seconds === undefined) return '';
         const mins = Math.floor(seconds / 60);
         const secs = (seconds % 60).toFixed(2);
         return `${mins}:${secs.padStart(5, '0')}`;
       }
+
       function createChart(canvasId, data) {
         const canvas = document.getElementById(canvasId);
         if (!canvas || !data || data.length === 0) return;
+
         new Chart(canvas, {
           type: 'line',
           data: {
@@ -533,6 +536,7 @@
           }
         });
       }
+
       document.addEventListener('DOMContentLoaded', () => {
         for (const canvasId in allChartData) {
           createChart(canvasId, allChartData[canvasId]);

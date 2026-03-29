@@ -22,7 +22,8 @@
       .nav a.home-link, .nav span.home-link { font-size: 18px; font-weight: 800; }
       .nav a.records-link, .nav span.records-link,
       .nav a.depth-link, .nav span.depth-link,
-      .nav a.pre-race-link, .nav span.pre-race-link {
+      .nav a.pre-race-link, .nav span.pre-race-link,
+      .nav a.comparison-link, .nav span.comparison-link {
         font-size: 16px;
         font-weight: 700;
         margin-left: 12px;
@@ -62,15 +63,13 @@
       .rankcell { font-weight: 800; }
       .chart-container { position: relative; height: 320px; width: 100%; max-width: 900px; margin: 20px 0 0 0; }
       .hide-graphs .chart-container { display: none; }
-
       /* Meet page filter: hide non-StX rows when toggled */
       body.stx-only .non-stx-row { display: none; }
-
       /* On athlete pages, we still show non-StX history for allow-listed athletes */
       .non-stx-row { opacity: 0.80; }
-
       /* PR section header rows (Track / XC) */
       .sporthdr { background: #efefef; font-weight: 900; }
+      .dimmed-pr { color: #999; font-weight: normal; }
     </style>
     
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -89,7 +88,6 @@
         <a class='home-link' href='../index.html'>Home</a> <a class='records-link' href='../records.html'>StX Records</a> <a class='depth-link' href='../depth_chart.html'>Depth Chart</a> <a class='pre-race-link' href='../pre_race.html'>Pre-Race</a> <a class='comparison-link' href='../athlete_comparison.html'>Athlete Comparison</a>
       </div>
     </div>
-
     <div class="card">
       <h2>Personal Records</h2>
       <p class="muted">Track shows Indoor + Outdoor. XC shows Outdoor only. Best (lowest) is highlighted where applicable.</p>
@@ -100,7 +98,6 @@
       <div class="tabpane" id="pane-pr"><div class="table-wrap"><table><thead><tr><th>Event</th><th>Indoor</th><th>Outdoor</th></tr></thead><tbody><tr class='sporthdr'><td colspan='3'>TRACK</td></tr><tr><td>800 Meters</td><td></td><td class="bestpr">2:25.7</td></tr><tr><td>1600 Meters</td><td></td><td class="bestpr">5:29.6</td></tr><tr><td>1 Mile</td><td>5:49.9</td><td class="bestpr">5:45.6</td></tr><tr><td>3200 Meters</td><td></td><td class="bestpr">12:32.0</td></tr><tr><td>4x800 Relay</td><td class="bestpr">9:42.1</td><td>9:45.2</td></tr><tr><td>1500 Meters</td><td class="bestpr">5:27.4</td><td></td></tr><tr class='sporthdr'><td colspan='3'>XC</td></tr><tr><td colspan='3' class='muted'>No data.</td></tr></tbody></table></div></div>
       <div class="tabpane" id="pane-pryear"><h3 style='margin:10px 0 0 0;'>TRACK</h3><div class="table-wrap"><table><thead><tr><th>Year</th><th>Event</th><th>Indoor</th><th>Outdoor</th></tr></thead><tbody><tr><td>2022</td><td>800 Meters</td><td></td><td class="bestpr">2:25.7</td></tr><tr><td>2022</td><td>1600 Meters</td><td></td><td class="bestpr">5:35.7</td></tr><tr><td>2022</td><td>1 Mile</td><td>5:49.9</td><td class="bestpr">5:45.6</td></tr><tr><td>2022</td><td>3200 Meters</td><td></td><td class="bestpr">12:36.3</td></tr><tr><td>2022</td><td>4x800 Relay</td><td class="bestpr">9:42.1</td><td>9:45.2</td></tr><tr><td>2021</td><td>800 Meters</td><td></td><td class="bestpr">2:33.8</td></tr><tr><td>2021</td><td>1600 Meters</td><td></td><td class="bestpr">5:29.6</td></tr><tr><td>2021</td><td>3200 Meters</td><td></td><td class="bestpr">12:32.0</td></tr><tr><td>2021</td><td>4x800 Relay</td><td></td><td class="bestpr">9:46.8</td></tr><tr><td>2021</td><td>1500 Meters</td><td class="bestpr">5:27.4</td><td></td></tr></tbody></table></div><h3 style='margin:18px 0 0 0;'>XC</h3><p class='muted'>No XC yearly PR data.</p></div>
     </div>
-
     <div class="card">
       <h2>All Results</h2>
       <div class="filterbar">
@@ -118,8 +115,7 @@
       <div id="athlete-results-wrap"><h3 class='section-title'>800 Meters</h3><div class="table-wrap"><table><thead><tr><th>Year</th><th>Date</th><th>Meet</th><th>Loc</th><th>Event</th><th>Group</th><th>Place</th><th>Result</th></tr></thead><tbody><tr><td>2022</td><td>2022-05-18</td><td><a href='../meets/660_all.html'>Louisville Meet of Champions presented by UPSJobsKY.com 2022</a></td><td>Outdoor</td><td>800 Meters</td><td>1</td><td>64</td><td>2:25.7</td></tr><tr><td>2022</td><td>2022-04-22</td><td><a href='../meets/86_all.html'>Eastern Relays</a></td><td>Outdoor</td><td>800 Meters</td><td>2</td><td>34</td><td>2:28.5</td></tr><tr><td>2022</td><td>2022-04-12</td><td><a href='../meets/83_all.html'>St. Xavier Tuesday Meet</a></td><td>Outdoor</td><td>800 Meters</td><td>1</td><td>53</td><td>2:33.0</td></tr><tr><td>2021</td><td>2021-04-06</td><td><a href='../meets/98_all.html'>St. X Master Meet #3</a></td><td>Outdoor</td><td>800 Meters</td><td>1</td><td>16</td><td>2:33.8</td></tr></tbody></table></div><div class="chart-container"><canvas id="chart-800_meters"></canvas></div><h3 class='section-title'>1600 Meters / 1 Mile</h3><div class="table-wrap"><table><thead><tr><th>Year</th><th>Date</th><th>Meet</th><th>Loc</th><th>Event</th><th>Group</th><th>Place</th><th>Result</th></tr></thead><tbody><tr><td>2022</td><td>2022-05-14</td><td><a href='../meets/299_all.html'>13th Annual Villa for Life to benefit the ACS</a></td><td>Outdoor</td><td>1600 Meters</td><td>1</td><td>31</td><td>5:35.7</td></tr><tr><td>2022</td><td>2022-05-11</td><td><a href='../meets/90_all.html'>St. X Master 4</a></td><td>Outdoor</td><td>1600 Meters</td><td>1</td><td>9</td><td>5:59.7</td></tr><tr><td>2022</td><td>2022-04-12</td><td><a href='../meets/83_all.html'>St. Xavier Tuesday Meet</a></td><td>Outdoor</td><td>1600 Meters</td><td>1</td><td>24</td><td>5:38.7</td></tr><tr><td>2022</td><td>2022-03-25</td><td><a href='../meets/80_all.html'>RUN Town Distance Festival</a></td><td>Outdoor</td><td>1 Mile</td><td>1</td><td>73</td><td>5:45.6</td></tr><tr><td>2022</td><td>2022-03-08</td><td><a href='../meets/78_all.html'>Saint Xavier Master Meet #1</a></td><td>Outdoor</td><td>1600 Meters</td><td>1</td><td>22</td><td>5:57.2</td></tr><tr><td>2022</td><td>2022-02-05</td><td><a href='../meets/207_all.html'>Louisville Indoor Games</a></td><td>Indoor</td><td>1 Mile</td><td>1</td><td>109</td><td>5:49.9</td></tr><tr><td>2021</td><td>2021-05-04</td><td><a href='../meets/104_all.html'>St. Xavier Master Meet #5</a></td><td>Outdoor</td><td>1600 Meters</td><td>1</td><td>25</td><td>5:29.6</td></tr><tr><td>2021</td><td>2021-03-16</td><td><a href='../meets/96_all.html'>St. X Master Meet #2</a></td><td>Outdoor</td><td>1600 Meters</td><td>1</td><td>10</td><td>5:36.1</td></tr></tbody></table></div><div class="chart-container"><canvas id="chart-1600_meters_1_mile"></canvas></div><h3 class='section-title'>3200 Meters / 2 Miles</h3><div class="table-wrap"><table><thead><tr><th>Year</th><th>Date</th><th>Meet</th><th>Loc</th><th>Event</th><th>Group</th><th>Place</th><th>Result</th></tr></thead><tbody><tr><td>2022</td><td>2022-05-07</td><td><a href='../meets/297_all.html'>Run for the Roses</a></td><td>Outdoor</td><td>3200 Meters</td><td>1</td><td>66</td><td>12:36.3</td></tr><tr><td>2021</td><td>2021-04-20</td><td><a href='../meets/101_all.html'>St. X Master Meet #4</a></td><td>Outdoor</td><td>3200 Meters</td><td>1</td><td>6</td><td>12:32.0</td></tr></tbody></table></div><div class="chart-container"><canvas id="chart-3200_meters_2_miles"></canvas></div><h3 class='section-title'>1500 Meters</h3><div class="table-wrap"><table><thead><tr><th>Year</th><th>Date</th><th>Meet</th><th>Loc</th><th>Event</th><th>Group</th><th>Place</th><th>Result</th></tr></thead><tbody><tr><td>2021</td><td>2021-02-21</td><td><a href='../meets/209_all.html'>KTCCCA Age Group Meet</a></td><td>Indoor</td><td>1500 Meters</td><td>1</td><td>37</td><td>5:27.4</td></tr></tbody></table></div><div class="chart-container"><canvas id="chart-1500_meters"></canvas></div><h3 class='section-title'>4x800 Relay</h3><div class="table-wrap"><table><thead><tr><th>Year</th><th>Date</th><th>Meet</th><th>Loc</th><th>Event</th><th>Group</th><th>team_raw</th><th>Leg</th><th>Place</th><th>Result</th><th>Total_Laps</th></tr></thead><tbody><tr><td>2022</td><td>2022-05-21</td><td><a href='../meets/91_all.html'>JV Championships Louisville</a></td><td>Outdoor</td><td>4x800 Relay</td><td>1</td><td>St Xavier (KY)</td><td>2</td><td>3</td><td>9:45.2</td><td></td></tr><tr><td>2022</td><td>2022-04-30</td><td><a href='../meets/88_all.html'>Brother Borgia/Coach Cooper Invitational</a></td><td>Outdoor</td><td>4x800 Relay</td><td>1</td><td>St Xavier (KY)</td><td>1</td><td>26</td><td>9:54.7</td><td></td></tr><tr><td>2022</td><td>2022-02-05</td><td><a href='../meets/207_all.html'>Louisville Indoor Games</a></td><td>Indoor</td><td>4x800 Relay</td><td>1</td><td>St Xavier (KY)</td><td>2</td><td>5</td><td>9:42.1</td><td></td></tr><tr><td>2021</td><td>2021-05-22</td><td><a href='../meets/107_all.html'>JV Championship</a></td><td>Outdoor</td><td>4x800 Relay</td><td>1</td><td>St Xavier (KY)</td><td>2</td><td>3</td><td>9:46.8</td><td></td></tr><tr><td>2021</td><td>2021-04-06</td><td><a href='../meets/98_all.html'>St. X Master Meet #3</a></td><td>Outdoor</td><td>4x800 Relay</td><td>1</td><td>St Xavier (KY)</td><td>3</td><td>5</td><td>10:38.6</td><td></td></tr></tbody></table></div><div class="chart-container"><canvas id="chart-4x800_relay"></canvas></div></div>
       <p class="muted">When splits are shown: fastest lap is green, slowest lap is red.</p>
     </div>
-
-    <div class="footer">Generated at <code>2026-03-23 15:58:26</code> from <code>C:\\Users\\Bob\\OneDrive\\StX_XC_Track\\data\\stx_track.db</code></div>
+    <div class="footer">Generated at <code>2026-03-29 11:57:12</code> from <code>C:\\Users\\Bob\\OneDrive\\StX_XC_Track\\data\\stx_track.db</code></div>
     
     <script>
       function activateTab(tabId) {
@@ -127,23 +123,27 @@
         const panes = document.querySelectorAll('.tabpane');
         btns.forEach(b => b.classList.remove('active'));
         panes.forEach(p => p.classList.remove('active'));
+
         const btn = document.getElementById('btn-' + tabId);
         const pane = document.getElementById('pane-' + tabId);
         if (btn) btn.classList.add('active');
         if (pane) pane.classList.add('active');
       }
+
       function toggleSplits(cb) {
         const wrap = document.getElementById('athlete-results-wrap');
         if (!wrap) return;
         if (cb.checked) wrap.classList.add('show-splits');
         else wrap.classList.remove('show-splits');
       }
+
       function toggleGraphs(cb) {
         const wrap = document.getElementById('athlete-results-wrap');
         if (!wrap) return;
         if (cb.checked) wrap.classList.remove('hide-graphs');
         else wrap.classList.add('hide-graphs');
       }
+
       document.addEventListener('DOMContentLoaded', () => {
         activateTab('pr');
         const splitCb = document.getElementById('splitToggle');
@@ -267,15 +267,18 @@
     }
   ]
 };
+
       function formatChartTime(seconds) {
         if (seconds === null || seconds === undefined) return '';
         const mins = Math.floor(seconds / 60);
         const secs = (seconds % 60).toFixed(2);
         return `${mins}:${secs.padStart(5, '0')}`;
       }
+
       function createChart(canvasId, data) {
         const canvas = document.getElementById(canvasId);
         if (!canvas || !data || data.length === 0) return;
+
         new Chart(canvas, {
           type: 'line',
           data: {
@@ -324,6 +327,7 @@
           }
         });
       }
+
       document.addEventListener('DOMContentLoaded', () => {
         for (const canvasId in allChartData) {
           createChart(canvasId, allChartData[canvasId]);

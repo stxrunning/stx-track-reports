@@ -22,7 +22,8 @@
       .nav a.home-link, .nav span.home-link { font-size: 18px; font-weight: 800; }
       .nav a.records-link, .nav span.records-link,
       .nav a.depth-link, .nav span.depth-link,
-      .nav a.pre-race-link, .nav span.pre-race-link {
+      .nav a.pre-race-link, .nav span.pre-race-link,
+      .nav a.comparison-link, .nav span.comparison-link {
         font-size: 16px;
         font-weight: 700;
         margin-left: 12px;
@@ -62,15 +63,13 @@
       .rankcell { font-weight: 800; }
       .chart-container { position: relative; height: 320px; width: 100%; max-width: 900px; margin: 20px 0 0 0; }
       .hide-graphs .chart-container { display: none; }
-
       /* Meet page filter: hide non-StX rows when toggled */
       body.stx-only .non-stx-row { display: none; }
-
       /* On athlete pages, we still show non-StX history for allow-listed athletes */
       .non-stx-row { opacity: 0.80; }
-
       /* PR section header rows (Track / XC) */
       .sporthdr { background: #efefef; font-weight: 900; }
+      .dimmed-pr { color: #999; font-weight: normal; }
     </style>
     
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -89,7 +88,6 @@
         <a class='home-link' href='../index.html'>Home</a> <a class='records-link' href='../records.html'>StX Records</a> <a class='depth-link' href='../depth_chart.html'>Depth Chart</a> <a class='pre-race-link' href='../pre_race.html'>Pre-Race</a> <a class='comparison-link' href='../athlete_comparison.html'>Athlete Comparison</a>
       </div>
     </div>
-
     <div class="card">
       <h2>Personal Records</h2>
       <p class="muted">Track shows Indoor + Outdoor. XC shows Outdoor only. Best (lowest) is highlighted where applicable.</p>
@@ -100,7 +98,6 @@
       <div class="tabpane" id="pane-pr"><div class="table-wrap"><table><thead><tr><th>Event</th><th>Indoor</th><th>Outdoor</th></tr></thead><tbody><tr class='sporthdr'><td colspan='3'>TRACK</td></tr><tr><td colspan='3' class='muted'>No data.</td></tr><tr class='sporthdr'><td colspan='3'>XC</td></tr><tr><td>4000 Meter Run</td><td>—</td><td class="bestpr">16:32.6</td></tr><tr><td>5000 Meters</td><td>—</td><td class="bestpr">19:09.9</td></tr></tbody></table></div></div>
       <div class="tabpane" id="pane-pryear"><h3 style='margin:10px 0 0 0;'>TRACK</h3><p class='muted'>No Track yearly PR data.</p><h3 style='margin:18px 0 0 0;'>XC</h3><div class="table-wrap"><table><thead><tr><th>Year</th><th>Event</th><th>Indoor</th><th>Outdoor</th></tr></thead><tbody><tr><td>2021</td><td>5000 Meters</td><td></td><td class="bestpr">21:16.2</td></tr><tr><td>2020</td><td>4000 Meter Run</td><td></td><td class="bestpr">18:21.0</td></tr><tr><td>2020</td><td>5000 Meters</td><td></td><td class="bestpr">19:09.9</td></tr><tr><td>2019</td><td>4000 Meter Run</td><td></td><td class="bestpr">16:32.6</td></tr><tr><td>2019</td><td>5000 Meters</td><td></td><td class="bestpr">20:47.1</td></tr><tr><td>2018</td><td>4000 Meter Run</td><td></td><td class="bestpr">17:00.3</td></tr><tr><td>2018</td><td>5000 Meters</td><td></td><td class="bestpr">20:36.4</td></tr></tbody></table></div></div>
     </div>
-
     <div class="card">
       <h2>All Results</h2>
       <div class="filterbar">
@@ -118,8 +115,7 @@
       <div id="athlete-results-wrap"><h3 class='section-title'>4000 Meter Run</h3><div class="table-wrap"><table><thead><tr><th>Year</th><th>Date</th><th>Meet</th><th>Loc</th><th>Event</th><th>Group</th><th>Place</th><th>Result</th></tr></thead><tbody><tr><td>2020</td><td>2020-09-08</td><td><a href='../meets/997_all.html'>St. Xavier Champions Series Night 1</a></td><td>Outdoor</td><td>4000 Meter Run</td><td>xc</td><td>24</td><td>18:21.0</td></tr><tr><td>2019</td><td>2019-09-21</td><td><a href='../meets/1048_all.html'>Trinity / Valkyrie Invitational (HS)</a></td><td>Outdoor</td><td>4000 Meter Run</td><td>xc</td><td>130</td><td>16:32.6</td></tr><tr><td>2018</td><td>2018-08-25</td><td><a href='../meets/1030_all.html'>Tiger Run</a></td><td>Outdoor</td><td>4000 Meter Run</td><td>xc</td><td>56</td><td>17:00.3</td></tr></tbody></table></div><div class="chart-container"><canvas id="chart-4000_meter_run"></canvas></div><h3 class='section-title'>5000 Meters</h3><div class="table-wrap"><table><thead><tr><th>Year</th><th>Date</th><th>Meet</th><th>Loc</th><th>Event</th><th>Group</th><th>Place</th><th>Result</th></tr></thead><tbody><tr><td>2021</td><td>2021-10-21</td><td><a href='../meets/883_all.html'>Metro Louisville JV XC Regionals</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>148</td><td>22:28.0</td></tr><tr><td>2021</td><td>2021-10-16</td><td><a href='../meets/802_all.html'>KTCCCA Meet of Champions</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>167</td><td>22:07.2</td></tr><tr><td>2021</td><td>2021-10-09</td><td><a href='../meets/767_all.html'>Haunted Woods Classic</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>60</td><td>21:50.3</td></tr><tr><td>2021</td><td>2021-10-02</td><td><a href='../meets/754_all.html'>Great American XC Festival</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>181</td><td>21:16.2</td></tr><tr><td>2020</td><td>2020-10-17</td><td><a href='../meets/791_all.html'>KTCCCA High School Meet of Champions 5:00 JV AND OVERFLOW</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>143</td><td>22:17.7</td></tr><tr><td>2020</td><td>2020-10-02</td><td><a href='../meets/872_all.html'>Louisville XC Classic</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>79</td><td>19:09.9</td></tr><tr><td>2020</td><td>2020-09-19</td><td><a href='../meets/1049_all.html'>Trinity / Valkyrie Invitational (HS)</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>410</td><td>21:00.0</td></tr><tr><td>2019</td><td>2019-10-12</td><td><a href='../meets/766_all.html'>Haunted Woods Classic</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>80</td><td>20:50.8</td></tr><tr><td>2019</td><td>2019-10-04</td><td><a href='../meets/765_all.html'>Greater Louisville Classic</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>270</td><td>21:43.6</td></tr><tr><td>2019</td><td>2019-09-14</td><td><a href='../meets/731_all.html'>Franklin County Invitational</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>81</td><td>21:25.4</td></tr><tr><td>2019</td><td>2019-09-07</td><td><a href='../meets/956_all.html'>Rumble Through the Jungle</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>148</td><td>21:24.1</td></tr><tr><td>2019</td><td>2019-08-24</td><td><a href='../meets/1031_all.html'>Tiger Run</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>117</td><td>20:47.1</td></tr><tr><td>2018</td><td>2018-10-25</td><td><a href='../meets/864_all.html'>Louisville Area JV Championships</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>171</td><td>20:36.4</td></tr><tr><td>2018</td><td>2018-10-13</td><td><a href='../meets/925_all.html'>Oldham County Haunted Woods Classic</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>106</td><td>20:49.5</td></tr><tr><td>2018</td><td>2018-10-06</td><td><a href='../meets/1034_all.html'>Titan Classic</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>15</td><td>22:37.0</td></tr><tr><td>2018</td><td>2018-09-22</td><td><a href='../meets/1010_all.html'>The Atherton Invitational</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>32</td><td>21:45.0</td></tr><tr><td>2018</td><td>2018-09-15</td><td><a href='../meets/1047_all.html'>Trinity / Valkyrie Invitational (HS)</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>60</td><td>21:57.9</td></tr><tr><td>2018</td><td>2018-09-08</td><td><a href='../meets/955_all.html'>Rumble Through the Jungle</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>106</td><td>22:11.2</td></tr></tbody></table></div><div class="chart-container"><canvas id="chart-5000_meters"></canvas></div></div>
       <p class="muted">When splits are shown: fastest lap is green, slowest lap is red.</p>
     </div>
-
-    <div class="footer">Generated at <code>2026-03-23 15:48:47</code> from <code>C:\\Users\\Bob\\OneDrive\\StX_XC_Track\\data\\stx_track.db</code></div>
+    <div class="footer">Generated at <code>2026-03-29 11:48:49</code> from <code>C:\\Users\\Bob\\OneDrive\\StX_XC_Track\\data\\stx_track.db</code></div>
     
     <script>
       function activateTab(tabId) {
@@ -127,23 +123,27 @@
         const panes = document.querySelectorAll('.tabpane');
         btns.forEach(b => b.classList.remove('active'));
         panes.forEach(p => p.classList.remove('active'));
+
         const btn = document.getElementById('btn-' + tabId);
         const pane = document.getElementById('pane-' + tabId);
         if (btn) btn.classList.add('active');
         if (pane) pane.classList.add('active');
       }
+
       function toggleSplits(cb) {
         const wrap = document.getElementById('athlete-results-wrap');
         if (!wrap) return;
         if (cb.checked) wrap.classList.add('show-splits');
         else wrap.classList.remove('show-splits');
       }
+
       function toggleGraphs(cb) {
         const wrap = document.getElementById('athlete-results-wrap');
         if (!wrap) return;
         if (cb.checked) wrap.classList.remove('hide-graphs');
         else wrap.classList.add('hide-graphs');
       }
+
       document.addEventListener('DOMContentLoaded', () => {
         activateTab('pr');
         const splitCb = document.getElementById('splitToggle');
@@ -266,15 +266,18 @@
     }
   ]
 };
+
       function formatChartTime(seconds) {
         if (seconds === null || seconds === undefined) return '';
         const mins = Math.floor(seconds / 60);
         const secs = (seconds % 60).toFixed(2);
         return `${mins}:${secs.padStart(5, '0')}`;
       }
+
       function createChart(canvasId, data) {
         const canvas = document.getElementById(canvasId);
         if (!canvas || !data || data.length === 0) return;
+
         new Chart(canvas, {
           type: 'line',
           data: {
@@ -323,6 +326,7 @@
           }
         });
       }
+
       document.addEventListener('DOMContentLoaded', () => {
         for (const canvasId in allChartData) {
           createChart(canvasId, allChartData[canvasId]);

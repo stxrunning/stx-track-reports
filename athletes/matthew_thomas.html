@@ -22,7 +22,8 @@
       .nav a.home-link, .nav span.home-link { font-size: 18px; font-weight: 800; }
       .nav a.records-link, .nav span.records-link,
       .nav a.depth-link, .nav span.depth-link,
-      .nav a.pre-race-link, .nav span.pre-race-link {
+      .nav a.pre-race-link, .nav span.pre-race-link,
+      .nav a.comparison-link, .nav span.comparison-link {
         font-size: 16px;
         font-weight: 700;
         margin-left: 12px;
@@ -62,15 +63,13 @@
       .rankcell { font-weight: 800; }
       .chart-container { position: relative; height: 320px; width: 100%; max-width: 900px; margin: 20px 0 0 0; }
       .hide-graphs .chart-container { display: none; }
-
       /* Meet page filter: hide non-StX rows when toggled */
       body.stx-only .non-stx-row { display: none; }
-
       /* On athlete pages, we still show non-StX history for allow-listed athletes */
       .non-stx-row { opacity: 0.80; }
-
       /* PR section header rows (Track / XC) */
       .sporthdr { background: #efefef; font-weight: 900; }
+      .dimmed-pr { color: #999; font-weight: normal; }
     </style>
     
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -89,7 +88,6 @@
         <a class='home-link' href='../index.html'>Home</a> <a class='records-link' href='../records.html'>StX Records</a> <a class='depth-link' href='../depth_chart.html'>Depth Chart</a> <a class='pre-race-link' href='../pre_race.html'>Pre-Race</a> <a class='comparison-link' href='../athlete_comparison.html'>Athlete Comparison</a>
       </div>
     </div>
-
     <div class="card">
       <h2>Personal Records</h2>
       <p class="muted">Track shows Indoor + Outdoor. XC shows Outdoor only. Best (lowest) is highlighted where applicable.</p>
@@ -100,7 +98,6 @@
       <div class="tabpane" id="pane-pr"><div class="table-wrap"><table><thead><tr><th>Event</th><th>Indoor</th><th>Outdoor</th></tr></thead><tbody><tr class='sporthdr'><td colspan='3'>TRACK</td></tr><tr><td>800 Meters</td><td>1:59.6</td><td class="bestpr">1:56.5</td></tr><tr><td>1600 Meters</td><td>4:27.4</td><td class="bestpr">4:14.1</td></tr><tr><td>1 Mile</td><td>4:21.6</td><td class="bestpr">4:14.1</td></tr><tr><td>3200 Meters</td><td>9:40.9</td><td class="bestpr">9:22.4</td></tr><tr><td>4x800 Relay</td><td></td><td class="bestpr">7:51.1</td></tr><tr><td>5000 Meters</td><td></td><td class="bestpr">16:07.6</td></tr><tr class='sporthdr'><td colspan='3'>XC</td></tr><tr><td>3 Miles</td><td>—</td><td class="bestpr">15:24.8</td></tr><tr><td>5000 Meters</td><td>—</td><td class="bestpr">15:19.8</td></tr></tbody></table></div></div>
       <div class="tabpane" id="pane-pryear"><h3 style='margin:10px 0 0 0;'>TRACK</h3><div class="table-wrap"><table><thead><tr><th>Year</th><th>Event</th><th>Indoor</th><th>Outdoor</th></tr></thead><tbody><tr><td>2016</td><td>800 Meters</td><td>1:59.6</td><td class="bestpr">1:56.5</td></tr><tr><td>2016</td><td>1600 Meters</td><td></td><td class="bestpr">4:14.1</td></tr><tr><td>2016</td><td>1 Mile</td><td>4:21.6</td><td class="bestpr">4:14.1</td></tr><tr><td>2016</td><td>3200 Meters</td><td></td><td class="bestpr">9:22.4</td></tr><tr><td>2016</td><td>4x800 Relay</td><td></td><td class="bestpr">8:18.9</td></tr><tr><td>2015</td><td>800 Meters</td><td></td><td class="bestpr">1:58.6</td></tr><tr><td>2015</td><td>1600 Meters</td><td>4:27.4</td><td class="bestpr">4:17.0</td></tr><tr><td>2015</td><td>1 Mile</td><td>4:24.2</td><td class="bestpr">4:15.3</td></tr><tr><td>2015</td><td>3200 Meters</td><td class="bestpr">9:40.9</td><td></td></tr><tr><td>2015</td><td>4x800 Relay</td><td></td><td class="bestpr">7:51.1</td></tr><tr><td>2014</td><td>800 Meters</td><td>2:06.7</td><td class="bestpr">2:01.1</td></tr><tr><td>2014</td><td>1600 Meters</td><td class="bestpr">4:44.6</td><td></td></tr><tr><td>2014</td><td>5000 Meters</td><td></td><td class="bestpr">16:07.6</td></tr></tbody></table></div><h3 style='margin:18px 0 0 0;'>XC</h3><div class="table-wrap"><table><thead><tr><th>Year</th><th>Event</th><th>Indoor</th><th>Outdoor</th></tr></thead><tbody><tr><td>2015</td><td>3 Miles</td><td></td><td class="bestpr">15:24.8</td></tr><tr><td>2015</td><td>5000 Meters</td><td></td><td class="bestpr">15:19.8</td></tr><tr><td>2014</td><td>3 Miles</td><td></td><td class="bestpr">15:39.2</td></tr><tr><td>2014</td><td>5000 Meters</td><td></td><td class="bestpr">16:06.3</td></tr><tr><td>2013</td><td>5000 Meters</td><td></td><td class="bestpr">15:56.7</td></tr></tbody></table></div></div>
     </div>
-
     <div class="card">
       <h2>All Results</h2>
       <div class="filterbar">
@@ -118,8 +115,7 @@
       <div id="athlete-results-wrap"><h3 class='section-title'>800 Meters</h3><div class="table-wrap"><table><thead><tr><th>Year</th><th>Date</th><th>Meet</th><th>Loc</th><th>Event</th><th>Group</th><th>Place</th><th>Result</th></tr></thead><tbody><tr><td>2016</td><td>2016-05-27</td><td><a href='../meets/163_all.html'>Kentucky State Track Meet</a></td><td>Outdoor</td><td>800 Meters</td><td>1</td><td>6</td><td>1:56.5</td></tr><tr><td>2016</td><td>2016-05-21</td><td><a href='../meets/162_all.html'>Region 3 AAA</a></td><td>Outdoor</td><td>800 Meters</td><td>1</td><td>2</td><td>1:58.7</td></tr><tr><td>2016</td><td>2016-02-13</td><td><a href='../meets/316_all.html'>Indiana Open Indoor Meet</a></td><td>Indoor</td><td>800 Meters</td><td>1</td><td>1</td><td>1:59.6</td></tr><tr><td>2015</td><td>2015-03-31</td><td><a href='../meets/597_all.html'>St. X/Male/Trinity</a></td><td>Outdoor</td><td>800 Meters</td><td>1</td><td>1</td><td>1:58.6</td></tr><tr><td>2014</td><td>2014-04-04</td><td><a href='../meets/169_all.html'>Mobile Challenge of Champions</a></td><td>Outdoor</td><td>800 Meters</td><td>1</td><td>1</td><td>2:01.1</td></tr><tr><td>2014</td><td>2014-02-01</td><td><a href='../meets/635_all.html'>Wildcat Classic</a></td><td>Indoor</td><td>800 Meters</td><td>1</td><td>1</td><td>2:06.7</td></tr></tbody></table></div><div class="chart-container"><canvas id="chart-800_meters"></canvas></div><h3 class='section-title'>1600 Meters / 1 Mile</h3><div class="table-wrap"><table><thead><tr><th>Year</th><th>Date</th><th>Meet</th><th>Loc</th><th>Event</th><th>Group</th><th>Place</th><th>Result</th></tr></thead><tbody><tr><td>2016</td><td>2016-05-27</td><td><a href='../meets/163_all.html'>Kentucky State Track Meet</a></td><td>Outdoor</td><td>1600 Meters</td><td>1</td><td>2</td><td>4:14.1</td></tr><tr><td>2016</td><td>2016-05-21</td><td><a href='../meets/162_all.html'>Region 3 AAA</a></td><td>Outdoor</td><td>1600 Meters</td><td>1</td><td>2</td><td>4:27.7</td></tr><tr><td>2016</td><td>2016-05-06</td><td><a href='../meets/160_all.html'>Kentucky Dream Mile</a></td><td>Outdoor</td><td>1 Mile</td><td>1</td><td>1</td><td>4:14.1</td></tr><tr><td>2016</td><td>2016-04-29</td><td><a href='../meets/159_all.html'>Eastern Relays</a></td><td>Outdoor</td><td>1 Mile</td><td>1</td><td>6</td><td>4:23.1</td></tr><tr><td>2016</td><td>2016-04-08</td><td><a href='../meets/156_all.html'>Taco Bell Classic</a></td><td>Outdoor</td><td>1 Mile</td><td>1</td><td>8</td><td>4:27.7</td></tr><tr><td>2016</td><td>2016-02-20</td><td><a href='../meets/226_all.html'>University of Kentucky HS Invitational</a></td><td>Indoor</td><td>1 Mile</td><td>1</td><td>6</td><td>4:21.6</td></tr><tr><td>2016</td><td>2016-01-30</td><td><a href='../meets/225_all.html'>Wildcat Classic</a></td><td>Indoor</td><td>1 Mile</td><td>1</td><td>1</td><td>4:26.2</td></tr><tr><td>2015</td><td>2015-06-04</td><td><a href='../meets/567_all.html'>Nike Festival of Miles</a></td><td>Outdoor</td><td>1 Mile</td><td>1</td><td>1</td><td>4:19.9</td></tr><tr><td>2015</td><td>2015-05-22</td><td><a href='../meets/168_all.html'>Kentucky State Track Meet</a></td><td>Outdoor</td><td>1600 Meters</td><td>1</td><td>5</td><td>4:17.0</td></tr><tr><td>2015</td><td>2015-05-09</td><td><a href='../meets/167_all.html'>Region 3 AAA</a></td><td>Outdoor</td><td>1600 Meters</td><td>1</td><td>1</td><td>4:24.2</td></tr><tr><td>2015</td><td>2015-05-01</td><td><a href='../meets/354_all.html'>Kentucky Dream Mile</a></td><td>Outdoor</td><td>1 Mile</td><td>1</td><td>4</td><td>4:15.3</td></tr><tr><td>2015</td><td>2015-04-24</td><td><a href='../meets/166_all.html'>Eastern Relays</a></td><td>Outdoor</td><td>1 Mile</td><td>1</td><td>10</td><td>4:19.7</td></tr><tr><td>2015</td><td>2015-04-10</td><td><a href='../meets/165_all.html'>Taco Bell Classic</a></td><td>Outdoor</td><td>1 Mile</td><td>1</td><td>8</td><td>4:23.6</td></tr><tr><td>2015</td><td>2015-02-21</td><td><a href='../meets/628_all.html'>UK High School Invitational</a></td><td>Indoor</td><td>1 Mile</td><td>1</td><td>2</td><td>4:24.2</td></tr><tr><td>2015</td><td>2015-02-07</td><td><a href='../meets/229_all.html'>Indiana Track Club High School Open</a></td><td>Indoor</td><td>1600 Meters</td><td>1</td><td>2</td><td>4:27.4</td></tr><tr><td>2015</td><td>2015-01-31</td><td><a href='../meets/636_all.html'>Wildcat Classic</a></td><td>Indoor</td><td>1 Mile</td><td>1</td><td>1</td><td>4:27.8</td></tr><tr><td>2014</td><td>2014-02-08</td><td><a href='../meets/230_all.html'>Indiana Track Club High School Open</a></td><td>Indoor</td><td>1600 Meters</td><td>1</td><td>22</td><td>4:44.6</td></tr></tbody></table></div><div class="chart-container"><canvas id="chart-1600_meters_1_mile"></canvas></div><h3 class='section-title'>3200 Meters / 2 Miles</h3><div class="table-wrap"><table><thead><tr><th>Year</th><th>Date</th><th>Meet</th><th>Loc</th><th>Event</th><th>Group</th><th>Place</th><th>Result</th></tr></thead><tbody><tr><td>2016</td><td>2016-04-29</td><td><a href='../meets/159_all.html'>Eastern Relays</a></td><td>Outdoor</td><td>3200 Meters</td><td>1</td><td>16</td><td>9:22.4</td></tr><tr><td>2016</td><td>2016-04-23</td><td><a href='../meets/310_all.html'>Brother Borgia/Coach Cooper Invitational</a></td><td>Outdoor</td><td>3200 Meters</td><td>1</td><td>1</td><td>9:38.7</td></tr><tr><td>2015</td><td>2015-04-18</td><td><a href='../meets/394_all.html'>Brother Borgia/Coach Cooper Invitational 2015</a></td><td>Indoor</td><td>3200 Meters</td><td>1</td><td>1</td><td>9:40.9</td></tr></tbody></table></div><div class="chart-container"><canvas id="chart-3200_meters_2_miles"></canvas></div><h3 class='section-title'>3 Miles</h3><div class="table-wrap"><table><thead><tr><th>Year</th><th>Date</th><th>Meet</th><th>Loc</th><th>Event</th><th>Group</th><th>Place</th><th>Result</th></tr></thead><tbody><tr><td>2015</td><td>2015-09-26</td><td><a href='../meets/929_all.html'>Palatine Invitational</a></td><td>Outdoor</td><td>3 Miles</td><td>xc</td><td>21</td><td>15:24.8</td></tr><tr><td>2014</td><td>2014-09-27</td><td><a href='../meets/928_all.html'>Palatine Invitational</a></td><td>Outdoor</td><td>3 Miles</td><td>xc</td><td>35</td><td>15:39.2</td></tr></tbody></table></div><div class="chart-container"><canvas id="chart-3_miles"></canvas></div><h3 class='section-title'>4x800 Relay</h3><div class="table-wrap"><table><thead><tr><th>Year</th><th>Date</th><th>Meet</th><th>Loc</th><th>Event</th><th>Group</th><th>team_raw</th><th>Leg</th><th>Place</th><th>Result</th><th>Total_Laps</th></tr></thead><tbody><tr><td>2016</td><td>2016-05-14</td><td><a href='../meets/161_all.html'>Trooper Cameron Ponder North Hardin Invitational</a></td><td>Outdoor</td><td>4x800 Relay</td><td>1</td><td>St Xavier (KY)</td><td>4</td><td>1</td><td>8:18.9</td><td></td></tr><tr><td>2015</td><td>2015-05-22</td><td><a href='../meets/168_all.html'>Kentucky State Track Meet</a></td><td>Outdoor</td><td>4x800 Relay</td><td>1</td><td>St Xavier (KY)</td><td>1</td><td>1</td><td>7:51.1</td><td></td></tr><tr><td>2015</td><td>2015-04-24</td><td><a href='../meets/166_all.html'>Eastern Relays</a></td><td>Outdoor</td><td>4x800 Relay</td><td>1</td><td>St Xavier (KY)</td><td>1</td><td>1</td><td>8:03.9</td><td></td></tr></tbody></table></div><div class="chart-container"><canvas id="chart-4x800_relay"></canvas></div><h3 class='section-title'>5000 Meters</h3><div class="table-wrap"><table><thead><tr><th>Year</th><th>Date</th><th>Meet</th><th>Loc</th><th>Event</th><th>Group</th><th>Place</th><th>Result</th></tr></thead><tbody><tr><td>2015</td><td>2015-11-28</td><td><a href='../meets/910_all.html'>Nike Cross Nationals Southeast Regional</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>22</td><td>15:42.4</td></tr><tr><td>2015</td><td>2015-11-07</td><td><a href='../meets/840_all.html'>Kentucky State Cross Country Meet</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>5</td><td>15:38.9</td></tr><tr><td>2015</td><td>2015-10-31</td><td><a href='../meets/952_all.html'>Region 3 AAA</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>1</td><td>15:34.5</td></tr><tr><td>2015</td><td>2015-10-17</td><td><a href='../meets/860_all.html'>Lexington Catholic Invitational</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>1</td><td>15:19.8</td></tr><tr><td>2015</td><td>2015-10-02</td><td><a href='../meets/762_all.html'>Greater Louisville Classic</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>2</td><td>15:39.4</td></tr><tr><td>2015</td><td>2015-09-19</td><td><a href='../meets/1044_all.html'>Trinity / Valkyrie Invitational (HS)</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>18</td><td>16:00.9</td></tr><tr><td>2015</td><td>2015-08-29</td><td><a href='../meets/1027_all.html'>Tiger Run</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>2</td><td>15:44.3</td></tr><tr><td>2014</td><td>2014-11-08</td><td><a href='../meets/839_all.html'>Kentucky State Cross Country Meet</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>28</td><td>16:56.0</td></tr><tr><td>2014</td><td>2014-11-01</td><td><a href='../meets/951_all.html'>Region 3 AAA</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>3</td><td>16:24.7</td></tr><tr><td>2014</td><td>2014-10-18</td><td><a href='../meets/859_all.html'>Lexington Catholic Invitational</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>12</td><td>16:24.6</td></tr><tr><td>2014</td><td>2014-10-04</td><td><a href='../meets/753_all.html'>Great American XC Festival</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>42</td><td>16:06.3</td></tr><tr><td>2014</td><td>2014-09-20</td><td><a href='../meets/1067_all.html'>Trinity/Valkyrie Invitational (HS)</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>58</td><td>16:52.7</td></tr><tr><td>2014</td><td>2014-09-13</td><td><a href='../meets/972_all.html'>Rumble through the Jungle</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>31</td><td>17:37.8</td></tr><tr><td>2014</td><td>2014-08-30</td><td><a href='../meets/1026_all.html'>Tiger Run</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>8</td><td>16:27.3</td></tr><tr><td>2014</td><td>2014-03-21</td><td><a href='../meets/531_all.html'>KYtrackXC.com 5K Showdown</a></td><td>Outdoor</td><td>5000 Meters</td><td>1</td><td>7</td><td>16:07.6</td></tr><tr><td>2013</td><td>2013-11-30</td><td><a href='../meets/909_all.html'>Nike Cross Nationals Southeast Regional</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>6</td><td>16:43.1</td></tr><tr><td>2013</td><td>2013-10-29</td><td><a href='../meets/865_all.html'>Louisville Area JV Regional</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>1</td><td>15:56.7</td></tr><tr><td>2013</td><td>2013-10-26</td><td><a href='../meets/892_all.html'>Metro Meet of Champions</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>7</td><td>16:52.5</td></tr><tr><td>2013</td><td>2013-10-19</td><td><a href='../meets/858_all.html'>Lexington Catholic Invitational</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>37</td><td>17:23.2</td></tr><tr><td>2013</td><td>2013-10-05</td><td><a href='../meets/743_all.html'>Great American Cross Country Festival</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>7</td><td>17:23.5</td></tr><tr><td>2013</td><td>2013-09-21</td><td><a href='../meets/1066_all.html'>Trinity/Valkyrie Invitational (HS)</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>14</td><td>17:20.8</td></tr><tr><td>2013</td><td>2013-09-14</td><td><a href='../meets/971_all.html'>Rumble through the Jungle</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>2</td><td>17:44.1</td></tr><tr><td>2013</td><td>2013-08-31</td><td><a href='../meets/1025_all.html'>Tiger Run</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>9</td><td>18:57.7</td></tr></tbody></table></div><div class="chart-container"><canvas id="chart-5000_meters"></canvas></div></div>
       <p class="muted">When splits are shown: fastest lap is green, slowest lap is red.</p>
     </div>
-
-    <div class="footer">Generated at <code>2026-03-23 16:03:03</code> from <code>C:\\Users\\Bob\\OneDrive\\StX_XC_Track\\data\\stx_track.db</code></div>
+    <div class="footer">Generated at <code>2026-03-29 12:00:55</code> from <code>C:\\Users\\Bob\\OneDrive\\StX_XC_Track\\data\\stx_track.db</code></div>
     
     <script>
       function activateTab(tabId) {
@@ -127,23 +123,27 @@
         const panes = document.querySelectorAll('.tabpane');
         btns.forEach(b => b.classList.remove('active'));
         panes.forEach(p => p.classList.remove('active'));
+
         const btn = document.getElementById('btn-' + tabId);
         const pane = document.getElementById('pane-' + tabId);
         if (btn) btn.classList.add('active');
         if (pane) pane.classList.add('active');
       }
+
       function toggleSplits(cb) {
         const wrap = document.getElementById('athlete-results-wrap');
         if (!wrap) return;
         if (cb.checked) wrap.classList.add('show-splits');
         else wrap.classList.remove('show-splits');
       }
+
       function toggleGraphs(cb) {
         const wrap = document.getElementById('athlete-results-wrap');
         if (!wrap) return;
         if (cb.checked) wrap.classList.remove('hide-graphs');
         else wrap.classList.add('hide-graphs');
       }
+
       document.addEventListener('DOMContentLoaded', () => {
         activateTab('pr');
         const splitCb = document.getElementById('splitToggle');
@@ -439,15 +439,18 @@
     }
   ]
 };
+
       function formatChartTime(seconds) {
         if (seconds === null || seconds === undefined) return '';
         const mins = Math.floor(seconds / 60);
         const secs = (seconds % 60).toFixed(2);
         return `${mins}:${secs.padStart(5, '0')}`;
       }
+
       function createChart(canvasId, data) {
         const canvas = document.getElementById(canvasId);
         if (!canvas || !data || data.length === 0) return;
+
         new Chart(canvas, {
           type: 'line',
           data: {
@@ -496,6 +499,7 @@
           }
         });
       }
+
       document.addEventListener('DOMContentLoaded', () => {
         for (const canvasId in allChartData) {
           createChart(canvasId, allChartData[canvasId]);
