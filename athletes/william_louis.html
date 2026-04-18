@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Athlete | St Xavier (KY)</title>
+  <title>Athlete | William Louis</title>
   
     <style>
       body { font-family: Arial, sans-serif; margin: 24px; }
@@ -79,7 +79,7 @@
 
     <div class="topbar">
       <div class="titlewrap">
-        <div class="meetname">St Xavier (KY)</div>
+        <div class="meetname">William Louis</div>
         
         <p class="subline muted">StX athlete profile • Showing results from 1900+</p>
         
@@ -95,14 +95,14 @@
         <button class="tabbtn" id="btn-pr" onclick="activateTab('pr')">PR (Track + XC)</button>
         <button class="tabbtn" id="btn-pryear" onclick="activateTab('pryear')">PR by Year (Track + XC)</button>
       </div>
-      <div class="tabpane" id="pane-pr"><div class="table-wrap"><table><thead><tr><th>Event</th><th>Indoor</th><th>Outdoor</th></tr></thead><tbody><tr class='sporthdr'><td colspan='3'>TRACK</td></tr><tr><td>DMR</td><td class="bestpr">10:19.18</td><td></td></tr><tr><td>SMR</td><td class="bestpr">3:40.97</td><td></td></tr><tr class='sporthdr'><td colspan='3'>XC</td></tr><tr><td colspan='3' class='muted'>No data.</td></tr></tbody></table></div></div>
-      <div class="tabpane" id="pane-pryear"><h3 style='margin:10px 0 0 0;'>TRACK</h3><div class="table-wrap"><table><thead><tr><th>Year</th><th>Event</th><th>Indoor</th><th>Outdoor</th></tr></thead><tbody><tr><td>2026</td><td>DMR</td><td class="bestpr">10:19.18</td><td></td></tr><tr><td>2026</td><td>SMR</td><td class="bestpr">3:40.97</td><td></td></tr></tbody></table></div><h3 style='margin:18px 0 0 0;'>XC</h3><p class='muted'>No XC yearly PR data.</p></div>
+      <div class="tabpane" id="pane-pr"><div class="table-wrap"><table><thead><tr><th>Event</th><th>Indoor</th><th>Outdoor</th></tr></thead><tbody><tr class='sporthdr'><td colspan='3'>TRACK</td></tr><tr><td colspan='3' class='muted'>No data.</td></tr><tr class='sporthdr'><td colspan='3'>XC</td></tr><tr><td colspan='3' class='muted'>No data.</td></tr></tbody></table></div></div>
+      <div class="tabpane" id="pane-pryear"><h3 style='margin:10px 0 0 0;'>TRACK</h3><p class='muted'>No Track yearly PR data.</p><h3 style='margin:18px 0 0 0;'>XC</h3><p class='muted'>No XC yearly PR data.</p></div>
     </div>
     <div class="card">
       <h2>All Results</h2>
       <div class="filterbar">
         <label>
-          <input type="checkbox" id="splitToggle" onchange="toggleSplits(this)" checked disabled>
+          <input type="checkbox" id="splitToggle" onchange="toggleSplits(this)" checked >
           Show Splits
         </label>
         <label style="margin-left: 15px;">
@@ -111,11 +111,11 @@
         </label>
         <span class="muted">(default on)</span>
       </div>
-      <p class='muted'>No split data available for this athlete (in the selected years).</p>
-      <div id="athlete-results-wrap"><h3 class='section-title'>DMR</h3><div class="table-wrap"><table><thead><tr><th>Year</th><th>Date</th><th>Meet</th><th>Loc</th><th>Event</th><th>Group</th><th>team_raw</th><th>Leg</th><th>Place</th><th>Result</th><th>Total_Laps</th></tr></thead><tbody><tr><td>2026</td><td>2026-04-18</td><td><a href='../meets/1086_all.html'>Eastern Relays</a></td><td>Outdoor</td><td>DMR</td><td>1</td><td>St. Xavier (KY)</td><td></td><td>1</td><td>10:31.97</td><td></td></tr><tr><td>2026</td><td>2026-03-22</td><td><a href='../meets/1082_all.html'>adidas Track Nationals</a></td><td>Indoor</td><td>DMR</td><td>1</td><td>St. Xavier (KY)</td><td></td><td>1</td><td>10:19.18</td><td></td></tr></tbody></table></div><div class="chart-container"><canvas id="chart-dmr"></canvas></div><h3 class='section-title'>SMR</h3><div class="table-wrap"><table><thead><tr><th>Year</th><th>Date</th><th>Meet</th><th>Loc</th><th>Event</th><th>Group</th><th>team_raw</th><th>Leg</th><th>Place</th><th>Result</th><th>Total_Laps</th></tr></thead><tbody><tr><td>2026</td><td>2026-03-22</td><td><a href='../meets/1082_all.html'>adidas Track Nationals</a></td><td>Indoor</td><td>SMR</td><td>1</td><td>St. Xavier (KY)</td><td></td><td>1</td><td>3:40.97</td><td></td></tr></tbody></table></div><div class="chart-container"><canvas id="chart-smr"></canvas></div></div>
+      
+      <div id="athlete-results-wrap"><h3 class='section-title'>1600 Meters / 1 Mile</h3><div class="table-wrap"><table><thead><tr><th>Year</th><th>Date</th><th>Meet</th><th>Loc</th><th>Event</th><th>Group</th><th>Place</th><th>Result</th><th class="splits-col">Lap 1</th><th class="splits-col">Lap 2</th><th class="splits-col">Lap 3</th><th class="splits-col">Lap 4</th></tr></thead><tbody><tr><td>2026</td><td>2026-04-18</td><td><a href='../meets/1086_all.html'>Eastern Relays</a></td><td>Outdoor</td><td>1 Mile</td><td>1</td><td>34</td><td>4:30.97</td><td class="splits-col fastest">66.19</td><td class="splits-col">68.25</td><td class="splits-col slowest">69.51</td><td class="splits-col">67.02</td></tr></tbody></table></div><div class="chart-container"><canvas id="chart-1600_meters_1_mile"></canvas></div></div>
       <p class="muted">When splits are shown: fastest lap is green, slowest lap is red.</p>
     </div>
-    <div class="footer">Generated at <code>2026-04-18 12:38:48</code> from <code>C:\\Users\\Bob\\OneDrive\\StX_XC_Track\\data\\stx_track.db</code></div>
+    <div class="footer">Generated at <code>2026-04-18 12:38:57</code> from <code>C:\\Users\\Bob\\OneDrive\\StX_XC_Track\\data\\stx_track.db</code></div>
     
     <script>
       function activateTab(tabId) {
@@ -156,23 +156,11 @@
     
     <script>
       const allChartData = {
-  "chart-dmr": [
-    {
-      "x": "2026-03-22",
-      "y": 619.18,
-      "meet": "<a href='../meets/1082_all.html'>adidas Track Nationals</a>"
-    },
+  "chart-1600_meters_1_mile": [
     {
       "x": "2026-04-18",
-      "y": 631.97,
+      "y": 270.966,
       "meet": "<a href='../meets/1086_all.html'>Eastern Relays</a>"
-    }
-  ],
-  "chart-smr": [
-    {
-      "x": "2026-03-22",
-      "y": 220.97,
-      "meet": "<a href='../meets/1082_all.html'>adidas Track Nationals</a>"
     }
   ]
 };
