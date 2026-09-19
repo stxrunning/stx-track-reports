@@ -2,6 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Athlete | Ed Willenbrink</title>
   
     <style>
@@ -22,10 +23,29 @@
       .nav a.home-link, .nav span.home-link { font-size: 18px; font-weight: 800; }
       .nav a.records-link, .nav span.records-link,
       .nav a.depth-link, .nav span.depth-link,
-      .nav a.pre-race-link, .nav span.pre-race-link {
+      .nav a.pre-race-link, .nav span.pre-race-link,
+      .nav a.comparison-link, .nav span.comparison-link {
         font-size: 16px;
         font-weight: 700;
         margin-left: 12px;
+      }
+      .nav a.feedback-link, .nav span.feedback-link {
+        display:inline-block;
+        margin-left:14px;
+        border:2px solid #d39b00;
+        border-radius:999px;
+        padding:6px 12px;
+        background:#f4c542;
+        color:#172554;
+        font-size:14px;
+        font-weight:900;
+        line-height:1;
+        box-shadow:0 2px 7px rgba(15, 23, 42, 0.13);
+      }
+      .nav a.feedback-link:hover {
+        background:#ffd963;
+        text-decoration:none;
+        transform:translateY(-1px);
       }
       .nav span { color: #333; }
       .card { border:1px solid #e6e6e6; border-radius:10px; padding:16px; margin:14px 0; }
@@ -41,6 +61,7 @@
       .slowest { background-color: #F8D7DA; color: #721C24; font-weight: 600; }
       .pr { background-color: #FFDAB9; color: #A0522D; font-weight: 700; }
       .bestpr { background-color: #D4EDDA; color: #155724; font-weight: 700; }
+      .stx-team-highlight { background-color: #fcf8e3; }
       .warning-big { margin: 6px 0 10px 0; font-size: 28px; font-weight: 900; color: #b00020; letter-spacing: 0.5px; }
       .footer { margin-top: 24px; color: #777; font-size: 12px; }
       code { background:#f6f6f6; padding:2px 6px; border-radius:6px; }
@@ -54,46 +75,559 @@
       .tabbtn.active { background:#f2f2f2; font-weight: 700; }
       .tabpane { display:none; }
       .tabpane.active { display:block; }
-      .section-title { margin: 10px 0 0 0; font-size: 18px; font-weight: 800; }
+      .section-title { margin: 24px 0 0 0; font-size: 18px; font-weight: 800; border-top: 1px solid #eee; padding-top: 16px; }
+      .xc-history-heading { margin-top: 42px; border-top: 4px solid #222; padding-top: 24px; }
+      .xc-history-heading h1 { margin: 0 0 8px 0; font-size: 28px; }
       .athletes-grid { display:flex; gap: 16px; align-items:flex-start; flex-wrap: wrap; }
       .athletes-grid .ath-col { flex: 1 1 0; min-width: 280px; }
-      .ath-col h3 { margin: 0 0 6px 0; }
+      .athlete-class-group {
+        border:1px solid #dbe3ee;
+        border-radius:10px;
+        overflow:hidden;
+        margin:0 0 14px 0;
+        background:#fff;
+        box-shadow:0 3px 10px rgba(15, 23, 42, 0.07);
+      }
+      .athlete-class-header {
+        display:flex;
+        align-items:baseline;
+        gap:7px;
+        margin:0;
+        padding:9px 13px;
+        color:#fff;
+        background:linear-gradient(100deg, #172554, #1d4ed8);
+        border-left:7px solid #f4c542;
+        font-size:15px;
+        letter-spacing:0.02em;
+      }
+      .athlete-class-header strong { font-size:21px; }
+      .athlete-class-header.alumni {
+        background:linear-gradient(100deg, #334155, #64748b);
+      }
+      .athlete-class-header.missing {
+        background:linear-gradient(100deg, #6b4f1d, #a16207);
+      }
+      .athlete-class-group ul {
+        margin:0;
+        padding:12px 18px 13px 38px;
+        line-height:1.45;
+      }
+      .athlete-index-table { width:100%; }
+      .athlete-index-table th { cursor:pointer; user-select:none; }
+      .athlete-index-table th:hover { background:#e9eef6; }
+      .athlete-index-table th .sort-indicator { margin-left:5px; color:#64748b; font-size:11px; }
+      .athlete-index-table td:nth-child(1),
+      .athlete-index-table td:nth-child(3) { text-align:right; }
+      .athlete-index-table .no-pr { color:#999; }
+      .athlete-table-heading { display:flex; justify-content:space-between; align-items:baseline; gap:10px; margin:0 0 8px 0; }
+      .athlete-table-heading h3 { margin:0; }
+      .athlete-table-count { color:#64748b; font-size:12px; font-weight:700; }
+      .home-grid {
+        display:grid;
+        grid-template-columns:repeat(3, minmax(0, 1fr));
+        gap:16px;
+        align-items:start;
+      }
+      .home-column { min-width:0; }
+      .home-column > .card { margin-top:0; }
+      .home-column-heading {
+        display:flex; align-items:baseline; justify-content:space-between;
+        gap:10px; margin:0 0 10px 0;
+      }
+      .home-column-heading h2, .home-column-heading h3 { margin:0; }
+      .home-column-heading-meta {
+        display:flex; align-items:center; justify-content:flex-end;
+        gap:8px; flex-wrap:wrap;
+      }
+      .athlete-name-format-toggle {
+        border:1px solid #93a4ba; border-radius:999px; background:#f8fafc;
+        color:#334155; padding:5px 9px; cursor:pointer;
+        font:700 11px Arial, sans-serif;
+      }
+      .athlete-name-format-toggle:hover { background:#eaf2ff; border-color:#6f91c3; }
+      .athlete-card-search {
+        box-sizing:border-box; width:100%; margin:0;
+        border:1px solid #cbd5e1; border-radius:8px; padding:9px 10px;
+        background:#fff; font:14px Arial, sans-serif;
+      }
+      .athlete-card-controls {
+        display:grid; grid-template-columns:minmax(0, 1fr) auto;
+        gap:8px; align-items:center; margin:0 0 10px 0;
+      }
+      .athlete-sort-control {
+        display:flex; align-items:center; gap:6px;
+        color:#475569; font-size:12px; font-weight:800;
+      }
+      .athlete-sort-control select {
+        border:1px solid #cbd5e1; border-radius:8px; background:#fff;
+        padding:8px 7px; font:13px Arial, sans-serif;
+      }
+      .athlete-index-cards {
+        display:flex; flex-direction:column; gap:7px;
+      }
+      .athlete-index-card {
+        display:flex; align-items:center; gap:10px; min-width:0;
+        border:1px solid #dbe3ee; border-radius:9px; padding:8px 10px;
+        background:#fff; color:#172554;
+        box-shadow:0 2px 7px rgba(15, 23, 42, 0.06);
+      }
+      .athlete-index-card:hover {
+        border-color:#93b4e8; background:#f8fbff; text-decoration:none;
+        transform:translateY(-1px);
+      }
+      .athlete-index-card[hidden] { display:none !important; }
+      .athlete-year-bubble {
+        display:inline-flex; align-items:center; justify-content:center;
+        flex:0 0 50px; min-height:28px; border-radius:999px;
+        color:#fff; font-size:12px; font-weight:900; letter-spacing:.02em;
+      }
+      .athlete-year-tone-0 { background:#1d4ed8; }
+      .athlete-year-tone-1 { background:#0f766e; }
+      .athlete-year-tone-2 { background:#7e22ce; }
+      .athlete-year-tone-3 { background:#b45309; }
+      .athlete-year-tone-4 { background:#be123c; }
+      .athlete-year-tone-5 { background:#334155; }
+      .athlete-grade-senior { background:#15803d; }
+      .athlete-grade-junior { background:#f4c542; color:#172554; }
+      .athlete-grade-sophomore { background:#2563eb; }
+      .athlete-grade-freshman { background:#dc2626; }
+      .athlete-year-missing { background:#78716c; }
+      .athlete-index-card-copy {
+        display:flex; flex-direction:column; gap:2px; min-width:0;
+      }
+      .athlete-index-card-copy strong {
+        overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+        color:#0b5fff; font-size:14px;
+      }
+      .athlete-index-card-copy small { color:#64748b; font-size:11px; }
+      .athlete-index-card-copy small.no-pr { color:#9ca3af; }
+      .athlete-missing-block {
+        border-top:1px solid #e5e7eb; margin-top:18px; padding-top:14px;
+      }
+      @media (max-width:900px) {
+        .home-grid { grid-template-columns:1fr; }
+      }
       .rankcell { font-weight: 800; }
-      .results-and-chart-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: flex-start; }
-      .chart-container { position: relative; height: 320px; width: 50%; margin-top: 20px; }
+      .chart-container { position: relative; height: 320px; width: 100%; max-width: 900px; margin: 20px 0 0 0; }
       .hide-graphs .chart-container { display: none; }
-      .hide-graphs .results-and-chart-grid { grid-template-columns: 1fr; }
-      @media (max-width: 1200px) { .results-and-chart-grid { grid-template-columns: 1fr; } .chart-container { width: 100%; } }
+      /* Meet page filter: hide non-StX rows when toggled */
+      body.stx-only .non-stx-row { display: none; }
+      /* On athlete pages, we still show non-StX history for allow-listed athletes */
+      .non-stx-row { opacity: 0.80; }
+      /* PR section header rows (Track / XC) */
+      .sporthdr { background: #efefef; font-weight: 900; }
+      .dimmed-pr { color: #999; font-weight: normal; }
+      .pr-parade { border: 2px solid #f0a45d; background: #fff8f0; padding: 9px 12px; }
+      .pr-parade h2 { display:inline; margin:0 8px 0 0; color:#8a431d; font-size:18px; }
+      .pr-parade-list { display:inline; line-height:1.8; }
+      .pr-parade-entry { white-space:nowrap; }
+      .pr-parade .pr-time { color:#A0522D; font-weight:800; }
+      .pr-parade-first { border-color:#d5a928; background:#fffbea; }
+      .pr-parade-first h2 { color:#765b00; }
+      .xc-team-score-heading { display:flex; align-items:center; gap:16px; flex-wrap:wrap; margin-top:24px; }
+      .xc-team-score-heading h3 { margin:0; }
+      .xc-team-extra-row { display:none; }
+      body.show-all-xc-teams .xc-team-extra-row { display:table-row; }
+      .xc-results-table th { text-align:center; }
+      .xc-result-date {
+        display:block;
+        margin-top:2px;
+        color:#666;
+        font-size:11px;
+        font-weight:normal;
+      }
+      .xc-results-table th.xc-result-year-0 { background:#dce9ff; }
+      .xc-results-table td.xc-result-year-0 { background:#f2f7ff; }
+      .xc-results-table th.xc-result-year-1 { background:#f8e7b2; }
+      .xc-results-table td.xc-result-year-1 { background:#fff9e8; }
+      .xc-results-table th.xc-result-year-2 { background:#d6f0e5; }
+      .xc-results-table td.xc-result-year-2 { background:#f0faf6; }
+      .xc-results-table th.xc-result-year-3 { background:#eadcf7; }
+      .xc-results-table td.xc-result-year-3 { background:#f8f2fc; }
+      .xc-results-table td.xc-result-cell.pr {
+        background:#FFDAB9;
+        color:#A0522D;
+        font-weight:700;
+      }
+      .xc-results-table td.xc-result-cell.bestpr {
+        background:#D4EDDA;
+        color:#155724;
+        font-weight:700;
+      }
+      .meet-list { list-style:none; padding:0; margin:12px 0 0 0; }
+      .meet-year-group {
+        display:grid;
+        grid-template-columns:42px minmax(0, 1fr);
+        gap:10px;
+        padding:0;
+        margin:0 0 16px 0;
+      }
+      .meet-year-bar {
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        min-height:76px;
+        border-radius:10px;
+        color:#fff;
+        font-size:13px;
+        font-weight:900;
+        letter-spacing:0.12em;
+        box-shadow:0 2px 8px rgba(15, 23, 42, 0.12);
+      }
+      .meet-year-bar span {
+        writing-mode:vertical-rl;
+        transform:rotate(180deg);
+      }
+      .meet-year-tone-0 { background:#172554; }
+      .meet-year-tone-1 { background:#9a6700; }
+      .meet-year-tone-2 { background:#0f766e; }
+      .meet-year-tone-3 { background:#6b21a8; }
+      .meet-year-items { list-style:none; padding:0; margin:0; }
+      .meet-list .meet-item {
+        display:grid;
+        grid-template-columns:34px minmax(0, 1fr);
+        min-height:76px;
+        padding:0;
+        margin:0 0 8px 0;
+        border:1px solid #dbe2ea;
+        border-radius:10px;
+        overflow:hidden;
+        background:#fff;
+        box-shadow:0 2px 8px rgba(15, 23, 42, 0.07);
+      }
+      .meet-rail {
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        color:#fff;
+        font-size:12px;
+        font-weight:900;
+        letter-spacing:0.08em;
+        text-transform:uppercase;
+      }
+      .meet-rail span {
+        writing-mode:vertical-rl;
+        transform:rotate(180deg);
+      }
+      .meet-sport-track { background:#1d4ed8; }
+      .meet-sport-xc { background:#15803d; }
+      .meet-main {
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        gap:3px;
+        min-width:0;
+        padding:11px 14px;
+      }
+      .meet-main:hover { background:#f8fafc; text-decoration:none; }
+      .meet-date { color:#64748b; font-size:12px; font-weight:800; }
+      .meet-title { color:#0b5fff; font-size:15px; font-weight:800; line-height:1.25; }
+      .meet-location { color:#475569; font-size:12px; }
+      .pdf-export-button {
+        border:1px solid #12543f; border-radius:8px; padding:7px 11px;
+        background:#12543f; color:#fff; cursor:pointer;
+        font:700 13px Arial, sans-serif;
+      }
+      .pdf-export-button:hover { background:#0a3b2b; }
+      @page { size: Letter landscape; margin: 0.35in; }
+      @media print {
+        body { margin:0; color:#000; print-color-adjust:exact; -webkit-print-color-adjust:exact; }
+        .stx-site-header, .stx-site-menu, .nav, .filterbar,
+        .meet-links, .footer { display:none !important; }
+        .topbar { margin-bottom:8px; }
+        .meetname { font-size:24px; }
+        .card { break-inside:avoid; border-color:#aaa; margin:8px 0; padding:10px; }
+        .pr-parade { break-inside:auto; }
+        .xc-history-heading { break-before:page; margin-top:0; padding-top:0; border-top:0; }
+        .table-wrap { overflow:visible; }
+        table { width:100%; }
+        th, td { padding:4px 5px; font-size:10px; }
+        th { position:static; }
+        .xc-alumni-section { display:none !important; }
+        a { color:inherit; text-decoration:none; }
+      }
     </style>
     
+  <!-- STX_HEADER_CSS_START -->
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,600;9..40,700&family=Libre+Caslon+Text:ital,wght@0,400;1,400&display=swap');
+
+      :root {
+        --stx-green: #12543f;
+        --stx-dark-green: #062d20;
+        --stx-gold: #f3ba29;
+        --stx-cream: #f6f9f5;
+        --stx-ink: #17352b;
+      }
+      html.stx-menu-is-open, html.stx-menu-is-open body { overflow: hidden; }
+      .stx-site-header, .stx-site-menu { box-sizing: border-box; font-family: 'DM Sans', Arial, sans-serif; }
+      .stx-site-header *, .stx-site-menu * { box-sizing: border-box; }
+      .stx-site-header {
+        position: relative;
+        z-index: 9000;
+        width: 100vw;
+        max-width: 100vw;
+        margin: -24px -24px 30px;
+        background: var(--stx-dark-green);
+        color: #fff;
+      }
+      .stx-header-inner {
+        min-height: 94px;
+        padding: 14px clamp(22px, 5vw, 82px);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+      }
+      .stx-brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 17px;
+        color: #fff !important;
+        text-decoration: none !important;
+      }
+      .stx-logo-image { display: block; width: clamp(190px, 22vw, 250px); height: auto; }
+      .stx-brand-divider { width: 1px; height: 42px; background: rgba(255,255,255,.38); }
+      .stx-section-name {
+        max-width: 90px;
+        color: var(--stx-gold);
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: .14em;
+        line-height: 1.25;
+        text-transform: uppercase;
+      }
+      .stx-menu-open, .stx-menu-close {
+        border: 0;
+        cursor: pointer;
+        display: inline-grid;
+        place-items: center;
+        flex: 0 0 auto;
+      }
+      .stx-menu-open {
+        width: 55px;
+        height: 55px;
+        padding: 0;
+        border-radius: 50%;
+        background: var(--stx-gold);
+        color: var(--stx-dark-green);
+        transition: background .25s ease, transform .25s ease;
+      }
+      .stx-menu-open:hover, .stx-menu-open:focus-visible { background: #fff; transform: scale(1.04); }
+      .stx-menu-open-lines, .stx-menu-open-lines::before, .stx-menu-open-lines::after {
+        display: block;
+        width: 20px;
+        height: 2px;
+        background: currentColor;
+        border-radius: 4px;
+      }
+      .stx-menu-open-lines { position: relative; }
+      .stx-menu-open-lines::before, .stx-menu-open-lines::after { content: ''; position: absolute; left: 0; }
+      .stx-menu-open-lines::before { top: -6px; }
+      .stx-menu-open-lines::after { top: 6px; }
+      .stx-visually-hidden {
+        position: absolute !important;
+        width: 1px !important;
+        height: 1px !important;
+        padding: 0 !important;
+        margin: -1px !important;
+        overflow: hidden !important;
+        clip: rect(0, 0, 0, 0) !important;
+        white-space: nowrap !important;
+        border: 0 !important;
+      }
+      .stx-site-menu {
+        position: fixed;
+        z-index: 10000;
+        inset: 0;
+        display: grid;
+        grid-template-columns: minmax(320px, 42%) 1fr;
+        background: var(--stx-cream);
+        color: var(--stx-ink);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateX(100%);
+        transition: transform .38s ease, opacity .3s ease, visibility 0s linear .38s;
+      }
+      .stx-site-menu.is-open {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(0);
+        transition: transform .38s ease, opacity .3s ease;
+      }
+      .stx-menu-brand-panel {
+        position: relative;
+        overflow: hidden;
+        padding: clamp(40px, 6vw, 88px);
+        background: var(--stx-green);
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+      }
+      .stx-menu-brand-panel::before {
+        content: 'X';
+        position: absolute;
+        top: -120px;
+        left: -40px;
+        color: rgba(255,255,255,.055);
+        font: 700 540px/1 Georgia, serif;
+        transform: skew(-5deg);
+      }
+      .stx-menu-kicker { position: relative; margin: 0 0 18px; color: var(--stx-gold); font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
+      .stx-menu-title { position: relative; max-width: 520px; margin: 0; font: 400 clamp(39px, 5vw, 72px)/1.02 'Libre Caslon Text', Georgia, serif; }
+      .stx-menu-title em { display: block; color: var(--stx-gold); font-weight: 400; }
+      .stx-menu-content {
+        position: relative;
+        min-width: 0;
+        padding: clamp(88px, 11vh, 130px) clamp(36px, 8vw, 120px) 54px;
+        overflow-y: auto;
+      }
+      .stx-menu-close {
+        position: absolute;
+        top: 36px;
+        right: 42px;
+        width: 48px;
+        height: 48px;
+        padding: 0;
+        background: transparent;
+        color: var(--stx-dark-green);
+      }
+      .stx-menu-close::before, .stx-menu-close::after {
+        content: '';
+        position: absolute;
+        width: 28px;
+        height: 2px;
+        background: currentColor;
+      }
+      .stx-menu-close::before { transform: rotate(45deg); }
+      .stx-menu-close::after { transform: rotate(-45deg); }
+      .stx-menu-close:hover, .stx-menu-close:focus-visible { color: #8c6300; }
+      .stx-menu-label { margin: 0 0 24px; color: #64756f; font-size: 12px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; }
+      .stx-menu-nav { margin: 0; padding: 0; list-style: none; counter-reset: stx-nav; }
+      .stx-menu-nav li { counter-increment: stx-nav; border-top: 1px solid #ccd6d1; }
+      .stx-menu-nav li:last-child { border-bottom: 1px solid #ccd6d1; }
+      .stx-menu-nav a, .stx-menu-nav .stx-current-page {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 22px;
+        padding: 17px 6px;
+        color: var(--stx-dark-green);
+        font: 400 clamp(22px, 2.3vw, 34px)/1.15 'Libre Caslon Text', Georgia, serif;
+        text-decoration: none;
+        transition: color .2s ease, padding-left .2s ease;
+      }
+      .stx-menu-nav a::before, .stx-menu-nav .stx-current-page::before {
+        content: '0' counter(stx-nav);
+        width: 25px;
+        color: #7c9189;
+        font: 700 10px/1 'DM Sans', Arial, sans-serif;
+        letter-spacing: .1em;
+      }
+      .stx-menu-nav a::after { content: '\2192'; margin-left: auto; color: var(--stx-gold); font-family: Arial, sans-serif; }
+      .stx-menu-nav a:hover, .stx-menu-nav a:focus-visible { color: #8c6300; padding-left: 14px; }
+      .stx-menu-nav .stx-current-page { color: #8c6300; font-style: italic; }
+      .stx-menu-utility { margin-top: 34px; display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+      .stx-menu-feedback {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        padding: 10px 22px;
+        border: 1px solid var(--stx-gold);
+        border-radius: 4px;
+        background: var(--stx-gold);
+        color: var(--stx-dark-green) !important;
+        font-weight: 700;
+        text-decoration: none !important;
+      }
+      .stx-menu-feedback:hover, .stx-menu-feedback:focus-visible { background: transparent; }
+      .stx-school-link { color: var(--stx-dark-green) !important; font-size: 13px; font-weight: 700; }
+      @media (max-width: 780px) {
+        .stx-site-header { margin-bottom: 22px; }
+        .stx-header-inner { min-height: 68px; padding: 9px 16px; }
+        .stx-logo-image { width: 190px; }
+        .stx-brand-divider { height: 32px; }
+        .stx-section-name { font-size: 9px; }
+        .stx-menu-open { width: 42px; height: 42px; }
+        .stx-site-menu { display: block; overflow-y: auto; background: var(--stx-green); }
+        .stx-menu-brand-panel { min-height: 210px; padding: 78px 24px 28px; justify-content: flex-end; }
+        .stx-menu-brand-panel::before { top: -80px; font-size: 330px; }
+        .stx-menu-kicker { margin-bottom: 8px; font-size: 10px; }
+        .stx-menu-title { font-size: 36px; }
+        .stx-menu-content { padding: 26px 20px 42px; background: var(--stx-cream); }
+        .stx-menu-close { position: fixed; top: 15px; right: 14px; color: #fff; }
+        .stx-menu-nav a, .stx-menu-nav .stx-current-page { padding: 15px 2px; font-size: 21px; }
+      }
+      @media (max-width: 460px) {
+        .stx-brand { gap: 10px; }
+        .stx-brand-divider, .stx-section-name { display: none; }
+        .stx-logo-image { width: 175px; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .stx-site-menu, .stx-menu-open, .stx-menu-nav a { transition: none; }
+      }
+    </style>
+    <!-- STX_HEADER_CSS_END -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
 </head>
 <body>
+<!-- STX_HEADER_HTML_START -->
+    <header class="stx-site-header">
+      <div class="stx-header-inner">
+        <a class="stx-brand" href="../index.html" aria-label="St. Xavier Running home">
+          <img class="stx-logo-image"
+            src="../assets/stx_logo.svg"
+            alt="Saint Xavier High School">
+          <span class="stx-brand-divider" aria-hidden="true"></span>
+          <span class="stx-section-name">Running</span>
+        </a>
+        <button class="stx-menu-open" type="button" aria-controls="stx-site-menu" aria-expanded="false">
+          <span class="stx-menu-open-lines" aria-hidden="true"></span>
+          <span class="stx-visually-hidden">Open site menu</span>
+        </button>
+      </div>
+    </header>
+    <aside class="stx-site-menu" id="stx-site-menu" aria-hidden="true">
+      <div class="stx-menu-brand-panel">
+        <p class="stx-menu-kicker">St. Xavier Running</p>
+        <p class="stx-menu-title">Built on tradition.<em>Driven by the team.</em></p>
+      </div>
+      <div class="stx-menu-content">
+        <button class="stx-menu-close" type="button">
+          <span class="stx-visually-hidden">Close site menu</span>
+        </button>
+        <p class="stx-menu-label">Explore the site</p>
+        <nav aria-label="Primary"><ol class="stx-menu-nav"><li><a href="../index.html">Home</a></li><li><a href="../records.html">StX Records</a></li><li><a href="../xc_course_history.html">XC Course History</a></li><li><a href="../depth_chart.html">Depth Chart</a></li><li><a href="../athlete_comparison.html">Athlete Comparison</a></li><li><a href="../freshman.html">Freshman</a></li><li><a href="../two_mile_progression.html">Two Mile Progression</a></li><li><a href="../data_downloads.html">Data Downloads</a></li><li><a href="../coach_sheets/index.html">Pre-Race Sheet Creator</a></li></ol></nav>
+        <div class="stx-menu-utility">
+          <a class="stx-menu-feedback" href="../feedback.html">Share Feedback</a>
+          <a class="stx-school-link" href="https://www.saintx.com/">Visit saintx.com&nbsp; ↗</a>
+        </div>
+      </div>
+    </aside>
+    <!-- STX_HEADER_HTML_END -->
 
     <div class="topbar">
       <div class="titlewrap">
         <div class="meetname">Ed Willenbrink</div>
         
         <p class="subline muted">StX athlete profile • Showing results from 1900+</p>
+        
       </div>
       <div class="nav">
-        <a class='home-link' href='../index.html'>Home</a> <a class='records-link' href='../records.html'>StX Records</a> <a class='depth-link' href='../depth_chart.html'>Depth Chart</a> <a class='pre-race-link' href='../pre_race.html'>Pre-Race</a>
+        <a class='home-link' href='../index.html'>Home</a> <a class='records-link' href='../records.html'>StX Records</a> <a class='xc-courses-link' href='../xc_course_history.html'>XC Course History</a> <a class='depth-link' href='../depth_chart.html'>Depth Chart</a> <a class='comparison-link' href='../athlete_comparison.html'>Athlete Comparison</a> <a class='coach-link' href='../coach_sheets/index.html'>Pre-Race Sheet Creator</a> <a class='feedback-link' href='../feedback.html'>Feedback</a>
       </div>
     </div>
     <div class="card">
       <h2>Personal Records</h2>
-      <p class="muted">Best (lowest) of Indoor/Outdoor is highlighted.</p>
+      <p class="muted">Track shows Indoor + Outdoor. XC shows Outdoor only. Best (lowest) is highlighted where applicable.</p>
       <div class="tabs">
-        <button class="tabbtn" id="btn-pr" onclick="activateTab('pr')">PR (Indoor/Outdoor)</button>
-        <button class="tabbtn" id="btn-pryear" onclick="activateTab('pryear')">PR by Year</button>
+        <button class="tabbtn" id="btn-pr" onclick="activateTab('pr')">PR (Track + XC)</button>
+        <button class="tabbtn" id="btn-pryear" onclick="activateTab('pryear')">PR by Year (Track + XC)</button>
       </div>
-      <div class="tabpane" id="pane-pr">
-        <div class="table-wrap"><table><thead><tr><th>Event</th><th>Indoor</th><th>Outdoor</th></tr></thead><tbody><tr><td>1600 Meters</td><td></td><td class="bestpr">4:34.9</td></tr></tbody></table></div>
-      </div>
-      <div class="tabpane" id="pane-pryear">
-        <div class="table-wrap"><table><thead><tr><th>Year</th><th>Event</th><th>Indoor</th><th>Outdoor</th></tr></thead><tbody><tr><td>1979</td><td>1600 Meters</td><td></td><td class="bestpr">4:34.9</td></tr></tbody></table></div>
-      </div>
+      <div class="tabpane" id="pane-pr"><div class="table-wrap"><table><thead><tr><th>Event</th><th>Indoor</th><th>Outdoor</th></tr></thead><tbody><tr class='sporthdr'><td colspan='3'>TRACK</td></tr><tr><td colspan='3' class='muted'>No data.</td></tr><tr class='sporthdr'><td colspan='3'>XC</td></tr><tr><td colspan='3' class='muted'>No data.</td></tr></tbody></table></div></div>
+      <div class="tabpane" id="pane-pryear"><h3 style='margin:10px 0 0 0;'>TRACK</h3><p class='muted'>No Track yearly PR data.</p><h3 style='margin:18px 0 0 0;'>XC</h3><p class='muted'>No XC yearly PR data.</p></div>
     </div>
     <div class="card">
       <h2>All Results</h2>
@@ -106,15 +640,22 @@
           <input type="checkbox" id="graphToggle" onchange="toggleGraphs(this)" checked>
           Show Graph
         </label>
-        <span class="muted">(default on)</span>
+        <span style="margin-left: 15px; font-weight:700;">Graph Spacing:</span>
+        <label>
+          <input type="radio" name="athlete_graph_spacing" value="true_time" onchange="updateAthleteGraphSpacing()" checked>
+          True Time Series
+        </label>
+        <label>
+          <input type="radio" name="athlete_graph_spacing" value="sequential" onchange="updateAthleteGraphSpacing()">
+          Sequential
+        </label>
+        <span class="muted">(true time series is the default)</span>
       </div>
       <p class='muted'>No split data available for this athlete (in the selected years).</p>
-      <div id="athlete-results-wrap">
-        <h3 class='section-title'>1600 Meters / 1 Mile</h3><div><div class="table-wrap"><table><thead><tr><th>Year</th><th>Date</th><th>Meet</th><th>Loc</th><th>Event</th><th>Place</th><th>Result</th></tr></thead><tbody><tr><td>1979</td><td>1979-05-11</td><td><a href='../meets/348_stx.html'>Class AAA Louisville Regional</a></td><td>Outdoor</td><td>1600 Meters</td><td>2</td><td>4:34.9</td></tr></tbody></table></div></div><div class="chart-container"><canvas id="chart-1600_meters_1_mile"></canvas></div>
-      </div>
+      <div id="athlete-results-wrap"><h3 class='section-title'>1609 Meters</h3><div class="table-wrap"><table><thead><tr><th>Year</th><th>Date</th><th>Meet</th><th>Loc</th><th>Event</th><th>Group</th><th>Place</th><th>Result</th></tr></thead><tbody><tr><td>1996</td><td>1996-08-24</td><td><a href='../meets/1116_all.html'>1 Mile Alumni</a></td><td>Outdoor</td><td>1609 Meters</td><td>alumni</td><td>4</td><td>5:02.00</td></tr><tr><td>1993</td><td>1993-08-21</td><td><a href='../meets/1113_all.html'>1 Mile Alumni</a></td><td>Outdoor</td><td>1609 Meters</td><td>alumni</td><td>1</td><td>5:08.00</td></tr><tr><td>1992</td><td>1992-08-15</td><td><a href='../meets/1112_all.html'>1 Mile Alumni</a></td><td>Outdoor</td><td>1609 Meters</td><td>alumni</td><td>2</td><td>4:55.00</td></tr><tr><td>1986</td><td>1986-08-03</td><td><a href='../meets/1110_all.html'>1 Mile Alumni</a></td><td>Outdoor</td><td>1609 Meters</td><td>alumni</td><td>6</td><td>4:37.00</td></tr></tbody></table></div><div class="chart-container"><canvas id="chart-1609_meters"></canvas></div></div>
       <p class="muted">When splits are shown: fastest lap is green, slowest lap is red.</p>
     </div>
-    <div class="footer">Generated at <code>2026-02-05 19:46:58</code> from <code>C:\\Users\\Bob\\OneDrive\\StX_XC_Track\\data\\stx_track.db</code></div>
+    <div class="footer">Generated at <code>2026-09-18 21:33:10</code> from <code>C:\Users\Bob\OneDrive\StX_XC_Track_V2\data\stx_track.db</code></div>
     
     <script>
       function activateTab(tabId) {
@@ -122,23 +663,27 @@
         const panes = document.querySelectorAll('.tabpane');
         btns.forEach(b => b.classList.remove('active'));
         panes.forEach(p => p.classList.remove('active'));
+
         const btn = document.getElementById('btn-' + tabId);
         const pane = document.getElementById('pane-' + tabId);
         if (btn) btn.classList.add('active');
         if (pane) pane.classList.add('active');
       }
+
       function toggleSplits(cb) {
         const wrap = document.getElementById('athlete-results-wrap');
         if (!wrap) return;
         if (cb.checked) wrap.classList.add('show-splits');
         else wrap.classList.remove('show-splits');
       }
+
       function toggleGraphs(cb) {
         const wrap = document.getElementById('athlete-results-wrap');
         if (!wrap) return;
         if (cb.checked) wrap.classList.remove('hide-graphs');
         else wrap.classList.add('hide-graphs');
       }
+
       document.addEventListener('DOMContentLoaded', () => {
         activateTab('pr');
         const splitCb = document.getElementById('splitToggle');
@@ -151,14 +696,30 @@
     
     <script>
       const allChartData = {
-  "chart-1600_meters_1_mile": [
+  "chart-1609_meters": [
     {
-      "x": "1979-05-11",
-      "y": 274.9,
-      "meet": "<a href='../meets/348_stx.html'>Class AAA Louisville Regional</a>"
+      "x": "1986-08-03",
+      "y": 277.0,
+      "meet": "<a href='../meets/1110_all.html'>1 Mile Alumni</a>"
+    },
+    {
+      "x": "1992-08-15",
+      "y": 295.0,
+      "meet": "<a href='../meets/1112_all.html'>1 Mile Alumni</a>"
+    },
+    {
+      "x": "1993-08-21",
+      "y": 308.0,
+      "meet": "<a href='../meets/1113_all.html'>1 Mile Alumni</a>"
+    },
+    {
+      "x": "1996-08-24",
+      "y": 302.0,
+      "meet": "<a href='../meets/1116_all.html'>1 Mile Alumni</a>"
     }
   ]
 };
+      const athleteCharts = {};
 
       function formatChartTime(seconds) {
         if (seconds === null || seconds === undefined) return '';
@@ -167,16 +728,72 @@
         return `${mins}:${secs.padStart(5, '0')}`;
       }
 
+      function getAthleteGraphSpacing() {
+        const selected = document.querySelector(
+          'input[name="athlete_graph_spacing"]:checked'
+        );
+        return selected ? selected.value : 'true_time';
+      }
+
+      function athleteChartPoints(data, spacingMode) {
+        return data.map((point, index) => ({
+          ...point,
+          date: point.x,
+          x: spacingMode === 'sequential' ? index + 1 : point.x
+        }));
+      }
+
+      function applyAthleteGraphSpacing(chart, data, spacingMode) {
+        chart.data.datasets[0].data = athleteChartPoints(data, spacingMode);
+        if (spacingMode === 'sequential') {
+          chart.options.scales.x = {
+            type: 'linear',
+            min: 1,
+            title: { display: true, text: 'Race Sequence' },
+            ticks: {
+              precision: 0,
+              callback: function(value) {
+                return Number.isInteger(value) && value >= 1
+                  ? `Race ${value}`
+                  : '';
+              }
+            }
+          };
+        } else {
+          chart.options.scales.x = {
+            type: 'time',
+            time: {
+              unit: 'year',
+              tooltipFormat: 'MMM d, yyyy'
+            },
+            title: { display: true, text: 'Date' },
+            ticks: {
+              callback: function(value) {
+                return `${new Date(value).getFullYear()}`;
+              }
+            }
+          };
+        }
+      }
+
+      function updateAthleteGraphSpacing() {
+        const spacingMode = getAthleteGraphSpacing();
+        Object.values(athleteCharts).forEach(entry => {
+          applyAthleteGraphSpacing(entry.chart, entry.data, spacingMode);
+          entry.chart.update();
+        });
+      }
+
       function createChart(canvasId, data) {
         const canvas = document.getElementById(canvasId);
         if (!canvas || !data || data.length === 0) return;
 
-        new Chart(canvas, {
+        const chart = new Chart(canvas, {
           type: 'line',
           data: {
             datasets: [{
               label: 'Performance',
-              data: data,
+              data: athleteChartPoints(data, getAthleteGraphSpacing()),
               borderColor: '#0b5fff',
               backgroundColor: 'rgba(11, 95, 255, 0.1)',
               fill: false,
@@ -209,7 +826,7 @@
                     return meetName;
                   },
                   label: function(context) {
-                    const date = new Date(context.parsed.x);
+                    const date = new Date(context.raw.date);
                     const dateStr = date.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
                     return `Date: ${dateStr}\nTime: ${formatChartTime(context.parsed.y)}`;
                   }
@@ -218,6 +835,9 @@
             }
           }
         });
+        athleteCharts[canvasId] = { chart: chart, data: data };
+        applyAthleteGraphSpacing(chart, data, getAthleteGraphSpacing());
+        chart.update();
       }
 
       document.addEventListener('DOMContentLoaded', () => {
@@ -228,5 +848,35 @@
     </script>
     
     
+<!-- STX_HEADER_SCRIPT_START -->
+    <script>
+      (() => {
+        const menu = document.getElementById('stx-site-menu');
+        const openButton = document.querySelector('.stx-menu-open');
+        const closeButton = document.querySelector('.stx-menu-close');
+        if (!menu || !openButton || !closeButton) return;
+        let lastFocused = null;
+
+        function setMenu(open) {
+          menu.classList.toggle('is-open', open);
+          menu.setAttribute('aria-hidden', open ? 'false' : 'true');
+          openButton.setAttribute('aria-expanded', open ? 'true' : 'false');
+          document.documentElement.classList.toggle('stx-menu-is-open', open);
+          if (open) {
+            lastFocused = document.activeElement;
+            closeButton.focus();
+          } else if (lastFocused) {
+            lastFocused.focus();
+          }
+        }
+
+        openButton.addEventListener('click', () => setMenu(true));
+        closeButton.addEventListener('click', () => setMenu(false));
+        document.addEventListener('keydown', event => {
+          if (event.key === 'Escape' && menu.classList.contains('is-open')) setMenu(false);
+        });
+      })();
+    </script>
+    <!-- STX_HEADER_SCRIPT_END -->
 </body>
 </html>
