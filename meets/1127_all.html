@@ -1,0 +1,695 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2026-10-24 | Region Championship</title>
+  
+    <style>
+      body { font-family: Arial, sans-serif; margin: 24px; }
+      a { color: #0b5fff; text-decoration: none; }
+      a:hover { text-decoration: underline; }
+      .muted { color: #666; }
+      .topbar { display:flex; justify-content:space-between; align-items:flex-start; gap:16px; margin-bottom: 8px; }
+      .titlewrap { min-width: 240px; }
+      .date { font-size: 18px; font-weight: 700; line-height: 1.1; margin: 0 0 6px 0; white-space: normal; }
+      .meetname { font-size: 28px; font-weight: 800; line-height: 1.1; margin: 0 0 6px 0; white-space: normal; }
+      .subline { margin: 0; }
+      .athlete-profile-links { margin: 4px 0 8px 0; font-size: 14px; font-weight: 700; }
+      .athlete-profile-links a { margin-right: 15px; }
+      .meet-links { margin: 4px 0 10px 0; font-size: 14px; font-weight: 700; }
+      .meet-links a { margin-right: 15px; }
+      .nav { text-align: right; white-space: nowrap; font-size: 14px; }
+      .nav a.home-link, .nav span.home-link { font-size: 18px; font-weight: 800; }
+      .nav a.records-link, .nav span.records-link,
+      .nav a.depth-link, .nav span.depth-link,
+      .nav a.pre-race-link, .nav span.pre-race-link,
+      .nav a.comparison-link, .nav span.comparison-link {
+        font-size: 16px;
+        font-weight: 700;
+        margin-left: 12px;
+      }
+      .nav a.feedback-link, .nav span.feedback-link {
+        display:inline-block;
+        margin-left:14px;
+        border:2px solid #d39b00;
+        border-radius:999px;
+        padding:6px 12px;
+        background:#f4c542;
+        color:#172554;
+        font-size:14px;
+        font-weight:900;
+        line-height:1;
+        box-shadow:0 2px 7px rgba(15, 23, 42, 0.13);
+      }
+      .nav a.feedback-link:hover {
+        background:#ffd963;
+        text-decoration:none;
+        transform:translateY(-1px);
+      }
+      .nav span { color: #333; }
+      .card { border:1px solid #e6e6e6; border-radius:10px; padding:16px; margin:14px 0; }
+      .twocol { display:flex; gap:16px; align-items:flex-start; }
+      .col { flex: 1 1 0; min-width: 320px; }
+      @media (max-width: 900px) { .twocol { flex-direction: column; } }
+      .table-wrap { overflow-x: auto; max-width: 100%; }
+      table { border-collapse: collapse; width: auto; table-layout: auto; margin-top: 8px; }
+      th, td { border: 1px solid #ddd; padding: 6px 8px; font-size: 14px; white-space: nowrap; }
+      th { background: #f4f4f4; position: sticky; top: 0; text-align: left; }
+      tr:nth-child(even) { background: #fafafa; }
+      .fastest { background-color: #D4EDDA; color: #155724; font-weight: 600; }
+      .slowest { background-color: #F8D7DA; color: #721C24; font-weight: 600; }
+      .pr { background-color: #FFDAB9; color: #A0522D; font-weight: 700; }
+      .bestpr { background-color: #D4EDDA; color: #155724; font-weight: 700; }
+      .stx-team-highlight { background-color: #fcf8e3; }
+      .warning-big { margin: 6px 0 10px 0; font-size: 28px; font-weight: 900; color: #b00020; letter-spacing: 0.5px; }
+      .footer { margin-top: 24px; color: #777; font-size: 12px; }
+      code { background:#f6f6f6; padding:2px 6px; border-radius:6px; }
+      .filterbar { display:flex; align-items:center; gap:14px; margin: 10px 0 0 0; flex-wrap: wrap; }
+      .filterbar label { cursor:pointer; }
+      .pill { display:inline-block; padding:4px 10px; border-radius:999px; background:#f2f2f2; font-size:12px; }
+      .splits-col { display: none; }
+      .show-splits .splits-col { display: table-cell; }
+      .tabs { display:flex; gap:8px; margin: 8px 0 10px 0; flex-wrap: wrap; }
+      .tabbtn { border:1px solid #ddd; background:#fff; border-radius: 999px; padding:6px 10px; font-size: 13px; cursor:pointer; }
+      .tabbtn.active { background:#f2f2f2; font-weight: 700; }
+      .tabpane { display:none; }
+      .tabpane.active { display:block; }
+      .section-title { margin: 24px 0 0 0; font-size: 18px; font-weight: 800; border-top: 1px solid #eee; padding-top: 16px; }
+      .xc-history-heading { margin-top: 42px; border-top: 4px solid #222; padding-top: 24px; }
+      .xc-history-heading h1 { margin: 0 0 8px 0; font-size: 28px; }
+      .athletes-grid { display:flex; gap: 16px; align-items:flex-start; flex-wrap: wrap; }
+      .athletes-grid .ath-col { flex: 1 1 0; min-width: 280px; }
+      .athlete-class-group {
+        border:1px solid #dbe3ee;
+        border-radius:10px;
+        overflow:hidden;
+        margin:0 0 14px 0;
+        background:#fff;
+        box-shadow:0 3px 10px rgba(15, 23, 42, 0.07);
+      }
+      .athlete-class-header {
+        display:flex;
+        align-items:baseline;
+        gap:7px;
+        margin:0;
+        padding:9px 13px;
+        color:#fff;
+        background:linear-gradient(100deg, #172554, #1d4ed8);
+        border-left:7px solid #f4c542;
+        font-size:15px;
+        letter-spacing:0.02em;
+      }
+      .athlete-class-header strong { font-size:21px; }
+      .athlete-class-header.alumni {
+        background:linear-gradient(100deg, #334155, #64748b);
+      }
+      .athlete-class-header.missing {
+        background:linear-gradient(100deg, #6b4f1d, #a16207);
+      }
+      .athlete-class-group ul {
+        margin:0;
+        padding:12px 18px 13px 38px;
+        line-height:1.45;
+      }
+      .athlete-index-table { width:100%; }
+      .athlete-index-table th { cursor:pointer; user-select:none; }
+      .athlete-index-table th:hover { background:#e9eef6; }
+      .athlete-index-table th .sort-indicator { margin-left:5px; color:#64748b; font-size:11px; }
+      .athlete-index-table td:nth-child(1),
+      .athlete-index-table td:nth-child(3) { text-align:right; }
+      .athlete-index-table .no-pr { color:#999; }
+      .athlete-table-heading { display:flex; justify-content:space-between; align-items:baseline; gap:10px; margin:0 0 8px 0; }
+      .athlete-table-heading h3 { margin:0; }
+      .athlete-table-count { color:#64748b; font-size:12px; font-weight:700; }
+      .home-grid {
+        display:grid;
+        grid-template-columns:repeat(3, minmax(0, 1fr));
+        gap:16px;
+        align-items:start;
+      }
+      .home-column { min-width:0; }
+      .home-column > .card { margin-top:0; }
+      .home-column-heading {
+        display:flex; align-items:baseline; justify-content:space-between;
+        gap:10px; margin:0 0 10px 0;
+      }
+      .home-column-heading h2, .home-column-heading h3 { margin:0; }
+      .home-column-heading-meta {
+        display:flex; align-items:center; justify-content:flex-end;
+        gap:8px; flex-wrap:wrap;
+      }
+      .athlete-name-format-toggle {
+        border:1px solid #93a4ba; border-radius:999px; background:#f8fafc;
+        color:#334155; padding:5px 9px; cursor:pointer;
+        font:700 11px Arial, sans-serif;
+      }
+      .athlete-name-format-toggle:hover { background:#eaf2ff; border-color:#6f91c3; }
+      .athlete-card-search {
+        box-sizing:border-box; width:100%; margin:0;
+        border:1px solid #cbd5e1; border-radius:8px; padding:9px 10px;
+        background:#fff; font:14px Arial, sans-serif;
+      }
+      .athlete-card-controls {
+        display:grid; grid-template-columns:minmax(0, 1fr) auto;
+        gap:8px; align-items:center; margin:0 0 10px 0;
+      }
+      .athlete-sort-control {
+        display:flex; align-items:center; gap:6px;
+        color:#475569; font-size:12px; font-weight:800;
+      }
+      .athlete-sort-control select {
+        border:1px solid #cbd5e1; border-radius:8px; background:#fff;
+        padding:8px 7px; font:13px Arial, sans-serif;
+      }
+      .athlete-index-cards {
+        display:flex; flex-direction:column; gap:7px;
+      }
+      .athlete-index-card {
+        display:flex; align-items:center; gap:10px; min-width:0;
+        border:1px solid #dbe3ee; border-radius:9px; padding:8px 10px;
+        background:#fff; color:#172554;
+        box-shadow:0 2px 7px rgba(15, 23, 42, 0.06);
+      }
+      .athlete-index-card:hover {
+        border-color:#93b4e8; background:#f8fbff; text-decoration:none;
+        transform:translateY(-1px);
+      }
+      .athlete-index-card[hidden] { display:none !important; }
+      .athlete-year-bubble {
+        display:inline-flex; align-items:center; justify-content:center;
+        flex:0 0 50px; min-height:28px; border-radius:999px;
+        color:#fff; font-size:12px; font-weight:900; letter-spacing:.02em;
+      }
+      .athlete-year-tone-0 { background:#1d4ed8; }
+      .athlete-year-tone-1 { background:#0f766e; }
+      .athlete-year-tone-2 { background:#7e22ce; }
+      .athlete-year-tone-3 { background:#b45309; }
+      .athlete-year-tone-4 { background:#be123c; }
+      .athlete-year-tone-5 { background:#334155; }
+      .athlete-grade-senior { background:#15803d; }
+      .athlete-grade-junior { background:#f4c542; color:#172554; }
+      .athlete-grade-sophomore { background:#2563eb; }
+      .athlete-grade-freshman { background:#dc2626; }
+      .athlete-year-missing { background:#78716c; }
+      .athlete-index-card-copy {
+        display:flex; flex-direction:column; gap:2px; min-width:0;
+      }
+      .athlete-index-card-copy strong {
+        overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+        color:#0b5fff; font-size:14px;
+      }
+      .athlete-index-card-copy small { color:#64748b; font-size:11px; }
+      .athlete-index-card-copy small.no-pr { color:#9ca3af; }
+      .athlete-missing-block {
+        border-top:1px solid #e5e7eb; margin-top:18px; padding-top:14px;
+      }
+      @media (max-width:900px) {
+        .home-grid { grid-template-columns:1fr; }
+      }
+      .rankcell { font-weight: 800; }
+      .chart-container { position: relative; height: 320px; width: 100%; max-width: 900px; margin: 20px 0 0 0; }
+      .hide-graphs .chart-container { display: none; }
+      /* Meet page filter: hide non-StX rows when toggled */
+      body.stx-only .non-stx-row { display: none; }
+      /* On athlete pages, we still show non-StX history for allow-listed athletes */
+      .non-stx-row { opacity: 0.80; }
+      /* PR section header rows (Track / XC) */
+      .sporthdr { background: #efefef; font-weight: 900; }
+      .dimmed-pr { color: #999; font-weight: normal; }
+      .pr-parade { border: 2px solid #f0a45d; background: #fff8f0; padding: 9px 12px; }
+      .pr-parade h2 { display:inline; margin:0 8px 0 0; color:#8a431d; font-size:18px; }
+      .pr-parade-list { display:inline; line-height:1.8; }
+      .pr-parade-entry { white-space:nowrap; }
+      .pr-parade .pr-time { color:#A0522D; font-weight:800; }
+      .pr-parade-first { border-color:#d5a928; background:#fffbea; }
+      .pr-parade-first h2 { color:#765b00; }
+      .xc-team-score-heading { display:flex; align-items:center; gap:16px; flex-wrap:wrap; margin-top:24px; }
+      .xc-team-score-heading h3 { margin:0; }
+      .xc-team-extra-row { display:none; }
+      body.show-all-xc-teams .xc-team-extra-row { display:table-row; }
+      .xc-results-table th { text-align:center; }
+      .xc-result-date {
+        display:block;
+        margin-top:2px;
+        color:#666;
+        font-size:11px;
+        font-weight:normal;
+      }
+      .xc-results-table th.xc-result-year-0 { background:#dce9ff; }
+      .xc-results-table td.xc-result-year-0 { background:#f2f7ff; }
+      .xc-results-table th.xc-result-year-1 { background:#f8e7b2; }
+      .xc-results-table td.xc-result-year-1 { background:#fff9e8; }
+      .xc-results-table th.xc-result-year-2 { background:#d6f0e5; }
+      .xc-results-table td.xc-result-year-2 { background:#f0faf6; }
+      .xc-results-table th.xc-result-year-3 { background:#eadcf7; }
+      .xc-results-table td.xc-result-year-3 { background:#f8f2fc; }
+      .xc-results-table td.xc-result-cell.pr {
+        background:#FFDAB9;
+        color:#A0522D;
+        font-weight:700;
+      }
+      .xc-results-table td.xc-result-cell.bestpr {
+        background:#D4EDDA;
+        color:#155724;
+        font-weight:700;
+      }
+      .meet-list { list-style:none; padding:0; margin:12px 0 0 0; }
+      .meet-year-group {
+        display:grid;
+        grid-template-columns:42px minmax(0, 1fr);
+        gap:10px;
+        padding:0;
+        margin:0 0 16px 0;
+      }
+      .meet-year-bar {
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        min-height:76px;
+        border-radius:10px;
+        color:#fff;
+        font-size:13px;
+        font-weight:900;
+        letter-spacing:0.12em;
+        box-shadow:0 2px 8px rgba(15, 23, 42, 0.12);
+      }
+      .meet-year-bar span {
+        writing-mode:vertical-rl;
+        transform:rotate(180deg);
+      }
+      .meet-year-tone-0 { background:#172554; }
+      .meet-year-tone-1 { background:#9a6700; }
+      .meet-year-tone-2 { background:#0f766e; }
+      .meet-year-tone-3 { background:#6b21a8; }
+      .meet-year-items { list-style:none; padding:0; margin:0; }
+      .meet-list .meet-item {
+        display:grid;
+        grid-template-columns:34px minmax(0, 1fr);
+        min-height:76px;
+        padding:0;
+        margin:0 0 8px 0;
+        border:1px solid #dbe2ea;
+        border-radius:10px;
+        overflow:hidden;
+        background:#fff;
+        box-shadow:0 2px 8px rgba(15, 23, 42, 0.07);
+      }
+      .meet-rail {
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        color:#fff;
+        font-size:12px;
+        font-weight:900;
+        letter-spacing:0.08em;
+        text-transform:uppercase;
+      }
+      .meet-rail span {
+        writing-mode:vertical-rl;
+        transform:rotate(180deg);
+      }
+      .meet-sport-track { background:#1d4ed8; }
+      .meet-sport-xc { background:#15803d; }
+      .meet-main {
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        gap:3px;
+        min-width:0;
+        padding:11px 14px;
+      }
+      .meet-main:hover { background:#f8fafc; text-decoration:none; }
+      .meet-date { color:#64748b; font-size:12px; font-weight:800; }
+      .meet-title { color:#0b5fff; font-size:15px; font-weight:800; line-height:1.25; }
+      .meet-location { color:#475569; font-size:12px; }
+      .pdf-export-button {
+        border:1px solid #12543f; border-radius:8px; padding:7px 11px;
+        background:#12543f; color:#fff; cursor:pointer;
+        font:700 13px Arial, sans-serif;
+      }
+      .pdf-export-button:hover { background:#0a3b2b; }
+      @page { size: Letter landscape; margin: 0.35in; }
+      @media print {
+        body { margin:0; color:#000; print-color-adjust:exact; -webkit-print-color-adjust:exact; }
+        .stx-site-header, .stx-site-menu, .nav, .filterbar,
+        .meet-links, .footer { display:none !important; }
+        .topbar { margin-bottom:8px; }
+        .meetname { font-size:24px; }
+        .card { break-inside:avoid; border-color:#aaa; margin:8px 0; padding:10px; }
+        .pr-parade { break-inside:auto; }
+        .xc-history-heading { break-before:page; margin-top:0; padding-top:0; border-top:0; }
+        .table-wrap { overflow:visible; }
+        table { width:100%; }
+        th, td { padding:4px 5px; font-size:10px; }
+        th { position:static; }
+        .xc-alumni-section { display:none !important; }
+        a { color:inherit; text-decoration:none; }
+      }
+    </style>
+    
+  <!-- STX_HEADER_CSS_START -->
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,600;9..40,700&family=Libre+Caslon+Text:ital,wght@0,400;1,400&display=swap');
+
+      :root {
+        --stx-green: #12543f;
+        --stx-dark-green: #062d20;
+        --stx-gold: #f3ba29;
+        --stx-cream: #f6f9f5;
+        --stx-ink: #17352b;
+      }
+      html.stx-menu-is-open, html.stx-menu-is-open body { overflow: hidden; }
+      .stx-site-header, .stx-site-menu { box-sizing: border-box; font-family: 'DM Sans', Arial, sans-serif; }
+      .stx-site-header *, .stx-site-menu * { box-sizing: border-box; }
+      .stx-site-header {
+        position: relative;
+        z-index: 9000;
+        width: 100vw;
+        max-width: 100vw;
+        margin: -24px -24px 30px;
+        background: var(--stx-dark-green);
+        color: #fff;
+      }
+      .stx-header-inner {
+        min-height: 94px;
+        padding: 14px clamp(22px, 5vw, 82px);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+      }
+      .stx-brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 17px;
+        color: #fff !important;
+        text-decoration: none !important;
+      }
+      .stx-logo-image { display: block; width: clamp(190px, 22vw, 250px); height: auto; }
+      .stx-brand-divider { width: 1px; height: 42px; background: rgba(255,255,255,.38); }
+      .stx-section-name {
+        max-width: 90px;
+        color: var(--stx-gold);
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: .14em;
+        line-height: 1.25;
+        text-transform: uppercase;
+      }
+      .stx-menu-open, .stx-menu-close {
+        border: 0;
+        cursor: pointer;
+        display: inline-grid;
+        place-items: center;
+        flex: 0 0 auto;
+      }
+      .stx-menu-open {
+        width: 55px;
+        height: 55px;
+        padding: 0;
+        border-radius: 50%;
+        background: var(--stx-gold);
+        color: var(--stx-dark-green);
+        transition: background .25s ease, transform .25s ease;
+      }
+      .stx-menu-open:hover, .stx-menu-open:focus-visible { background: #fff; transform: scale(1.04); }
+      .stx-menu-open-lines, .stx-menu-open-lines::before, .stx-menu-open-lines::after {
+        display: block;
+        width: 20px;
+        height: 2px;
+        background: currentColor;
+        border-radius: 4px;
+      }
+      .stx-menu-open-lines { position: relative; }
+      .stx-menu-open-lines::before, .stx-menu-open-lines::after { content: ''; position: absolute; left: 0; }
+      .stx-menu-open-lines::before { top: -6px; }
+      .stx-menu-open-lines::after { top: 6px; }
+      .stx-visually-hidden {
+        position: absolute !important;
+        width: 1px !important;
+        height: 1px !important;
+        padding: 0 !important;
+        margin: -1px !important;
+        overflow: hidden !important;
+        clip: rect(0, 0, 0, 0) !important;
+        white-space: nowrap !important;
+        border: 0 !important;
+      }
+      .stx-site-menu {
+        position: fixed;
+        z-index: 10000;
+        inset: 0;
+        display: grid;
+        grid-template-columns: minmax(320px, 42%) 1fr;
+        background: var(--stx-cream);
+        color: var(--stx-ink);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateX(100%);
+        transition: transform .38s ease, opacity .3s ease, visibility 0s linear .38s;
+      }
+      .stx-site-menu.is-open {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(0);
+        transition: transform .38s ease, opacity .3s ease;
+      }
+      .stx-menu-brand-panel {
+        position: relative;
+        overflow: hidden;
+        padding: clamp(40px, 6vw, 88px);
+        background: var(--stx-green);
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+      }
+      .stx-menu-brand-panel::before {
+        content: 'X';
+        position: absolute;
+        top: -120px;
+        left: -40px;
+        color: rgba(255,255,255,.055);
+        font: 700 540px/1 Georgia, serif;
+        transform: skew(-5deg);
+      }
+      .stx-menu-kicker { position: relative; margin: 0 0 18px; color: var(--stx-gold); font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
+      .stx-menu-title { position: relative; max-width: 520px; margin: 0; font: 400 clamp(39px, 5vw, 72px)/1.02 'Libre Caslon Text', Georgia, serif; }
+      .stx-menu-title em { display: block; color: var(--stx-gold); font-weight: 400; }
+      .stx-menu-content {
+        position: relative;
+        min-width: 0;
+        padding: clamp(88px, 11vh, 130px) clamp(36px, 8vw, 120px) 54px;
+        overflow-y: auto;
+      }
+      .stx-menu-close {
+        position: absolute;
+        top: 36px;
+        right: 42px;
+        width: 48px;
+        height: 48px;
+        padding: 0;
+        background: transparent;
+        color: var(--stx-dark-green);
+      }
+      .stx-menu-close::before, .stx-menu-close::after {
+        content: '';
+        position: absolute;
+        width: 28px;
+        height: 2px;
+        background: currentColor;
+      }
+      .stx-menu-close::before { transform: rotate(45deg); }
+      .stx-menu-close::after { transform: rotate(-45deg); }
+      .stx-menu-close:hover, .stx-menu-close:focus-visible { color: #8c6300; }
+      .stx-menu-label { margin: 0 0 24px; color: #64756f; font-size: 12px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; }
+      .stx-menu-nav { margin: 0; padding: 0; list-style: none; counter-reset: stx-nav; }
+      .stx-menu-nav li { counter-increment: stx-nav; border-top: 1px solid #ccd6d1; }
+      .stx-menu-nav li:last-child { border-bottom: 1px solid #ccd6d1; }
+      .stx-menu-nav a, .stx-menu-nav .stx-current-page {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 22px;
+        padding: 17px 6px;
+        color: var(--stx-dark-green);
+        font: 400 clamp(22px, 2.3vw, 34px)/1.15 'Libre Caslon Text', Georgia, serif;
+        text-decoration: none;
+        transition: color .2s ease, padding-left .2s ease;
+      }
+      .stx-menu-nav a::before, .stx-menu-nav .stx-current-page::before {
+        content: '0' counter(stx-nav);
+        width: 25px;
+        color: #7c9189;
+        font: 700 10px/1 'DM Sans', Arial, sans-serif;
+        letter-spacing: .1em;
+      }
+      .stx-menu-nav a::after { content: '\2192'; margin-left: auto; color: var(--stx-gold); font-family: Arial, sans-serif; }
+      .stx-menu-nav a:hover, .stx-menu-nav a:focus-visible { color: #8c6300; padding-left: 14px; }
+      .stx-menu-nav .stx-current-page { color: #8c6300; font-style: italic; }
+      .stx-menu-utility { margin-top: 34px; display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+      .stx-menu-feedback {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        padding: 10px 22px;
+        border: 1px solid var(--stx-gold);
+        border-radius: 4px;
+        background: var(--stx-gold);
+        color: var(--stx-dark-green) !important;
+        font-weight: 700;
+        text-decoration: none !important;
+      }
+      .stx-menu-feedback:hover, .stx-menu-feedback:focus-visible { background: transparent; }
+      .stx-school-link { color: var(--stx-dark-green) !important; font-size: 13px; font-weight: 700; }
+      @media (max-width: 780px) {
+        .stx-site-header { margin-bottom: 22px; }
+        .stx-header-inner { min-height: 68px; padding: 9px 16px; }
+        .stx-logo-image { width: 190px; }
+        .stx-brand-divider { height: 32px; }
+        .stx-section-name { font-size: 9px; }
+        .stx-menu-open { width: 42px; height: 42px; }
+        .stx-site-menu { display: block; overflow-y: auto; background: var(--stx-green); }
+        .stx-menu-brand-panel { min-height: 210px; padding: 78px 24px 28px; justify-content: flex-end; }
+        .stx-menu-brand-panel::before { top: -80px; font-size: 330px; }
+        .stx-menu-kicker { margin-bottom: 8px; font-size: 10px; }
+        .stx-menu-title { font-size: 36px; }
+        .stx-menu-content { padding: 26px 20px 42px; background: var(--stx-cream); }
+        .stx-menu-close { position: fixed; top: 15px; right: 14px; color: #fff; }
+        .stx-menu-nav a, .stx-menu-nav .stx-current-page { padding: 15px 2px; font-size: 21px; }
+      }
+      @media (max-width: 460px) {
+        .stx-brand { gap: 10px; }
+        .stx-brand-divider, .stx-section-name { display: none; }
+        .stx-logo-image { width: 175px; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .stx-site-menu, .stx-menu-open, .stx-menu-nav a { transition: none; }
+      }
+    </style>
+    <!-- STX_HEADER_CSS_END -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+</head>
+<body>
+<!-- STX_HEADER_HTML_START -->
+    <header class="stx-site-header">
+      <div class="stx-header-inner">
+        <a class="stx-brand" href="../index.html" aria-label="St. Xavier Running home">
+          <img class="stx-logo-image"
+            src="../assets/stx_logo.svg"
+            alt="Saint Xavier High School">
+          <span class="stx-brand-divider" aria-hidden="true"></span>
+          <span class="stx-section-name">Running</span>
+        </a>
+        <button class="stx-menu-open" type="button" aria-controls="stx-site-menu" aria-expanded="false">
+          <span class="stx-menu-open-lines" aria-hidden="true"></span>
+          <span class="stx-visually-hidden">Open site menu</span>
+        </button>
+      </div>
+    </header>
+    <aside class="stx-site-menu" id="stx-site-menu" aria-hidden="true">
+      <div class="stx-menu-brand-panel">
+        <p class="stx-menu-kicker">St. Xavier Running</p>
+        <p class="stx-menu-title">Built on tradition.<em>Driven by the team.</em></p>
+      </div>
+      <div class="stx-menu-content">
+        <button class="stx-menu-close" type="button">
+          <span class="stx-visually-hidden">Close site menu</span>
+        </button>
+        <p class="stx-menu-label">Explore the site</p>
+        <nav aria-label="Primary"><ol class="stx-menu-nav"><li><a href="../index.html">Home</a></li><li><a href="../records.html">StX Records</a></li><li><a href="../xc_course_history.html">XC Course History</a></li><li><a href="../depth_chart.html">Depth Chart</a></li><li><a href="../athlete_comparison.html">Athlete Comparison</a></li><li><a href="../freshman.html">Freshman</a></li><li><a href="../two_mile_progression.html">Two Mile Progression</a></li><li><a href="../data_downloads.html">Data Downloads</a></li><li><a href="../coach_sheets/index.html">Pre-Race Sheet Creator</a></li></ol></nav>
+        <div class="stx-menu-utility">
+          <a class="stx-menu-feedback" href="../feedback.html">Share Feedback</a>
+          <a class="stx-school-link" href="https://www.saintx.com/">Visit saintx.com&nbsp; ↗</a>
+        </div>
+      </div>
+    </aside>
+    <!-- STX_HEADER_HTML_END -->
+
+    <div class="topbar">
+      <div class="titlewrap">
+        <div class="date">2026-10-24</div>
+        <div class="meetname">Region Championship</div>
+        <div class="meet-links"><a href="https://www.milesplit.com/meets/774043/results" target="_blank">Milesplit Meet Link</a> <a class="coach-sheet-link" href="../coach_sheets/26.html">&#128203; Pre-Race Sheet Creator</a></div>
+        
+      </div>
+      <div class="nav">
+        <a class='home-link' href='../index.html'>Home</a> <a class='records-link' href='../records.html'>StX Records</a> <a class='xc-courses-link' href='../xc_course_history.html'>XC Course History</a> <a class='depth-link' href='../depth_chart.html'>Depth Chart</a> <a class='comparison-link' href='../athlete_comparison.html'>Athlete Comparison</a> <a class='coach-link' href='../coach_sheets/index.html'>Pre-Race Sheet Creator</a> <a class='feedback-link' href='../feedback.html'>Feedback</a>
+      </div>
+    </div>
+    
+        <div class="filterbar" style="margin: 4px 0 10px 0;">
+          <label>
+            <input type="checkbox" id="stxOnlyToggle" onchange="toggleStxOnly(this)" checked>
+            StX Athletes Only
+          </label>
+          <label>
+            <input type="checkbox" id="showAllTeamsToggle" onchange="toggleAllTeams(this)">
+            Show all teams
+          </label>
+          <button type="button" class="pdf-export-button" onclick="window.print()">
+            Print / Save PDF
+          </button>
+        </div>
+        <script>
+          function toggleStxOnly(checkbox) {
+            if (checkbox.checked) {
+              document.body.classList.add('stx-only');
+            } else {
+              document.body.classList.remove('stx-only');
+            }
+          }
+          function toggleAllTeams(checkbox) {
+            document.body.classList.toggle('show-all-xc-teams', checkbox.checked);
+          }
+          document.addEventListener('DOMContentLoaded', () => {
+            const checkbox = document.getElementById('stxOnlyToggle');
+            if (checkbox) {
+              toggleStxOnly(checkbox);
+            }
+            const showAllTeams = document.getElementById('showAllTeamsToggle');
+            if (showAllTeams) {
+              toggleAllTeams(showAllTeams);
+            }
+          });
+        </script>
+        
+        <div class='card pr-parade '>
+          <h2>🎉 PR Parade:</h2>
+          <div class='pr-parade-list'><span class='pr-parade-entry'><a href='../athletes/matthew_frick.html'>Frick, Matthew</a>, <span class='pr-time'>14:55.34</span></span>; <span class='pr-parade-entry'><a href='../athletes/ian_obryan.html'>O'Bryan, Ian</a>, <span class='pr-time'>15:48.16</span></span>; <span class='pr-parade-entry'><a href='../athletes/nolan_crider.html'>Crider, Nolan</a>, <span class='pr-time'>16:10.49</span></span>; <span class='pr-parade-entry'><a href='../athletes/matthew_meirose.html'>Meirose, Matthew</a>, <span class='pr-time'>16:30.91</span></span>; <span class='pr-parade-entry'><a href='../athletes/xavier_mudd.html'>Mudd, Xavier</a>, <span class='pr-time'>17:02.78</span></span></div>
+        </div>
+        <section class='xc-print-current'><p class='subline muted'>October 24, 2026</p><div class='card'><h2>Boys 5k Run Varsity (5K)</h2><div class='xc-team-score-heading'><h3>Team Scores</h3></div><div class='table-wrap xc-team-table'><table><thead><tr><th>Place</th><th>Name</th><th>Score</th><th>Average</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>(6)</th><th>(7)</th><th>1–5</th></tr></thead><tbody><tr><td>1</td><td>Trinity (Louisville)</td><td>25</td><td>15:24</td><td>2</td><td>3</td><td>4</td><td>7</td><td>9</td><td>13</td><td>16</td><td>0:36</td></tr><tr class='stx-team-highlight'><td>2</td><td>St. Xavier</td><td>69</td><td>16:00</td><td>1</td><td>10</td><td>17</td><td>20</td><td>21</td><td>28</td><td>29</td><td>1:38</td></tr><tr><td>3</td><td>Dupont Manual</td><td>97</td><td>16:25</td><td>6</td><td>14</td><td>19</td><td>26</td><td>32</td><td>33</td><td></td><td>1:42</td></tr><tr class='xc-team-extra-row'><td>4</td><td>Eastern</td><td>113</td><td>16:40</td><td>5</td><td>22</td><td>24</td><td>25</td><td>37</td><td>43</td><td>44</td><td>2:16</td></tr><tr class='xc-team-extra-row'><td>5</td><td>Ballard</td><td>119</td><td>16:43</td><td>11</td><td>12</td><td>23</td><td>35</td><td>38</td><td>42</td><td>47</td><td>1:49</td></tr><tr class='xc-team-extra-row'><td>6</td><td>Male</td><td>127</td><td>16:49</td><td>8</td><td>15</td><td>27</td><td>36</td><td>41</td><td>45</td><td>46</td><td>2:11</td></tr><tr class='xc-team-extra-row'><td>7</td><td>Atherton</td><td>152</td><td>17:11</td><td>18</td><td>30</td><td>31</td><td>34</td><td>39</td><td>40</td><td></td><td>1:24</td></tr><tr class='xc-team-extra-row'><td>8</td><td>Seneca</td><td>250</td><td>26:36</td><td>48</td><td>49</td><td>50</td><td>51</td><td>52</td><td></td><td></td><td>4:56</td></tr></tbody></table></div><h3 style='margin-top:24px'>Individual Results</h3><div class='table-wrap'><table class='xc-results-table'><thead><tr><th>Place</th><th>Athlete</th><th>Grade</th><th class='xc-result-year-0'>2026<span class='xc-result-date'>10/24</span></th><th class='xc-result-year-1'>2025<span class='xc-result-date'>10/25</span></th><th class='xc-result-year-2'>2024<span class='xc-result-date'>10/26</span></th><th class='xc-result-year-3'>2023<span class='xc-result-date'>10/21</span></th><th>PR</th><th>Pace</th></tr></thead><tbody><tr><td>1</td><td><a href='../athletes/matthew_frick.html'>Frick, Matthew</a></td><td>12</td><td class='xc-result-cell xc-result-year-0 pr' title='Personal record'>14:55.34</td><td class='xc-result-cell xc-result-year-1'>15:35.28</td><td class='xc-result-cell xc-result-year-2'>16:33.69</td><td class='xc-result-cell xc-result-year-3'></td><td>15:03.80</td><td>4:48</td></tr><tr class='non-stx-row'><td>2</td><td>Stewart, Christian</td><td></td><td class='xc-result-cell xc-result-year-0'>15:07.88</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>4:52</td></tr><tr class='non-stx-row'><td>3</td><td>Taylor, Ayden</td><td></td><td class='xc-result-cell xc-result-year-0'>15:15.29</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>4:55</td></tr><tr class='non-stx-row'><td>4</td><td>Cebe, Ben</td><td></td><td class='xc-result-cell xc-result-year-0'>15:17.35</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>4:55</td></tr><tr class='non-stx-row'><td>5</td><td>Ellis, Mason</td><td></td><td class='xc-result-cell xc-result-year-0'>15:23.12</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>4:57</td></tr><tr class='non-stx-row'><td>6</td><td>Zausch, Oliver</td><td></td><td class='xc-result-cell xc-result-year-0'>15:33.64</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:01</td></tr><tr class='non-stx-row'><td>7</td><td>Bamba, Noah</td><td></td><td class='xc-result-cell xc-result-year-0'>15:33.89</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:01</td></tr><tr class='non-stx-row'><td>8</td><td>Filippazzo, Brady</td><td></td><td class='xc-result-cell xc-result-year-0'>15:42.35</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:03</td></tr><tr class='non-stx-row'><td>9</td><td>Everett, Hudson</td><td></td><td class='xc-result-cell xc-result-year-0'>15:44.18</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:04</td></tr><tr><td>10</td><td><a href='../athletes/ian_obryan.html'>O'Bryan, Ian</a></td><td>11</td><td class='xc-result-cell xc-result-year-0 pr' title='Personal record'>15:48.16</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td>16:24.64</td><td>5:05</td></tr><tr class='non-stx-row'><td>11</td><td>Conley, Scout</td><td></td><td class='xc-result-cell xc-result-year-0'>15:50.73</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:06</td></tr><tr class='non-stx-row'><td>12</td><td>McCammon, William</td><td></td><td class='xc-result-cell xc-result-year-0'>15:50.79</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:06</td></tr><tr class='non-stx-row'><td>13</td><td>Albritton, Aidan</td><td></td><td class='xc-result-cell xc-result-year-0'>15:53.88</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:07</td></tr><tr class='non-stx-row'><td>14</td><td>Crosby, Brooks</td><td></td><td class='xc-result-cell xc-result-year-0'>15:56.74</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:08</td></tr><tr class='non-stx-row'><td>15</td><td>Guthrie, Eli</td><td></td><td class='xc-result-cell xc-result-year-0'>15:58.08</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:08</td></tr><tr class='non-stx-row'><td>16</td><td>Sierpina, Joseph</td><td></td><td class='xc-result-cell xc-result-year-0'>15:59.22</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:09</td></tr><tr><td>17</td><td><a href='../athletes/nolan_crider.html'>Crider, Nolan</a></td><td>12</td><td class='xc-result-cell xc-result-year-0 pr' title='Personal record'>16:10.49</td><td class='xc-result-cell xc-result-year-1'>17:26.67</td><td class='xc-result-cell xc-result-year-2'>17:29.02</td><td class='xc-result-cell xc-result-year-3'></td><td>16:17.60</td><td>5:12</td></tr><tr class='non-stx-row'><td>18</td><td>Robertson, Ian</td><td></td><td class='xc-result-cell xc-result-year-0'>16:19.41</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:15</td></tr><tr class='non-stx-row'><td>19</td><td>Willen, John</td><td></td><td class='xc-result-cell xc-result-year-0'>16:25.72</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:17</td></tr><tr><td>20</td><td><a href='../athletes/matthew_meirose.html'>Meirose, Matthew</a></td><td>12</td><td class='xc-result-cell xc-result-year-0 pr' title='Personal record'>16:30.91</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td>16:41.80</td><td>5:19</td></tr><tr><td>21</td><td><a href='../athletes/baron_staab.html'>Staab, Baron</a></td><td>12</td><td class='xc-result-cell xc-result-year-0'>16:33.12</td><td class='xc-result-cell xc-result-year-1'>16:34.62</td><td class='xc-result-cell xc-result-year-2'>16:35.96</td><td class='xc-result-cell xc-result-year-3'></td><td>16:24.82</td><td>5:20</td></tr><tr class='non-stx-row'><td>22</td><td>Wiseman, Amir</td><td></td><td class='xc-result-cell xc-result-year-0'>16:35.91</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:21</td></tr><tr class='non-stx-row'><td>23</td><td>Martinez, Benjamin</td><td></td><td class='xc-result-cell xc-result-year-0'>16:37.90</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:21</td></tr><tr class='non-stx-row'><td>24</td><td>Pearl, Graham</td><td></td><td class='xc-result-cell xc-result-year-0'>16:49.71</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:25</td></tr><tr class='non-stx-row'><td>25</td><td>Lerch, Jaxon</td><td></td><td class='xc-result-cell xc-result-year-0'>16:51.35</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:26</td></tr><tr class='non-stx-row'><td>26</td><td>Moore, Daniel</td><td></td><td class='xc-result-cell xc-result-year-0'>16:54.11</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:26</td></tr><tr class='non-stx-row'><td>27</td><td>Cauley, Darnell</td><td></td><td class='xc-result-cell xc-result-year-0'>16:57.29</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:27</td></tr><tr><td>28</td><td><a href='../athletes/everett_derrick.html'>Derrick, Everett</a></td><td>12</td><td class='xc-result-cell xc-result-year-0'>16:58.05</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td>16:23.60</td><td>5:28</td></tr><tr><td>29</td><td><a href='../athletes/xavier_mudd.html'>Mudd, Xavier</a></td><td>12</td><td class='xc-result-cell xc-result-year-0 pr' title='Personal record'>17:02.78</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td>17:04.47</td><td>5:29</td></tr><tr class='non-stx-row'><td>30</td><td>Williams, Elliott</td><td></td><td class='xc-result-cell xc-result-year-0'>17:07.74</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:31</td></tr><tr class='non-stx-row'><td>31</td><td>McLaren, Griffin</td><td></td><td class='xc-result-cell xc-result-year-0'>17:10.09</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:32</td></tr><tr class='non-stx-row'><td>32</td><td>Moore, Ian</td><td></td><td class='xc-result-cell xc-result-year-0'>17:15.87</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:33</td></tr><tr class='non-stx-row'><td>33</td><td>Berrisford, Alessio</td><td></td><td class='xc-result-cell xc-result-year-0'>17:29.64</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:38</td></tr><tr class='non-stx-row'><td>34</td><td>Derricks, Tyson</td><td></td><td class='xc-result-cell xc-result-year-0'>17:34.09</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:39</td></tr><tr class='non-stx-row'><td>35</td><td>Baker, Henry</td><td></td><td class='xc-result-cell xc-result-year-0'>17:35.37</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:40</td></tr><tr class='non-stx-row'><td>36</td><td>Campbell, Cameron</td><td></td><td class='xc-result-cell xc-result-year-0'>17:36.07</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:40</td></tr><tr class='non-stx-row'><td>37</td><td>Hall, Kaleb</td><td></td><td class='xc-result-cell xc-result-year-0'>17:38.70</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:41</td></tr><tr class='non-stx-row'><td>38</td><td>O'Dell, Elijah</td><td></td><td class='xc-result-cell xc-result-year-0'>17:40.16</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:41</td></tr><tr class='non-stx-row'><td>39</td><td>Bush, Hayden</td><td></td><td class='xc-result-cell xc-result-year-0'>17:43.38</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:42</td></tr><tr class='non-stx-row'><td>40</td><td>McLaren, Forrest</td><td></td><td class='xc-result-cell xc-result-year-0'>17:44.33</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:43</td></tr><tr class='non-stx-row'><td>41</td><td>Rizo, Octavian</td><td></td><td class='xc-result-cell xc-result-year-0'>17:53.15</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:45</td></tr><tr class='non-stx-row'><td>42</td><td>Brown, Matthew</td><td></td><td class='xc-result-cell xc-result-year-0'>18:02.23</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:48</td></tr><tr class='non-stx-row'><td>43</td><td>Eleson, Carson</td><td></td><td class='xc-result-cell xc-result-year-0'>18:06.33</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:50</td></tr><tr class='non-stx-row'><td>44</td><td>Pares-Alvarado, Antonio</td><td></td><td class='xc-result-cell xc-result-year-0'>18:08.60</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:50</td></tr><tr class='non-stx-row'><td>45</td><td>Robertson, Carson</td><td></td><td class='xc-result-cell xc-result-year-0'>18:10.65</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:51</td></tr><tr class='non-stx-row'><td>46</td><td>Cramer, Cameron</td><td></td><td class='xc-result-cell xc-result-year-0'>18:26.09</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:56</td></tr><tr class='non-stx-row'><td>47</td><td>Tremayne, Emery</td><td></td><td class='xc-result-cell xc-result-year-0'>19:29.07</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:16</td></tr><tr class='non-stx-row'><td>48</td><td>Eichberger, Koltyn</td><td></td><td class='xc-result-cell xc-result-year-0'>24:49.74</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>8:00</td></tr><tr class='non-stx-row'><td>49</td><td>Rountree, Camden</td><td></td><td class='xc-result-cell xc-result-year-0'>24:57.99</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>8:02</td></tr><tr class='non-stx-row'><td>50</td><td>Weisenberger, Adam</td><td></td><td class='xc-result-cell xc-result-year-0'>26:06.65</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>8:24</td></tr><tr class='non-stx-row'><td>51</td><td>Smith, Jayden</td><td></td><td class='xc-result-cell xc-result-year-0'>27:16.96</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>8:47</td></tr><tr class='non-stx-row'><td>52</td><td>Heady, Meeko</td><td></td><td class='xc-result-cell xc-result-year-0'>29:46.24</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>9:35</td></tr></tbody></table></div></div></section><section class='xc-print-prior'><div class='xc-history-heading'><h1>KHSAA Region 3 Class 3A 2025</h1></div><p class='subline muted'>October 25, 2025<br>Seneca Park, Louisville, KY</p><div class='card'><h2>Boys KHSAA Region 3 Class 3A - Boys 5k (5K)</h2><div class='xc-team-score-heading'><h3>Team Scores</h3></div><div class='table-wrap xc-team-table'><table><thead><tr><th>Place</th><th>Name</th><th>Score</th><th>Average</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>(6)</th><th>(7)</th><th>1–5</th></tr></thead><tbody><tr class='stx-team-highlight'><td>1</td><td>St. Xavier</td><td>26</td><td>15:59</td><td>1</td><td>3</td><td>5</td><td>8</td><td>9</td><td>12</td><td>21</td><td>1:29</td></tr><tr><td>2</td><td>Male</td><td>62</td><td>16:38</td><td>2</td><td>4</td><td>13</td><td>19</td><td>24</td><td>29</td><td>32</td><td>2:31</td></tr><tr><td>3</td><td>Dupont Manual</td><td>64</td><td>16:44</td><td>6</td><td>11</td><td>14</td><td>16</td><td>17</td><td>18</td><td>22</td><td>0:49</td></tr><tr class='xc-team-extra-row'><td>4</td><td>North Bullitt</td><td>166</td><td>18:36</td><td>15</td><td>30</td><td>36</td><td>42</td><td>43</td><td>45</td><td>46</td><td>2:40</td></tr><tr class='xc-team-extra-row'><td>5</td><td>Bullitt Central</td><td>166</td><td>19:13</td><td>7</td><td>20</td><td>34</td><td>50</td><td>55</td><td>61</td><td></td><td>6:15</td></tr><tr class='xc-team-extra-row'><td>6</td><td>Iroquois</td><td>176</td><td>19:31</td><td>10</td><td>25</td><td>37</td><td>51</td><td>53</td><td>54</td><td>60</td><td>5:26</td></tr><tr class='xc-team-extra-row'><td>7</td><td>Bullitt East</td><td>184</td><td>19:01</td><td>23</td><td>35</td><td>38</td><td>40</td><td>48</td><td>57</td><td></td><td>2:41</td></tr><tr class='xc-team-extra-row'><td>8</td><td>Fairdale</td><td>195</td><td>19:43</td><td>26</td><td>27</td><td>41</td><td>49</td><td>52</td><td>59</td><td>64</td><td>3:40</td></tr><tr class='xc-team-extra-row'><td>9</td><td>Butler</td><td>214</td><td>20:03</td><td>28</td><td>39</td><td>44</td><td>47</td><td>56</td><td>58</td><td></td><td>4:47</td></tr><tr class='xc-team-extra-row'><td>10</td><td>Pleasure Ridge Park</td><td>254</td><td>25:43</td><td>31</td><td>33</td><td>62</td><td>63</td><td>65</td><td></td><td></td><td>20:46</td></tr></tbody></table></div><h3 style='margin-top:24px'>Individual Results</h3><div class='table-wrap'><table class='xc-results-table'><thead><tr><th>Place</th><th>Athlete</th><th>Grade</th><th class='xc-result-year-0'>2025<span class='xc-result-date'>10/25</span></th><th class='xc-result-year-1'>2024<span class='xc-result-date'>10/26</span></th><th class='xc-result-year-2'>2023<span class='xc-result-date'>10/21</span></th><th class='xc-result-year-3'>2022<span class='xc-result-date'>10/22</span></th><th>PR</th><th>Pace</th></tr></thead><tbody><tr><td>1</td><td><a href='../athletes/nick_sanders.html'>Sanders, Nick</a></td><td>12</td><td class='xc-result-cell xc-result-year-0'>15:07.23</td><td class='xc-result-cell xc-result-year-1'>16:28.50</td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td>15:01.87</td><td>4:52</td></tr><tr class='non-stx-row'><td>2</td><td>Kiser, Henry</td><td></td><td class='xc-result-cell xc-result-year-0'>15:26.09</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>4:58</td></tr><tr><td>3</td><td><a href='../athletes/matthew_frick.html'>Frick, Matthew</a></td><td>11</td><td class='xc-result-cell xc-result-year-0 pr' title='Personal record'>15:35.28</td><td class='xc-result-cell xc-result-year-1'>16:33.69</td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td>15:50.43</td><td>5:01</td></tr><tr class='non-stx-row'><td>4</td><td>Filippazzo, Brady</td><td></td><td class='xc-result-cell xc-result-year-0'>15:53.47</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:07</td></tr><tr><td>5</td><td><a href='../athletes/sam_schweickhardt.html'>Schweickhardt, Sam</a></td><td>12</td><td class='xc-result-cell xc-result-year-0'>16:02.87</td><td class='xc-result-cell xc-result-year-1'>16:38.05</td><td class='xc-result-cell xc-result-year-2'>16:59.23</td><td class='xc-result-cell xc-result-year-3'></td><td>15:49.13</td><td>5:10</td></tr><tr class='non-stx-row'><td>6</td><td>Zausch, Oliver</td><td></td><td class='xc-result-cell xc-result-year-0'>16:09.49</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:12</td></tr><tr class='non-stx-row'><td>7</td><td>Mesinovic, Samir</td><td></td><td class='xc-result-cell xc-result-year-0'>16:22.17</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:16</td></tr><tr><td>8</td><td><a href='../athletes/baron_staab.html'>Staab, Baron</a></td><td>11</td><td class='xc-result-cell xc-result-year-0'>16:34.62</td><td class='xc-result-cell xc-result-year-1'>16:35.96</td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td>16:24.82</td><td>5:20</td></tr><tr><td>9</td><td><a href='../athletes/anthony_passafiume.html'>Passafiume, Anthony</a></td><td>12</td><td class='xc-result-cell xc-result-year-0'>16:36.61</td><td class='xc-result-cell xc-result-year-1'>16:57.55</td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td>16:27.20</td><td>5:21</td></tr><tr class='non-stx-row'><td>10</td><td>Espinoza, Christofer</td><td></td><td class='xc-result-cell xc-result-year-0'>16:39.79</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:22</td></tr><tr class='non-stx-row'><td>11</td><td>Willen, John</td><td></td><td class='xc-result-cell xc-result-year-0'>16:42.33</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:23</td></tr><tr><td>12</td><td><a href='../athletes/marshall_wilson.html'>Wilson, Marshall</a></td><td>12</td><td class='xc-result-cell xc-result-year-0'>16:44.92</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td>16:22.33</td><td>5:23</td></tr><tr class='non-stx-row'><td>13</td><td>Kiser, Nehemiah</td><td></td><td class='xc-result-cell xc-result-year-0'>16:45.90</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:24</td></tr><tr class='non-stx-row'><td>14</td><td>Crosby, Brooks</td><td></td><td class='xc-result-cell xc-result-year-0'>16:50.49</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:25</td></tr><tr class='non-stx-row'><td>15</td><td>Schott, Dylan</td><td></td><td class='xc-result-cell xc-result-year-0'>16:54.69</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:27</td></tr><tr class='non-stx-row'><td>16</td><td>Moore, Ian</td><td></td><td class='xc-result-cell xc-result-year-0'>16:58.21</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:28</td></tr><tr class='non-stx-row'><td>17</td><td>Berrisford, Alessio</td><td></td><td class='xc-result-cell xc-result-year-0'>16:58.69</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:28</td></tr><tr class='non-stx-row'><td>18</td><td>Merten, Jack</td><td></td><td class='xc-result-cell xc-result-year-0'>17:09.11</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:31</td></tr><tr class='non-stx-row'><td>19</td><td>Guthrie, Eli</td><td></td><td class='xc-result-cell xc-result-year-0'>17:09.22</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:31</td></tr><tr class='non-stx-row'><td>20</td><td>King, Grayson</td><td></td><td class='xc-result-cell xc-result-year-0'>17:10.01</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:32</td></tr><tr><td>21</td><td><a href='../athletes/nolan_crider.html'>Crider, Nolan</a></td><td>11</td><td class='xc-result-cell xc-result-year-0'>17:26.67</td><td class='xc-result-cell xc-result-year-1'>17:29.02</td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td>16:17.60</td><td>5:37</td></tr><tr class='non-stx-row'><td>22</td><td>Brooks, Calvin</td><td></td><td class='xc-result-cell xc-result-year-0'>17:29.02</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:38</td></tr><tr class='non-stx-row'><td>23</td><td>Smith, Luke</td><td></td><td class='xc-result-cell xc-result-year-0'>17:37.02</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:40</td></tr><tr class='non-stx-row'><td>24</td><td>Cauley, Darnell</td><td></td><td class='xc-result-cell xc-result-year-0'>17:56.74</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:47</td></tr><tr class='non-stx-row'><td>25</td><td>Amor, Amor</td><td></td><td class='xc-result-cell xc-result-year-0'>18:09.86</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:51</td></tr><tr class='non-stx-row'><td>26</td><td>Salazar, Gabriel</td><td></td><td class='xc-result-cell xc-result-year-0'>18:12.30</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:52</td></tr><tr class='non-stx-row'><td>27</td><td>Loka, Joel</td><td></td><td class='xc-result-cell xc-result-year-0'>18:12.35</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:52</td></tr><tr class='non-stx-row'><td>28</td><td>Walker, Carter</td><td></td><td class='xc-result-cell xc-result-year-0'>18:12.49</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:52</td></tr><tr class='non-stx-row'><td>29</td><td>Richardson, Lincoln</td><td></td><td class='xc-result-cell xc-result-year-0'>18:20.07</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:54</td></tr><tr class='non-stx-row'><td>30</td><td>Morgan, Gavin</td><td></td><td class='xc-result-cell xc-result-year-0'>18:21.48</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:55</td></tr><tr class='non-stx-row'><td>31</td><td>Williams, Christopher</td><td></td><td class='xc-result-cell xc-result-year-0'>18:29.95</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:57</td></tr><tr class='non-stx-row'><td>32</td><td>Campbell, Cameron</td><td></td><td class='xc-result-cell xc-result-year-0'>18:32.30</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:58</td></tr><tr class='non-stx-row'><td>33</td><td>Saunders, Mason</td><td></td><td class='xc-result-cell xc-result-year-0'>18:43.68</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:02</td></tr><tr class='non-stx-row'><td>34</td><td>Sims, Grayson</td><td></td><td class='xc-result-cell xc-result-year-0'>18:43.86</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:02</td></tr><tr class='non-stx-row'><td>35</td><td>Bibee, Owen</td><td></td><td class='xc-result-cell xc-result-year-0'>18:44.39</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:02</td></tr><tr class='non-stx-row'><td>36</td><td>Kingsbury, Gage</td><td></td><td class='xc-result-cell xc-result-year-0'>18:46.32</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:03</td></tr><tr class='non-stx-row'><td>37</td><td>Brown, Ronele</td><td></td><td class='xc-result-cell xc-result-year-0'>18:57.28</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:06</td></tr><tr class='non-stx-row'><td>38</td><td>Mooney, Luke</td><td></td><td class='xc-result-cell xc-result-year-0'>19:06.66</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:09</td></tr><tr class='non-stx-row'><td>39</td><td>Lazaro, George</td><td></td><td class='xc-result-cell xc-result-year-0'>19:13.88</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:11</td></tr><tr class='non-stx-row'><td>40</td><td>Huff, Carter</td><td></td><td class='xc-result-cell xc-result-year-0'>19:18.06</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:13</td></tr><tr class='non-stx-row'><td>41</td><td>Hatfield, Jacob</td><td></td><td class='xc-result-cell xc-result-year-0'>19:22.26</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:14</td></tr><tr class='non-stx-row'><td>42</td><td>Lipkin, Jeremiah</td><td></td><td class='xc-result-cell xc-result-year-0'>19:24.11</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:15</td></tr><tr class='non-stx-row'><td>43</td><td>Valverde, Ayden</td><td></td><td class='xc-result-cell xc-result-year-0'>19:34.87</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:18</td></tr><tr class='non-stx-row'><td>44</td><td>Jr., Blake Daniels</td><td></td><td class='xc-result-cell xc-result-year-0'>19:37.60</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:19</td></tr><tr class='non-stx-row'><td>45</td><td>Tower, Austin</td><td></td><td class='xc-result-cell xc-result-year-0'>19:38.06</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:19</td></tr><tr class='non-stx-row'><td>46</td><td>Gallahue, James</td><td></td><td class='xc-result-cell xc-result-year-0'>19:52.79</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:24</td></tr><tr class='non-stx-row'><td>47</td><td>Thang, David</td><td></td><td class='xc-result-cell xc-result-year-0'>20:10.54</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:30</td></tr><tr class='non-stx-row'><td>48</td><td>Boguszewski, Ben</td><td></td><td class='xc-result-cell xc-result-year-0'>20:18.48</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:32</td></tr><tr class='non-stx-row'><td>49</td><td>Weakley, Damon</td><td></td><td class='xc-result-cell xc-result-year-0'>20:51.40</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:43</td></tr><tr class='non-stx-row'><td>50</td><td>Art, Riley</td><td></td><td class='xc-result-cell xc-result-year-0'>20:56.81</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:45</td></tr><tr class='non-stx-row'><td>51</td><td>Hobbs, Logan</td><td></td><td class='xc-result-cell xc-result-year-0'>21:11.22</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:49</td></tr><tr class='non-stx-row'><td>52</td><td>Subba, Saymon</td><td></td><td class='xc-result-cell xc-result-year-0'>21:39.46</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:58</td></tr><tr class='non-stx-row'><td>53</td><td>Edwards, Tyler</td><td></td><td class='xc-result-cell xc-result-year-0'>21:52.60</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>7:02</td></tr><tr class='non-stx-row'><td>54</td><td>Osman, Abass</td><td></td><td class='xc-result-cell xc-result-year-0'>22:06.25</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>7:07</td></tr><tr class='non-stx-row'><td>55</td><td>Prudencio, Omar</td><td></td><td class='xc-result-cell xc-result-year-0'>22:07.87</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>7:07</td></tr><tr class='non-stx-row'><td>56</td><td>Mambo, Moise</td><td></td><td class='xc-result-cell xc-result-year-0'>22:36.39</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>7:17</td></tr><tr class='non-stx-row'><td>57</td><td>Godbold, Samuel</td><td></td><td class='xc-result-cell xc-result-year-0'>22:36.93</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>7:17</td></tr><tr class='non-stx-row'><td>58</td><td>Hassen, Disow</td><td></td><td class='xc-result-cell xc-result-year-0'>22:59.03</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>7:24</td></tr><tr class='non-stx-row'><td>59</td><td>Carrasquillo, Daniel</td><td></td><td class='xc-result-cell xc-result-year-0'>23:23.16</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>7:32</td></tr><tr class='non-stx-row'><td>60</td><td>Marksbury, Brennon</td><td></td><td class='xc-result-cell xc-result-year-0'>23:26.60</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>7:33</td></tr><tr class='non-stx-row'><td>61</td><td>Thaw, Htee</td><td></td><td class='xc-result-cell xc-result-year-0'>24:12.67</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>7:48</td></tr><tr class='non-stx-row'><td>62</td><td>Snadon, Jorden</td><td></td><td class='xc-result-cell xc-result-year-0'>24:31.51</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>7:54</td></tr><tr class='non-stx-row'><td>63</td><td>Greegor, Mason</td><td></td><td class='xc-result-cell xc-result-year-0'>24:57.57</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>8:02</td></tr><tr class='non-stx-row'><td>64</td><td>Fultz, Matthew</td><td></td><td class='xc-result-cell xc-result-year-0'>25:42.37</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>8:16</td></tr><tr class='non-stx-row'><td>65</td><td>Weatherly, Brody</td><td></td><td class='xc-result-cell xc-result-year-0'>26:24.53</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>8:30</td></tr><tr class='non-stx-row'><td>66</td><td>Alvarez, Angel</td><td></td><td class='xc-result-cell xc-result-year-0'>26:25.39</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>8:30</td></tr><tr class='non-stx-row'><td>67</td><td>Maddux, Brayden</td><td></td><td class='xc-result-cell xc-result-year-0'>26:56.72</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>8:40</td></tr><tr class='non-stx-row'><td>68</td><td>Wells, Zakki</td><td></td><td class='xc-result-cell xc-result-year-0'>31:47.22</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>10:14</td></tr><tr class='non-stx-row'><td>69</td><td>Woodcock, Camden</td><td></td><td class='xc-result-cell xc-result-year-0'>39:15.73</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>12:38</td></tr></tbody></table></div></div></section><section class='xc-print-prior xc-print-hidden-history'><div class='xc-history-heading'><h1>KHSAA Region 3 Class 3A 2024</h1></div><p class='subline muted'>October 26, 2024<br>Seneca Park, Louisville, KY</p><div class='card'><h2>Boys 5k Run Varsity (5K)</h2><div class='xc-team-score-heading'><h3>Team Scores</h3></div><p class='muted'>No team scores loaded for this race.</p><h3 style='margin-top:24px'>Individual Results</h3><div class='table-wrap'><table class='xc-results-table'><thead><tr><th>Place</th><th>Athlete</th><th>Grade</th><th class='xc-result-year-0'>2024<span class='xc-result-date'>10/26</span></th><th class='xc-result-year-1'>2023<span class='xc-result-date'>10/21</span></th><th class='xc-result-year-2'>2022<span class='xc-result-date'>10/22</span></th><th class='xc-result-year-3'>2021<span class='xc-result-date'>10/23</span></th><th>PR</th><th>Pace</th></tr></thead><tbody><tr class='non-stx-row'><td>1</td><td>Cull, Caden</td><td></td><td class='xc-result-cell xc-result-year-0'>15:13.54</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>4:54</td></tr><tr class='non-stx-row'><td>2</td><td>Gulden, Quinn</td><td></td><td class='xc-result-cell xc-result-year-0'>15:59.09</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:09</td></tr><tr class='non-stx-row'><td>3</td><td>Henderson, Tedi</td><td></td><td class='xc-result-cell xc-result-year-0'>16:20.23</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:16</td></tr><tr class='non-stx-row'><td>4</td><td>Chandler, Sam</td><td></td><td class='xc-result-cell xc-result-year-0'>16:23.40</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:17</td></tr><tr class='non-stx-row'><td>5</td><td>Stewart, William</td><td></td><td class='xc-result-cell xc-result-year-0'>16:28.01</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:18</td></tr><tr><td>6</td><td><a href='../athletes/nick_sanders.html'>Sanders, Nick</a></td><td>11</td><td class='xc-result-cell xc-result-year-0'>16:28.50</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td>15:44.09</td><td>5:18</td></tr><tr class='non-stx-row'><td>7</td><td>Jazaierry, Qasim Al</td><td></td><td class='xc-result-cell xc-result-year-0'>16:32.33</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:19</td></tr><tr><td>8</td><td><a href='../athletes/matthew_frick.html'>Frick, Matthew</a></td><td>10</td><td class='xc-result-cell xc-result-year-0 pr' title='Personal record'>16:33.69</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td>16:37.51</td><td>5:20</td></tr><tr><td>9</td><td><a href='../athletes/baron_staab.html'>Staab, Baron</a></td><td>10</td><td class='xc-result-cell xc-result-year-0 pr' title='Personal record'>16:35.96</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td>16:53.20</td><td>5:21</td></tr><tr><td>10</td><td><a href='../athletes/sam_schweickhardt.html'>Schweickhardt, Sam</a></td><td>11</td><td class='xc-result-cell xc-result-year-0'>16:38.05</td><td class='xc-result-cell xc-result-year-1'>16:59.23</td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td>16:06.39</td><td>5:21</td></tr><tr class='non-stx-row'><td>11</td><td>Shofner, Cooper</td><td></td><td class='xc-result-cell xc-result-year-0'>16:38.47</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:21</td></tr><tr class='non-stx-row'><td>12</td><td>Jenkins, Brady</td><td></td><td class='xc-result-cell xc-result-year-0'>16:47.23</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:24</td></tr><tr><td>13</td><td><a href='../athletes/william_korte.html'>Korte, William</a></td><td>11</td><td class='xc-result-cell xc-result-year-0 pr' title='Personal record'>16:48.77</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td>16:50.19</td><td>5:25</td></tr><tr class='non-stx-row'><td>14</td><td>Willen, John</td><td></td><td class='xc-result-cell xc-result-year-0'>16:54.15</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:26</td></tr><tr><td>15</td><td><a href='../athletes/anthony_passafiume.html'>Passafiume, Anthony</a></td><td>11</td><td class='xc-result-cell xc-result-year-0'>16:57.55</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td>16:53.58</td><td>5:28</td></tr><tr class='non-stx-row'><td>16</td><td>Zausch, Oliver</td><td></td><td class='xc-result-cell xc-result-year-0'>16:59.03</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:28</td></tr><tr class='non-stx-row'><td>17</td><td>Magyar, Mason</td><td></td><td class='xc-result-cell xc-result-year-0'>17:05.17</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:30</td></tr><tr class='non-stx-row'><td>18</td><td>Foster, Rowan</td><td></td><td class='xc-result-cell xc-result-year-0'>17:06.26</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:30</td></tr><tr class='non-stx-row'><td>19</td><td>Bohn, Jacob</td><td></td><td class='xc-result-cell xc-result-year-0'>17:10.87</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:32</td></tr><tr class='non-stx-row'><td>20</td><td>Espinoza, Christofer</td><td></td><td class='xc-result-cell xc-result-year-0'>17:17.25</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:34</td></tr><tr class='non-stx-row'><td>21</td><td>Wooldridge, Blake</td><td></td><td class='xc-result-cell xc-result-year-0'>17:27.00</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:37</td></tr><tr><td>22</td><td><a href='../athletes/nolan_crider.html'>Crider, Nolan</a></td><td>10</td><td class='xc-result-cell xc-result-year-0'>17:29.02</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td>17:13.16</td><td>5:38</td></tr><tr class='non-stx-row'><td>23</td><td>Richardson, Lincoln</td><td></td><td class='xc-result-cell xc-result-year-0'>17:30.55</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:38</td></tr><tr class='non-stx-row'><td>24</td><td>Mitchell, Samuel</td><td></td><td class='xc-result-cell xc-result-year-0'>17:33.94</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:39</td></tr><tr class='non-stx-row'><td>25</td><td>Filippazzo, Brady</td><td></td><td class='xc-result-cell xc-result-year-0'>17:35.89</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:40</td></tr><tr class='non-stx-row'><td>26</td><td>Smith, Luke</td><td></td><td class='xc-result-cell xc-result-year-0'>17:50.82</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:45</td></tr><tr class='non-stx-row'><td>27</td><td>Mattingly, Matthew</td><td></td><td class='xc-result-cell xc-result-year-0'>17:59.98</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:48</td></tr><tr class='non-stx-row'><td>28</td><td>Gabriel, Jaquay</td><td></td><td class='xc-result-cell xc-result-year-0'>18:06.44</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:50</td></tr><tr class='non-stx-row'><td>29</td><td>Thrasher, Landon</td><td></td><td class='xc-result-cell xc-result-year-0'>18:14.79</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:52</td></tr><tr class='non-stx-row'><td>30</td><td>King, Grayson</td><td></td><td class='xc-result-cell xc-result-year-0'>18:15.46</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:53</td></tr><tr class='non-stx-row'><td>31</td><td>Riddle, Caleb</td><td></td><td class='xc-result-cell xc-result-year-0'>18:21.17</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:54</td></tr><tr class='non-stx-row'><td>32</td><td>Stickling, Otto</td><td></td><td class='xc-result-cell xc-result-year-0'>18:30.36</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:57</td></tr><tr class='non-stx-row'><td>33</td><td>Mesinovic, Samir</td><td></td><td class='xc-result-cell xc-result-year-0'>18:40.05</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:01</td></tr><tr class='non-stx-row'><td>34</td><td>Loka, Joel</td><td></td><td class='xc-result-cell xc-result-year-0'>18:42.24</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:01</td></tr><tr class='non-stx-row'><td>35</td><td>Wooden, Andruw</td><td></td><td class='xc-result-cell xc-result-year-0'>18:43.89</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:02</td></tr><tr class='non-stx-row'><td>36</td><td>Schott, Dylan</td><td></td><td class='xc-result-cell xc-result-year-0'>18:45.81</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:02</td></tr><tr class='non-stx-row'><td>37</td><td>Salazar, Gabriel</td><td></td><td class='xc-result-cell xc-result-year-0'>18:53.92</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:05</td></tr><tr class='non-stx-row'><td>38</td><td>Saunders, Mason</td><td></td><td class='xc-result-cell xc-result-year-0'>19:04.57</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:08</td></tr><tr class='non-stx-row'><td>39</td><td>Morgan, Gavin</td><td></td><td class='xc-result-cell xc-result-year-0'>19:10.87</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:10</td></tr><tr class='non-stx-row'><td>40</td><td>Guthrie, Eli</td><td></td><td class='xc-result-cell xc-result-year-0'>19:11.71</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:11</td></tr><tr class='non-stx-row'><td>41</td><td>Walker, Carter</td><td></td><td class='xc-result-cell xc-result-year-0'>19:16.23</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:12</td></tr><tr class='non-stx-row'><td>42</td><td>Boguszewski, Ben</td><td></td><td class='xc-result-cell xc-result-year-0'>19:22.49</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:14</td></tr><tr class='non-stx-row'><td>43</td><td>Huff, Carter</td><td></td><td class='xc-result-cell xc-result-year-0'>19:22.51</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:14</td></tr><tr class='non-stx-row'><td>44</td><td>Amor, Amor</td><td></td><td class='xc-result-cell xc-result-year-0'>19:31.85</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:17</td></tr><tr class='non-stx-row'><td>45</td><td>Mooney, Luke</td><td></td><td class='xc-result-cell xc-result-year-0'>19:35.14</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:18</td></tr><tr class='non-stx-row'><td>46</td><td>Luttrell, Blake</td><td></td><td class='xc-result-cell xc-result-year-0'>19:46.80</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:22</td></tr><tr class='non-stx-row'><td>47</td><td>Lancho, Alberto</td><td></td><td class='xc-result-cell xc-result-year-0'>19:48.35</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:22</td></tr><tr class='non-stx-row'><td>48</td><td>Jr., Blake Daniels</td><td></td><td class='xc-result-cell xc-result-year-0'>20:07.55</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:29</td></tr><tr class='non-stx-row'><td>49</td><td>Sexton, Daylan</td><td></td><td class='xc-result-cell xc-result-year-0'>20:08.51</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:29</td></tr><tr class='non-stx-row'><td>50</td><td>Williams, Christopher</td><td></td><td class='xc-result-cell xc-result-year-0'>20:11.17</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:30</td></tr><tr class='non-stx-row'><td>51</td><td>Hatfield, Jacob</td><td></td><td class='xc-result-cell xc-result-year-0'>20:15.56</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:31</td></tr><tr class='non-stx-row'><td>52</td><td>Conely, Luke</td><td></td><td class='xc-result-cell xc-result-year-0'>20:17.02</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:32</td></tr><tr class='non-stx-row'><td>53</td><td>Carter, Tyler</td><td></td><td class='xc-result-cell xc-result-year-0'>20:28.16</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:35</td></tr><tr class='non-stx-row'><td>54</td><td>Harris, Brenden</td><td></td><td class='xc-result-cell xc-result-year-0'>20:33.92</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:37</td></tr><tr class='non-stx-row'><td>55</td><td>Hair, Brennan</td><td></td><td class='xc-result-cell xc-result-year-0'>20:34.29</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:37</td></tr><tr class='non-stx-row'><td>56</td><td>Hussein, Ismail</td><td></td><td class='xc-result-cell xc-result-year-0'>20:56.36</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:44</td></tr><tr class='non-stx-row'><td>57</td><td>Daniels, Drake</td><td></td><td class='xc-result-cell xc-result-year-0'>20:58.47</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:45</td></tr><tr class='non-stx-row'><td>58</td><td>Weakley, Damon</td><td></td><td class='xc-result-cell xc-result-year-0'>21:15.44</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:51</td></tr><tr class='non-stx-row'><td>59</td><td>Pearce, Coby</td><td></td><td class='xc-result-cell xc-result-year-0'>21:18.63</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:52</td></tr><tr class='non-stx-row'><td>60</td><td>Brooks, Laphael</td><td></td><td class='xc-result-cell xc-result-year-0'>21:20.80</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:52</td></tr><tr class='non-stx-row'><td>61</td><td>Sweetman, Bryson</td><td></td><td class='xc-result-cell xc-result-year-0'>21:25.33</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:54</td></tr><tr class='non-stx-row'><td>62</td><td>Niyogushimuc, Godi</td><td></td><td class='xc-result-cell xc-result-year-0'>21:28.91</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:55</td></tr><tr class='non-stx-row'><td>63</td><td>Hammons, Brian</td><td></td><td class='xc-result-cell xc-result-year-0'>22:07.38</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>7:07</td></tr><tr class='non-stx-row'><td>64</td><td>Peskoe, Peyton</td><td></td><td class='xc-result-cell xc-result-year-0'>22:11.66</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>7:09</td></tr><tr class='non-stx-row'><td>65</td><td>Henderson, Tye</td><td></td><td class='xc-result-cell xc-result-year-0'>22:19.99</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>7:11</td></tr><tr class='non-stx-row'><td>66</td><td>Dennis, Antonio</td><td></td><td class='xc-result-cell xc-result-year-0'>22:59.54</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>7:24</td></tr><tr class='non-stx-row'><td>67</td><td>Nacionales, Qynn</td><td></td><td class='xc-result-cell xc-result-year-0'>23:18.29</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>7:30</td></tr><tr class='non-stx-row'><td>68</td><td>Williams, Ramari</td><td></td><td class='xc-result-cell xc-result-year-0'>24:11.33</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>7:47</td></tr><tr class='non-stx-row'><td>69</td><td>Mambo, Moise</td><td></td><td class='xc-result-cell xc-result-year-0'>24:37.07</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>7:55</td></tr><tr class='non-stx-row'><td>70</td><td>Fultz, Matthew</td><td></td><td class='xc-result-cell xc-result-year-0'>24:55.27</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>8:01</td></tr><tr class='non-stx-row'><td>71</td><td>Ndizeye, Diego</td><td></td><td class='xc-result-cell xc-result-year-0'>27:42.48</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>8:55</td></tr></tbody></table></div></div></section><section class='xc-print-prior xc-print-hidden-history'><div class='xc-history-heading'><h1>KHSAA Region 3 Class 3A 2023</h1></div><p class='subline muted'>October 21, 2023<br>Seneca Park, Louisville, KY</p><div class='card'><h2>Boys 5k Run CC Varsity (5K)</h2><div class='xc-team-score-heading'><h3>Team Scores</h3></div><div class='table-wrap xc-team-table'><table><thead><tr><th>Place</th><th>Name</th><th>Score</th><th>Average</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>(6)</th><th>(7)</th><th>1–5</th></tr></thead><tbody><tr class='stx-team-highlight'><td>1</td><td>St. Xavier</td><td>30</td><td>16:19</td><td>2</td><td>3</td><td>4</td><td>10</td><td>11</td><td>13</td><td>14</td><td>1:05</td></tr><tr><td>2</td><td>Dupont Manual</td><td>57</td><td>16:52</td><td>5</td><td>6</td><td>9</td><td>18</td><td>19</td><td></td><td></td><td>1:10</td></tr><tr><td>3</td><td>Male</td><td>69</td><td>16:56</td><td>1</td><td>12</td><td>16</td><td>17</td><td>23</td><td>24</td><td>26</td><td>2:12</td></tr><tr class='xc-team-extra-row'><td>4</td><td>Bullitt Central</td><td>102</td><td>17:44</td><td>7</td><td>8</td><td>22</td><td>29</td><td>36</td><td>37</td><td>43</td><td>2:58</td></tr><tr class='xc-team-extra-row'><td>5</td><td>Bullitt East</td><td>137</td><td>18:21</td><td>15</td><td>21</td><td>27</td><td>35</td><td>39</td><td>41</td><td>42</td><td>2:35</td></tr><tr class='xc-team-extra-row'><td>6</td><td>North Bullitt</td><td>155</td><td>18:52</td><td>25</td><td>31</td><td>32</td><td>33</td><td>34</td><td>44</td><td>48</td><td>1:14</td></tr><tr class='xc-team-extra-row'><td>7</td><td>Butler</td><td>181</td><td>19:58</td><td>20</td><td>28</td><td>30</td><td>51</td><td>52</td><td></td><td></td><td>5:15</td></tr><tr class='xc-team-extra-row'><td>8</td><td>Fairdale</td><td>216</td><td>20:30</td><td>38</td><td>40</td><td>45</td><td>46</td><td>47</td><td>49</td><td>50</td><td>2:00</td></tr></tbody></table></div><h3 style='margin-top:24px'>Individual Results</h3><div class='table-wrap'><table class='xc-results-table'><thead><tr><th>Place</th><th>Athlete</th><th>Grade</th><th class='xc-result-year-0'>2023<span class='xc-result-date'>10/21</span></th><th class='xc-result-year-1'>2022<span class='xc-result-date'>10/22</span></th><th class='xc-result-year-2'>2021<span class='xc-result-date'>10/23</span></th><th class='xc-result-year-3'>2020<span class='xc-result-date'>10/24</span></th><th>PR</th><th>Pace</th></tr></thead><tbody><tr class='non-stx-row'><td>1</td><td>Cull, Caden</td><td></td><td class='xc-result-cell xc-result-year-0'>15:32.83</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:00</td></tr><tr><td>2</td><td><a href='../athletes/thomas_weber.html'>Weber, Thomas</a></td><td>11</td><td class='xc-result-cell xc-result-year-0 pr' title='Personal record'>15:47.88</td><td class='xc-result-cell xc-result-year-1'>16:27.83</td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td>16:18.70</td><td>5:05</td></tr><tr><td>3</td><td><a href='../athletes/brodie_terkhorn.html'>Terkhorn, Brodie</a></td><td>12</td><td class='xc-result-cell xc-result-year-0 pr' title='Personal record'>15:55.56</td><td class='xc-result-cell xc-result-year-1'>16:50.62</td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td>16:34.40</td><td>5:08</td></tr><tr><td>4</td><td><a href='../athletes/tristan_hindorff.html'>Hindorff, Tristan</a></td><td>12</td><td class='xc-result-cell xc-result-year-0'>16:04.03</td><td class='xc-result-cell xc-result-year-1'>16:45.29</td><td class='xc-result-cell xc-result-year-2'>17:07.00</td><td class='xc-result-cell xc-result-year-3'></td><td>15:52.80</td><td>5:10</td></tr><tr class='non-stx-row'><td>5</td><td>Gulden, Quinn</td><td></td><td class='xc-result-cell xc-result-year-0'>16:20.76</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:16</td></tr><tr class='non-stx-row'><td>6</td><td>Henderson, Tedi</td><td></td><td class='xc-result-cell xc-result-year-0'>16:23.97</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:17</td></tr><tr class='non-stx-row'><td>7</td><td>Foster, Rowan</td><td></td><td class='xc-result-cell xc-result-year-0'>16:26.29</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:17</td></tr><tr class='non-stx-row'><td>8</td><td>Waters, Maverick</td><td></td><td class='xc-result-cell xc-result-year-0'>16:38.63</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:21</td></tr><tr class='non-stx-row'><td>9</td><td>Jenkins, Brady</td><td></td><td class='xc-result-cell xc-result-year-0'>16:40.27</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:22</td></tr><tr><td>10</td><td><a href='../athletes/whit_ruml.html'>Ruml, Whit</a></td><td>11</td><td class='xc-result-cell xc-result-year-0'>16:52.15</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td>16:44.30</td><td>5:26</td></tr><tr><td>11</td><td><a href='../athletes/lincoln_krezmien.html'>Krezmien, Lincoln</a></td><td>9</td><td class='xc-result-cell xc-result-year-0 pr' title='Personal record'>16:53.12</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td>17:15.28</td><td>5:26</td></tr><tr class='non-stx-row'><td>12</td><td>Filippazzo, Brady</td><td></td><td class='xc-result-cell xc-result-year-0'>16:55.98</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:27</td></tr><tr><td>13</td><td><a href='../athletes/sam_shewmaker.html'>Shewmaker, Sam</a></td><td>11</td><td class='xc-result-cell xc-result-year-0'>16:58.85</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td>16:41.30</td><td>5:28</td></tr><tr><td>14</td><td><a href='../athletes/sam_schweickhardt.html'>Schweickhardt, Sam</a></td><td>10</td><td class='xc-result-cell xc-result-year-0'>16:59.23</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td>16:45.10</td><td>5:28</td></tr><tr class='non-stx-row'><td>15</td><td>Hogan, Bryce</td><td></td><td class='xc-result-cell xc-result-year-0'>16:59.70</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:28</td></tr><tr class='non-stx-row'><td>16</td><td>Stewart, William</td><td></td><td class='xc-result-cell xc-result-year-0'>17:04.00</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:30</td></tr><tr class='non-stx-row'><td>17</td><td>Smith, Xavier</td><td></td><td class='xc-result-cell xc-result-year-0'>17:22.17</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:35</td></tr><tr class='non-stx-row'><td>18</td><td>Walker, Owen</td><td></td><td class='xc-result-cell xc-result-year-0'>17:23.59</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:36</td></tr><tr class='non-stx-row'><td>19</td><td>Willen, John</td><td></td><td class='xc-result-cell xc-result-year-0'>17:30.50</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:38</td></tr><tr class='non-stx-row'><td>20</td><td>Dollar, James</td><td></td><td class='xc-result-cell xc-result-year-0'>17:33.50</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:39</td></tr><tr class='non-stx-row'><td>21</td><td>Smith, Luke</td><td></td><td class='xc-result-cell xc-result-year-0'>17:39.49</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:41</td></tr><tr class='non-stx-row'><td>22</td><td>Shofner, Cooper</td><td></td><td class='xc-result-cell xc-result-year-0'>17:44.27</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:43</td></tr><tr class='non-stx-row'><td>23</td><td>Sponel, Jaden</td><td></td><td class='xc-result-cell xc-result-year-0'>17:45.17</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:43</td></tr><tr class='non-stx-row'><td>24</td><td>Magyar, Mason</td><td></td><td class='xc-result-cell xc-result-year-0'>17:53.25</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:45</td></tr><tr class='non-stx-row'><td>25</td><td>Richardson, Lincoln</td><td></td><td class='xc-result-cell xc-result-year-0'>17:53.46</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:46</td></tr><tr class='non-stx-row'><td>26</td><td>Lynch, Zachary</td><td></td><td class='xc-result-cell xc-result-year-0'>17:56.05</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:46</td></tr><tr class='non-stx-row'><td>27</td><td>Hardin, Jacob</td><td></td><td class='xc-result-cell xc-result-year-0'>17:56.36</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:46</td></tr><tr class='non-stx-row'><td>28</td><td>Mitchell, Samuel</td><td></td><td class='xc-result-cell xc-result-year-0'>18:12.72</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:52</td></tr><tr class='non-stx-row'><td>29</td><td>Hodges, Myles</td><td></td><td class='xc-result-cell xc-result-year-0'>18:15.11</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:52</td></tr><tr class='non-stx-row'><td>30</td><td>Mattingly, Matthew</td><td></td><td class='xc-result-cell xc-result-year-0'>18:22.41</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:55</td></tr><tr class='non-stx-row'><td>31</td><td>Wooldridge, Blake</td><td></td><td class='xc-result-cell xc-result-year-0'>18:25.36</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:56</td></tr><tr class='non-stx-row'><td>32</td><td>Jones, Evan</td><td></td><td class='xc-result-cell xc-result-year-0'>18:26.55</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:56</td></tr><tr class='non-stx-row'><td>33</td><td>Terry, Joseph</td><td></td><td class='xc-result-cell xc-result-year-0'>19:01.72</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:07</td></tr><tr class='non-stx-row'><td>34</td><td>Ruhumuiza, Eric</td><td></td><td class='xc-result-cell xc-result-year-0'>19:02.97</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:08</td></tr><tr class='non-stx-row'><td>35</td><td>Morgan, Gavin</td><td></td><td class='xc-result-cell xc-result-year-0'>19:09.19</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:10</td></tr><tr class='non-stx-row'><td>36</td><td>Wooden, Andruw</td><td></td><td class='xc-result-cell xc-result-year-0'>19:10.20</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:10</td></tr><tr class='non-stx-row'><td>37</td><td>Stickling, Otto</td><td></td><td class='xc-result-cell xc-result-year-0'>19:18.66</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:13</td></tr><tr class='non-stx-row'><td>38</td><td>Mesinovic, Samir</td><td></td><td class='xc-result-cell xc-result-year-0'>19:24.69</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:15</td></tr><tr class='non-stx-row'><td>39</td><td>King, Grayson</td><td></td><td class='xc-result-cell xc-result-year-0'>19:30.75</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:17</td></tr><tr class='non-stx-row'><td>40</td><td>Hatfield, Ethan</td><td></td><td class='xc-result-cell xc-result-year-0'>19:33.46</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:18</td></tr><tr class='non-stx-row'><td>41</td><td>Bray, Ryan</td><td></td><td class='xc-result-cell xc-result-year-0'>19:35.00</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:18</td></tr><tr class='non-stx-row'><td>42</td><td>Loka, Joel</td><td></td><td class='xc-result-cell xc-result-year-0'>19:35.02</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:18</td></tr><tr class='non-stx-row'><td>43</td><td>Boguszewski, Ben</td><td></td><td class='xc-result-cell xc-result-year-0'>19:36.73</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:19</td></tr><tr class='non-stx-row'><td>44</td><td>Riddle, Caleb</td><td></td><td class='xc-result-cell xc-result-year-0'>19:40.59</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:20</td></tr><tr class='non-stx-row'><td>45</td><td>Jazaierry, Qasim Al</td><td></td><td class='xc-result-cell xc-result-year-0'>19:47.56</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:22</td></tr><tr class='non-stx-row'><td>46</td><td>Sims, Grayson</td><td></td><td class='xc-result-cell xc-result-year-0'>20:07.99</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:29</td></tr><tr class='non-stx-row'><td>47</td><td>Nally, Jacob</td><td></td><td class='xc-result-cell xc-result-year-0'>20:20.82</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:33</td></tr><tr class='non-stx-row'><td>48</td><td>Luttrell, Blake</td><td></td><td class='xc-result-cell xc-result-year-0'>20:42.97</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:40</td></tr><tr class='non-stx-row'><td>49</td><td>Salazar, Gabriel</td><td></td><td class='xc-result-cell xc-result-year-0'>21:04.38</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:47</td></tr><tr class='non-stx-row'><td>50</td><td>Peskoe, Peyton</td><td></td><td class='xc-result-cell xc-result-year-0'>21:19.06</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:52</td></tr><tr class='non-stx-row'><td>51</td><td>Art, Riley</td><td></td><td class='xc-result-cell xc-result-year-0'>21:33.11</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:56</td></tr><tr class='non-stx-row'><td>52</td><td>Sosa, Anthony</td><td></td><td class='xc-result-cell xc-result-year-0'>22:08.63</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>7:08</td></tr><tr class='non-stx-row'><td>53</td><td>Lipkin, Jeremiah</td><td></td><td class='xc-result-cell xc-result-year-0'>22:14.46</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>7:10</td></tr><tr class='non-stx-row'><td>54</td><td>Hatfield, Jacob</td><td></td><td class='xc-result-cell xc-result-year-0'>22:31.53</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>7:15</td></tr><tr class='non-stx-row'><td>55</td><td>Jones, Sawyer</td><td></td><td class='xc-result-cell xc-result-year-0'>22:38.35</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>7:17</td></tr><tr class='non-stx-row'><td>56</td><td>Blake, Destin</td><td></td><td class='xc-result-cell xc-result-year-0'>22:40.05</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>7:18</td></tr><tr class='non-stx-row'><td>57</td><td>Abdi, Ibrahim</td><td></td><td class='xc-result-cell xc-result-year-0'>22:48.56</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>7:20</td></tr><tr class='non-stx-row'><td>58</td><td>Fultz, Matthew</td><td></td><td class='xc-result-cell xc-result-year-0'>22:54.04</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>7:22</td></tr><tr class='non-stx-row'><td>59</td><td>Rafferty, Evan</td><td></td><td class='xc-result-cell xc-result-year-0'>22:56.33</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>7:23</td></tr><tr class='non-stx-row'><td>60</td><td>Weakley, Damon</td><td></td><td class='xc-result-cell xc-result-year-0'>24:09.11</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>7:46</td></tr><tr class='non-stx-row'><td>61</td><td>Naeorales, Qynn</td><td></td><td class='xc-result-cell xc-result-year-0'>26:06.25</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>8:24</td></tr></tbody></table></div></div></section><section class='xc-print-prior xc-print-hidden-history'><div class='xc-history-heading'><h1>KHSAA Region 3 Class 3A 2022</h1></div><p class='subline muted'>October 22, 2022<br>Seneca Park, Louisville, KY</p><div class='card'><h2>Boys 5k Run CC Varsity (5K)</h2><div class='xc-team-score-heading'><h3>Team Scores</h3></div><div class='table-wrap xc-team-table'><table><thead><tr><th>Place</th><th>Name</th><th>Score</th><th>Average</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>(6)</th><th>(7)</th><th>1–5</th></tr></thead><tbody><tr class='stx-team-highlight'><td>1</td><td>St. Xavier</td><td>25</td><td>16:24</td><td>1</td><td>4</td><td>5</td><td>7</td><td>8</td><td>10</td><td>17</td><td>1:08</td></tr><tr><td>2</td><td>Dupont Manual</td><td>45</td><td>16:49</td><td>3</td><td>6</td><td>11</td><td>12</td><td>13</td><td>14</td><td>16</td><td>0:50</td></tr><tr><td>3</td><td>Male</td><td>107</td><td>17:47</td><td>9</td><td>20</td><td>25</td><td>26</td><td>27</td><td>29</td><td>34</td><td>1:29</td></tr><tr class='xc-team-extra-row'><td>4</td><td>Bullitt Central</td><td>111</td><td>18:02</td><td>2</td><td>23</td><td>24</td><td>30</td><td>32</td><td>36</td><td>37</td><td>3:00</td></tr><tr class='xc-team-extra-row'><td>5</td><td>Butler</td><td>123</td><td>18:14</td><td>18</td><td>19</td><td>22</td><td>31</td><td>33</td><td>38</td><td>41</td><td>1:54</td></tr><tr class='xc-team-extra-row'><td>6</td><td>Bullitt East</td><td>143</td><td>19:06</td><td>15</td><td>21</td><td>28</td><td>39</td><td>40</td><td>44</td><td>46</td><td>3:55</td></tr><tr class='xc-team-extra-row'><td>7</td><td>Fairdale</td><td>212</td><td>22:25</td><td>35</td><td>42</td><td>43</td><td>45</td><td>47</td><td></td><td></td><td>6:34</td></tr></tbody></table></div><h3 style='margin-top:24px'>Individual Results</h3><div class='table-wrap'><table class='xc-results-table'><thead><tr><th>Place</th><th>Athlete</th><th>Grade</th><th class='xc-result-year-0'>2022<span class='xc-result-date'>10/22</span></th><th class='xc-result-year-1'>2021<span class='xc-result-date'>10/23</span></th><th class='xc-result-year-2'>2020<span class='xc-result-date'>10/24</span></th><th class='xc-result-year-3'>2019<span class='xc-result-date'>10/26</span></th><th>PR</th><th>Pace</th></tr></thead><tbody><tr><td>1</td><td><a href='../athletes/sami_hattab.html'>Hattab, Sami</a></td><td>12</td><td class='xc-result-cell xc-result-year-0'>15:37.28</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td>15:24.10</td><td>5:02</td></tr><tr class='non-stx-row'><td>2</td><td>Walls, Samuel</td><td></td><td class='xc-result-cell xc-result-year-0'>16:13.90</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:13</td></tr><tr class='non-stx-row'><td>3</td><td>Chandler, Sam</td><td></td><td class='xc-result-cell xc-result-year-0'>16:21.89</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:16</td></tr><tr><td>4</td><td><a href='../athletes/isaac_baker.html'>Baker, Isaac</a></td><td>12</td><td class='xc-result-cell xc-result-year-0 pr' title='Personal record'>16:26.44</td><td class='xc-result-cell xc-result-year-1'>17:39.30</td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td>16:54.90</td><td>5:18</td></tr><tr><td>5</td><td><a href='../athletes/thomas_weber.html'>Weber, Thomas</a></td><td>10</td><td class='xc-result-cell xc-result-year-0'>16:27.83</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td>16:18.70</td><td>5:18</td></tr><tr class='non-stx-row'><td>6</td><td>Jenkins, Brady</td><td></td><td class='xc-result-cell xc-result-year-0'>16:28.47</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:18</td></tr><tr><td>7</td><td><a href='../athletes/hobs_ashburner.html'>Ashburner, Hobs</a></td><td>10</td><td class='xc-result-cell xc-result-year-0 pr' title='Personal record'>16:44.42</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td>17:11.78</td><td>5:23</td></tr><tr><td>8</td><td><a href='../athletes/tristan_hindorff.html'>Hindorff, Tristan</a></td><td>11</td><td class='xc-result-cell xc-result-year-0'>16:45.29</td><td class='xc-result-cell xc-result-year-1'>17:07.00</td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td>16:09.53</td><td>5:24</td></tr><tr class='non-stx-row'><td>9</td><td>Cull, Caden</td><td></td><td class='xc-result-cell xc-result-year-0'>16:48.81</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:25</td></tr><tr><td>10</td><td><a href='../athletes/brodie_terkhorn.html'>Terkhorn, Brodie</a></td><td>11</td><td class='xc-result-cell xc-result-year-0 pr' title='Personal record'>16:50.62</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td>17:06.30</td><td>5:25</td></tr><tr class='non-stx-row'><td>11</td><td>Gulden, Quinn</td><td></td><td class='xc-result-cell xc-result-year-0'>17:00.30</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:28</td></tr><tr class='non-stx-row'><td>12</td><td>Sinclair, Tate</td><td></td><td class='xc-result-cell xc-result-year-0'>17:01.12</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:29</td></tr><tr class='non-stx-row'><td>13</td><td>Walker, Owen</td><td></td><td class='xc-result-cell xc-result-year-0'>17:12.31</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:32</td></tr><tr class='non-stx-row'><td>14</td><td>Barreda, Giovanni</td><td></td><td class='xc-result-cell xc-result-year-0'>17:13.90</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:33</td></tr><tr class='non-stx-row'><td>15</td><td>Hogan, Bryce</td><td></td><td class='xc-result-cell xc-result-year-0'>17:15.92</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:33</td></tr><tr class='non-stx-row'><td>16</td><td>Dunn, Ayden</td><td></td><td class='xc-result-cell xc-result-year-0'>17:17.90</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:34</td></tr><tr class='non-stx-row'><td>17</td><td>Ballard, Jack</td><td></td><td class='xc-result-cell xc-result-year-0'>17:21.62</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:35</td></tr><tr><td>18</td><td><a href='../athletes/cole_cornett.html'>Cornett, Cole</a></td><td>12</td><td class='xc-result-cell xc-result-year-0 pr' title='Personal record'>17:23.47</td><td class='xc-result-cell xc-result-year-1'>17:33.40</td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td>17:28.52</td><td>5:36</td></tr><tr class='non-stx-row'><td>19</td><td>Gibson, Oubry</td><td></td><td class='xc-result-cell xc-result-year-0'>17:28.35</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:37</td></tr><tr class='non-stx-row'><td>20</td><td>Drogba, Didie</td><td></td><td class='xc-result-cell xc-result-year-0'>17:30.71</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:38</td></tr><tr class='non-stx-row'><td>21</td><td>Hardin, Jacob</td><td></td><td class='xc-result-cell xc-result-year-0'>17:36.18</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:40</td></tr><tr class='non-stx-row'><td>22</td><td>Mitchell, Samuel</td><td></td><td class='xc-result-cell xc-result-year-0'>17:43.00</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:42</td></tr><tr class='non-stx-row'><td>23</td><td>Maraman, Eli</td><td></td><td class='xc-result-cell xc-result-year-0'>17:45.61</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:43</td></tr><tr class='non-stx-row'><td>24</td><td>Waters, Maverick</td><td></td><td class='xc-result-cell xc-result-year-0'>17:54.08</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:46</td></tr><tr class='non-stx-row'><td>25</td><td>Stinnett, Nolan</td><td></td><td class='xc-result-cell xc-result-year-0'>17:54.41</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:46</td></tr><tr class='non-stx-row'><td>26</td><td>Filippazzo, Brady</td><td></td><td class='xc-result-cell xc-result-year-0'>18:01.75</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:48</td></tr><tr class='non-stx-row'><td>27</td><td>Sullivan, Karlyle</td><td></td><td class='xc-result-cell xc-result-year-0'>18:12.73</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:52</td></tr><tr class='non-stx-row'><td>28</td><td>Smith, Xavier</td><td></td><td class='xc-result-cell xc-result-year-0'>18:17.53</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:53</td></tr><tr class='non-stx-row'><td>29</td><td>Swift, Jake</td><td></td><td class='xc-result-cell xc-result-year-0'>18:21.98</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:55</td></tr><tr class='non-stx-row'><td>30</td><td>Stewart, William</td><td></td><td class='xc-result-cell xc-result-year-0'>18:24.52</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>5:56</td></tr><tr class='non-stx-row'><td>31</td><td>Foster, Rowan</td><td></td><td class='xc-result-cell xc-result-year-0'>18:52.50</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:05</td></tr><tr class='non-stx-row'><td>32</td><td>Jones, Evan</td><td></td><td class='xc-result-cell xc-result-year-0'>19:02.68</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:08</td></tr><tr class='non-stx-row'><td>33</td><td>Curtsinger, Corey</td><td></td><td class='xc-result-cell xc-result-year-0'>19:13.51</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:11</td></tr><tr class='non-stx-row'><td>34</td><td>Mattingly, Matthew</td><td></td><td class='xc-result-cell xc-result-year-0'>19:22.29</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:14</td></tr><tr class='non-stx-row'><td>35</td><td>Hensler, Garrett</td><td></td><td class='xc-result-cell xc-result-year-0'>19:30.84</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:17</td></tr><tr class='non-stx-row'><td>36</td><td>Hatfield, Ethan</td><td></td><td class='xc-result-cell xc-result-year-0'>19:33.62</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:18</td></tr><tr class='non-stx-row'><td>37</td><td>Shofner, Cooper</td><td></td><td class='xc-result-cell xc-result-year-0'>19:36.83</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:19</td></tr><tr class='non-stx-row'><td>38</td><td>Hodges, Myles</td><td></td><td class='xc-result-cell xc-result-year-0'>20:00.49</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:26</td></tr><tr class='non-stx-row'><td>39</td><td>Wooldridge, Blake</td><td></td><td class='xc-result-cell xc-result-year-0'>20:10.49</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:30</td></tr><tr class='non-stx-row'><td>40</td><td>Fromme, Connor</td><td></td><td class='xc-result-cell xc-result-year-0'>20:16.88</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:32</td></tr><tr class='non-stx-row'><td>41</td><td>Ekbundit, Eli</td><td></td><td class='xc-result-cell xc-result-year-0'>20:56.58</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:44</td></tr><tr class='non-stx-row'><td>42</td><td>Belance, Jonah</td><td></td><td class='xc-result-cell xc-result-year-0'>21:01.70</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:46</td></tr><tr class='non-stx-row'><td>43</td><td>Wooden, Andruw</td><td></td><td class='xc-result-cell xc-result-year-0'>21:07.03</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:48</td></tr><tr class='non-stx-row'><td>44</td><td>Stickling, Otto</td><td></td><td class='xc-result-cell xc-result-year-0'>21:11.17</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:49</td></tr><tr class='non-stx-row'><td>45</td><td>Clem, Thomas</td><td></td><td class='xc-result-cell xc-result-year-0'>21:23.26</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:53</td></tr><tr class='non-stx-row'><td>46</td><td>Sexton, Daylan</td><td></td><td class='xc-result-cell xc-result-year-0'>21:32.19</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:56</td></tr><tr class='non-stx-row'><td>47</td><td>Pilgrim, Deshawn</td><td></td><td class='xc-result-cell xc-result-year-0'>21:32.30</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:56</td></tr><tr class='non-stx-row'><td>48</td><td>Smith, Tre</td><td></td><td class='xc-result-cell xc-result-year-0'>21:34.08</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>6:57</td></tr><tr class='non-stx-row'><td>49</td><td>Hatcher, Trenton</td><td></td><td class='xc-result-cell xc-result-year-0'>22:31.81</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>7:15</td></tr><tr class='non-stx-row'><td>50</td><td>Bibee, Owen</td><td></td><td class='xc-result-cell xc-result-year-0'>22:34.26</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>7:16</td></tr><tr class='non-stx-row'><td>51</td><td>Peskoe, Peyton</td><td></td><td class='xc-result-cell xc-result-year-0'>22:50.17</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>7:21</td></tr><tr class='non-stx-row'><td>52</td><td>Caple, Spencer</td><td></td><td class='xc-result-cell xc-result-year-0'>23:16.12</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>7:29</td></tr><tr class='non-stx-row'><td>53</td><td>Smith, Luke</td><td></td><td class='xc-result-cell xc-result-year-0'>23:48.58</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>7:40</td></tr><tr class='non-stx-row'><td>54</td><td>Blair, Mason</td><td></td><td class='xc-result-cell xc-result-year-0'>25:09.69</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>8:06</td></tr><tr class='non-stx-row'><td>55</td><td>Capps, Peyton</td><td></td><td class='xc-result-cell xc-result-year-0'>25:19.88</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>8:09</td></tr><tr class='non-stx-row'><td>56</td><td>Babcock, Benjamin</td><td></td><td class='xc-result-cell xc-result-year-0'>26:07.28</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>8:24</td></tr><tr class='non-stx-row'><td>57</td><td>Brooks-Johnson, Blake</td><td></td><td class='xc-result-cell xc-result-year-0'>26:57.42</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>8:41</td></tr><tr class='non-stx-row'><td>58</td><td>Davis, Isaac</td><td></td><td class='xc-result-cell xc-result-year-0'>27:21.09</td><td class='xc-result-cell xc-result-year-1'></td><td class='xc-result-cell xc-result-year-2'></td><td class='xc-result-cell xc-result-year-3'></td><td></td><td>8:48</td></tr></tbody></table></div></div></section><div class="footer">Generated at <code>2026-10-24 15:40:47</code> from <code>C:\Users\Bob\OneDrive\StX_XC_Track_V2\data\stx_track.db</code></div>
+<!-- STX_HEADER_SCRIPT_START -->
+    <script>
+      (() => {
+        const menu = document.getElementById('stx-site-menu');
+        const openButton = document.querySelector('.stx-menu-open');
+        const closeButton = document.querySelector('.stx-menu-close');
+        if (!menu || !openButton || !closeButton) return;
+        let lastFocused = null;
+
+        function setMenu(open) {
+          menu.classList.toggle('is-open', open);
+          menu.setAttribute('aria-hidden', open ? 'false' : 'true');
+          openButton.setAttribute('aria-expanded', open ? 'true' : 'false');
+          document.documentElement.classList.toggle('stx-menu-is-open', open);
+          if (open) {
+            lastFocused = document.activeElement;
+            closeButton.focus();
+          } else if (lastFocused) {
+            lastFocused.focus();
+          }
+        }
+
+        openButton.addEventListener('click', () => setMenu(true));
+        closeButton.addEventListener('click', () => setMenu(false));
+        document.addEventListener('keydown', event => {
+          if (event.key === 'Escape' && menu.classList.contains('is-open')) setMenu(false);
+        });
+      })();
+    </script>
+    <!-- STX_HEADER_SCRIPT_END -->
+</body>
+</html>
