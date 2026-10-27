@@ -616,7 +616,7 @@
         
       </div>
       <div class="nav">
-        <a class='home-link' href='../index.html'>Home</a> <a class='records-link' href='../records.html'>StX Records</a> <a class='depth-link' href='../depth_chart.html'>Depth Chart</a> <a class='comparison-link' href='../athlete_comparison.html'>Athlete Comparison</a> <a class='coach-link' href='../coach_sheets/index.html'>Pre-Race Sheet Creator</a> <a class='feedback-link' href='../feedback.html'>Feedback</a>
+        <a class='home-link' href='../index.html'>Home</a> <a class='records-link' href='../records.html'>StX Records</a> <a class='xc-courses-link' href='../xc_course_history.html'>XC Course History</a> <a class='depth-link' href='../depth_chart.html'>Depth Chart</a> <a class='comparison-link' href='../athlete_comparison.html'>Athlete Comparison</a> <a class='coach-link' href='../coach_sheets/index.html'>Pre-Race Sheet Creator</a> <a class='feedback-link' href='../feedback.html'>Feedback</a>
       </div>
     </div>
     <div class="card">
@@ -626,8 +626,8 @@
         <button class="tabbtn" id="btn-pr" onclick="activateTab('pr')">PR (Track + XC)</button>
         <button class="tabbtn" id="btn-pryear" onclick="activateTab('pryear')">PR by Year (Track + XC)</button>
       </div>
-      <div class="tabpane" id="pane-pr"><div class="table-wrap"><table><thead><tr><th>Event</th><th>Indoor</th><th>Outdoor</th></tr></thead><tbody><tr class='sporthdr'><td colspan='3'>TRACK</td></tr><tr><td>1600 Meters</td><td></td><td class="bestpr">4:27.76</td></tr><tr><td>3200 Meters</td><td></td><td class="bestpr">9:33.50</td></tr><tr class='sporthdr'><td colspan='3'>XC</td></tr><tr><td>5000 Meters</td><td>—</td><td class="bestpr">15:08.00</td></tr></tbody></table></div></div>
-      <div class="tabpane" id="pane-pryear"><h3 style='margin:10px 0 0 0;'>TRACK</h3><div class="table-wrap"><table><thead><tr><th>Year</th><th>Event</th><th>Indoor</th><th>Outdoor</th></tr></thead><tbody><tr><td>1993</td><td>1600 Meters</td><td></td><td class="bestpr">4:27.76</td></tr><tr><td>1993</td><td>3200 Meters</td><td></td><td class="bestpr">9:44.14</td></tr><tr><td>1992</td><td>3200 Meters</td><td></td><td class="bestpr">9:47.83</td></tr><tr><td>1991</td><td>1600 Meters</td><td></td><td class="bestpr">4:33.30</td></tr><tr><td>1991</td><td>3200 Meters</td><td></td><td class="bestpr">9:33.50</td></tr></tbody></table></div><h3 style='margin:18px 0 0 0;'>XC</h3><div class="table-wrap"><table><thead><tr><th>Year</th><th>Event</th><th>Indoor</th><th>Outdoor</th></tr></thead><tbody><tr><td>1992</td><td>5000 Meters</td><td></td><td class="bestpr">15:58.70</td></tr><tr><td>1991</td><td>5000 Meters</td><td></td><td class="bestpr">15:08.00</td></tr><tr><td>1990</td><td>5000 Meters</td><td></td><td class="bestpr">16:57.40</td></tr><tr><td>1989</td><td>5000 Meters</td><td></td><td class="bestpr">16:41.60</td></tr></tbody></table></div></div>
+      <div class="tabpane" id="pane-pr"><div class="table-wrap"><table><thead><tr><th>Event</th><th>Indoor</th><th>Outdoor</th></tr></thead><tbody><tr class='sporthdr'><td colspan='3'>TRACK</td></tr><tr><td>1600 Meters</td><td></td><td class="bestpr">4:27.76</td></tr><tr><td>3200 Meters</td><td></td><td class="bestpr">9:33.50</td></tr><tr class='sporthdr'><td colspan='3'>XC</td></tr><tr><td>4800 Meters</td><td>—</td><td class="bestpr">16:50.00</td></tr><tr><td>5000 Meters</td><td>—</td><td class="bestpr">15:08.00</td></tr></tbody></table></div></div>
+      <div class="tabpane" id="pane-pryear"><h3 style='margin:10px 0 0 0;'>TRACK</h3><div class="table-wrap"><table><thead><tr><th>Year</th><th>Event</th><th>Indoor</th><th>Outdoor</th></tr></thead><tbody><tr><td>1993</td><td>1600 Meters</td><td></td><td class="bestpr">4:27.76</td></tr><tr><td>1993</td><td>3200 Meters</td><td></td><td class="bestpr">9:44.14</td></tr><tr><td>1992</td><td>3200 Meters</td><td></td><td class="bestpr">9:47.83</td></tr><tr><td>1991</td><td>1600 Meters</td><td></td><td class="bestpr">4:33.30</td></tr><tr><td>1991</td><td>3200 Meters</td><td></td><td class="bestpr">9:33.50</td></tr></tbody></table></div><h3 style='margin:18px 0 0 0;'>XC</h3><div class="table-wrap"><table><thead><tr><th>Year</th><th>Event</th><th>Indoor</th><th>Outdoor</th></tr></thead><tbody><tr><td>1992</td><td>5000 Meters</td><td></td><td class="bestpr">15:58.70</td></tr><tr><td>1991</td><td>4800 Meters</td><td></td><td class="bestpr">16:50.00</td></tr><tr><td>1991</td><td>5000 Meters</td><td></td><td class="bestpr">15:08.00</td></tr><tr><td>1990</td><td>5000 Meters</td><td></td><td class="bestpr">16:57.40</td></tr><tr><td>1989</td><td>5000 Meters</td><td></td><td class="bestpr">16:41.60</td></tr></tbody></table></div></div>
     </div>
     <div class="card">
       <h2>All Results</h2>
@@ -652,10 +652,10 @@
         <span class="muted">(true time series is the default)</span>
       </div>
       <p class='muted'>No split data available for this athlete (in the selected years).</p>
-      <div id="athlete-results-wrap"><h3 class='section-title'>5000 Meters</h3><div class="table-wrap"><table><thead><tr><th>Year</th><th>Date</th><th>Meet</th><th>Loc</th><th>Event</th><th>Group</th><th>Place</th><th>Result</th></tr></thead><tbody><tr><td>1992</td><td>1992-11-07</td><td><a href='../meets/817_all.html'>Kentucky State Meet</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>6</td><td>15:58.70</td></tr><tr><td>1991</td><td>1991-11-02</td><td><a href='../meets/816_all.html'>Kentucky State Meet</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>6</td><td>15:56.40</td></tr><tr><td>1991</td><td>1991-10-26</td><td><a href='../meets/793_all.html'>KTCCCA Meet of Champions</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>2</td><td>15:08.00</td></tr><tr><td>1990</td><td>1990-11-03</td><td><a href='../meets/815_all.html'>Kentucky State Meet</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>9</td><td>16:57.40</td></tr><tr><td>1989</td><td>1989-11-04</td><td><a href='../meets/814_all.html'>Kentucky State Meet</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td></td><td>16:41.60</td></tr></tbody></table></div><div class="chart-container"><canvas id="chart-5000_meters"></canvas></div><h3 class='section-title'>1600 Meters / 1 Mile</h3><div class="table-wrap"><table><thead><tr><th>Year</th><th>Date</th><th>Meet</th><th>Loc</th><th>Event</th><th>Group</th><th>Place</th><th>Result</th></tr></thead><tbody><tr><td>1993</td><td>1993-06-04</td><td><a href='../meets/277_all.html'>Kentucky State Outdoor Track Meet</a></td><td>Outdoor</td><td>1600 Meters / 1 Mile</td><td>3</td><td>4</td><td>4:27.76</td></tr><tr><td>1991</td><td>1991-05-25</td><td><a href='../meets/279_all.html'>Kentucky State Outdoor Track Meet</a></td><td>Outdoor</td><td>1600 Meters / 1 Mile</td><td>3</td><td>5</td><td>4:33.30</td></tr></tbody></table></div><div class="chart-container"><canvas id="chart-1600_meters_1_mile"></canvas></div><h3 class='section-title'>3200 Meters / 2 Miles</h3><div class="table-wrap"><table><thead><tr><th>Year</th><th>Date</th><th>Meet</th><th>Loc</th><th>Event</th><th>Group</th><th>Place</th><th>Result</th></tr></thead><tbody><tr><td>1993</td><td>1993-06-04</td><td><a href='../meets/277_all.html'>Kentucky State Outdoor Track Meet</a></td><td>Outdoor</td><td>3200 Meters / 2 Miles</td><td>3</td><td>1</td><td>9:44.14</td></tr><tr><td>1992</td><td>1992-06-05</td><td><a href='../meets/278_all.html'>Kentucky State Outdoor Track Meet</a></td><td>Outdoor</td><td>3200 Meters / 2 Miles</td><td>3</td><td>2</td><td>9:47.83</td></tr><tr><td>1991</td><td>1991-05-25</td><td><a href='../meets/279_all.html'>Kentucky State Outdoor Track Meet</a></td><td>Outdoor</td><td>3200 Meters / 2 Miles</td><td>3</td><td>2</td><td>9:33.50</td></tr></tbody></table></div><div class="chart-container"><canvas id="chart-3200_meters_2_miles"></canvas></div></div>
+      <div id="athlete-results-wrap"><h3 class='section-title'>5000 Meters</h3><div class="table-wrap"><table><thead><tr><th>Year</th><th>Date</th><th>Meet</th><th>Loc</th><th>Event</th><th>Group</th><th>Place</th><th>Result</th></tr></thead><tbody><tr><td>1992</td><td>1992-11-07</td><td><a href='../meets/817_all.html'>Kentucky State Meet</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>6</td><td>15:58.70</td></tr><tr><td>1991</td><td>1991-11-02</td><td><a href='../meets/816_all.html'>Kentucky State Meet</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>6</td><td>15:56.40</td></tr><tr><td>1991</td><td>1991-11-02</td><td><a href='../meets/1168_all.html'>Regional Championship</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>1</td><td>16:02.00</td></tr><tr><td>1991</td><td>1991-10-26</td><td><a href='../meets/793_all.html'>KTCCCA Meet of Champions</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>2</td><td>15:08.00</td></tr><tr><td>1991</td><td>1991-10-19</td><td><a href='../meets/1164_all.html'>Shelby County Invitational</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>3</td><td>15:26.00</td></tr><tr><td>1991</td><td>1991-10-12</td><td><a href='../meets/1163_all.html'>Big Eight</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>2</td><td>15:48.00</td></tr><tr><td>1991</td><td>1991-10-05</td><td><a href='../meets/1161_all.html'>Franklin County Invitational</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>2</td><td>16:04.00</td></tr><tr><td>1991</td><td>1991-10-01</td><td><a href='../meets/1160_all.html'>St. X vs Trinity Dual</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>1</td><td>16:19.00</td></tr><tr><td>1991</td><td>1991-09-28</td><td><a href='../meets/1159_all.html'>Capital Classic</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>1</td><td>16:58.00</td></tr><tr><td>1991</td><td>1991-09-21</td><td><a href='../meets/1156_all.html'>Trinity Invitational</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>1</td><td>15:29.00</td></tr><tr><td>1991</td><td>1991-09-14</td><td><a href='../meets/1155_all.html'>Covington Catholic Invitational</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>1</td><td>15:41.00</td></tr><tr><td>1991</td><td>1991-09-10</td><td><a href='../meets/1154_all.html'>Male and Iroquois</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>7</td><td>18:53.00</td></tr><tr><td>1991</td><td>1991-09-07</td><td><a href='../meets/1153_all.html'>Warren East Invitational</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>1</td><td>15:47.00</td></tr><tr><td>1991</td><td>1991-08-31</td><td><a href='../meets/1152_all.html'>Tiger Run</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>1</td><td>15:45.00</td></tr><tr><td>1991</td><td>1991-08-24</td><td><a href='../meets/1151_all.html'>St. X Intrasquad</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>1</td><td>16:28.00</td></tr><tr><td>1991</td><td>1991-08-10</td><td><a href='../meets/1150_all.html'>Holy Cross Practice Meet</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>1</td><td>16:30.00</td></tr><tr><td>1990</td><td>1990-11-03</td><td><a href='../meets/815_all.html'>Kentucky State Meet</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>9</td><td>16:57.40</td></tr><tr><td>1990</td><td>1990-09-25</td><td><a href='../meets/1139_all.html'>Butler and Central</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>5</td><td>18:21.00</td></tr><tr><td>1990</td><td>1990-09-08</td><td><a href='../meets/1134_all.html'>Warren County Invitational</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td></td><td></td></tr><tr><td>1990</td><td>1990-09-04</td><td><a href='../meets/1133_all.html'>New Albany Dual</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>1</td><td>17:07.00</td></tr><tr><td>1990</td><td>1990-09-01</td><td><a href='../meets/1132_all.html'>Tiger Run</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>1</td><td>17:26.00</td></tr><tr><td>1990</td><td>1990-08-11</td><td><a href='../meets/1130_all.html'>Holy Cross Practice Meet</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>1</td><td>17:04.00</td></tr><tr><td>1990</td><td>1990-08-04</td><td><a href='../meets/1129_all.html'>St. X Time Trial</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td>1</td><td>17:55.00</td></tr><tr><td>1989</td><td>1989-11-04</td><td><a href='../meets/814_all.html'>Kentucky State Meet</a></td><td>Outdoor</td><td>5000 Meters</td><td>xc</td><td></td><td>16:41.60</td></tr></tbody></table></div><div class="chart-container"><canvas id="chart-5000_meters"></canvas></div><h3 class='section-title'>1600 Meters / 1 Mile</h3><div class="table-wrap"><table><thead><tr><th>Year</th><th>Date</th><th>Meet</th><th>Loc</th><th>Event</th><th>Group</th><th>Place</th><th>Result</th></tr></thead><tbody><tr><td>1993</td><td>1993-06-04</td><td><a href='../meets/277_all.html'>Kentucky State Outdoor Track Meet</a></td><td>Outdoor</td><td>1600 Meters / 1 Mile</td><td>3</td><td>4</td><td>4:27.76</td></tr><tr><td>1991</td><td>1991-05-25</td><td><a href='../meets/279_all.html'>Kentucky State Outdoor Track Meet</a></td><td>Outdoor</td><td>1600 Meters / 1 Mile</td><td>3</td><td>5</td><td>4:33.30</td></tr></tbody></table></div><div class="chart-container"><canvas id="chart-1600_meters_1_mile"></canvas></div><h3 class='section-title'>3200 Meters / 2 Miles</h3><div class="table-wrap"><table><thead><tr><th>Year</th><th>Date</th><th>Meet</th><th>Loc</th><th>Event</th><th>Group</th><th>Place</th><th>Result</th></tr></thead><tbody><tr><td>1993</td><td>1993-06-04</td><td><a href='../meets/277_all.html'>Kentucky State Outdoor Track Meet</a></td><td>Outdoor</td><td>3200 Meters / 2 Miles</td><td>3</td><td>1</td><td>9:44.14</td></tr><tr><td>1992</td><td>1992-06-05</td><td><a href='../meets/278_all.html'>Kentucky State Outdoor Track Meet</a></td><td>Outdoor</td><td>3200 Meters / 2 Miles</td><td>3</td><td>2</td><td>9:47.83</td></tr><tr><td>1991</td><td>1991-05-25</td><td><a href='../meets/279_all.html'>Kentucky State Outdoor Track Meet</a></td><td>Outdoor</td><td>3200 Meters / 2 Miles</td><td>3</td><td>2</td><td>9:33.50</td></tr></tbody></table></div><div class="chart-container"><canvas id="chart-3200_meters_2_miles"></canvas></div><h3 class='section-title'>4800 Meters</h3><div class="table-wrap"><table><thead><tr><th>Year</th><th>Date</th><th>Meet</th><th>Loc</th><th>Event</th><th>Group</th><th>Place</th><th>Result</th></tr></thead><tbody><tr><td>1991</td><td>1991-08-01</td><td><a href='../meets/1149_all.html'>St. X Time Trial</a></td><td>Outdoor</td><td>4800 Meters</td><td>xc</td><td>1</td><td>16:50.00</td></tr></tbody></table></div><div class="chart-container"><canvas id="chart-4800_meters"></canvas></div></div>
       <p class="muted">When splits are shown: fastest lap is green, slowest lap is red.</p>
     </div>
-    <div class="footer">Generated at <code>2026-08-24 16:06:01</code> from <code>C:\Users\Bob\OneDrive\StX_XC_Track_V2\data\stx_track.db</code></div>
+    <div class="footer">Generated at <code>2026-10-26 21:17:33</code> from <code>C:\Users\Bob\OneDrive\StX_XC_Track_V2\data\stx_track.db</code></div>
     
     <script>
       function activateTab(tabId) {
@@ -703,14 +703,104 @@
       "meet": "<a href='../meets/814_all.html'>Kentucky State Meet</a>"
     },
     {
+      "x": "1990-08-04",
+      "y": 1075.0,
+      "meet": "<a href='../meets/1129_all.html'>St. X Time Trial</a>"
+    },
+    {
+      "x": "1990-08-11",
+      "y": 1024.0,
+      "meet": "<a href='../meets/1130_all.html'>Holy Cross Practice Meet</a>"
+    },
+    {
+      "x": "1990-09-01",
+      "y": 1046.0,
+      "meet": "<a href='../meets/1132_all.html'>Tiger Run</a>"
+    },
+    {
+      "x": "1990-09-04",
+      "y": 1027.0,
+      "meet": "<a href='../meets/1133_all.html'>New Albany Dual</a>"
+    },
+    {
+      "x": "1990-09-25",
+      "y": 1101.0,
+      "meet": "<a href='../meets/1139_all.html'>Butler and Central</a>"
+    },
+    {
       "x": "1990-11-03",
       "y": 1017.4,
       "meet": "<a href='../meets/815_all.html'>Kentucky State Meet</a>"
     },
     {
+      "x": "1991-08-10",
+      "y": 990.0,
+      "meet": "<a href='../meets/1150_all.html'>Holy Cross Practice Meet</a>"
+    },
+    {
+      "x": "1991-08-24",
+      "y": 988.0,
+      "meet": "<a href='../meets/1151_all.html'>St. X Intrasquad</a>"
+    },
+    {
+      "x": "1991-08-31",
+      "y": 945.0,
+      "meet": "<a href='../meets/1152_all.html'>Tiger Run</a>"
+    },
+    {
+      "x": "1991-09-07",
+      "y": 947.0,
+      "meet": "<a href='../meets/1153_all.html'>Warren East Invitational</a>"
+    },
+    {
+      "x": "1991-09-10",
+      "y": 1133.0,
+      "meet": "<a href='../meets/1154_all.html'>Male and Iroquois</a>"
+    },
+    {
+      "x": "1991-09-14",
+      "y": 941.0,
+      "meet": "<a href='../meets/1155_all.html'>Covington Catholic Invitational</a>"
+    },
+    {
+      "x": "1991-09-21",
+      "y": 929.0,
+      "meet": "<a href='../meets/1156_all.html'>Trinity Invitational</a>"
+    },
+    {
+      "x": "1991-09-28",
+      "y": 1018.0,
+      "meet": "<a href='../meets/1159_all.html'>Capital Classic</a>"
+    },
+    {
+      "x": "1991-10-01",
+      "y": 979.0,
+      "meet": "<a href='../meets/1160_all.html'>St. X vs Trinity Dual</a>"
+    },
+    {
+      "x": "1991-10-05",
+      "y": 964.0,
+      "meet": "<a href='../meets/1161_all.html'>Franklin County Invitational</a>"
+    },
+    {
+      "x": "1991-10-12",
+      "y": 948.0,
+      "meet": "<a href='../meets/1163_all.html'>Big Eight</a>"
+    },
+    {
+      "x": "1991-10-19",
+      "y": 926.0,
+      "meet": "<a href='../meets/1164_all.html'>Shelby County Invitational</a>"
+    },
+    {
       "x": "1991-10-26",
       "y": 908.0,
       "meet": "<a href='../meets/793_all.html'>KTCCCA Meet of Champions</a>"
+    },
+    {
+      "x": "1991-11-02",
+      "y": 962.0,
+      "meet": "<a href='../meets/1168_all.html'>Regional Championship</a>"
     },
     {
       "x": "1991-11-02",
@@ -750,6 +840,13 @@
       "x": "1993-06-04",
       "y": 584.14,
       "meet": "<a href='../meets/277_all.html'>Kentucky State Outdoor Track Meet</a>"
+    }
+  ],
+  "chart-4800_meters": [
+    {
+      "x": "1991-08-01",
+      "y": 1010.0,
+      "meet": "<a href='../meets/1149_all.html'>St. X Time Trial</a>"
     }
   ]
 };
