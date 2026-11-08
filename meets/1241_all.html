@@ -1,0 +1,676 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2026-11-07 | Lloyd White Memorial Distance Festival</title>
+  
+    <style>
+      body { font-family: Arial, sans-serif; margin: 24px; }
+      a { color: #0b5fff; text-decoration: none; }
+      a:hover { text-decoration: underline; }
+      .muted { color: #666; }
+      .topbar { display:flex; justify-content:space-between; align-items:flex-start; gap:16px; margin-bottom: 8px; }
+      .titlewrap { min-width: 240px; }
+      .date { font-size: 18px; font-weight: 700; line-height: 1.1; margin: 0 0 6px 0; white-space: normal; }
+      .meetname { font-size: 28px; font-weight: 800; line-height: 1.1; margin: 0 0 6px 0; white-space: normal; }
+      .subline { margin: 0; }
+      .athlete-profile-links { margin: 4px 0 8px 0; font-size: 14px; font-weight: 700; }
+      .athlete-profile-links a { margin-right: 15px; }
+      .meet-links { margin: 4px 0 10px 0; font-size: 14px; font-weight: 700; }
+      .meet-links a { margin-right: 15px; }
+      .nav { text-align: right; white-space: nowrap; font-size: 14px; }
+      .nav a.home-link, .nav span.home-link { font-size: 18px; font-weight: 800; }
+      .nav a.records-link, .nav span.records-link,
+      .nav a.depth-link, .nav span.depth-link,
+      .nav a.pre-race-link, .nav span.pre-race-link,
+      .nav a.comparison-link, .nav span.comparison-link {
+        font-size: 16px;
+        font-weight: 700;
+        margin-left: 12px;
+      }
+      .nav a.feedback-link, .nav span.feedback-link {
+        display:inline-block;
+        margin-left:14px;
+        border:2px solid #d39b00;
+        border-radius:999px;
+        padding:6px 12px;
+        background:#f4c542;
+        color:#172554;
+        font-size:14px;
+        font-weight:900;
+        line-height:1;
+        box-shadow:0 2px 7px rgba(15, 23, 42, 0.13);
+      }
+      .nav a.feedback-link:hover {
+        background:#ffd963;
+        text-decoration:none;
+        transform:translateY(-1px);
+      }
+      .nav span { color: #333; }
+      .card { border:1px solid #e6e6e6; border-radius:10px; padding:16px; margin:14px 0; }
+      .twocol { display:flex; gap:16px; align-items:flex-start; }
+      .col { flex: 1 1 0; min-width: 320px; }
+      @media (max-width: 900px) { .twocol { flex-direction: column; } }
+      .table-wrap { overflow-x: auto; max-width: 100%; }
+      table { border-collapse: collapse; width: auto; table-layout: auto; margin-top: 8px; }
+      th, td { border: 1px solid #ddd; padding: 6px 8px; font-size: 14px; white-space: nowrap; }
+      th { background: #f4f4f4; position: sticky; top: 0; text-align: left; }
+      tr:nth-child(even) { background: #fafafa; }
+      .fastest { background-color: #D4EDDA; color: #155724; font-weight: 600; }
+      .slowest { background-color: #F8D7DA; color: #721C24; font-weight: 600; }
+      .pr { background-color: #FFDAB9; color: #A0522D; font-weight: 700; }
+      .bestpr { background-color: #D4EDDA; color: #155724; font-weight: 700; }
+      .stx-team-highlight { background-color: #fcf8e3; }
+      .warning-big { margin: 6px 0 10px 0; font-size: 28px; font-weight: 900; color: #b00020; letter-spacing: 0.5px; }
+      .footer { margin-top: 24px; color: #777; font-size: 12px; }
+      code { background:#f6f6f6; padding:2px 6px; border-radius:6px; }
+      .filterbar { display:flex; align-items:center; gap:14px; margin: 10px 0 0 0; flex-wrap: wrap; }
+      .filterbar label { cursor:pointer; }
+      .pill { display:inline-block; padding:4px 10px; border-radius:999px; background:#f2f2f2; font-size:12px; }
+      .splits-col { display: none; }
+      .show-splits .splits-col { display: table-cell; }
+      .tabs { display:flex; gap:8px; margin: 8px 0 10px 0; flex-wrap: wrap; }
+      .tabbtn { border:1px solid #ddd; background:#fff; border-radius: 999px; padding:6px 10px; font-size: 13px; cursor:pointer; }
+      .tabbtn.active { background:#f2f2f2; font-weight: 700; }
+      .tabpane { display:none; }
+      .tabpane.active { display:block; }
+      .section-title { margin: 24px 0 0 0; font-size: 18px; font-weight: 800; border-top: 1px solid #eee; padding-top: 16px; }
+      .xc-history-heading { margin-top: 42px; border-top: 4px solid #222; padding-top: 24px; }
+      .xc-history-heading h1 { margin: 0 0 8px 0; font-size: 28px; }
+      .athletes-grid { display:flex; gap: 16px; align-items:flex-start; flex-wrap: wrap; }
+      .athletes-grid .ath-col { flex: 1 1 0; min-width: 280px; }
+      .athlete-class-group {
+        border:1px solid #dbe3ee;
+        border-radius:10px;
+        overflow:hidden;
+        margin:0 0 14px 0;
+        background:#fff;
+        box-shadow:0 3px 10px rgba(15, 23, 42, 0.07);
+      }
+      .athlete-class-header {
+        display:flex;
+        align-items:baseline;
+        gap:7px;
+        margin:0;
+        padding:9px 13px;
+        color:#fff;
+        background:linear-gradient(100deg, #172554, #1d4ed8);
+        border-left:7px solid #f4c542;
+        font-size:15px;
+        letter-spacing:0.02em;
+      }
+      .athlete-class-header strong { font-size:21px; }
+      .athlete-class-header.alumni {
+        background:linear-gradient(100deg, #334155, #64748b);
+      }
+      .athlete-class-header.missing {
+        background:linear-gradient(100deg, #6b4f1d, #a16207);
+      }
+      .athlete-class-group ul {
+        margin:0;
+        padding:12px 18px 13px 38px;
+        line-height:1.45;
+      }
+      .athlete-index-table { width:100%; }
+      .athlete-index-table th { cursor:pointer; user-select:none; }
+      .athlete-index-table th:hover { background:#e9eef6; }
+      .athlete-index-table th .sort-indicator { margin-left:5px; color:#64748b; font-size:11px; }
+      .athlete-index-table td:nth-child(1),
+      .athlete-index-table td:nth-child(3) { text-align:right; }
+      .athlete-index-table .no-pr { color:#999; }
+      .athlete-table-heading { display:flex; justify-content:space-between; align-items:baseline; gap:10px; margin:0 0 8px 0; }
+      .athlete-table-heading h3 { margin:0; }
+      .athlete-table-count { color:#64748b; font-size:12px; font-weight:700; }
+      .home-grid {
+        display:grid;
+        grid-template-columns:repeat(3, minmax(0, 1fr));
+        gap:16px;
+        align-items:start;
+      }
+      .home-column { min-width:0; }
+      .home-column > .card { margin-top:0; }
+      .home-column-heading {
+        display:flex; align-items:baseline; justify-content:space-between;
+        gap:10px; margin:0 0 10px 0;
+      }
+      .home-column-heading h2, .home-column-heading h3 { margin:0; }
+      .home-column-heading-meta {
+        display:flex; align-items:center; justify-content:flex-end;
+        gap:8px; flex-wrap:wrap;
+      }
+      .athlete-name-format-toggle {
+        border:1px solid #93a4ba; border-radius:999px; background:#f8fafc;
+        color:#334155; padding:5px 9px; cursor:pointer;
+        font:700 11px Arial, sans-serif;
+      }
+      .athlete-name-format-toggle:hover { background:#eaf2ff; border-color:#6f91c3; }
+      .athlete-card-search {
+        box-sizing:border-box; width:100%; margin:0;
+        border:1px solid #cbd5e1; border-radius:8px; padding:9px 10px;
+        background:#fff; font:14px Arial, sans-serif;
+      }
+      .athlete-card-controls {
+        display:grid; grid-template-columns:minmax(0, 1fr) auto;
+        gap:8px; align-items:center; margin:0 0 10px 0;
+      }
+      .athlete-sort-control {
+        display:flex; align-items:center; gap:6px;
+        color:#475569; font-size:12px; font-weight:800;
+      }
+      .athlete-sort-control select {
+        border:1px solid #cbd5e1; border-radius:8px; background:#fff;
+        padding:8px 7px; font:13px Arial, sans-serif;
+      }
+      .athlete-index-cards {
+        display:flex; flex-direction:column; gap:7px;
+      }
+      .athlete-index-card {
+        display:flex; align-items:center; gap:10px; min-width:0;
+        border:1px solid #dbe3ee; border-radius:9px; padding:8px 10px;
+        background:#fff; color:#172554;
+        box-shadow:0 2px 7px rgba(15, 23, 42, 0.06);
+      }
+      .athlete-index-card:hover {
+        border-color:#93b4e8; background:#f8fbff; text-decoration:none;
+        transform:translateY(-1px);
+      }
+      .athlete-index-card[hidden] { display:none !important; }
+      .athlete-year-bubble {
+        display:inline-flex; align-items:center; justify-content:center;
+        flex:0 0 50px; min-height:28px; border-radius:999px;
+        color:#fff; font-size:12px; font-weight:900; letter-spacing:.02em;
+      }
+      .athlete-year-tone-0 { background:#1d4ed8; }
+      .athlete-year-tone-1 { background:#0f766e; }
+      .athlete-year-tone-2 { background:#7e22ce; }
+      .athlete-year-tone-3 { background:#b45309; }
+      .athlete-year-tone-4 { background:#be123c; }
+      .athlete-year-tone-5 { background:#334155; }
+      .athlete-grade-senior { background:#15803d; }
+      .athlete-grade-junior { background:#f4c542; color:#172554; }
+      .athlete-grade-sophomore { background:#2563eb; }
+      .athlete-grade-freshman { background:#dc2626; }
+      .athlete-year-missing { background:#78716c; }
+      .athlete-index-card-copy {
+        display:flex; flex-direction:column; gap:2px; min-width:0;
+      }
+      .athlete-index-card-copy strong {
+        overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+        color:#0b5fff; font-size:14px;
+      }
+      .athlete-index-card-copy small { color:#64748b; font-size:11px; }
+      .athlete-index-card-copy small.no-pr { color:#9ca3af; }
+      .athlete-missing-block {
+        border-top:1px solid #e5e7eb; margin-top:18px; padding-top:14px;
+      }
+      @media (max-width:900px) {
+        .home-grid { grid-template-columns:1fr; }
+      }
+      .rankcell { font-weight: 800; }
+      .chart-container { position: relative; height: 320px; width: 100%; max-width: 900px; margin: 20px 0 0 0; }
+      .hide-graphs .chart-container { display: none; }
+      /* Meet page filter: hide non-StX rows when toggled */
+      body.stx-only .non-stx-row { display: none; }
+      /* On athlete pages, we still show non-StX history for allow-listed athletes */
+      .non-stx-row { opacity: 0.80; }
+      /* PR section header rows (Track / XC) */
+      .sporthdr { background: #efefef; font-weight: 900; }
+      .dimmed-pr { color: #999; font-weight: normal; }
+      .pr-parade { border: 2px solid #f0a45d; background: #fff8f0; padding: 9px 12px; }
+      .pr-parade h2 { display:inline; margin:0 8px 0 0; color:#8a431d; font-size:18px; }
+      .pr-parade-list { display:inline; line-height:1.8; }
+      .pr-parade-entry { white-space:nowrap; }
+      .pr-parade .pr-time { color:#A0522D; font-weight:800; }
+      .pr-parade-first { border-color:#d5a928; background:#fffbea; }
+      .pr-parade-first h2 { color:#765b00; }
+      .xc-team-score-heading { display:flex; align-items:center; gap:16px; flex-wrap:wrap; margin-top:24px; }
+      .xc-team-score-heading h3 { margin:0; }
+      .xc-team-extra-row { display:none; }
+      body.show-all-xc-teams .xc-team-extra-row { display:table-row; }
+      .xc-results-table th { text-align:center; }
+      .xc-result-date {
+        display:block;
+        margin-top:2px;
+        color:#666;
+        font-size:11px;
+        font-weight:normal;
+      }
+      .xc-results-table th.xc-result-year-0 { background:#dce9ff; }
+      .xc-results-table td.xc-result-year-0 { background:#f2f7ff; }
+      .xc-results-table th.xc-result-year-1 { background:#f8e7b2; }
+      .xc-results-table td.xc-result-year-1 { background:#fff9e8; }
+      .xc-results-table th.xc-result-year-2 { background:#d6f0e5; }
+      .xc-results-table td.xc-result-year-2 { background:#f0faf6; }
+      .xc-results-table th.xc-result-year-3 { background:#eadcf7; }
+      .xc-results-table td.xc-result-year-3 { background:#f8f2fc; }
+      .xc-results-table td.xc-result-cell.pr {
+        background:#FFDAB9;
+        color:#A0522D;
+        font-weight:700;
+      }
+      .xc-results-table td.xc-result-cell.bestpr {
+        background:#D4EDDA;
+        color:#155724;
+        font-weight:700;
+      }
+      .meet-list { list-style:none; padding:0; margin:12px 0 0 0; }
+      .meet-year-group {
+        display:grid;
+        grid-template-columns:42px minmax(0, 1fr);
+        gap:10px;
+        padding:0;
+        margin:0 0 16px 0;
+      }
+      .meet-year-bar {
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        min-height:76px;
+        border-radius:10px;
+        color:#fff;
+        font-size:13px;
+        font-weight:900;
+        letter-spacing:0.12em;
+        box-shadow:0 2px 8px rgba(15, 23, 42, 0.12);
+      }
+      .meet-year-bar span {
+        writing-mode:vertical-rl;
+        transform:rotate(180deg);
+      }
+      .meet-year-tone-0 { background:#172554; }
+      .meet-year-tone-1 { background:#9a6700; }
+      .meet-year-tone-2 { background:#0f766e; }
+      .meet-year-tone-3 { background:#6b21a8; }
+      .meet-year-items { list-style:none; padding:0; margin:0; }
+      .meet-list .meet-item {
+        display:grid;
+        grid-template-columns:34px minmax(0, 1fr);
+        min-height:76px;
+        padding:0;
+        margin:0 0 8px 0;
+        border:1px solid #dbe2ea;
+        border-radius:10px;
+        overflow:hidden;
+        background:#fff;
+        box-shadow:0 2px 8px rgba(15, 23, 42, 0.07);
+      }
+      .meet-rail {
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        color:#fff;
+        font-size:12px;
+        font-weight:900;
+        letter-spacing:0.08em;
+        text-transform:uppercase;
+      }
+      .meet-rail span {
+        writing-mode:vertical-rl;
+        transform:rotate(180deg);
+      }
+      .meet-sport-track { background:#1d4ed8; }
+      .meet-sport-xc { background:#15803d; }
+      .meet-main {
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        gap:3px;
+        min-width:0;
+        padding:11px 14px;
+      }
+      .meet-main:hover { background:#f8fafc; text-decoration:none; }
+      .meet-date { color:#64748b; font-size:12px; font-weight:800; }
+      .meet-title { color:#0b5fff; font-size:15px; font-weight:800; line-height:1.25; }
+      .meet-location { color:#475569; font-size:12px; }
+      .pdf-export-button {
+        border:1px solid #12543f; border-radius:8px; padding:7px 11px;
+        background:#12543f; color:#fff; cursor:pointer;
+        font:700 13px Arial, sans-serif;
+      }
+      .pdf-export-button:hover { background:#0a3b2b; }
+      @page { size: Letter landscape; margin: 0.35in; }
+      @media print {
+        body { margin:0; color:#000; print-color-adjust:exact; -webkit-print-color-adjust:exact; }
+        .stx-site-header, .stx-site-menu, .nav, .filterbar,
+        .meet-links, .footer { display:none !important; }
+        .topbar { margin-bottom:8px; }
+        .meetname { font-size:24px; }
+        .card { break-inside:avoid; border-color:#aaa; margin:8px 0; padding:10px; }
+        .pr-parade { break-inside:auto; }
+        .xc-history-heading { break-before:page; margin-top:0; padding-top:0; border-top:0; }
+        .table-wrap { overflow:visible; }
+        table { width:100%; }
+        th, td { padding:4px 5px; font-size:10px; }
+        th { position:static; }
+        .xc-alumni-section { display:none !important; }
+        a { color:inherit; text-decoration:none; }
+      }
+    </style>
+    
+  <!-- STX_HEADER_CSS_START -->
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,600;9..40,700&family=Libre+Caslon+Text:ital,wght@0,400;1,400&display=swap');
+
+      :root {
+        --stx-green: #12543f;
+        --stx-dark-green: #062d20;
+        --stx-gold: #f3ba29;
+        --stx-cream: #f6f9f5;
+        --stx-ink: #17352b;
+      }
+      html.stx-menu-is-open, html.stx-menu-is-open body { overflow: hidden; }
+      .stx-site-header, .stx-site-menu { box-sizing: border-box; font-family: 'DM Sans', Arial, sans-serif; }
+      .stx-site-header *, .stx-site-menu * { box-sizing: border-box; }
+      .stx-site-header {
+        position: relative;
+        z-index: 9000;
+        width: 100vw;
+        max-width: 100vw;
+        margin: -24px -24px 30px;
+        background: var(--stx-dark-green);
+        color: #fff;
+      }
+      .stx-header-inner {
+        min-height: 94px;
+        padding: 14px clamp(22px, 5vw, 82px);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+      }
+      .stx-brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 17px;
+        color: #fff !important;
+        text-decoration: none !important;
+      }
+      .stx-logo-image { display: block; width: clamp(190px, 22vw, 250px); height: auto; }
+      .stx-brand-divider { width: 1px; height: 42px; background: rgba(255,255,255,.38); }
+      .stx-section-name {
+        max-width: 90px;
+        color: var(--stx-gold);
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: .14em;
+        line-height: 1.25;
+        text-transform: uppercase;
+      }
+      .stx-menu-open, .stx-menu-close {
+        border: 0;
+        cursor: pointer;
+        display: inline-grid;
+        place-items: center;
+        flex: 0 0 auto;
+      }
+      .stx-menu-open {
+        width: 55px;
+        height: 55px;
+        padding: 0;
+        border-radius: 50%;
+        background: var(--stx-gold);
+        color: var(--stx-dark-green);
+        transition: background .25s ease, transform .25s ease;
+      }
+      .stx-menu-open:hover, .stx-menu-open:focus-visible { background: #fff; transform: scale(1.04); }
+      .stx-menu-open-lines, .stx-menu-open-lines::before, .stx-menu-open-lines::after {
+        display: block;
+        width: 20px;
+        height: 2px;
+        background: currentColor;
+        border-radius: 4px;
+      }
+      .stx-menu-open-lines { position: relative; }
+      .stx-menu-open-lines::before, .stx-menu-open-lines::after { content: ''; position: absolute; left: 0; }
+      .stx-menu-open-lines::before { top: -6px; }
+      .stx-menu-open-lines::after { top: 6px; }
+      .stx-visually-hidden {
+        position: absolute !important;
+        width: 1px !important;
+        height: 1px !important;
+        padding: 0 !important;
+        margin: -1px !important;
+        overflow: hidden !important;
+        clip: rect(0, 0, 0, 0) !important;
+        white-space: nowrap !important;
+        border: 0 !important;
+      }
+      .stx-site-menu {
+        position: fixed;
+        z-index: 10000;
+        inset: 0;
+        display: grid;
+        grid-template-columns: minmax(320px, 42%) 1fr;
+        background: var(--stx-cream);
+        color: var(--stx-ink);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateX(100%);
+        transition: transform .38s ease, opacity .3s ease, visibility 0s linear .38s;
+      }
+      .stx-site-menu.is-open {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(0);
+        transition: transform .38s ease, opacity .3s ease;
+      }
+      .stx-menu-brand-panel {
+        position: relative;
+        overflow: hidden;
+        padding: clamp(40px, 6vw, 88px);
+        background: var(--stx-green);
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+      }
+      .stx-menu-brand-panel::before {
+        content: 'X';
+        position: absolute;
+        top: -120px;
+        left: -40px;
+        color: rgba(255,255,255,.055);
+        font: 700 540px/1 Georgia, serif;
+        transform: skew(-5deg);
+      }
+      .stx-menu-kicker { position: relative; margin: 0 0 18px; color: var(--stx-gold); font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
+      .stx-menu-title { position: relative; max-width: 520px; margin: 0; font: 400 clamp(39px, 5vw, 72px)/1.02 'Libre Caslon Text', Georgia, serif; }
+      .stx-menu-title em { display: block; color: var(--stx-gold); font-weight: 400; }
+      .stx-menu-content {
+        position: relative;
+        min-width: 0;
+        padding: clamp(88px, 11vh, 130px) clamp(36px, 8vw, 120px) 54px;
+        overflow-y: auto;
+      }
+      .stx-menu-close {
+        position: absolute;
+        top: 36px;
+        right: 42px;
+        width: 48px;
+        height: 48px;
+        padding: 0;
+        background: transparent;
+        color: var(--stx-dark-green);
+      }
+      .stx-menu-close::before, .stx-menu-close::after {
+        content: '';
+        position: absolute;
+        width: 28px;
+        height: 2px;
+        background: currentColor;
+      }
+      .stx-menu-close::before { transform: rotate(45deg); }
+      .stx-menu-close::after { transform: rotate(-45deg); }
+      .stx-menu-close:hover, .stx-menu-close:focus-visible { color: #8c6300; }
+      .stx-menu-label { margin: 0 0 24px; color: #64756f; font-size: 12px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; }
+      .stx-menu-nav { margin: 0; padding: 0; list-style: none; counter-reset: stx-nav; }
+      .stx-menu-nav li { counter-increment: stx-nav; border-top: 1px solid #ccd6d1; }
+      .stx-menu-nav li:last-child { border-bottom: 1px solid #ccd6d1; }
+      .stx-menu-nav a, .stx-menu-nav .stx-current-page {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 22px;
+        padding: 17px 6px;
+        color: var(--stx-dark-green);
+        font: 400 clamp(22px, 2.3vw, 34px)/1.15 'Libre Caslon Text', Georgia, serif;
+        text-decoration: none;
+        transition: color .2s ease, padding-left .2s ease;
+      }
+      .stx-menu-nav a::before, .stx-menu-nav .stx-current-page::before {
+        content: '0' counter(stx-nav);
+        width: 25px;
+        color: #7c9189;
+        font: 700 10px/1 'DM Sans', Arial, sans-serif;
+        letter-spacing: .1em;
+      }
+      .stx-menu-nav a::after { content: '\2192'; margin-left: auto; color: var(--stx-gold); font-family: Arial, sans-serif; }
+      .stx-menu-nav a:hover, .stx-menu-nav a:focus-visible { color: #8c6300; padding-left: 14px; }
+      .stx-menu-nav .stx-current-page { color: #8c6300; font-style: italic; }
+      .stx-menu-utility { margin-top: 34px; display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+      .stx-menu-feedback {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        padding: 10px 22px;
+        border: 1px solid var(--stx-gold);
+        border-radius: 4px;
+        background: var(--stx-gold);
+        color: var(--stx-dark-green) !important;
+        font-weight: 700;
+        text-decoration: none !important;
+      }
+      .stx-menu-feedback:hover, .stx-menu-feedback:focus-visible { background: transparent; }
+      .stx-school-link { color: var(--stx-dark-green) !important; font-size: 13px; font-weight: 700; }
+      @media (max-width: 780px) {
+        .stx-site-header { margin-bottom: 22px; }
+        .stx-header-inner { min-height: 68px; padding: 9px 16px; }
+        .stx-logo-image { width: 190px; }
+        .stx-brand-divider { height: 32px; }
+        .stx-section-name { font-size: 9px; }
+        .stx-menu-open { width: 42px; height: 42px; }
+        .stx-site-menu { display: block; overflow-y: auto; background: var(--stx-green); }
+        .stx-menu-brand-panel { min-height: 210px; padding: 78px 24px 28px; justify-content: flex-end; }
+        .stx-menu-brand-panel::before { top: -80px; font-size: 330px; }
+        .stx-menu-kicker { margin-bottom: 8px; font-size: 10px; }
+        .stx-menu-title { font-size: 36px; }
+        .stx-menu-content { padding: 26px 20px 42px; background: var(--stx-cream); }
+        .stx-menu-close { position: fixed; top: 15px; right: 14px; color: #fff; }
+        .stx-menu-nav a, .stx-menu-nav .stx-current-page { padding: 15px 2px; font-size: 21px; }
+      }
+      @media (max-width: 460px) {
+        .stx-brand { gap: 10px; }
+        .stx-brand-divider, .stx-section-name { display: none; }
+        .stx-logo-image { width: 175px; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .stx-site-menu, .stx-menu-open, .stx-menu-nav a { transition: none; }
+      }
+    </style>
+    <!-- STX_HEADER_CSS_END -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+</head>
+<body>
+<!-- STX_HEADER_HTML_START -->
+    <header class="stx-site-header">
+      <div class="stx-header-inner">
+        <a class="stx-brand" href="../index.html" aria-label="St. Xavier Running home">
+          <img class="stx-logo-image"
+            src="../assets/stx_logo.svg"
+            alt="Saint Xavier High School">
+          <span class="stx-brand-divider" aria-hidden="true"></span>
+          <span class="stx-section-name">Running</span>
+        </a>
+        <button class="stx-menu-open" type="button" aria-controls="stx-site-menu" aria-expanded="false">
+          <span class="stx-menu-open-lines" aria-hidden="true"></span>
+          <span class="stx-visually-hidden">Open site menu</span>
+        </button>
+      </div>
+    </header>
+    <aside class="stx-site-menu" id="stx-site-menu" aria-hidden="true">
+      <div class="stx-menu-brand-panel">
+        <p class="stx-menu-kicker">St. Xavier Running</p>
+        <p class="stx-menu-title">Built on tradition.<em>Driven by the team.</em></p>
+      </div>
+      <div class="stx-menu-content">
+        <button class="stx-menu-close" type="button">
+          <span class="stx-visually-hidden">Close site menu</span>
+        </button>
+        <p class="stx-menu-label">Explore the site</p>
+        <nav aria-label="Primary"><ol class="stx-menu-nav"><li><a href="../index.html">Home</a></li><li><a href="../records.html">StX Records</a></li><li><a href="../xc_course_history.html">XC Course History</a></li><li><a href="../depth_chart.html">Depth Chart</a></li><li><a href="../athlete_comparison.html">Athlete Comparison</a></li><li><a href="../freshman.html">Freshman</a></li><li><a href="../two_mile_progression.html">Two Mile Progression</a></li><li><a href="../data_downloads.html">Data Downloads</a></li><li><a href="../coach_sheets/index.html">Pre-Race Sheet Creator</a></li></ol></nav>
+        <div class="stx-menu-utility">
+          <a class="stx-menu-feedback" href="../feedback.html">Share Feedback</a>
+          <a class="stx-school-link" href="https://www.saintx.com/">Visit saintx.com&nbsp; ↗</a>
+        </div>
+      </div>
+    </aside>
+    <!-- STX_HEADER_HTML_END -->
+
+    <div class="topbar">
+      <div class="titlewrap">
+        <div class="date">2026-11-07</div>
+        <div class="meetname">Lloyd White Memorial Distance Festival</div>
+        
+        <p class="subline muted">Outdoor</p>
+      </div>
+      <div class="nav">
+        <a class='home-link' href='../index.html'>Home</a> <a class='records-link' href='../records.html'>StX Records</a> <a class='xc-courses-link' href='../xc_course_history.html'>XC Course History</a> <a class='depth-link' href='../depth_chart.html'>Depth Chart</a> <a class='comparison-link' href='../athlete_comparison.html'>Athlete Comparison</a> <a class='coach-link' href='../coach_sheets/index.html'>Pre-Race Sheet Creator</a> <a class='feedback-link' href='../feedback.html'>Feedback</a>
+      </div>
+    </div>
+    
+    <div class="filterbar" style="margin: 4px 0 10px 0;">
+      <label>
+        <input type="checkbox" id="stxOnlyToggle" onchange="toggleStxOnly(this)" checked>
+        StX Athletes Only
+      </label>
+    </div>
+    <script>
+      function toggleStxOnly(checkbox) {
+        if (checkbox.checked) {
+          document.body.classList.add('stx-only');
+        } else {
+          document.body.classList.remove('stx-only');
+        }
+      }
+      document.addEventListener('DOMContentLoaded', () => {
+        const checkbox = document.getElementById('stxOnlyToggle');
+        if (checkbox) {
+          toggleStxOnly(checkbox);
+        }
+      });
+    </script>
+    <div class='card'><h2>3200 Meters</h2><div class="table-wrap"><table><thead><tr><th>Athlete</th><th>Team</th><th>Group</th><th>Place</th><th class="dimmed-pr">Indoor PR</th><th>Outdoor PR</th><th>Result</th><th>Lap 1</th><th>Lap 2</th><th>Lap 3</th><th>Lap 4</th><th>Lap 5</th><th>Lap 6</th><th>Lap 7</th></tr></thead><tbody><tr class="non-stx-row"><td>Ethan Mann</td><td>Hebron</td><td>1</td><td>1</td><td class="dimmed-pr"></td><td></td><td>9:08.06</td><td class="fastest">66.34</td><td>67.99</td><td>68.10</td><td>70.07</td><td>69.65</td><td>70.34</td><td class="slowest">71.10</td></tr><tr class="non-stx-row"><td>Van Weimer</td><td>Lafayette</td><td>1</td><td>2</td><td class="dimmed-pr"></td><td></td><td>9:08.81</td><td class="fastest">65.85</td><td>66.87</td><td>65.85</td><td>67.05</td><td>70.62</td><td class="slowest">74.18</td><td>73.49</td></tr><tr class="non-stx-row"><td>Grant Holbrook</td><td>Team Kentucky Elite</td><td>1</td><td>3</td><td class="dimmed-pr"></td><td></td><td>9:11.18</td><td class="fastest">67.65</td><td>68.77</td><td>68.56</td><td>69.40</td><td>69.99</td><td>70.58</td><td class="slowest">71.43</td></tr><tr class="non-stx-row"><td>Quinn Murray</td><td>Unattached</td><td>1</td><td>4</td><td class="dimmed-pr"></td><td></td><td>9:11.38</td><td>67.85</td><td>67.80</td><td class="fastest">67.16</td><td>70.20</td><td>69.90</td><td>71.28</td><td class="slowest">72.70</td></tr><tr class="non-stx-row"><td>Christian Stewart</td><td>Trinity (Louisville)</td><td>1</td><td>5</td><td class="dimmed-pr"></td><td></td><td>9:14.72</td><td class="fastest">65.98</td><td>67.80</td><td>68.38</td><td>70.51</td><td>69.79</td><td>70.21</td><td class="slowest">71.14</td></tr><tr class="non-stx-row"><td>Trace Marshall</td><td>Unattached</td><td>1</td><td>6</td><td class="dimmed-pr"></td><td></td><td>9:15.96</td><td class="fastest">66.13</td><td>67.78</td><td>68.39</td><td>70.42</td><td>70.56</td><td>71.51</td><td class="slowest">72.35</td></tr><tr class="non-stx-row"><td>Will Dierlam</td><td>Unattached</td><td>1</td><td>7</td><td class="dimmed-pr"></td><td></td><td>9:16.38</td><td class="fastest">66.33</td><td>67.30</td><td>69.42</td><td>70.78</td><td>70.39</td><td>72.30</td><td class="slowest">72.73</td></tr><tr class="non-stx-row"><td>Paxton Traylor</td><td>Unattached</td><td>1</td><td>8</td><td class="dimmed-pr"></td><td></td><td>9:16.38</td><td class="fastest">65.62</td><td>68.41</td><td>70.93</td><td class="slowest">72.37</td><td>70.81</td><td>71.37</td><td>71.30</td></tr><tr class="non-stx-row"><td>Brady Filippazzo</td><td>Unattached</td><td>1</td><td>9</td><td class="dimmed-pr"></td><td></td><td>9:19.58</td><td class="fastest">68.10</td><td>69.05</td><td>70.23</td><td>70.67</td><td>70.83</td><td>72.65</td><td class="slowest">72.86</td></tr><tr class="non-stx-row"><td>Ayden Taylor</td><td>Trinity (Louisville)</td><td>1</td><td>10</td><td class="dimmed-pr"></td><td></td><td>9:19.81</td><td class="fastest">67.35</td><td>68.60</td><td>68.81</td><td>70.00</td><td>70.47</td><td class="slowest">72.64</td><td>71.33</td></tr><tr class="non-stx-row"><td>Luke McLane</td><td>Park Hills Athletic Club</td><td>1</td><td>11</td><td class="dimmed-pr"></td><td></td><td>9:21.10</td><td class="fastest">68.22</td><td>69.23</td><td>70.03</td><td>71.33</td><td>70.00</td><td>71.51</td><td class="slowest">72.40</td></tr><tr class="non-stx-row"><td>Ben Cebe</td><td>Trinity (Louisville)</td><td>1</td><td>12</td><td class="dimmed-pr"></td><td></td><td>9:22.34</td><td class="fastest">67.19</td><td>69.01</td><td>69.75</td><td>71.65</td><td>70.91</td><td>71.34</td><td class="slowest">72.12</td></tr><tr class="non-stx-row"><td>Mason Ellis</td><td>Unattached</td><td>1</td><td>13</td><td class="dimmed-pr"></td><td></td><td>9:23.69</td><td class="fastest">67.03</td><td>69.47</td><td>70.71</td><td>71.36</td><td>71.66</td><td class="slowest">73.15</td><td>72.56</td></tr><tr class="non-stx-row"><td>Tanner Daniels</td><td>Thomson Training</td><td>1</td><td>14</td><td class="dimmed-pr"></td><td></td><td>9:23.77</td><td class="fastest">68.34</td><td class="slowest">72.51</td><td>71.69</td><td>72.06</td><td>71.64</td><td>71.77</td><td>69.19</td></tr><tr class="non-stx-row"><td>Easton Bourland</td><td>Unattached</td><td>1</td><td>15</td><td class="dimmed-pr"></td><td></td><td>9:27.82</td><td class="fastest">66.96</td><td>69.64</td><td>71.04</td><td>71.76</td><td>71.21</td><td>73.88</td><td class="slowest">74.50</td></tr><tr class="non-stx-row"><td>Jake Ovesen</td><td>Unattached</td><td>1</td><td>16</td><td class="dimmed-pr"></td><td></td><td>9:32.28</td><td class="fastest">67.47</td><td>70.09</td><td>71.26</td><td>73.33</td><td>73.09</td><td class="slowest">75.00</td><td>74.81</td></tr><tr class="non-stx-row"><td>Pierce Yoder</td><td>Unattached</td><td>1</td><td>17</td><td class="dimmed-pr"></td><td></td><td>9:33.01</td><td class="fastest">67.91</td><td>69.72</td><td>71.25</td><td>72.35</td><td>74.10</td><td class="slowest">75.04</td><td>74.67</td></tr><tr class="non-stx-row"><td>Jay Kosin</td><td>Jaguar Track Club</td><td>1</td><td>18</td><td class="dimmed-pr"></td><td></td><td>9:34.32</td><td class="fastest">68.48</td><td>73.12</td><td>71.96</td><td>72.39</td><td>72.99</td><td>75.32</td><td class="slowest">75.32</td></tr><tr class="non-stx-row"><td>Aidan Albritton</td><td>Trinity (Louisville)</td><td>1</td><td>19</td><td class="dimmed-pr"></td><td></td><td>9:34.84</td><td class="fastest">68.10</td><td>72.77</td><td>71.60</td><td>72.23</td><td>72.59</td><td>75.88</td><td class="slowest">76.57</td></tr><tr class="non-stx-row"><td>John Willen</td><td>DuPont Manual</td><td>1</td><td>20</td><td class="dimmed-pr"></td><td></td><td>9:34.85</td><td>72.94</td><td>72.91</td><td>72.51</td><td>73.42</td><td class="fastest">72.50</td><td class="slowest">74.09</td><td>73.28</td></tr><tr class="non-stx-row"><td>Thomas Cline</td><td>Unattached</td><td>1</td><td>21</td><td class="dimmed-pr"></td><td></td><td>9:35.50</td><td class="fastest">67.18</td><td>69.56</td><td>70.98</td><td>72.68</td><td>73.95</td><td>75.32</td><td class="slowest">75.63</td></tr><tr class="non-stx-row"><td>Asher Edmondson</td><td>Park Hills Athletic Club</td><td>1</td><td>22</td><td class="dimmed-pr"></td><td></td><td>9:35.90</td><td class="fastest">69.96</td><td>73.19</td><td>71.24</td><td>71.31</td><td>72.29</td><td>73.13</td><td class="slowest">74.22</td></tr><tr class="non-stx-row"><td>Oliver Zausch</td><td>DuPont Manual</td><td>1</td><td>23</td><td class="dimmed-pr"></td><td></td><td>9:36.20</td><td class="fastest">67.30</td><td>70.41</td><td>70.43</td><td>72.22</td><td>73.28</td><td class="slowest">75.83</td><td>75.72</td></tr><tr class="non-stx-row"><td>Judson Redfern</td><td>Unattached</td><td>1</td><td>24</td><td class="dimmed-pr"></td><td></td><td>9:37.24</td><td class="fastest">70.01</td><td>72.38</td><td>71.38</td><td>71.26</td><td>73.13</td><td>74.75</td><td class="slowest">75.59</td></tr><tr class="non-stx-row"><td>Colson Somervill</td><td>Lafayette</td><td>1</td><td>25</td><td class="dimmed-pr"></td><td></td><td>9:37.95</td><td class="fastest">69.20</td><td>71.20</td><td>71.67</td><td>72.17</td><td>72.60</td><td>74.04</td><td class="slowest">76.39</td></tr><tr><td><a href='../athletes/nolan_crider.html'>Nolan Crider</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>26</td><td class="dimmed-pr">10:23.15</td><td>9:27.10</td><td>9:38.37</td><td class="fastest">66.61</td><td>69.54</td><td>71.34</td><td>73.20</td><td>75.28</td><td>76.91</td><td class="slowest">77.29</td></tr><tr class="non-stx-row"><td>Nate Hollinden</td><td>Unattached</td><td>1</td><td>27</td><td class="dimmed-pr"></td><td></td><td>9:38.70</td><td class="fastest">69.42</td><td>73.49</td><td>72.18</td><td>73.06</td><td>72.67</td><td class="slowest">74.37</td><td>74.03</td></tr><tr class="non-stx-row"><td>Everest Snyder</td><td>Unattached</td><td>1</td><td>28</td><td class="dimmed-pr"></td><td></td><td>9:39.13</td><td>73.62</td><td class="fastest">71.47</td><td>72.61</td><td>73.17</td><td>73.33</td><td class="slowest">74.47</td><td>73.28</td></tr><tr class="non-stx-row"><td>Wesley Buck</td><td>The Jets</td><td>1</td><td>29</td><td class="dimmed-pr"></td><td></td><td>9:39.62</td><td>73.75</td><td class="fastest">71.76</td><td>71.82</td><td class="slowest">73.89</td><td>73.52</td><td>73.83</td><td>73.31</td></tr><tr class="non-stx-row"><td>Preston Burch</td><td>Trinity (Louisville)</td><td>1</td><td>30</td><td class="dimmed-pr"></td><td></td><td>9:40.37</td><td class="fastest">68.98</td><td>73.64</td><td>72.07</td><td>72.50</td><td>72.48</td><td class="slowest">75.77</td><td>74.77</td></tr><tr class="non-stx-row"><td>Grant Perraut</td><td>Bourbon County</td><td>1</td><td>31</td><td class="dimmed-pr"></td><td></td><td>9:40.81</td><td>73.23</td><td class="fastest">71.83</td><td>71.91</td><td>73.95</td><td>74.16</td><td class="slowest">74.95</td><td>72.50</td></tr><tr class="non-stx-row"><td>Braden Franxman</td><td>Park Hills Athletic Club</td><td>1</td><td>32</td><td class="dimmed-pr"></td><td></td><td>9:43.05</td><td class="fastest">67.56</td><td>67.60</td><td>70.50</td><td>73.55</td><td>74.61</td><td class="slowest">77.15</td><td>76.63</td></tr><tr class="non-stx-row"><td>Eli Guthrie</td><td>Unattached</td><td>1</td><td>33</td><td class="dimmed-pr"></td><td></td><td>9:43.93</td><td>74.38</td><td class="fastest">70.81</td><td>72.27</td><td>72.70</td><td>73.89</td><td class="slowest">75.14</td><td>73.14</td></tr><tr class="non-stx-row"><td>Chase Simpson</td><td>Team Kentucky Elite</td><td>1</td><td>34</td><td class="dimmed-pr"></td><td></td><td>9:44.55</td><td class="fastest">71.60</td><td>74.70</td><td>73.77</td><td class="slowest">75.04</td><td>73.36</td><td>74.60</td><td>72.83</td></tr><tr class="non-stx-row"><td>Jackson Barkley</td><td>Lafayette</td><td>1</td><td>35</td><td class="dimmed-pr"></td><td></td><td>9:45.29</td><td class="fastest">69.07</td><td>71.56</td><td>71.59</td><td>71.84</td><td>72.47</td><td>77.11</td><td class="slowest">80.93</td></tr><tr class="non-stx-row"><td>Noah Webber</td><td>Lafayette</td><td>1</td><td>36</td><td class="dimmed-pr"></td><td></td><td>9:45.34</td><td class="fastest">67.41</td><td>73.26</td><td>71.61</td><td>72.21</td><td>72.61</td><td class="slowest">76.98</td><td>76.90</td></tr><tr class="non-stx-row"><td>Joel Barczak</td><td>Park Hills Athletic Club</td><td>1</td><td>37</td><td class="dimmed-pr"></td><td></td><td>9:45.89</td><td class="fastest">70.17</td><td>72.72</td><td>71.43</td><td>71.31</td><td>72.96</td><td>76.44</td><td class="slowest">76.46</td></tr><tr class="non-stx-row"><td>Brooks Crosby</td><td>DuPont Manual</td><td>1</td><td>38</td><td class="dimmed-pr"></td><td></td><td>9:46.21</td><td>73.22</td><td class="fastest">71.14</td><td>71.89</td><td>73.03</td><td>74.50</td><td>76.01</td><td class="slowest">76.31</td></tr><tr class="non-stx-row"><td>Gannon Mays</td><td>Unattached</td><td>1</td><td>39</td><td class="dimmed-pr"></td><td></td><td>9:46.40</td><td class="fastest">69.78</td><td>72.35</td><td>71.85</td><td>72.91</td><td>74.36</td><td class="slowest">77.04</td><td>75.78</td></tr><tr class="non-stx-row"><td>Aiden Hernandez</td><td>Unattached</td><td>1</td><td>40</td><td class="dimmed-pr"></td><td></td><td>9:47.17</td><td>73.28</td><td class="fastest">71.68</td><td>72.03</td><td>72.98</td><td>73.96</td><td>75.01</td><td class="slowest">75.92</td></tr><tr class="non-stx-row"><td>William McCammon</td><td>Grizzlies</td><td>1</td><td>41</td><td class="dimmed-pr"></td><td></td><td>9:47.95</td><td>74.12</td><td class="fastest">71.69</td><td>72.94</td><td>73.73</td><td>75.29</td><td>74.29</td><td class="slowest">75.76</td></tr><tr class="non-stx-row"><td>Preston Packard</td><td>Unattached</td><td>1</td><td>42</td><td class="dimmed-pr"></td><td></td><td>9:48.33</td><td>75.37</td><td class="fastest">72.03</td><td>74.07</td><td>74.20</td><td>74.82</td><td class="slowest">75.52</td><td>75.35</td></tr><tr class="non-stx-row"><td>Joe Sierpina</td><td>Trinity (Louisville)</td><td>1</td><td>43</td><td class="dimmed-pr"></td><td></td><td>9:48.38</td><td class="fastest">68.69</td><td>72.74</td><td>72.29</td><td>73.68</td><td>74.34</td><td>76.36</td><td class="slowest">76.41</td></tr><tr class="non-stx-row"><td>Jose Vazquez</td><td>Unattached</td><td>1</td><td>44</td><td class="dimmed-pr"></td><td></td><td>9:49.21</td><td class="fastest">68.95</td><td>72.79</td><td>72.28</td><td>73.69</td><td>74.70</td><td>75.15</td><td class="slowest">76.07</td></tr><tr class="non-stx-row"><td>Jerry McConnell</td><td>Trinity (Louisville)</td><td>1</td><td>45</td><td class="dimmed-pr"></td><td></td><td>9:49.39</td><td class="fastest">67.91</td><td>73.41</td><td>72.14</td><td>73.03</td><td>72.80</td><td>75.98</td><td class="slowest">76.52</td></tr><tr class="non-stx-row"><td>Olin Inscore</td><td>Essick Henry County</td><td>1</td><td>46</td><td class="dimmed-pr"></td><td></td><td>9:51.78</td><td class="fastest">71.42</td><td>74.77</td><td class="slowest">75.33</td><td>75.08</td><td>73.40</td><td>75.28</td><td>75.23</td></tr><tr class="non-stx-row"><td>Hunter Schultheis</td><td>Unattached</td><td>1</td><td>47</td><td class="dimmed-pr"></td><td></td><td>9:52.34</td><td>73.02</td><td class="fastest">71.30</td><td>72.38</td><td>74.01</td><td>76.20</td><td class="slowest">79.00</td><td>77.54</td></tr><tr class="non-stx-row"><td>Landon Higdon</td><td>Webster County</td><td>1</td><td>48</td><td class="dimmed-pr"></td><td></td><td>9:52.55</td><td>74.50</td><td class="slowest">76.24</td><td>73.84</td><td>73.55</td><td class="fastest">72.81</td><td>74.40</td><td>75.33</td></tr><tr class="non-stx-row"><td>Dawson Pikus</td><td>Unattached</td><td>1</td><td>49</td><td class="dimmed-pr"></td><td></td><td>9:52.70</td><td>74.71</td><td class="fastest">70.97</td><td>71.52</td><td>72.15</td><td>74.02</td><td>77.07</td><td class="slowest">79.29</td></tr><tr class="non-stx-row"><td>Dane Neafus</td><td>Unattached</td><td>1</td><td>50</td><td class="dimmed-pr"></td><td></td><td>9:52.86</td><td>73.49</td><td class="fastest">71.71</td><td>72.69</td><td>74.31</td><td>76.98</td><td class="slowest">77.48</td><td>76.32</td></tr><tr class="non-stx-row"><td>Logan Vaniglia</td><td>Unattached</td><td>1</td><td>51</td><td class="dimmed-pr"></td><td></td><td>9:54.06</td><td class="fastest">72.30</td><td>74.98</td><td>73.14</td><td>74.72</td><td>75.17</td><td>74.75</td><td class="slowest">75.58</td></tr><tr class="non-stx-row"><td>Thomas Matthews</td><td>Thomson Training</td><td>1</td><td>52</td><td class="dimmed-pr"></td><td></td><td>9:54.65</td><td class="fastest">68.24</td><td>72.90</td><td>72.22</td><td>73.84</td><td>75.50</td><td class="slowest">78.35</td><td>77.41</td></tr><tr class="non-stx-row"><td>Hudson Everett</td><td>Trinity (Louisville)</td><td>1</td><td>53</td><td class="dimmed-pr"></td><td></td><td>9:54.78</td><td class="fastest">67.52</td><td>69.46</td><td>71.74</td><td>74.00</td><td>77.27</td><td class="slowest">79.30</td><td>78.30</td></tr><tr class="non-stx-row"><td>Ben Moore</td><td>Ryle</td><td>1</td><td>54</td><td class="dimmed-pr"></td><td></td><td>9:56.04</td><td>73.52</td><td class="fastest">71.23</td><td>74.23</td><td>76.72</td><td>78.13</td><td class="slowest">78.30</td><td>76.11</td></tr><tr class="non-stx-row"><td>Finn Leek</td><td>Lafayette</td><td>1</td><td>55</td><td class="dimmed-pr"></td><td></td><td>9:56.96</td><td>73.27</td><td class="fastest">72.07</td><td>73.88</td><td>74.84</td><td>75.37</td><td class="slowest">77.28</td><td>76.49</td></tr><tr class="non-stx-row"><td>Connor Marx</td><td>Creasey XC</td><td>1</td><td>56</td><td class="dimmed-pr"></td><td></td><td>9:57.21</td><td class="fastest">71.44</td><td>75.46</td><td>74.62</td><td>75.05</td><td>75.52</td><td class="slowest">76.27</td><td>75.02</td></tr><tr class="non-stx-row"><td>Grant Shear</td><td>The Jets</td><td>1</td><td>57</td><td class="dimmed-pr"></td><td></td><td>9:57.98</td><td class="fastest">71.05</td><td>75.56</td><td>73.85</td><td>75.29</td><td>76.72</td><td>76.30</td><td class="slowest">77.78</td></tr><tr class="non-stx-row"><td>Owen Tolliver</td><td>Unattached</td><td>1</td><td>58</td><td class="dimmed-pr"></td><td></td><td>9:58.06</td><td>74.62</td><td class="fastest">70.86</td><td>73.53</td><td>75.25</td><td>76.13</td><td>76.06</td><td class="slowest">76.47</td></tr><tr class="non-stx-row"><td>Alex Bolton</td><td>Unattached</td><td>1</td><td>59</td><td class="dimmed-pr"></td><td></td><td>9:59.46</td><td>74.90</td><td>75.44</td><td class="fastest">74.09</td><td>75.75</td><td>75.26</td><td>75.81</td><td class="slowest">77.55</td></tr><tr class="non-stx-row"><td>Cody Seymour</td><td>Trinity (Louisville)</td><td>1</td><td>60</td><td class="dimmed-pr"></td><td></td><td>10:00.45</td><td>73.48</td><td class="fastest">71.05</td><td>72.76</td><td>73.68</td><td>77.09</td><td>79.30</td><td class="slowest">80.07</td></tr><tr class="non-stx-row"><td>Caleb Hammonds</td><td>Unattached</td><td>1</td><td>61</td><td class="dimmed-pr"></td><td></td><td>10:00.59</td><td>73.10</td><td class="fastest">71.74</td><td>73.12</td><td>74.63</td><td>76.70</td><td class="slowest">77.99</td><td>77.70</td></tr><tr class="non-stx-row"><td>Samuel Vande</td><td>Water Team Kentucky Elite</td><td>1</td><td>62</td><td class="dimmed-pr"></td><td></td><td>10:03.30</td><td>71.75</td><td class="slowest">75.02</td><td>74.87</td><td>74.97</td><td>74.14</td><td>74.59</td><td class="fastest">69.12</td></tr><tr class="non-stx-row"><td>Henry Kramer</td><td>Unattached</td><td>1</td><td>63</td><td class="dimmed-pr"></td><td></td><td>10:04.09</td><td class="fastest">72.38</td><td>77.30</td><td>75.59</td><td>75.98</td><td>76.52</td><td class="slowest">78.81</td><td>78.06</td></tr><tr class="non-stx-row"><td>Caleb Brown</td><td>Trinity (Louisville)</td><td>1</td><td>64</td><td class="dimmed-pr"></td><td></td><td>10:04.75</td><td>73.76</td><td class="fastest">70.97</td><td>72.90</td><td>73.90</td><td>77.14</td><td class="slowest">79.55</td><td>79.53</td></tr><tr class="non-stx-row"><td>Max Tatchell</td><td>Trinity (Louisville)</td><td>1</td><td>65</td><td class="dimmed-pr"></td><td></td><td>10:04.77</td><td>75.28</td><td>76.47</td><td>76.38</td><td class="slowest">78.53</td><td>76.03</td><td class="fastest">74.71</td><td>76.60</td></tr><tr class="non-stx-row"><td>Liam Crossen</td><td>Park Hills Athletic Club</td><td>1</td><td>66</td><td class="dimmed-pr"></td><td></td><td>10:05.09</td><td>74.59</td><td>74.64</td><td class="fastest">74.41</td><td>75.99</td><td>76.91</td><td>76.37</td><td class="slowest">77.78</td></tr><tr class="non-stx-row"><td>Owen Felix</td><td>Unattached</td><td>1</td><td>67</td><td class="dimmed-pr"></td><td></td><td>10:06.50</td><td>74.86</td><td>75.70</td><td class="fastest">74.65</td><td>76.57</td><td>78.30</td><td class="slowest">78.69</td><td>78.11</td></tr><tr class="non-stx-row"><td>Christofer Espinoza</td><td>Unattached</td><td>1</td><td>68</td><td class="dimmed-pr"></td><td></td><td>10:06.76</td><td class="fastest">74.76</td><td>76.60</td><td>75.09</td><td>75.84</td><td>76.12</td><td>76.50</td><td class="slowest">78.69</td></tr><tr class="non-stx-row"><td>Dylan Clemons</td><td>Unattached</td><td>1</td><td>69</td><td class="dimmed-pr"></td><td></td><td>10:07.23</td><td class="fastest">73.30</td><td>74.96</td><td>73.98</td><td>74.73</td><td>75.46</td><td>78.28</td><td class="slowest">80.27</td></tr><tr class="non-stx-row"><td>Jackson Luttrell</td><td>Unattached</td><td>1</td><td>70</td><td class="dimmed-pr"></td><td></td><td>10:08.20</td><td class="fastest">73.62</td><td>75.29</td><td>75.50</td><td>76.69</td><td>78.33</td><td class="slowest">78.79</td><td>78.75</td></tr><tr class="non-stx-row"><td>Corey Payne</td><td>Unattached</td><td>1</td><td>71</td><td class="dimmed-pr"></td><td></td><td>10:09.83</td><td>75.14</td><td>75.73</td><td class="fastest">73.02</td><td>75.31</td><td>77.71</td><td>78.76</td><td class="slowest">78.87</td></tr><tr class="non-stx-row"><td>Miles Goodrich</td><td>Gators TXC</td><td>1</td><td>72</td><td class="dimmed-pr"></td><td></td><td>10:11.06</td><td class="fastest">69.59</td><td>73.60</td><td>73.40</td><td>77.15</td><td>78.58</td><td>80.97</td><td class="slowest">81.33</td></tr><tr class="non-stx-row"><td>Shaun Halik</td><td>Unattached</td><td>1</td><td>73</td><td class="dimmed-pr"></td><td></td><td>10:12.77</td><td class="fastest">70.15</td><td>73.75</td><td>73.36</td><td>76.45</td><td>80.09</td><td>82.25</td><td class="slowest">82.51</td></tr><tr class="non-stx-row"><td>Nikita Foushe</td><td>Lafayette</td><td>1</td><td>74</td><td class="dimmed-pr"></td><td></td><td>10:12.80</td><td>74.06</td><td class="fastest">71.98</td><td>73.98</td><td>75.51</td><td>77.59</td><td>80.03</td><td class="slowest">81.35</td></tr><tr class="non-stx-row"><td>Jack Tindall</td><td>Trinity (Louisville)</td><td>1</td><td>75</td><td class="dimmed-pr"></td><td></td><td>10:12.99</td><td class="fastest">68.71</td><td>73.60</td><td>75.15</td><td>78.17</td><td>80.52</td><td>81.10</td><td class="slowest">81.50</td></tr><tr class="non-stx-row"><td>Arlo Harvey</td><td>Unattached</td><td>1</td><td>76</td><td class="dimmed-pr"></td><td></td><td>10:13.61</td><td class="fastest">74.37</td><td>76.86</td><td>74.48</td><td>75.81</td><td>74.60</td><td>78.58</td><td class="slowest">79.23</td></tr><tr class="non-stx-row"><td>Ian Hartman</td><td>Unattached</td><td>1</td><td>77</td><td class="dimmed-pr"></td><td></td><td>10:14.00</td><td class="fastest">73.60</td><td>75.47</td><td>75.10</td><td>76.50</td><td>77.58</td><td>79.30</td><td class="slowest">79.94</td></tr><tr class="non-stx-row"><td>Dagon Caple</td><td>Hebron</td><td>1</td><td>78</td><td class="dimmed-pr"></td><td></td><td>10:14.31</td><td class="fastest">71.99</td><td>76.74</td><td>74.50</td><td>75.29</td><td>78.05</td><td class="slowest">79.86</td><td>79.85</td></tr><tr class="non-stx-row"><td>Camden Goodrich</td><td>Gators TXC</td><td>1</td><td>79</td><td class="dimmed-pr"></td><td></td><td>10:16.79</td><td class="fastest">75.09</td><td>77.50</td><td>76.29</td><td>78.50</td><td>78.62</td><td>77.60</td><td class="slowest">80.28</td></tr><tr class="non-stx-row"><td>Ryan Baggett</td><td>Unattached</td><td>1</td><td>80</td><td class="dimmed-pr"></td><td></td><td>10:17.90</td><td class="fastest">73.08</td><td>77.47</td><td>79.79</td><td>78.70</td><td>78.11</td><td class="slowest">80.39</td><td>79.93</td></tr><tr class="non-stx-row"><td>Landon Hammer</td><td>Unattached</td><td>1</td><td>81</td><td class="dimmed-pr"></td><td></td><td>10:18.72</td><td>74.86</td><td>76.70</td><td class="fastest">74.64</td><td>75.70</td><td>77.24</td><td>80.30</td><td class="slowest">80.69</td></tr><tr class="non-stx-row"><td>Liam Borchers</td><td>Unattached</td><td>1</td><td>82</td><td class="dimmed-pr"></td><td></td><td>10:20.35</td><td class="fastest">75.49</td><td>78.75</td><td>78.09</td><td>78.58</td><td>78.43</td><td>79.53</td><td class="slowest">80.53</td></tr><tr class="non-stx-row"><td>Rylan Olges</td><td>Trinity (Louisville)</td><td>1</td><td>83</td><td class="dimmed-pr"></td><td></td><td>10:20.90</td><td class="fastest">74.33</td><td>75.76</td><td>75.72</td><td>78.17</td><td>80.12</td><td>81.27</td><td class="slowest">82.33</td></tr><tr class="non-stx-row"><td>Ethan Klumb</td><td>Park Hills Athletic Club</td><td>1</td><td>84</td><td class="dimmed-pr"></td><td></td><td>10:21.00</td><td class="fastest">75.56</td><td>76.36</td><td>75.79</td><td class="slowest">81.02</td><td>80.88</td><td>78.16</td><td>79.55</td></tr><tr class="non-stx-row"><td>Alex Miller</td><td>Jaguar Track Club</td><td>1</td><td>85</td><td class="dimmed-pr"></td><td></td><td>10:21.30</td><td class="fastest">73.81</td><td>74.57</td><td>75.11</td><td>77.36</td><td>79.75</td><td>81.33</td><td class="slowest">81.81</td></tr><tr class="non-stx-row"><td>Parker Litmer</td><td>Unattached</td><td>1</td><td>86</td><td class="dimmed-pr"></td><td></td><td>10:21.78</td><td class="fastest">75.15</td><td>81.43</td><td>80.47</td><td class="slowest">81.44</td><td>78.20</td><td>78.53</td><td>79.43</td></tr><tr class="non-stx-row"><td>Anderson Goetz</td><td>Unattached</td><td>1</td><td>87</td><td class="dimmed-pr"></td><td></td><td>10:22.01</td><td class="fastest">72.85</td><td>77.49</td><td>79.74</td><td>79.25</td><td>78.80</td><td>80.38</td><td class="slowest">80.71</td></tr><tr class="non-stx-row"><td>Ty Arbogast</td><td>Unattached</td><td>1</td><td>88</td><td class="dimmed-pr"></td><td></td><td>10:22.18</td><td class="fastest">74.32</td><td class="slowest">81.48</td><td>80.64</td><td>81.40</td><td>78.96</td><td>78.54</td><td>77.79</td></tr><tr class="non-stx-row"><td>Drew Baugh</td><td>Unattached</td><td>1</td><td>89</td><td class="dimmed-pr"></td><td></td><td>10:22.35</td><td class="fastest">73.83</td><td>77.22</td><td>79.53</td><td>78.78</td><td>78.37</td><td>79.59</td><td class="slowest">79.91</td></tr><tr class="non-stx-row"><td>Raylan Byrka</td><td>Creasey XC</td><td>1</td><td>90</td><td class="dimmed-pr"></td><td></td><td>10:22.77</td><td class="fastest">76.80</td><td>78.83</td><td>77.83</td><td>77.38</td><td>78.46</td><td>79.87</td><td class="slowest">80.51</td></tr><tr class="non-stx-row"><td>Charlie Schmidt</td><td>Team Kentucky Elite</td><td>1</td><td>91</td><td class="dimmed-pr"></td><td></td><td>10:22.86</td><td class="fastest">75.89</td><td>79.19</td><td>77.86</td><td>79.53</td><td>79.97</td><td class="slowest">81.51</td><td>79.95</td></tr><tr class="non-stx-row"><td>Leonardo Martinez</td><td>Unattached</td><td>1</td><td>92</td><td class="dimmed-pr"></td><td></td><td>10:24.28</td><td>78.72</td><td class="slowest">81.73</td><td>79.63</td><td>79.84</td><td>79.75</td><td>79.83</td><td class="fastest">75.34</td></tr><tr class="non-stx-row"><td>Jimmy Schepers</td><td>Trinity (Louisville)</td><td>1</td><td>93</td><td class="dimmed-pr"></td><td></td><td>10:24.34</td><td class="fastest">77.83</td><td>78.13</td><td>77.85</td><td>78.12</td><td>79.94</td><td class="slowest">81.03</td><td>79.77</td></tr><tr class="non-stx-row"><td>Matthew Smith</td><td>Thomson Training</td><td>1</td><td>94</td><td class="dimmed-pr"></td><td></td><td>10:25.28</td><td class="fastest">77.70</td><td>78.56</td><td>77.73</td><td>78.54</td><td>77.84</td><td>79.96</td><td class="slowest">80.94</td></tr><tr class="non-stx-row"><td>Gray Malone</td><td>Trinity (Louisville)</td><td>1</td><td>95</td><td class="dimmed-pr"></td><td></td><td>10:25.30</td><td class="fastest">75.95</td><td>78.97</td><td>76.46</td><td>79.47</td><td>78.05</td><td>79.60</td><td class="slowest">80.53</td></tr><tr class="non-stx-row"><td>Finnian Comerford-Barnett</td><td>Unattached</td><td>1</td><td>96</td><td class="dimmed-pr"></td><td></td><td>10:25.38</td><td class="fastest">74.53</td><td>76.56</td><td>74.67</td><td>76.61</td><td>79.46</td><td>83.97</td><td class="slowest">84.08</td></tr><tr class="non-stx-row"><td>Ben Wulfeck</td><td>Park Hills Athletic Club</td><td>1</td><td>97</td><td class="dimmed-pr"></td><td></td><td>10:25.91</td><td>77.77</td><td>76.98</td><td class="fastest">76.30</td><td>76.98</td><td>78.43</td><td>80.48</td><td class="slowest">81.10</td></tr><tr class="non-stx-row"><td>Gatlin Chaffin</td><td>Unattached</td><td>1</td><td>98</td><td class="dimmed-pr"></td><td></td><td>10:26.18</td><td class="fastest">74.46</td><td>76.37</td><td>77.27</td><td>79.43</td><td>80.23</td><td>82.16</td><td class="slowest">82.68</td></tr><tr class="non-stx-row"><td>Nicholas Clark</td><td>Gators TXC</td><td>1</td><td>99</td><td class="dimmed-pr"></td><td></td><td>10:26.21</td><td>75.12</td><td>76.56</td><td class="fastest">74.44</td><td>76.66</td><td>79.47</td><td>82.66</td><td class="slowest">83.00</td></tr><tr class="non-stx-row"><td>Leif Inscore</td><td>Essick Unattached</td><td>1</td><td>100</td><td class="dimmed-pr"></td><td></td><td>10:26.22</td><td>74.73</td><td>76.17</td><td class="fastest">74.58</td><td>76.17</td><td>78.00</td><td>82.88</td><td class="slowest">85.10</td></tr><tr class="non-stx-row"><td>Sawyer Franxman</td><td>Park Hills Athletic Club</td><td>1</td><td>101</td><td class="dimmed-pr"></td><td></td><td>10:26.49</td><td class="fastest">74.37</td><td>76.01</td><td>76.22</td><td>80.75</td><td>79.99</td><td>80.68</td><td class="slowest">81.43</td></tr><tr class="non-stx-row"><td>Grayson King</td><td>Shepherdsville Track Club</td><td>1</td><td>102</td><td class="dimmed-pr"></td><td></td><td>10:27.07</td><td class="fastest">75.06</td><td>79.06</td><td>78.47</td><td>79.65</td><td>80.88</td><td class="slowest">81.57</td><td>80.52</td></tr><tr class="non-stx-row"><td>Collin Duke</td><td>Trinity (Louisville)</td><td>1</td><td>103</td><td class="dimmed-pr"></td><td></td><td>10:28.40</td><td>77.89</td><td>78.25</td><td>77.72</td><td class="fastest">77.55</td><td>80.71</td><td class="slowest">81.23</td><td>80.75</td></tr><tr class="non-stx-row"><td>Jack Dwyer</td><td>Park Hills Athletic Club</td><td>1</td><td>104</td><td class="dimmed-pr"></td><td></td><td>10:28.51</td><td>75.69</td><td>75.16</td><td class="fastest">74.83</td><td>78.60</td><td>81.52</td><td>83.06</td><td class="slowest">83.08</td></tr><tr class="non-stx-row"><td>Silas Mefford</td><td>Eagles Track Club</td><td>1</td><td>105</td><td class="dimmed-pr"></td><td></td><td>10:29.49</td><td>79.27</td><td class="slowest">80.92</td><td>79.60</td><td>79.10</td><td class="fastest">77.59</td><td>78.37</td><td>78.62</td></tr><tr class="non-stx-row"><td>Darnell Cauley</td><td>Allen Performance</td><td>1</td><td>106</td><td class="dimmed-pr"></td><td></td><td>10:29.62</td><td>78.23</td><td>78.24</td><td class="fastest">76.49</td><td>77.64</td><td>78.20</td><td>80.89</td><td class="slowest">82.10</td></tr><tr class="non-stx-row"><td>Myles Barczak</td><td>Park Hills Athletic Club</td><td>1</td><td>107</td><td class="dimmed-pr"></td><td></td><td>10:30.08</td><td class="fastest">76.54</td><td>79.81</td><td>77.84</td><td>77.99</td><td>80.20</td><td class="slowest">81.92</td><td>80.10</td></tr><tr class="non-stx-row"><td>Benjamin Martinez</td><td>Grizzlies</td><td>1</td><td>108</td><td class="dimmed-pr"></td><td></td><td>10:30.95</td><td class="fastest">74.43</td><td>79.89</td><td>79.09</td><td>77.58</td><td>77.47</td><td>82.21</td><td class="slowest">82.70</td></tr><tr class="non-stx-row"><td>Ian Moore</td><td>DuPont Manual</td><td>1</td><td>109</td><td class="dimmed-pr"></td><td></td><td>10:31.48</td><td>74.35</td><td class="fastest">73.59</td><td>74.75</td><td>78.01</td><td>80.74</td><td>83.08</td><td class="slowest">86.42</td></tr><tr class="non-stx-row"><td>Eli Marshall</td><td>Unattached</td><td>1</td><td>110</td><td class="dimmed-pr"></td><td></td><td>10:31.50</td><td class="fastest">77.50</td><td>78.37</td><td>77.72</td><td>78.61</td><td>77.54</td><td>80.30</td><td class="slowest">80.54</td></tr><tr class="non-stx-row"><td>Tyler Dennis</td><td>Unattached</td><td>1</td><td>111</td><td class="dimmed-pr"></td><td></td><td>10:31.93</td><td class="fastest">73.09</td><td>77.41</td><td>79.70</td><td>78.59</td><td>78.08</td><td>80.52</td><td class="slowest">80.89</td></tr><tr class="non-stx-row"><td>Samir Mesinovic</td><td>Shepherdsville Track Club</td><td>1</td><td>112</td><td class="dimmed-pr"></td><td></td><td>10:32.16</td><td class="fastest">77.42</td><td>78.34</td><td>77.50</td><td>78.59</td><td>80.73</td><td>82.23</td><td class="slowest">82.66</td></tr><tr class="non-stx-row"><td>Mason Moore</td><td>Trinity (Louisville)</td><td>1</td><td>113</td><td class="dimmed-pr"></td><td></td><td>10:32.80</td><td class="fastest">74.81</td><td>80.43</td><td>77.98</td><td>78.39</td><td>80.74</td><td>81.38</td><td class="slowest">82.75</td></tr><tr class="non-stx-row"><td>Leo Wilder</td><td>Unattached</td><td>1</td><td>114</td><td class="dimmed-pr"></td><td></td><td>10:34.24</td><td>79.00</td><td class="slowest">81.76</td><td>79.55</td><td>79.11</td><td class="fastest">77.83</td><td>77.86</td><td>80.40</td></tr><tr class="non-stx-row"><td>Vincent Del</td><td>Negro Shamrock Track Club</td><td>1</td><td>115</td><td class="dimmed-pr"></td><td></td><td>10:34.49</td><td class="fastest">75.65</td><td>79.35</td><td>77.49</td><td>80.31</td><td>81.61</td><td class="slowest">82.55</td><td>81.10</td></tr><tr class="non-stx-row"><td>Trent Rose</td><td>Park Hills Athletic Club</td><td>1</td><td>116</td><td class="dimmed-pr"></td><td></td><td>10:34.58</td><td class="fastest">71.83</td><td>78.21</td><td>81.63</td><td>78.62</td><td>80.19</td><td>82.26</td><td class="slowest">83.18</td></tr><tr class="non-stx-row"><td>Nathan Cease</td><td>DuPont Manual</td><td>1</td><td>117</td><td class="dimmed-pr"></td><td></td><td>10:34.71</td><td class="fastest">75.84</td><td>79.21</td><td>77.75</td><td>79.93</td><td>80.97</td><td>80.89</td><td class="slowest">82.46</td></tr><tr class="non-stx-row"><td>Kaiden Bouwie</td><td>Hebron</td><td>1</td><td>118</td><td class="dimmed-pr"></td><td></td><td>10:36.45</td><td class="fastest">78.10</td><td>78.77</td><td>78.69</td><td>79.82</td><td class="slowest">82.06</td><td>81.33</td><td>80.33</td></tr><tr class="non-stx-row"><td>Daniel Moore</td><td>DuPont Manual</td><td>1</td><td>119</td><td class="dimmed-pr"></td><td></td><td>10:37.61</td><td class="fastest">75.59</td><td>77.38</td><td>79.55</td><td>80.75</td><td>81.67</td><td>83.03</td><td class="slowest">83.91</td></tr><tr class="non-stx-row"><td>Harris Springsteen</td><td>Unattached</td><td>1</td><td>120</td><td class="dimmed-pr"></td><td></td><td>10:38.03</td><td class="fastest">78.26</td><td>81.65</td><td>79.56</td><td>79.59</td><td>80.90</td><td>82.44</td><td class="slowest">83.64</td></tr><tr class="non-stx-row"><td>Bennett Laake</td><td>Park Hills Athletic Club</td><td>1</td><td>121</td><td class="dimmed-pr"></td><td></td><td>10:38.36</td><td class="fastest">78.09</td><td>79.15</td><td>78.41</td><td>78.56</td><td>80.73</td><td>82.49</td><td class="slowest">82.84</td></tr><tr class="non-stx-row"><td>Charlie Farra</td><td>Trinity (Louisville)</td><td>1</td><td>122</td><td class="dimmed-pr"></td><td></td><td>10:39.38</td><td class="fastest">76.04</td><td>78.74</td><td>77.50</td><td>80.17</td><td>81.64</td><td>82.66</td><td class="slowest">83.05</td></tr><tr class="non-stx-row"><td>Jack Gearing</td><td>Park Hills Athletic Club</td><td>1</td><td>123</td><td class="dimmed-pr"></td><td></td><td>10:39.85</td><td class="fastest">76.74</td><td>80.23</td><td>77.48</td><td>78.49</td><td>80.47</td><td>82.06</td><td class="slowest">83.22</td></tr><tr class="non-stx-row"><td>Miles Becker</td><td>Trinity (Louisville)</td><td>1</td><td>124</td><td class="dimmed-pr"></td><td></td><td>10:40.13</td><td class="fastest">74.12</td><td>80.81</td><td>78.71</td><td>77.43</td><td>80.83</td><td>81.95</td><td class="slowest">84.36</td></tr><tr class="non-stx-row"><td>Raul Morales</td><td>Hebron</td><td>1</td><td>125</td><td class="dimmed-pr"></td><td></td><td>10:40.52</td><td class="fastest">76.97</td><td>80.35</td><td>80.33</td><td>81.03</td><td>78.86</td><td>80.26</td><td class="slowest">82.48</td></tr><tr class="non-stx-row"><td>Caleb Fletcher</td><td>Centurion Track Club</td><td>1</td><td>126</td><td class="dimmed-pr"></td><td></td><td>10:41.77</td><td>79.70</td><td class="slowest">83.31</td><td>81.10</td><td>79.24</td><td>81.00</td><td class="fastest">78.99</td><td>79.80</td></tr><tr class="non-stx-row"><td>Cooper Pack</td><td>Hebron</td><td>1</td><td>127</td><td class="dimmed-pr"></td><td></td><td>10:43.09</td><td class="fastest">79.46</td><td class="slowest">82.85</td><td>80.45</td><td>80.13</td><td>81.55</td><td>79.83</td><td>82.72</td></tr><tr class="non-stx-row"><td>Sully Schoettker</td><td>Unattached</td><td>1</td><td>128</td><td class="dimmed-pr"></td><td></td><td>10:43.73</td><td class="fastest">78.38</td><td class="slowest">82.91</td><td>82.30</td><td>80.01</td><td>81.44</td><td>80.28</td><td>82.06</td></tr><tr class="non-stx-row"><td>Luke Skidmore</td><td>Thomson Training</td><td>1</td><td>129</td><td class="dimmed-pr"></td><td></td><td>10:43.78</td><td class="fastest">77.14</td><td>78.80</td><td>80.74</td><td>81.54</td><td>80.58</td><td class="slowest">83.98</td><td>82.82</td></tr><tr class="non-stx-row"><td>Henry Baker</td><td>Grizzlies</td><td>1</td><td>130</td><td class="dimmed-pr"></td><td></td><td>10:46.75</td><td class="fastest">77.48</td><td>80.58</td><td>81.21</td><td>80.63</td><td>81.71</td><td>82.19</td><td class="slowest">83.62</td></tr><tr class="non-stx-row"><td>Ethan Daly</td><td>Unattached</td><td>1</td><td>131</td><td class="dimmed-pr"></td><td></td><td>10:46.90</td><td class="fastest">79.54</td><td class="slowest">83.08</td><td>81.43</td><td>80.02</td><td>81.20</td><td>81.30</td><td>82.61</td></tr><tr class="non-stx-row"><td>Drew Ellington</td><td>Gators TXC</td><td>1</td><td>132</td><td class="dimmed-pr"></td><td></td><td>10:47.38</td><td class="fastest">79.19</td><td>81.68</td><td>79.23</td><td>79.46</td><td>80.50</td><td>83.18</td><td class="slowest">84.11</td></tr><tr class="non-stx-row"><td>Asher Albritton</td><td>Trinity (Louisville)</td><td>1</td><td>133</td><td class="dimmed-pr"></td><td></td><td>10:47.92</td><td class="fastest">80.20</td><td>82.49</td><td>81.31</td><td>80.44</td><td>81.14</td><td>80.54</td><td class="slowest">85.56</td></tr><tr class="non-stx-row"><td>Ethan Massengale</td><td>Lafayette</td><td>1</td><td>134</td><td class="dimmed-pr"></td><td></td><td>10:48.46</td><td class="fastest">78.81</td><td>81.68</td><td>79.70</td><td>79.41</td><td>80.71</td><td>81.69</td><td class="slowest">84.91</td></tr><tr class="non-stx-row"><td>Samuel Rose</td><td>Unattached</td><td>1</td><td>135</td><td class="dimmed-pr"></td><td></td><td>10:48.70</td><td class="fastest">74.60</td><td>81.69</td><td>81.11</td><td>81.76</td><td>81.74</td><td>83.77</td><td class="slowest">85.57</td></tr><tr class="non-stx-row"><td>Jordan Norris</td><td>Unattached</td><td>1</td><td>136</td><td class="dimmed-pr"></td><td></td><td>10:48.82</td><td class="fastest">73.07</td><td>78.21</td><td>81.17</td><td>78.69</td><td>80.91</td><td>86.59</td><td class="slowest">88.65</td></tr><tr class="non-stx-row"><td>Matthew Benjamin</td><td>Team Kentucky Elite</td><td>1</td><td>137</td><td class="dimmed-pr"></td><td></td><td>10:49.25</td><td class="fastest">73.66</td><td>80.83</td><td>78.56</td><td>80.35</td><td>84.80</td><td>88.02</td><td class="slowest">88.13</td></tr><tr class="non-stx-row"><td>Elijah O'Dell</td><td>Grizzlies</td><td>1</td><td>138</td><td class="dimmed-pr"></td><td></td><td>10:49.69</td><td class="fastest">78.70</td><td>82.66</td><td>82.05</td><td>80.86</td><td>81.67</td><td>81.83</td><td class="slowest">83.52</td></tr><tr class="non-stx-row"><td>Matthew Dietz</td><td>Trinity (Louisville)</td><td>1</td><td>139</td><td class="dimmed-pr"></td><td></td><td>10:49.96</td><td class="fastest">76.72</td><td>81.43</td><td>81.27</td><td>83.04</td><td>82.60</td><td class="slowest">83.96</td><td>82.77</td></tr><tr class="non-stx-row"><td>Leo Hasselbacher</td><td>Unattached</td><td>1</td><td>140</td><td class="dimmed-pr"></td><td></td><td>10:50.35</td><td class="fastest">75.35</td><td>76.82</td><td>77.22</td><td>81.53</td><td>84.28</td><td>85.61</td><td class="slowest">87.00</td></tr><tr class="non-stx-row"><td>William Van</td><td>Dyke Hebron</td><td>1</td><td>141</td><td class="dimmed-pr"></td><td></td><td>10:50.42</td><td class="fastest">77.89</td><td>82.47</td><td>82.66</td><td>80.20</td><td>81.47</td><td>80.22</td><td class="slowest">84.99</td></tr><tr class="non-stx-row"><td>Evan La</td><td>Beau Unattached</td><td>1</td><td>142</td><td class="dimmed-pr"></td><td></td><td>10:52.26</td><td class="fastest">75.84</td><td>81.02</td><td>81.22</td><td>81.27</td><td>81.09</td><td>83.77</td><td class="slowest">85.83</td></tr><tr class="non-stx-row"><td>Joseph Cecil</td><td>Unattached</td><td>1</td><td>143</td><td class="dimmed-pr"></td><td></td><td>10:52.47</td><td class="fastest">71.90</td><td>82.37</td><td>83.44</td><td>83.51</td><td>84.55</td><td class="slowest">85.17</td><td>84.86</td></tr><tr class="non-stx-row"><td>Tucker Skinner</td><td>Trinity (Louisville)</td><td>1</td><td>144</td><td class="dimmed-pr"></td><td></td><td>10:54.88</td><td class="fastest">78.46</td><td>81.74</td><td>79.53</td><td>80.82</td><td>84.09</td><td class="slowest">87.34</td><td>85.48</td></tr><tr class="non-stx-row"><td>Nick Boyd</td><td>Unattached</td><td>1</td><td>145</td><td class="dimmed-pr"></td><td></td><td>10:56.33</td><td class="fastest">80.70</td><td>83.90</td><td class="slowest">84.21</td><td>82.36</td><td>83.86</td><td>83.44</td><td>82.46</td></tr><tr class="non-stx-row"><td>Hayden McIntosh</td><td>Thomson Training</td><td>1</td><td>146</td><td class="dimmed-pr"></td><td></td><td>10:56.66</td><td class="fastest">80.53</td><td class="slowest">83.82</td><td>83.62</td><td>82.90</td><td>83.75</td><td>83.31</td><td>82.73</td></tr><tr><td><a href='../athletes/jimmy_greer.html'>Jimmy Greer</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>147</td><td class="dimmed-pr">10:47.38</td><td>10:36.20</td><td>10:56.89</td><td class="fastest">77.15</td><td>81.90</td><td class="slowest">84.38</td><td>84.15</td><td>83.57</td><td>83.54</td><td>83.10</td></tr><tr class="non-stx-row"><td>Brody Buschmann</td><td>Ryle</td><td>1</td><td>148</td><td class="dimmed-pr"></td><td></td><td>10:58.24</td><td class="fastest">80.77</td><td>82.62</td><td>81.76</td><td>80.94</td><td>82.44</td><td>84.83</td><td class="slowest">85.30</td></tr><tr class="non-stx-row"><td>Jordan Jones</td><td>Bourbon County</td><td>1</td><td>149</td><td class="dimmed-pr"></td><td></td><td>10:58.85</td><td class="fastest">71.78</td><td>78.59</td><td>82.11</td><td>81.40</td><td>83.48</td><td>88.90</td><td class="slowest">90.99</td></tr><tr class="non-stx-row"><td>Matthew Brown</td><td>Grizzlies</td><td>1</td><td>150</td><td class="dimmed-pr"></td><td></td><td>10:59.00</td><td class="fastest">79.19</td><td>82.92</td><td>81.58</td><td>81.14</td><td>83.33</td><td>85.08</td><td class="slowest">85.26</td></tr><tr class="non-stx-row"><td>Stephen Bryce</td><td>Perraut Bourbon County</td><td>1</td><td>151</td><td class="dimmed-pr"></td><td></td><td>10:59.62</td><td class="fastest">77.62</td><td>78.32</td><td>78.76</td><td>81.22</td><td>85.28</td><td class="slowest">88.49</td><td>87.03</td></tr><tr class="non-stx-row"><td>Carter Long</td><td>Valley Track Club</td><td>1</td><td>152</td><td class="dimmed-pr"></td><td></td><td>11:01.54</td><td class="fastest">76.58</td><td class="slowest">87.68</td><td>84.64</td><td>83.42</td><td>84.48</td><td>84.68</td><td>85.02</td></tr><tr class="non-stx-row"><td>Ian Kull</td><td>Trinity (Louisville)</td><td>1</td><td>153</td><td class="dimmed-pr"></td><td></td><td>11:02.25</td><td class="fastest">76.36</td><td>80.80</td><td>82.48</td><td>80.87</td><td>84.27</td><td>87.69</td><td class="slowest">88.40</td></tr><tr class="non-stx-row"><td>Wyatt Ritchie</td><td>Bourbon County</td><td>1</td><td>154</td><td class="dimmed-pr"></td><td></td><td>11:02.28</td><td class="fastest">67.58</td><td>78.49</td><td>84.49</td><td>83.94</td><td>87.21</td><td>89.68</td><td class="slowest">90.53</td></tr><tr class="non-stx-row"><td>De Shawn</td><td>McKnight Hebron</td><td>1</td><td>155</td><td class="dimmed-pr"></td><td></td><td>11:02.66</td><td class="fastest">78.08</td><td>82.59</td><td>82.41</td><td>80.77</td><td>83.90</td><td class="slowest">86.29</td><td>86.15</td></tr><tr class="non-stx-row"><td>Paxton Litmer</td><td>Unattached</td><td>1</td><td>156</td><td class="dimmed-pr"></td><td></td><td>11:02.88</td><td class="fastest">78.35</td><td>81.79</td><td>80.79</td><td>82.83</td><td>84.04</td><td class="slowest">86.38</td><td>85.51</td></tr><tr class="non-stx-row"><td>Luke Bettler</td><td>Unattached</td><td>1</td><td>157</td><td class="dimmed-pr"></td><td></td><td>11:03.58</td><td class="fastest">78.70</td><td>82.26</td><td>82.37</td><td>80.80</td><td>83.33</td><td>87.95</td><td class="slowest">88.14</td></tr><tr class="non-stx-row"><td>Sam Montgomery</td><td>Unattached</td><td>1</td><td>158</td><td class="dimmed-pr"></td><td></td><td>11:03.74</td><td class="fastest">79.65</td><td>82.79</td><td>81.89</td><td>81.48</td><td>83.55</td><td>85.56</td><td class="slowest">86.23</td></tr><tr class="non-stx-row"><td>Reed Johnson</td><td>Gators TXC</td><td>1</td><td>159</td><td class="dimmed-pr"></td><td></td><td>11:04.42</td><td class="fastest">75.64</td><td>77.69</td><td>80.65</td><td>83.37</td><td>85.65</td><td class="slowest">89.02</td><td>86.62</td></tr><tr class="non-stx-row"><td>Noah Foushee</td><td>Lafayette</td><td>1</td><td>160</td><td class="dimmed-pr"></td><td></td><td>11:06.91</td><td class="fastest">80.54</td><td>83.10</td><td>81.06</td><td>81.56</td><td>84.26</td><td>87.35</td><td class="slowest">88.04</td></tr><tr class="non-stx-row"><td>Ethan Schoborg</td><td>Hebron</td><td>1</td><td>161</td><td class="dimmed-pr"></td><td></td><td>11:08.50</td><td class="fastest">78.50</td><td class="slowest">86.36</td><td>84.66</td><td>83.83</td><td>85.63</td><td>84.59</td><td>84.81</td></tr><tr class="non-stx-row"><td>Robert Cumpston</td><td>Unattached</td><td>1</td><td>162</td><td class="dimmed-pr"></td><td></td><td>11:09.23</td><td class="fastest">77.93</td><td>86.31</td><td class="slowest">87.65</td><td>84.53</td><td>83.48</td><td>83.49</td><td>84.85</td></tr><tr class="non-stx-row"><td>Ben Mann</td><td>Hebron</td><td>1</td><td>163</td><td class="dimmed-pr"></td><td></td><td>11:09.78</td><td class="fastest">77.84</td><td>86.41</td><td>84.16</td><td>84.43</td><td>86.17</td><td>85.66</td><td class="slowest">88.40</td></tr><tr class="non-stx-row"><td>Charlie Behnken</td><td>Centurion Track Club</td><td>1</td><td>164</td><td class="dimmed-pr"></td><td></td><td>11:20.77</td><td class="fastest">77.90</td><td>84.69</td><td>86.27</td><td>86.24</td><td>90.12</td><td class="slowest">91.43</td><td>87.04</td></tr><tr class="non-stx-row"><td>James Curry</td><td>Valley Track Club</td><td>1</td><td>165</td><td class="dimmed-pr"></td><td></td><td>11:21.01</td><td class="fastest">76.60</td><td>86.14</td><td>85.51</td><td>84.15</td><td>86.19</td><td>86.95</td><td class="slowest">94.54</td></tr><tr class="non-stx-row"><td>Gavin Morgan</td><td>North End Run Club</td><td>1</td><td>166</td><td class="dimmed-pr"></td><td></td><td>11:24.36</td><td class="fastest">77.64</td><td>85.18</td><td>86.61</td><td>87.50</td><td>87.71</td><td class="slowest">89.08</td><td>87.43</td></tr><tr class="non-stx-row"><td>Luke Buford</td><td>Jaguar Track Club</td><td>1</td><td>167</td><td class="dimmed-pr"></td><td></td><td>11:24.85</td><td class="fastest">78.93</td><td>82.12</td><td>79.93</td><td>84.61</td><td>90.39</td><td>91.02</td><td class="slowest">91.80</td></tr><tr class="non-stx-row"><td>Jayden Judd</td><td>Unattached</td><td>1</td><td>168</td><td class="dimmed-pr"></td><td></td><td>11:24.96</td><td class="fastest">79.97</td><td>83.90</td><td>84.45</td><td>85.18</td><td class="slowest">90.36</td><td>89.69</td><td>90.28</td></tr><tr class="non-stx-row"><td>Eli Robinson</td><td>Creasey XC</td><td>1</td><td>169</td><td class="dimmed-pr"></td><td></td><td>11:26.00</td><td class="fastest">79.21</td><td>86.63</td><td>89.96</td><td class="slowest">92.12</td><td>84.92</td><td>83.43</td><td>87.75</td></tr><tr class="non-stx-row"><td>Baron Davis</td><td>Eagles Track Club</td><td>1</td><td>170</td><td class="dimmed-pr"></td><td></td><td>11:26.20</td><td class="fastest">80.61</td><td>88.12</td><td>87.48</td><td class="slowest">88.47</td><td>87.99</td><td>87.46</td><td>87.07</td></tr><tr class="non-stx-row"><td>Heng Zhe</td><td>Yang Hebron</td><td>1</td><td>171</td><td class="dimmed-pr"></td><td></td><td>11:28.75</td><td class="fastest">78.12</td><td>86.40</td><td>84.28</td><td>84.73</td><td>88.25</td><td class="slowest">91.34</td><td>91.07</td></tr><tr class="non-stx-row"><td>Dylan Miller</td><td>Trinity (Louisville)</td><td>1</td><td>172</td><td class="dimmed-pr"></td><td></td><td>11:30.64</td><td class="fastest">79.74</td><td>84.26</td><td>87.75</td><td>86.93</td><td>87.86</td><td class="slowest">89.84</td><td>89.37</td></tr><tr class="non-stx-row"><td>Antoine Priestley</td><td>Jaguar Track Club</td><td>1</td><td>173</td><td class="dimmed-pr"></td><td></td><td>11:32.58</td><td class="fastest">77.52</td><td>82.57</td><td>83.73</td><td>82.17</td><td>87.04</td><td>92.44</td><td class="slowest">96.35</td></tr><tr class="non-stx-row"><td>Reagan Myers</td><td>Centurion Track Club</td><td>1</td><td>174</td><td class="dimmed-pr"></td><td></td><td>11:32.88</td><td class="fastest">78.84</td><td>86.23</td><td>88.43</td><td>90.50</td><td>88.61</td><td class="slowest">90.58</td><td>85.40</td></tr><tr class="non-stx-row"><td>Daniel Hunt</td><td>Lafayette</td><td>1</td><td>175</td><td class="dimmed-pr"></td><td></td><td>11:34.68</td><td class="fastest">78.53</td><td>79.58</td><td>83.10</td><td>89.39</td><td>90.56</td><td>92.40</td><td class="slowest">92.89</td></tr><tr class="non-stx-row"><td>Carter Brock</td><td>Lafayette</td><td>1</td><td>176</td><td class="dimmed-pr"></td><td></td><td>11:37.36</td><td class="fastest">80.83</td><td>83.15</td><td>83.16</td><td>83.94</td><td>90.31</td><td>93.94</td><td class="slowest">96.35</td></tr><tr class="non-stx-row"><td>Reed Peters</td><td>Unattached</td><td>1</td><td>177</td><td class="dimmed-pr"></td><td></td><td>11:38.10</td><td class="fastest">77.28</td><td>86.65</td><td>88.50</td><td>91.12</td><td>89.64</td><td class="slowest">92.06</td><td>92.03</td></tr><tr class="non-stx-row"><td>Grant Addison</td><td>Elizabethtown</td><td>1</td><td>178</td><td class="dimmed-pr"></td><td></td><td>11:39.81</td><td class="fastest">78.62</td><td>86.07</td><td>84.67</td><td>85.52</td><td>89.43</td><td>92.67</td><td class="slowest">93.71</td></tr><tr class="non-stx-row"><td>Cooper Justice</td><td>Bourbon County</td><td>1</td><td>179</td><td class="dimmed-pr"></td><td></td><td>11:40.12</td><td class="fastest">79.92</td><td>83.44</td><td>82.48</td><td>84.98</td><td>89.12</td><td>93.91</td><td class="slowest">97.11</td></tr><tr class="non-stx-row"><td>Joseph Vande</td><td>Water Team Kentucky Elite</td><td>1</td><td>180</td><td class="dimmed-pr"></td><td></td><td>11:41.42</td><td class="fastest">75.36</td><td>84.01</td><td>83.85</td><td>86.49</td><td>88.31</td><td>92.90</td><td class="slowest">95.35</td></tr><tr class="non-stx-row"><td>Levi Coleman</td><td>Shepherdsville Track Club</td><td>1</td><td>181</td><td class="dimmed-pr"></td><td></td><td>11:42.11</td><td class="fastest">78.39</td><td>86.58</td><td>85.27</td><td>88.36</td><td>91.30</td><td>90.77</td><td class="slowest">93.12</td></tr><tr class="non-stx-row"><td>Ezra Bertsch</td><td>Thomson Training</td><td>1</td><td>182</td><td class="dimmed-pr"></td><td></td><td>11:42.73</td><td class="fastest">79.96</td><td>85.84</td><td>87.15</td><td>89.87</td><td>90.65</td><td>91.14</td><td class="slowest">92.13</td></tr><tr class="non-stx-row"><td>E'Marion McKnight</td><td>Unattached</td><td>1</td><td>183</td><td class="dimmed-pr"></td><td></td><td>11:46.32</td><td class="fastest">76.33</td><td>87.14</td><td>88.48</td><td>89.50</td><td>91.31</td><td>92.52</td><td class="slowest">93.59</td></tr><tr class="non-stx-row"><td>James Zausch</td><td>DuPont Manual</td><td>1</td><td>184</td><td class="dimmed-pr"></td><td></td><td>11:48.02</td><td class="fastest">79.84</td><td>84.83</td><td>87.37</td><td>90.23</td><td class="slowest">91.46</td><td>90.95</td><td>91.16</td></tr><tr class="non-stx-row"><td>Kaiden Slone</td><td>Lafayette</td><td>1</td><td>185</td><td class="dimmed-pr"></td><td></td><td>12:03.92</td><td class="fastest">80.22</td><td>83.89</td><td>84.09</td><td>87.60</td><td>95.69</td><td class="slowest">100.89</td><td>100.68</td></tr><tr class="non-stx-row"><td>Jacob Lazaro</td><td>Bourbon County</td><td>1</td><td>186</td><td class="dimmed-pr"></td><td></td><td>12:08.86</td><td class="fastest">81.98</td><td>88.31</td><td>89.35</td><td>92.89</td><td>96.11</td><td>95.36</td><td class="slowest">96.51</td></tr><tr class="non-stx-row"><td>Luke Conely</td><td>Shepherdsville Track Club</td><td>1</td><td>187</td><td class="dimmed-pr"></td><td></td><td>12:22.07</td><td class="fastest">81.47</td><td>89.11</td><td>91.26</td><td>95.86</td><td>97.42</td><td>98.41</td><td class="slowest">101.57</td></tr><tr class="non-stx-row"><td>Caderyn Windmueller</td><td>Elizabethtown</td><td>1</td><td>188</td><td class="dimmed-pr"></td><td></td><td>12:22.73</td><td class="fastest">80.05</td><td>88.54</td><td>92.60</td><td>95.92</td><td>97.47</td><td>98.45</td><td class="slowest">101.51</td></tr><tr class="non-stx-row"><td>Ames Nicoson</td><td>Unattached</td><td>1</td><td>189</td><td class="dimmed-pr"></td><td></td><td>12:28.56</td><td class="fastest">82.95</td><td>94.55</td><td>95.03</td><td>95.72</td><td>95.86</td><td>95.11</td><td class="slowest">96.55</td></tr><tr class="non-stx-row"><td>Atticus Thomas</td><td>Jaguar Track Club</td><td>1</td><td>190</td><td class="dimmed-pr"></td><td></td><td>12:31.26</td><td class="fastest">83.43</td><td>90.98</td><td>93.36</td><td>96.04</td><td>97.79</td><td>98.32</td><td class="slowest">98.45</td></tr><tr class="non-stx-row"><td>Matthew Alexander</td><td>Grizzlies</td><td>1</td><td>191</td><td class="dimmed-pr"></td><td></td><td>12:35.26</td><td class="fastest">79.12</td><td>88.65</td><td>92.60</td><td>95.13</td><td>98.37</td><td>100.09</td><td class="slowest">105.01</td></tr><tr class="non-stx-row"><td>Alejandro Gallego</td><td>Elizabethtown</td><td>1</td><td>192</td><td class="dimmed-pr"></td><td></td><td>12:37.53</td><td class="fastest">78.70</td><td>86.87</td><td>90.70</td><td>95.78</td><td>99.44</td><td>102.68</td><td class="slowest">105.33</td></tr><tr class="non-stx-row"><td>Joseph Jarrett</td><td>Valley Track Club</td><td>1</td><td>193</td><td class="dimmed-pr"></td><td></td><td>12:37.76</td><td class="fastest">88.00</td><td>98.25</td><td>98.34</td><td class="slowest">98.35</td><td>95.25</td><td>97.22</td><td>95.77</td></tr><tr class="non-stx-row"><td>Joshua Neher</td><td>Centurion Track Club</td><td>1</td><td>194</td><td class="dimmed-pr"></td><td></td><td>12:45.80</td><td class="fastest">88.44</td><td>97.06</td><td class="slowest">98.55</td><td>98.46</td><td>95.29</td><td>97.35</td><td>97.71</td></tr><tr class="non-stx-row"><td>Chris Graff</td><td>Elizabethtown</td><td>1</td><td>195</td><td class="dimmed-pr"></td><td></td><td>13:00.07</td><td class="fastest">81.01</td><td>92.25</td><td>97.01</td><td>100.92</td><td>103.84</td><td class="slowest">104.24</td><td>102.31</td></tr><tr class="non-stx-row"><td>Jackson Stewart</td><td>Trinity (Louisville)</td><td>1</td><td>196</td><td class="dimmed-pr"></td><td></td><td>13:01.28</td><td class="fastest">89.50</td><td>97.55</td><td class="slowest">102.18</td><td>100.47</td><td>98.06</td><td>100.42</td><td>99.31</td></tr><tr class="non-stx-row"><td>Jhett Weston</td><td>Hebron</td><td>1</td><td>197</td><td class="dimmed-pr"></td><td></td><td>13:03.28</td><td class="fastest">87.64</td><td>98.63</td><td class="slowest">101.80</td><td>101.36</td><td>101.27</td><td>101.18</td><td>100.12</td></tr><tr class="non-stx-row"><td>Carter Johnston</td><td>Grizzlies</td><td>1</td><td>198</td><td class="dimmed-pr"></td><td></td><td>14:13.20</td><td class="fastest">89.87</td><td>101.72</td><td>110.00</td><td>111.64</td><td>111.14</td><td>113.08</td><td class="slowest">115.07</td></tr><tr class="non-stx-row"><td>Levi Cecil</td><td>Unattached</td><td>1</td><td>199</td><td class="dimmed-pr"></td><td></td><td>14:16.05</td><td class="fastest">86.61</td><td>99.04</td><td>104.33</td><td>112.66</td><td>115.62</td><td class="slowest">118.16</td><td>114.46</td></tr><tr class="non-stx-row"><td>James Nelson</td><td>Valley Track Club</td><td>1</td><td>200</td><td class="dimmed-pr"></td><td></td><td>14:23.38</td><td class="fastest">92.34</td><td>104.28</td><td>110.46</td><td>115.00</td><td>115.23</td><td class="slowest">118.07</td><td>114.55</td></tr><tr class="non-stx-row"><td>Cooper McBroom</td><td>Shepherdsville Track Club</td><td>1</td><td>201</td><td class="dimmed-pr"></td><td></td><td>14:23.89</td><td class="fastest">81.59</td><td>99.02</td><td>108.22</td><td>114.24</td><td>115.84</td><td class="slowest">120.66</td><td>120.22</td></tr><tr class="non-stx-row"><td>Davin Brooks</td><td>Elizabethtown</td><td>1</td><td>202</td><td class="dimmed-pr"></td><td></td><td>14:26.50</td><td class="fastest">87.20</td><td>103.00</td><td>111.60</td><td>112.07</td><td>115.26</td><td>117.20</td><td class="slowest">117.81</td></tr></tbody></table></div></div><div class="footer">Generated at <code>2026-11-08 11:21:40</code> from <code>C:\Users\Bob\OneDrive\StX_XC_Track_V2\data\stx_track.db</code></div>
+<!-- STX_HEADER_SCRIPT_START -->
+    <script>
+      (() => {
+        const menu = document.getElementById('stx-site-menu');
+        const openButton = document.querySelector('.stx-menu-open');
+        const closeButton = document.querySelector('.stx-menu-close');
+        if (!menu || !openButton || !closeButton) return;
+        let lastFocused = null;
+
+        function setMenu(open) {
+          menu.classList.toggle('is-open', open);
+          menu.setAttribute('aria-hidden', open ? 'false' : 'true');
+          openButton.setAttribute('aria-expanded', open ? 'true' : 'false');
+          document.documentElement.classList.toggle('stx-menu-is-open', open);
+          if (open) {
+            lastFocused = document.activeElement;
+            closeButton.focus();
+          } else if (lastFocused) {
+            lastFocused.focus();
+          }
+        }
+
+        openButton.addEventListener('click', () => setMenu(true));
+        closeButton.addEventListener('click', () => setMenu(false));
+        document.addEventListener('keydown', event => {
+          if (event.key === 'Escape' && menu.classList.contains('is-open')) setMenu(false);
+        });
+      })();
+    </script>
+    <!-- STX_HEADER_SCRIPT_END -->
+</body>
+</html>
