@@ -348,7 +348,10 @@
       }
     </style>
     
-  <!-- STX_HEADER_CSS_START -->
+  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+<!-- STX_HEADER_CSS_START -->
     <style>
       @import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,600;9..40,700&family=Libre+Caslon+Text:ital,wght@0,400;1,400&display=swap');
 
@@ -544,12 +547,14 @@
       .stx-menu-feedback:hover, .stx-menu-feedback:focus-visible { background: transparent; }
       .stx-school-link { color: var(--stx-dark-green) !important; font-size: 13px; font-weight: 700; }
       @media (max-width: 780px) {
-        .stx-site-header { margin-bottom: 22px; }
-        .stx-header-inner { min-height: 68px; padding: 9px 16px; }
-        .stx-logo-image { width: 190px; }
-        .stx-brand-divider { height: 32px; }
-        .stx-section-name { font-size: 9px; }
-        .stx-menu-open { width: 42px; height: 42px; }
+        /* The header is intentionally compact on phones, where it is present
+           on every report page and should not displace the actual results. */
+        .stx-site-header { margin-bottom: 16px; }
+        .stx-header-inner { min-height: 54px; padding: 7px 14px; gap: 12px; }
+        .stx-logo-image { width: 154px; }
+        .stx-brand-divider { height: 26px; }
+        .stx-section-name { font-size: 8px; letter-spacing: .11em; }
+        .stx-menu-open { width: 38px; height: 38px; }
         .stx-site-menu { display: block; overflow-y: auto; background: var(--stx-green); }
         .stx-menu-brand-panel { min-height: 210px; padding: 78px 24px 28px; justify-content: flex-end; }
         .stx-menu-brand-panel::before { top: -80px; font-size: 330px; }
@@ -562,15 +567,13 @@
       @media (max-width: 460px) {
         .stx-brand { gap: 10px; }
         .stx-brand-divider, .stx-section-name { display: none; }
-        .stx-logo-image { width: 175px; }
+        .stx-logo-image { width: 142px; }
       }
       @media (prefers-reduced-motion: reduce) {
         .stx-site-menu, .stx-menu-open, .stx-menu-nav a { transition: none; }
       }
     </style>
     <!-- STX_HEADER_CSS_END -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
 </head>
 <body>
 <!-- STX_HEADER_HTML_START -->
@@ -607,6 +610,7 @@
       </div>
     </aside>
     <!-- STX_HEADER_HTML_END -->
+
 
     <div class="topbar">
       <div class="titlewrap">
@@ -656,6 +660,7 @@
           });
         </script>
         <section class='xc-print-current'><p class='subline muted'>September 23, 2006<br>Spain Park High School, Hoover, AL</p><div class='card'><h2>5K</h2><div class='xc-team-score-heading'><h3>Team Scores</h3></div><p class='muted'>No team scores loaded for this race.</p><h3 style='margin-top:24px'>Individual Results</h3><div class='table-wrap'><table class='xc-results-table'><thead><tr><th>Place</th><th>Athlete</th><th>Grade</th><th class='xc-result-year-0'>2006<span class='xc-result-date'>9/23</span></th><th class='xc-result-year-1'>2005<span class='xc-result-date'>9/24</span></th><th>PR</th><th>Pace</th></tr></thead><tbody><tr><td></td><td><a href='../athletes/justin_bowling.html'>Bowling, Justin</a></td><td>12</td><td class='xc-result-cell xc-result-year-0'>17:30.30</td><td class='xc-result-cell xc-result-year-1'>17:39.70</td><td>16:34.40</td><td>5:38</td></tr></tbody></table></div></div></section><section class='xc-print-prior'><div class='xc-history-heading'><h1>Great American XC Festival 2005</h1></div><p class='subline muted'>September 24, 2005<br>WakeMed Soccer Complex, Cary, NC</p><div class='card'><h2>5K</h2><div class='xc-team-score-heading'><h3>Team Scores</h3></div><p class='muted'>No team scores loaded for this race.</p><h3 style='margin-top:24px'>Individual Results</h3><div class='table-wrap'><table class='xc-results-table'><thead><tr><th>Place</th><th>Athlete</th><th>Grade</th><th class='xc-result-year-0'>2005<span class='xc-result-date'>9/24</span></th><th>PR</th><th>Pace</th></tr></thead><tbody><tr><td>1</td><td><a href='../athletes/spencer_schardein.html'>Schardein, Spencer</a></td><td>12</td><td class='xc-result-cell xc-result-year-0 pr' title='Personal record'>17:05.90</td><td>17:08.40</td><td>5:30</td></tr><tr><td>2</td><td><a href='../athletes/david_stewart.html'>Stewart, David</a></td><td>12</td><td class='xc-result-cell xc-result-year-0 pr' title='Personal record'>17:21.40</td><td>17:37.90</td><td>5:35</td></tr><tr><td>4</td><td><a href='../athletes/evan_conder.html'>Conder, Evan</a></td><td>12</td><td class='xc-result-cell xc-result-year-0 pr' title='Personal record'>17:26.20</td><td>18:03.00</td><td>5:37</td></tr><tr><td>10</td><td><a href='../athletes/colin_dempsey.html'>Dempsey, Colin</a></td><td>11</td><td class='xc-result-cell xc-result-year-0 pr' title='Personal record'>17:37.50</td><td>18:05.00</td><td>5:40</td></tr><tr><td>11</td><td><a href='../athletes/dallas_stoller.html'>Stoller, Dallas</a></td><td>11</td><td class='xc-result-cell xc-result-year-0'>17:38.60</td><td>17:20.00</td><td>5:41</td></tr><tr><td>12</td><td><a href='../athletes/tim_thomas.html'>Thomas, Tim</a></td><td>11</td><td class='xc-result-cell xc-result-year-0 pr' title='Personal record'>17:40.10</td><td>17:49.10</td><td>5:41</td></tr><tr><td>14</td><td><a href='../athletes/matt_blum.html'>Blum, Matt</a></td><td>12</td><td class='xc-result-cell xc-result-year-0'>17:40.50</td><td>17:37.60</td><td>5:41</td></tr><tr><td>16</td><td><a href='../athletes/paul_schlich.html'>Schlich, Paul</a></td><td>12</td><td class='xc-result-cell xc-result-year-0'>17:41.90</td><td>17:32.40</td><td>5:42</td></tr><tr><td>16</td><td><a href='../athletes/scott_mcclain.html'>McClain, Scott</a></td><td>12</td><td class='xc-result-cell xc-result-year-0'>15:52.60</td><td>15:49.90</td><td>5:07</td></tr><tr><td>22</td><td><a href='../athletes/brian_long.html'>Long, Brian</a></td><td>11</td><td class='xc-result-cell xc-result-year-0'>16:00.10</td><td>15:55.00</td><td>5:09</td></tr><tr><td>37</td><td><a href='../athletes/thomas_davis.html'>Davis, Thomas</a></td><td>12</td><td class='xc-result-cell xc-result-year-0'>16:19.40</td><td>15:50.20</td><td>5:15</td></tr><tr><td>65</td><td><a href='../athletes/sean_brotzge.html'>Brotzge, Sean</a></td><td>12</td><td class='xc-result-cell xc-result-year-0'>16:47.50</td><td>16:38.60</td><td>5:24</td></tr><tr><td>100</td><td><a href='../athletes/daniel_schneider.html'>Schneider, Daniel</a></td><td>12</td><td class='xc-result-cell xc-result-year-0'>17:16.20</td><td>16:52.10</td><td>5:34</td></tr><tr><td>109</td><td><a href='../athletes/kyle_idstein.html'>Idstein, Kyle</a></td><td>11</td><td class='xc-result-cell xc-result-year-0 pr' title='Personal record'>17:19.90</td><td>17:26.30</td><td>5:35</td></tr><tr><td>139</td><td><a href='../athletes/justin_bowling.html'>Bowling, Justin</a></td><td>11</td><td class='xc-result-cell xc-result-year-0'>17:39.70</td><td>17:20.90</td><td>5:41</td></tr></tbody></table></div></div></section><section class='xc-print-prior xc-print-hidden-history'><div class='xc-history-heading'><h1>Great American XC Festival 2000</h1></div><p class='subline muted'>September 23, 2000<br>Larry McAfee Course At McAlpine Park, Charlotte, NC</p><div class='card'><h2>5K</h2><div class='xc-team-score-heading'><h3>Team Scores</h3></div><p class='muted'>No team scores loaded for this race.</p><h3 style='margin-top:24px'>Individual Results</h3><div class='table-wrap'><table class='xc-results-table'><thead><tr><th>Place</th><th>Athlete</th><th>Grade</th><th class='xc-result-year-0'>2000<span class='xc-result-date'>9/23</span></th><th>PR</th><th>Pace</th></tr></thead><tbody><tr><td></td><td><a href='../athletes/bobby_curtis.html'>Curtis, Bobby</a></td><td>10</td><td class='xc-result-cell xc-result-year-0'>15:37.00</td><td>15:20.00</td><td>5:02</td></tr></tbody></table></div></div></section><div class="footer">Generated at <code>2026-08-24 12:13:53</code> from <code>C:\Users\Bob\OneDrive\StX_XC_Track_V2\data\stx_track.db</code></div>
+
 <!-- STX_HEADER_SCRIPT_START -->
     <script>
       (() => {

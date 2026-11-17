@@ -348,7 +348,10 @@
       }
     </style>
     
-  <!-- STX_HEADER_CSS_START -->
+  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+<!-- STX_HEADER_CSS_START -->
     <style>
       @import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,600;9..40,700&family=Libre+Caslon+Text:ital,wght@0,400;1,400&display=swap');
 
@@ -544,12 +547,14 @@
       .stx-menu-feedback:hover, .stx-menu-feedback:focus-visible { background: transparent; }
       .stx-school-link { color: var(--stx-dark-green) !important; font-size: 13px; font-weight: 700; }
       @media (max-width: 780px) {
-        .stx-site-header { margin-bottom: 22px; }
-        .stx-header-inner { min-height: 68px; padding: 9px 16px; }
-        .stx-logo-image { width: 190px; }
-        .stx-brand-divider { height: 32px; }
-        .stx-section-name { font-size: 9px; }
-        .stx-menu-open { width: 42px; height: 42px; }
+        /* The header is intentionally compact on phones, where it is present
+           on every report page and should not displace the actual results. */
+        .stx-site-header { margin-bottom: 16px; }
+        .stx-header-inner { min-height: 54px; padding: 7px 14px; gap: 12px; }
+        .stx-logo-image { width: 154px; }
+        .stx-brand-divider { height: 26px; }
+        .stx-section-name { font-size: 8px; letter-spacing: .11em; }
+        .stx-menu-open { width: 38px; height: 38px; }
         .stx-site-menu { display: block; overflow-y: auto; background: var(--stx-green); }
         .stx-menu-brand-panel { min-height: 210px; padding: 78px 24px 28px; justify-content: flex-end; }
         .stx-menu-brand-panel::before { top: -80px; font-size: 330px; }
@@ -562,15 +567,13 @@
       @media (max-width: 460px) {
         .stx-brand { gap: 10px; }
         .stx-brand-divider, .stx-section-name { display: none; }
-        .stx-logo-image { width: 175px; }
+        .stx-logo-image { width: 142px; }
       }
       @media (prefers-reduced-motion: reduce) {
         .stx-site-menu, .stx-menu-open, .stx-menu-nav a { transition: none; }
       }
     </style>
     <!-- STX_HEADER_CSS_END -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
 </head>
 <body>
 <!-- STX_HEADER_HTML_START -->
@@ -607,6 +610,7 @@
       </div>
     </aside>
     <!-- STX_HEADER_HTML_END -->
+
 
     <div class="topbar">
       <div class="titlewrap">
@@ -647,6 +651,7 @@
       <div class='pr-parade-list'><span class='pr-parade-entry'><a href='../athletes/nicholas_brooks.html'>Nicholas Brooks</a>, <span class='pr-time'>10:00.70</span></span>; <span class='pr-parade-entry'><a href='../athletes/joey_maier.html'>Joey Maier</a>, <span class='pr-time'>12:31.50</span></span></div>
     </div>
     <div class='card'><h2>3200 Meters</h2><div class="table-wrap"><table><thead><tr><th>Athlete</th><th>Team</th><th>Group</th><th>Place</th><th class="dimmed-pr">Indoor PR</th><th>Outdoor PR</th><th>Result</th></tr></thead><tbody><tr><td><a href='../athletes/nolan_hester.html'>Nolan Hester</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>1</td><td class="dimmed-pr"></td><td>9:03.83</td><td>9:38.60</td></tr><tr><td><a href='../athletes/sami_hattab.html'>Sami Hattab</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>2</td><td class="dimmed-pr"></td><td>9:34.70</td><td>9:40.10</td></tr><tr class="non-stx-row"><td>Ryan ODea</td><td>Trinity (Louisville)</td><td>1</td><td>3</td><td class="dimmed-pr"></td><td></td><td>9:40.90</td></tr><tr><td><a href='../athletes/ryan_burchett.html'>Ryan Burchett</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>4</td><td class="dimmed-pr"></td><td>9:37.62</td><td>9:43.60</td></tr><tr class="non-stx-row"><td>Colin Murphy</td><td>Trinity (Louisville)</td><td>1</td><td>5</td><td class="dimmed-pr"></td><td></td><td>9:55.10</td></tr><tr><td><a href='../athletes/matthew_wantland.html'>Matthew Wantland</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>6</td><td class="dimmed-pr">9:59.51</td><td>9:56.32</td><td>9:56.90</td></tr><tr class="non-stx-row"><td>Dakota Brady</td><td>Nelson County</td><td>1</td><td>7</td><td class="dimmed-pr"></td><td></td><td>9:57.40</td></tr><tr><td><a href='../athletes/nicholas_brooks.html'>Nicholas Brooks</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>8</td><td class="dimmed-pr"></td><td>10:19.27</td><td class="pr">10:00.70</td></tr><tr><td><a href='../athletes/liam_rice.html'>Liam Rice</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>9</td><td class="dimmed-pr"></td><td>9:51.16</td><td>10:03.00</td></tr><tr class="non-stx-row"><td>Josiah Claunch</td><td>CKY Homeschool</td><td>1</td><td>10</td><td class="dimmed-pr"></td><td></td><td>10:04.70</td></tr><tr><td><a href='../athletes/joshua_striegel.html'>Joshua Striegel</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>11</td><td class="dimmed-pr">10:00.94</td><td>10:09.08</td><td>10:10.90</td></tr><tr><td><a href='../athletes/tristan_hindorff.html'>Tristan Hindorff</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>12</td><td class="dimmed-pr"></td><td>10:12.95</td><td>10:14.00</td></tr><tr class="non-stx-row"><td>Zach Woodall</td><td>Trinity (Louisville)</td><td>1</td><td>13</td><td class="dimmed-pr"></td><td></td><td>10:18.40</td></tr><tr class="non-stx-row"><td>Austin Montgomery</td><td>Trinity (Louisville)</td><td>1</td><td>14</td><td class="dimmed-pr"></td><td></td><td>10:18.80</td></tr><tr class="non-stx-row"><td>Eli Maraman</td><td>Butler</td><td>1</td><td>15</td><td class="dimmed-pr"></td><td></td><td>10:21.70</td></tr><tr class="non-stx-row"><td>Cooper Chandler</td><td>Male</td><td>1</td><td>16</td><td class="dimmed-pr"></td><td></td><td>10:21.90</td></tr><tr class="non-stx-row"><td>Tyler Bass</td><td>Bullitt East</td><td>1</td><td>17</td><td class="dimmed-pr"></td><td></td><td>10:23.30</td></tr><tr class="non-stx-row"><td>Key'Shawn Cain</td><td>Male</td><td>1</td><td>18</td><td class="dimmed-pr"></td><td></td><td>10:27.80</td></tr><tr class="non-stx-row"><td>Owen McGreevy</td><td>Trinity (Louisville)</td><td>1</td><td>19</td><td class="dimmed-pr"></td><td></td><td>10:28.50</td></tr><tr><td><a href='../athletes/connor_kessinger.html'>Connor Kessinger</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>20</td><td class="dimmed-pr"></td><td>10:10.13</td><td>10:32.00</td></tr><tr class="non-stx-row"><td>Owen McGuirk</td><td>DuPont Manual</td><td>1</td><td>21</td><td class="dimmed-pr"></td><td></td><td>10:33.30</td></tr><tr class="non-stx-row"><td>Ryan Barrett</td><td>DuPont Manual</td><td>1</td><td>22</td><td class="dimmed-pr"></td><td></td><td>10:34.10</td></tr><tr class="non-stx-row"><td>Samuel Lucas</td><td>Male</td><td>1</td><td>23</td><td class="dimmed-pr"></td><td></td><td>10:35.50</td></tr><tr class="non-stx-row"><td>Caden Cull</td><td>Male</td><td>1</td><td>24</td><td class="dimmed-pr"></td><td></td><td>10:36.20</td></tr><tr><td><a href='../athletes/luke_napier.html'>Luke Napier</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>25</td><td class="dimmed-pr"></td><td>10:23.01</td><td>10:38.10</td></tr><tr class="non-stx-row"><td>Luke Goins</td><td>Trinity (Louisville)</td><td>1</td><td>26</td><td class="dimmed-pr"></td><td></td><td>10:44.10</td></tr><tr class="non-stx-row"><td>Nate Powers</td><td>Eastern</td><td>1</td><td>27</td><td class="dimmed-pr"></td><td></td><td>10:45.50</td></tr><tr><td><a href='../athletes/brodie_terkhorn.html'>Brodie Terkhorn</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>28</td><td class="dimmed-pr"></td><td>10:18.24</td><td>10:45.60</td></tr><tr class="non-stx-row"><td>Nate Rogers</td><td>Male</td><td>1</td><td>29</td><td class="dimmed-pr"></td><td></td><td>10:46.60</td></tr><tr class="non-stx-row"><td>Joshua Smith</td><td>Fern Creek</td><td>1</td><td>30</td><td class="dimmed-pr"></td><td></td><td>10:47.00</td></tr><tr class="non-stx-row"><td>Ethan Pinnick</td><td>Eastern</td><td>1</td><td>31</td><td class="dimmed-pr"></td><td></td><td>10:47.20</td></tr><tr class="non-stx-row"><td>Jared Sandfoss</td><td>CKY Homeschool</td><td>1</td><td>32</td><td class="dimmed-pr"></td><td></td><td>10:48.20</td></tr><tr class="non-stx-row"><td>Morgan Frederick</td><td>Trinity (Louisville)</td><td>1</td><td>33</td><td class="dimmed-pr"></td><td></td><td>10:49.00</td></tr><tr class="non-stx-row"><td>Ian Kennedy</td><td>Trinity (Louisville)</td><td>1</td><td>34</td><td class="dimmed-pr"></td><td></td><td>10:52.30</td></tr><tr class="non-stx-row"><td>Jacob Hardin</td><td>Male</td><td>1</td><td>35</td><td class="dimmed-pr"></td><td></td><td>11:02.30</td></tr><tr class="non-stx-row"><td>Kaleb Nichols</td><td>Butler</td><td>1</td><td>36</td><td class="dimmed-pr"></td><td></td><td>11:19.80</td></tr><tr class="non-stx-row"><td>Jack Bradon</td><td>Eastern</td><td>1</td><td>37</td><td class="dimmed-pr"></td><td></td><td>11:21.90</td></tr><tr class="non-stx-row"><td>Edward Jost</td><td>DuPont Manual</td><td>1</td><td>38</td><td class="dimmed-pr"></td><td></td><td>11:25.30</td></tr><tr class="non-stx-row"><td>Noah Stinson</td><td>CKY Homeschool</td><td>1</td><td>39</td><td class="dimmed-pr"></td><td></td><td>11:26.30</td></tr><tr class="non-stx-row"><td>Isaiah Horton</td><td>Male</td><td>1</td><td>40</td><td class="dimmed-pr"></td><td></td><td>11:38.80</td></tr><tr class="non-stx-row"><td>Garrett Hensler</td><td>Male</td><td>1</td><td>41</td><td class="dimmed-pr"></td><td></td><td>11:41.30</td></tr><tr class="non-stx-row"><td>Karlyle Sullivan</td><td>Male</td><td>1</td><td>42</td><td class="dimmed-pr"></td><td></td><td>11:45.90</td></tr><tr class="non-stx-row"><td>Gray Meyer</td><td>Fern Creek</td><td>1</td><td>43</td><td class="dimmed-pr"></td><td></td><td>11:55.20</td></tr><tr class="non-stx-row"><td>Andrew Hornung</td><td>Eastern</td><td>1</td><td>44</td><td class="dimmed-pr"></td><td></td><td>11:56.60</td></tr><tr class="non-stx-row"><td>Gavin Martinez</td><td>Fern Creek</td><td>1</td><td>45</td><td class="dimmed-pr"></td><td></td><td>12:07.40</td></tr><tr class="non-stx-row"><td>Caleb Stinson</td><td>CKY Homeschool</td><td>1</td><td>46</td><td class="dimmed-pr"></td><td></td><td>12:16.70</td></tr><tr class="non-stx-row"><td>Dain Elmore</td><td>Fern Creek</td><td>1</td><td>47</td><td class="dimmed-pr"></td><td></td><td>12:20.70</td></tr><tr><td><a href='../athletes/joey_maier.html'>Joey Maier</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>48</td><td class="dimmed-pr"></td><td></td><td class="pr">12:31.50</td></tr><tr class="non-stx-row"><td>Duffy Oakley</td><td>Brown</td><td>1</td><td>49</td><td class="dimmed-pr"></td><td></td><td>12:32.60</td></tr><tr class="non-stx-row"><td>Andres Hernandez</td><td>Eastern</td><td>1</td><td>50</td><td class="dimmed-pr"></td><td></td><td>12:33.00</td></tr><tr class="non-stx-row"><td>Finn O'Neill</td><td>Nelson County</td><td>1</td><td>51</td><td class="dimmed-pr"></td><td></td><td>12:36.60</td></tr><tr><td><a href='../athletes/roman_duke.html'>Roman Duke</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>52</td><td class="dimmed-pr"></td><td>12:30.67</td><td>12:45.10</td></tr><tr class="non-stx-row"><td>Nolan Kiper</td><td>Male</td><td>1</td><td>53</td><td class="dimmed-pr"></td><td></td><td>12:50.20</td></tr><tr class="non-stx-row"><td>Caleb Ortiz</td><td>CKY Homeschool</td><td>1</td><td>54</td><td class="dimmed-pr"></td><td></td><td>13:00.30</td></tr><tr class="non-stx-row"><td>Zach Dehut</td><td>CKY Homeschool</td><td>1</td><td>55</td><td class="dimmed-pr"></td><td></td><td>13:03.20</td></tr><tr class="non-stx-row"><td>Will DeWitt</td><td>Nelson County</td><td>1</td><td>56</td><td class="dimmed-pr"></td><td></td><td>13:11.50</td></tr><tr class="non-stx-row"><td>Jacob Shields</td><td>Nelson County</td><td>1</td><td>57</td><td class="dimmed-pr"></td><td></td><td>13:32.90</td></tr><tr class="non-stx-row"><td>Trace Martin</td><td>Eastern</td><td>1</td><td>58</td><td class="dimmed-pr"></td><td></td><td>14:25.70</td></tr><tr class="non-stx-row"><td>Daniel Christerson</td><td>Male</td><td>1</td><td>59</td><td class="dimmed-pr"></td><td></td><td>15:02.60</td></tr><tr class="non-stx-row"><td>Gareth Stephenson</td><td>Nelson County</td><td>1</td><td>60</td><td class="dimmed-pr"></td><td></td><td>16:28.30</td></tr></tbody></table></div></div><div class="footer">Generated at <code>2026-08-24 11:32:53</code> from <code>C:\Users\Bob\OneDrive\StX_XC_Track_V2\data\stx_track.db</code></div>
+
 <!-- STX_HEADER_SCRIPT_START -->
     <script>
       (() => {

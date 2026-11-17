@@ -348,7 +348,10 @@
       }
     </style>
     
-  <!-- STX_HEADER_CSS_START -->
+  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+<!-- STX_HEADER_CSS_START -->
     <style>
       @import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,600;9..40,700&family=Libre+Caslon+Text:ital,wght@0,400;1,400&display=swap');
 
@@ -544,12 +547,14 @@
       .stx-menu-feedback:hover, .stx-menu-feedback:focus-visible { background: transparent; }
       .stx-school-link { color: var(--stx-dark-green) !important; font-size: 13px; font-weight: 700; }
       @media (max-width: 780px) {
-        .stx-site-header { margin-bottom: 22px; }
-        .stx-header-inner { min-height: 68px; padding: 9px 16px; }
-        .stx-logo-image { width: 190px; }
-        .stx-brand-divider { height: 32px; }
-        .stx-section-name { font-size: 9px; }
-        .stx-menu-open { width: 42px; height: 42px; }
+        /* The header is intentionally compact on phones, where it is present
+           on every report page and should not displace the actual results. */
+        .stx-site-header { margin-bottom: 16px; }
+        .stx-header-inner { min-height: 54px; padding: 7px 14px; gap: 12px; }
+        .stx-logo-image { width: 154px; }
+        .stx-brand-divider { height: 26px; }
+        .stx-section-name { font-size: 8px; letter-spacing: .11em; }
+        .stx-menu-open { width: 38px; height: 38px; }
         .stx-site-menu { display: block; overflow-y: auto; background: var(--stx-green); }
         .stx-menu-brand-panel { min-height: 210px; padding: 78px 24px 28px; justify-content: flex-end; }
         .stx-menu-brand-panel::before { top: -80px; font-size: 330px; }
@@ -562,15 +567,13 @@
       @media (max-width: 460px) {
         .stx-brand { gap: 10px; }
         .stx-brand-divider, .stx-section-name { display: none; }
-        .stx-logo-image { width: 175px; }
+        .stx-logo-image { width: 142px; }
       }
       @media (prefers-reduced-motion: reduce) {
         .stx-site-menu, .stx-menu-open, .stx-menu-nav a { transition: none; }
       }
     </style>
     <!-- STX_HEADER_CSS_END -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
 </head>
 <body>
 <!-- STX_HEADER_HTML_START -->
@@ -607,6 +610,7 @@
       </div>
     </aside>
     <!-- STX_HEADER_HTML_END -->
+
 
     <div class="topbar">
       <div class="titlewrap">
@@ -656,6 +660,7 @@
           });
         </script>
         <section class='xc-print-current'><p class='subline muted'>October 6, 2007<br>Archives, Frankfort, KY</p><div class='card'><h2>5K</h2><div class='xc-team-score-heading'><h3>Team Scores</h3></div><p class='muted'>No team scores loaded for this race.</p><h3 style='margin-top:24px'>Individual Results</h3><div class='table-wrap'><table class='xc-results-table'><thead><tr><th>Place</th><th>Athlete</th><th>Grade</th><th class='xc-result-year-0'>2007<span class='xc-result-date'>10/6</span></th><th>PR</th><th>Pace</th></tr></thead><tbody><tr><td>3</td><td><a href='../athletes/kevin_fleig.html'>Fleig, Kevin</a></td><td>12</td><td class='xc-result-cell xc-result-year-0'>18:25.50</td><td>17:11.00</td><td>5:56</td></tr><tr><td>9</td><td><a href='../athletes/nick_amlung.html'>Amlung, Nick</a></td><td>11</td><td class='xc-result-cell xc-result-year-0'>18:54.40</td><td>18:09.70</td><td>6:05</td></tr><tr><td>10</td><td><a href='../athletes/anthony_meena.html'>Meena, Anthony</a></td><td>10</td><td class='xc-result-cell xc-result-year-0'>18:54.80</td><td>18:01.60</td><td>6:05</td></tr><tr><td>11</td><td><a href='../athletes/stuart_plamp.html'>Plamp, Stuart</a></td><td>10</td><td class='xc-result-cell xc-result-year-0'>18:55.60</td><td>17:58.80</td><td>6:06</td></tr><tr><td>12</td><td><a href='../athletes/justin_brezosky.html'>Brezosky, Justin</a></td><td>11</td><td class='xc-result-cell xc-result-year-0'>18:57.60</td><td>17:47.80</td><td>6:06</td></tr><tr><td>14</td><td><a href='../athletes/jim_ransdell.html'>Ransdell, Jim</a></td><td>12</td><td class='xc-result-cell xc-result-year-0'>19:08.40</td><td>18:10.60</td><td>6:10</td></tr><tr><td>15</td><td><a href='../athletes/john_schieman.html'>Schieman, John</a></td><td>10</td><td class='xc-result-cell xc-result-year-0'>19:16.30</td><td>17:57.30</td><td>6:12</td></tr><tr><td>18</td><td><a href='../athletes/ben_dant.html'>Dant, Ben</a></td><td>11</td><td class='xc-result-cell xc-result-year-0'>19:24.10</td><td>18:26.80</td><td>6:15</td></tr><tr><td>28</td><td><a href='../athletes/james_knoer.html'>Knoer, James</a></td><td>10</td><td class='xc-result-cell xc-result-year-0'>19:43.40</td><td>18:13.20</td><td>6:21</td></tr><tr><td>30</td><td><a href='../athletes/aaron_flannery.html'>Flannery, Aaron</a></td><td>10</td><td class='xc-result-cell xc-result-year-0'>19:46.20</td><td>18:26.40</td><td>6:22</td></tr><tr><td>34</td><td><a href='../athletes/sam_beavin.html'>Beavin, Sam</a></td><td>10</td><td class='xc-result-cell xc-result-year-0'>20:03.90</td><td>17:26.80</td><td>6:27</td></tr><tr><td>36</td><td><a href='../athletes/ben_cavanaugh.html'>Cavanaugh, Ben</a></td><td>11</td><td class='xc-result-cell xc-result-year-0'>20:12.50</td><td>18:21.80</td><td>6:30</td></tr><tr><td>37</td><td><a href='../athletes/anthony_puopolo.html'>Puopolo, Anthony</a></td><td>11</td><td class='xc-result-cell xc-result-year-0'>20:17.30</td><td>17:35.80</td><td>6:32</td></tr></tbody></table></div></div></section><div class="footer">Generated at <code>2026-08-24 12:11:25</code> from <code>C:\Users\Bob\OneDrive\StX_XC_Track_V2\data\stx_track.db</code></div>
+
 <!-- STX_HEADER_SCRIPT_START -->
     <script>
       (() => {

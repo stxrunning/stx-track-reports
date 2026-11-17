@@ -192,7 +192,175 @@
       .xc-top5-delta.faster { color:#176b2c; }
    </style>
     
-  <!-- STX_HEADER_CSS_START -->
+  
+  
+    <script>
+      let currentSport = "all";
+
+      function seasonalDepthSportForMonth(month) {
+        return month >= 7 && month <= 11 ? "cross_country" : "track";
+      }
+
+      function initializeDepthChart() {
+        currentSport = seasonalDepthSportForMonth(new Date().getMonth() + 1);
+        const seasonalRadio = document.querySelector(
+          `input[name="sport_toggle"][value="${currentSport}"]`
+        );
+        if (seasonalRadio) seasonalRadio.checked = true;
+        applyDepthVisibility();
+      }
+
+      function applyDepthVisibility() {
+        const allSummary = document.getElementById("all-summary-wrapper");
+        const trackSummary = document.getElementById("track-summary-wrapper");
+        const trackShared = document.getElementById("track-shared-wrapper");
+        const xcArea = document.getElementById("xc-wrapper");
+
+        const showXC = (currentSport === "cross_country");
+        const showAll = (currentSport === "all");
+        const showTrack = (currentSport === "track");
+        if (allSummary) allSummary.style.display = showAll ? "block" : "none";
+        if (trackSummary) {
+          trackSummary.style.display = showTrack ? "block" : "none";
+        }
+        if (trackShared) {
+          trackShared.style.display = showXC ? "none" : "block";
+        }
+        if (xcArea) xcArea.style.display = showXC ? "block" : "none";
+      }
+
+      function toggleDepthYear(currentYearOnly) {
+        const templateId = currentYearOnly ? "depth-current-year" : "depth-all-years";
+        const content = document.getElementById(templateId).content.cloneNode(true);
+        document.getElementById("depth-results").replaceChildren(content);
+        applyDepthVisibility();
+        if (currentYearOnly) {
+          const comparisons = document.getElementById("xc-comparison-toggle");
+          if (comparisons) {
+            comparisons.checked = false;
+            comparisons.disabled = true;
+          }
+          toggleXCComparisons(false);
+        }
+      }
+
+      function toggleSport(sport) {
+        currentSport = sport;
+        applyDepthVisibility();
+      }
+
+      function toggleXCComparisons(showComparisons) {
+        document.querySelectorAll("#xc-wrapper .xc-result-delta").forEach(el => {
+          el.style.display = showComparisons ? "block" : "none";
+        });
+      }
+
+      function sortTable(tableId, columnIndex) {
+        const table = document.getElementById(tableId);
+        if (!table) return;
+        const tbody = table.querySelector("tbody");
+        const summaryRows = Array.from(tbody.querySelectorAll("tr[data-summary-row='true']"));
+        const rows = Array.from(tbody.querySelectorAll("tr:not([data-summary-row='true'])"));
+        const ths = Array.from(table.querySelectorAll("th"));
+        const currentTh = ths[columnIndex];
+        const direction = currentTh.classList.contains("sort-asc") ? "desc" : "asc";
+        const dirMul = (direction === "asc") ? 1 : -1;
+
+        const parseTimeToSeconds = (timeStr) => {
+          const s = (timeStr || "").trim();
+          if (!s || !s.includes(":")) return Number.POSITIVE_INFINITY;
+          const parts = s.split(":");
+          if (parts.length !== 2) return Number.POSITIVE_INFINITY;
+          const m = parseInt(parts[0], 10);
+          const sec = parseFloat(parts[1]);
+          if (Number.isNaN(m) || Number.isNaN(sec)) return Number.POSITIVE_INFINITY;
+          return (m * 60) + sec;
+        };
+
+        const getSortVal = (row, colIdx) => {
+          const cell = row.querySelectorAll("td")[colIdx];
+          if (!cell) return { type: "blank", val: Number.POSITIVE_INFINITY };
+          const raw = (cell.textContent || "").trim();
+          if (!raw) return { type: "blank", val: Number.POSITIVE_INFINITY };
+          if (raw.includes(":")) return { type: "num", val: parseTimeToSeconds(raw) };
+          const n = parseFloat(raw);
+          if (!Number.isNaN(n) && isFinite(n)) return { type: "num", val: n };
+          return { type: "str", val: raw.toLowerCase() };
+        };
+
+        const getAthleteName = (row) => {
+          const cells = Array.from(row.querySelectorAll("td"));
+          for (const c of cells) {
+            const a = c.querySelector("a");
+            if (a && (a.getAttribute("href") || "").includes("athletes/")) {
+              return (a.textContent || "").trim().toLowerCase();
+            }
+          }
+          return ((cells[0] && cells[0].textContent) ? cells[0].textContent : "").trim().toLowerCase();
+        };
+
+        const compareRows = (a, b, colIdx) => {
+          const A = getSortVal(a, colIdx);
+          const B = getSortVal(b, colIdx);
+          const Ablank = (A.type === "blank");
+          const Bblank = (B.type === "blank");
+          if (Ablank && !Bblank) return 1;
+          if (!Ablank && Bblank) return -1;
+          if (A.type === "num" && B.type === "num") {
+            if (A.val < B.val) return -1 * dirMul;
+            if (A.val > B.val) return 1 * dirMul;
+            return getAthleteName(a).localeCompare(getAthleteName(b));
+          }
+          if (A.type === "str" && B.type === "str") {
+            const cmp = A.val.localeCompare(B.val);
+            if (cmp !== 0) return cmp * dirMul;
+            return getAthleteName(a).localeCompare(getAthleteName(b));
+          }
+          if (A.type === "num" && B.type === "str") return -1;
+          if (A.type === "str" && B.type === "num") return 1;
+          return 0;
+        };
+
+        const isByClass = (table.getAttribute("data-mode") === "by_class");
+        const gradColIdxRaw = table.getAttribute("data-grad-col-index");
+        const gradColIdx = gradColIdxRaw ? parseInt(gradColIdxRaw, 10) : 0;
+
+        if (isByClass && !Number.isNaN(gradColIdx)) {
+          const groups = new Map();
+          const gradKey = (row) => {
+            const cell = row.querySelectorAll("td")[gradColIdx];
+            const t = (cell && cell.textContent) ? cell.textContent.trim() : "";
+            const n = parseInt(t, 10);
+            return Number.isNaN(n) ? 9999 : n;
+          };
+          for (const r of rows) {
+            const g = gradKey(r);
+            if (!groups.has(g)) groups.set(g, []);
+            groups.get(g).push(r);
+          }
+          const keys = Array.from(groups.keys()).sort((a, b) => a - b);
+          const newRows = [];
+          for (const k of keys) {
+            const arr = groups.get(k);
+            arr.sort((a, b) => compareRows(a, b, columnIndex));
+            newRows.push(...arr);
+          }
+          summaryRows.forEach(r => tbody.appendChild(r));
+          newRows.forEach(r => tbody.appendChild(r));
+        } else {
+          rows.sort((a, b) => compareRows(a, b, columnIndex));
+          summaryRows.forEach(r => tbody.appendChild(r));
+          rows.forEach(r => tbody.appendChild(r));
+        }
+
+        table.querySelectorAll("th.sortable-header").forEach(th =>
+          th.classList.remove("sort-asc", "sort-desc")
+        );
+        currentTh.classList.add(direction === "asc" ? "sort-asc" : "sort-desc");
+      }
+    </script>
+    
+<!-- STX_HEADER_CSS_START -->
     <style>
       @import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,600;9..40,700&family=Libre+Caslon+Text:ital,wght@0,400;1,400&display=swap');
 
@@ -388,12 +556,14 @@
       .stx-menu-feedback:hover, .stx-menu-feedback:focus-visible { background: transparent; }
       .stx-school-link { color: var(--stx-dark-green) !important; font-size: 13px; font-weight: 700; }
       @media (max-width: 780px) {
-        .stx-site-header { margin-bottom: 22px; }
-        .stx-header-inner { min-height: 68px; padding: 9px 16px; }
-        .stx-logo-image { width: 190px; }
-        .stx-brand-divider { height: 32px; }
-        .stx-section-name { font-size: 9px; }
-        .stx-menu-open { width: 42px; height: 42px; }
+        /* The header is intentionally compact on phones, where it is present
+           on every report page and should not displace the actual results. */
+        .stx-site-header { margin-bottom: 16px; }
+        .stx-header-inner { min-height: 54px; padding: 7px 14px; gap: 12px; }
+        .stx-logo-image { width: 154px; }
+        .stx-brand-divider { height: 26px; }
+        .stx-section-name { font-size: 8px; letter-spacing: .11em; }
+        .stx-menu-open { width: 38px; height: 38px; }
         .stx-site-menu { display: block; overflow-y: auto; background: var(--stx-green); }
         .stx-menu-brand-panel { min-height: 210px; padding: 78px 24px 28px; justify-content: flex-end; }
         .stx-menu-brand-panel::before { top: -80px; font-size: 330px; }
@@ -406,180 +576,13 @@
       @media (max-width: 460px) {
         .stx-brand { gap: 10px; }
         .stx-brand-divider, .stx-section-name { display: none; }
-        .stx-logo-image { width: 175px; }
+        .stx-logo-image { width: 142px; }
       }
       @media (prefers-reduced-motion: reduce) {
         .stx-site-menu, .stx-menu-open, .stx-menu-nav a { transition: none; }
       }
     </style>
     <!-- STX_HEADER_CSS_END -->
-  
-    <script>
-      let currentSport = "all";
-
-      function seasonalDepthSportForMonth(month) {
-        return month >= 7 && month <= 11 ? "cross_country" : "track";
-      }
-
-      function initializeDepthChart() {
-        currentSport = seasonalDepthSportForMonth(new Date().getMonth() + 1);
-        const seasonalRadio = document.querySelector(
-          `input[name="sport_toggle"][value="${currentSport}"]`
-        );
-        if (seasonalRadio) seasonalRadio.checked = true;
-        applyDepthVisibility();
-      }
-
-      function applyDepthVisibility() {
-        const allSummary = document.getElementById("all-summary-wrapper");
-        const trackSummary = document.getElementById("track-summary-wrapper");
-        const trackShared = document.getElementById("track-shared-wrapper");
-        const xcArea = document.getElementById("xc-wrapper");
-
-        const showXC = (currentSport === "cross_country");
-        const showAll = (currentSport === "all");
-        const showTrack = (currentSport === "track");
-        if (allSummary) allSummary.style.display = showAll ? "block" : "none";
-        if (trackSummary) {
-          trackSummary.style.display = showTrack ? "block" : "none";
-        }
-        if (trackShared) {
-          trackShared.style.display = showXC ? "none" : "block";
-        }
-        if (xcArea) xcArea.style.display = showXC ? "block" : "none";
-      }
-
-      function toggleDepthYear(currentYearOnly) {
-        const templateId = currentYearOnly ? "depth-current-year" : "depth-all-years";
-        const content = document.getElementById(templateId).content.cloneNode(true);
-        document.getElementById("depth-results").replaceChildren(content);
-        applyDepthVisibility();
-        if (currentYearOnly) {
-          const comparisons = document.getElementById("xc-comparison-toggle");
-          if (comparisons) {
-            comparisons.checked = false;
-            comparisons.disabled = true;
-          }
-          toggleXCComparisons(false);
-        }
-      }
-
-      function toggleSport(sport) {
-        currentSport = sport;
-        applyDepthVisibility();
-      }
-
-      function toggleXCComparisons(showComparisons) {
-        document.querySelectorAll("#xc-wrapper .xc-result-delta").forEach(el => {
-          el.style.display = showComparisons ? "block" : "none";
-        });
-      }
-
-      function sortTable(tableId, columnIndex) {
-        const table = document.getElementById(tableId);
-        if (!table) return;
-        const tbody = table.querySelector("tbody");
-        const summaryRows = Array.from(tbody.querySelectorAll("tr[data-summary-row='true']"));
-        const rows = Array.from(tbody.querySelectorAll("tr:not([data-summary-row='true'])"));
-        const ths = Array.from(table.querySelectorAll("th"));
-        const currentTh = ths[columnIndex];
-        const direction = currentTh.classList.contains("sort-asc") ? "desc" : "asc";
-        const dirMul = (direction === "asc") ? 1 : -1;
-
-        const parseTimeToSeconds = (timeStr) => {
-          const s = (timeStr || "").trim();
-          if (!s || !s.includes(":")) return Number.POSITIVE_INFINITY;
-          const parts = s.split(":");
-          if (parts.length !== 2) return Number.POSITIVE_INFINITY;
-          const m = parseInt(parts[0], 10);
-          const sec = parseFloat(parts[1]);
-          if (Number.isNaN(m) || Number.isNaN(sec)) return Number.POSITIVE_INFINITY;
-          return (m * 60) + sec;
-        };
-
-        const getSortVal = (row, colIdx) => {
-          const cell = row.querySelectorAll("td")[colIdx];
-          if (!cell) return { type: "blank", val: Number.POSITIVE_INFINITY };
-          const raw = (cell.textContent || "").trim();
-          if (!raw) return { type: "blank", val: Number.POSITIVE_INFINITY };
-          if (raw.includes(":")) return { type: "num", val: parseTimeToSeconds(raw) };
-          const n = parseFloat(raw);
-          if (!Number.isNaN(n) && isFinite(n)) return { type: "num", val: n };
-          return { type: "str", val: raw.toLowerCase() };
-        };
-
-        const getAthleteName = (row) => {
-          const cells = Array.from(row.querySelectorAll("td"));
-          for (const c of cells) {
-            const a = c.querySelector("a");
-            if (a && (a.getAttribute("href") || "").includes("athletes/")) {
-              return (a.textContent || "").trim().toLowerCase();
-            }
-          }
-          return ((cells[0] && cells[0].textContent) ? cells[0].textContent : "").trim().toLowerCase();
-        };
-
-        const compareRows = (a, b, colIdx) => {
-          const A = getSortVal(a, colIdx);
-          const B = getSortVal(b, colIdx);
-          const Ablank = (A.type === "blank");
-          const Bblank = (B.type === "blank");
-          if (Ablank && !Bblank) return 1;
-          if (!Ablank && Bblank) return -1;
-          if (A.type === "num" && B.type === "num") {
-            if (A.val < B.val) return -1 * dirMul;
-            if (A.val > B.val) return 1 * dirMul;
-            return getAthleteName(a).localeCompare(getAthleteName(b));
-          }
-          if (A.type === "str" && B.type === "str") {
-            const cmp = A.val.localeCompare(B.val);
-            if (cmp !== 0) return cmp * dirMul;
-            return getAthleteName(a).localeCompare(getAthleteName(b));
-          }
-          if (A.type === "num" && B.type === "str") return -1;
-          if (A.type === "str" && B.type === "num") return 1;
-          return 0;
-        };
-
-        const isByClass = (table.getAttribute("data-mode") === "by_class");
-        const gradColIdxRaw = table.getAttribute("data-grad-col-index");
-        const gradColIdx = gradColIdxRaw ? parseInt(gradColIdxRaw, 10) : 0;
-
-        if (isByClass && !Number.isNaN(gradColIdx)) {
-          const groups = new Map();
-          const gradKey = (row) => {
-            const cell = row.querySelectorAll("td")[gradColIdx];
-            const t = (cell && cell.textContent) ? cell.textContent.trim() : "";
-            const n = parseInt(t, 10);
-            return Number.isNaN(n) ? 9999 : n;
-          };
-          for (const r of rows) {
-            const g = gradKey(r);
-            if (!groups.has(g)) groups.set(g, []);
-            groups.get(g).push(r);
-          }
-          const keys = Array.from(groups.keys()).sort((a, b) => a - b);
-          const newRows = [];
-          for (const k of keys) {
-            const arr = groups.get(k);
-            arr.sort((a, b) => compareRows(a, b, columnIndex));
-            newRows.push(...arr);
-          }
-          summaryRows.forEach(r => tbody.appendChild(r));
-          newRows.forEach(r => tbody.appendChild(r));
-        } else {
-          rows.sort((a, b) => compareRows(a, b, columnIndex));
-          summaryRows.forEach(r => tbody.appendChild(r));
-          rows.forEach(r => tbody.appendChild(r));
-        }
-
-        table.querySelectorAll("th.sortable-header").forEach(th =>
-          th.classList.remove("sort-asc", "sort-desc")
-        );
-        currentTh.classList.add(direction === "asc" ? "sort-asc" : "sort-desc");
-      }
-    </script>
-    
 </head>
 <body onload="initializeDepthChart()">
 <!-- STX_HEADER_HTML_START -->
@@ -616,6 +619,7 @@
       </div>
     </aside>
     <!-- STX_HEADER_HTML_END -->
+
 <div class="topbar">
       <div class="titlewrap">
         <div class="meetname">Depth Chart (StX)</div>
@@ -780,6 +784,7 @@
     </div>
     </div></template>
 <div class="footer">Generated at <code>2026-11-14 20:39:08</code> from <code>C:\Users\Bob\OneDrive\StX_XC_Track_V2\data\stx_track.db</code></div>
+
 <!-- STX_HEADER_SCRIPT_START -->
     <script>
       (() => {

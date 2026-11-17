@@ -348,7 +348,10 @@
       }
     </style>
     
-  <!-- STX_HEADER_CSS_START -->
+  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+<!-- STX_HEADER_CSS_START -->
     <style>
       @import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,600;9..40,700&family=Libre+Caslon+Text:ital,wght@0,400;1,400&display=swap');
 
@@ -544,12 +547,14 @@
       .stx-menu-feedback:hover, .stx-menu-feedback:focus-visible { background: transparent; }
       .stx-school-link { color: var(--stx-dark-green) !important; font-size: 13px; font-weight: 700; }
       @media (max-width: 780px) {
-        .stx-site-header { margin-bottom: 22px; }
-        .stx-header-inner { min-height: 68px; padding: 9px 16px; }
-        .stx-logo-image { width: 190px; }
-        .stx-brand-divider { height: 32px; }
-        .stx-section-name { font-size: 9px; }
-        .stx-menu-open { width: 42px; height: 42px; }
+        /* The header is intentionally compact on phones, where it is present
+           on every report page and should not displace the actual results. */
+        .stx-site-header { margin-bottom: 16px; }
+        .stx-header-inner { min-height: 54px; padding: 7px 14px; gap: 12px; }
+        .stx-logo-image { width: 154px; }
+        .stx-brand-divider { height: 26px; }
+        .stx-section-name { font-size: 8px; letter-spacing: .11em; }
+        .stx-menu-open { width: 38px; height: 38px; }
         .stx-site-menu { display: block; overflow-y: auto; background: var(--stx-green); }
         .stx-menu-brand-panel { min-height: 210px; padding: 78px 24px 28px; justify-content: flex-end; }
         .stx-menu-brand-panel::before { top: -80px; font-size: 330px; }
@@ -562,15 +567,13 @@
       @media (max-width: 460px) {
         .stx-brand { gap: 10px; }
         .stx-brand-divider, .stx-section-name { display: none; }
-        .stx-logo-image { width: 175px; }
+        .stx-logo-image { width: 142px; }
       }
       @media (prefers-reduced-motion: reduce) {
         .stx-site-menu, .stx-menu-open, .stx-menu-nav a { transition: none; }
       }
     </style>
     <!-- STX_HEADER_CSS_END -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
 </head>
 <body>
 <!-- STX_HEADER_HTML_START -->
@@ -607,6 +610,7 @@
       </div>
     </aside>
     <!-- STX_HEADER_HTML_END -->
+
 
     <div class="topbar">
       <div class="titlewrap">
@@ -656,6 +660,7 @@
           });
         </script>
         <section class='xc-print-current'><p class='subline muted'>December 4, 2010<br>ESPN Wide World of Sports, Kissimmee, FL</p><div class='card'><h2>5K</h2><div class='xc-team-score-heading'><h3>Team Scores</h3></div><p class='muted'>No team scores loaded for this race.</p><h3 style='margin-top:24px'>Individual Results</h3><div class='table-wrap'><table class='xc-results-table'><thead><tr><th>Place</th><th>Athlete</th><th>Grade</th><th class='xc-result-year-0'>2010<span class='xc-result-date'>12/4</span></th><th class='xc-result-year-2'>2008<span class='xc-result-date'>12/6</span></th><th>PR</th><th>Pace</th></tr></thead><tbody><tr><td>22</td><td><a href='../athletes/max_mudd.html'>Mudd, Max</a></td><td>9</td><td class='xc-result-cell xc-result-year-0'>17:31.90</td><td class='xc-result-cell xc-result-year-2'></td><td>16:41.00</td><td>5:39</td></tr></tbody></table></div></div></section><section class='xc-print-prior'><div class='xc-history-heading'><h1>AAU National Championships 2008</h1></div><p class='subline muted'>December 6, 2008<br>Oakville Indian Mounds Park, Moulton, AL</p><div class='card'><h2>4000 Meter Run</h2><div class='xc-team-score-heading'><h3>Team Scores</h3></div><p class='muted'>No team scores loaded for this race.</p><h3 style='margin-top:24px'>Individual Results</h3><div class='table-wrap'><table class='xc-results-table'><thead><tr><th>Place</th><th>Athlete</th><th>Grade</th><th class='xc-result-year-0'>2008<span class='xc-result-date'>12/6</span></th><th>PR</th><th>Pace</th></tr></thead><tbody><tr><td>9</td><td><a href='../athletes/zack_beavin.html'>Beavin, Zack</a></td><td>9</td><td class='xc-result-cell xc-result-year-0 pr' title='Personal record'>13:25.90</td><td>13:36.00</td><td></td></tr></tbody></table></div></div></section><div class="footer">Generated at <code>2026-08-24 12:02:37</code> from <code>C:\Users\Bob\OneDrive\StX_XC_Track_V2\data\stx_track.db</code></div>
+
 <!-- STX_HEADER_SCRIPT_START -->
     <script>
       (() => {

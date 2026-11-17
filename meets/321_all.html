@@ -348,7 +348,10 @@
       }
     </style>
     
-  <!-- STX_HEADER_CSS_START -->
+  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+<!-- STX_HEADER_CSS_START -->
     <style>
       @import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,600;9..40,700&family=Libre+Caslon+Text:ital,wght@0,400;1,400&display=swap');
 
@@ -544,12 +547,14 @@
       .stx-menu-feedback:hover, .stx-menu-feedback:focus-visible { background: transparent; }
       .stx-school-link { color: var(--stx-dark-green) !important; font-size: 13px; font-weight: 700; }
       @media (max-width: 780px) {
-        .stx-site-header { margin-bottom: 22px; }
-        .stx-header-inner { min-height: 68px; padding: 9px 16px; }
-        .stx-logo-image { width: 190px; }
-        .stx-brand-divider { height: 32px; }
-        .stx-section-name { font-size: 9px; }
-        .stx-menu-open { width: 42px; height: 42px; }
+        /* The header is intentionally compact on phones, where it is present
+           on every report page and should not displace the actual results. */
+        .stx-site-header { margin-bottom: 16px; }
+        .stx-header-inner { min-height: 54px; padding: 7px 14px; gap: 12px; }
+        .stx-logo-image { width: 154px; }
+        .stx-brand-divider { height: 26px; }
+        .stx-section-name { font-size: 8px; letter-spacing: .11em; }
+        .stx-menu-open { width: 38px; height: 38px; }
         .stx-site-menu { display: block; overflow-y: auto; background: var(--stx-green); }
         .stx-menu-brand-panel { min-height: 210px; padding: 78px 24px 28px; justify-content: flex-end; }
         .stx-menu-brand-panel::before { top: -80px; font-size: 330px; }
@@ -562,15 +567,13 @@
       @media (max-width: 460px) {
         .stx-brand { gap: 10px; }
         .stx-brand-divider, .stx-section-name { display: none; }
-        .stx-logo-image { width: 175px; }
+        .stx-logo-image { width: 142px; }
       }
       @media (prefers-reduced-motion: reduce) {
         .stx-site-menu, .stx-menu-open, .stx-menu-nav a { transition: none; }
       }
     </style>
     <!-- STX_HEADER_CSS_END -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
 </head>
 <body>
 <!-- STX_HEADER_HTML_START -->
@@ -607,6 +610,7 @@
       </div>
     </aside>
     <!-- STX_HEADER_HTML_END -->
+
 
     <div class="topbar">
       <div class="titlewrap">
@@ -647,6 +651,7 @@
       <div class='pr-parade-list'><span class='pr-parade-entry'><a href='../athletes/brodie_terkhorn.html'>Brodie Terkhorn</a>, <span class='pr-time'>2:17.96</span></span></div>
     </div>
     <div class='card'><h2>800 Meters</h2><div class="table-wrap"><table><thead><tr><th>Athlete</th><th>Team</th><th>Group</th><th>Place</th><th>Indoor PR</th><th class="dimmed-pr">Outdoor PR</th><th>Result</th></tr></thead><tbody><tr class="non-stx-row"><td>Luke Robinson</td><td>Shelby Park</td><td>1</td><td>1</td><td></td><td class="dimmed-pr"></td><td>2:01.88</td></tr><tr class="non-stx-row"><td>Reeve VanDemark</td><td>Tates Creek</td><td>1</td><td>2</td><td></td><td class="dimmed-pr"></td><td>2:03.50</td></tr><tr class="non-stx-row"><td>Garrett Steed</td><td>Unattached - KY</td><td>1</td><td>3</td><td></td><td class="dimmed-pr"></td><td>2:04.31</td></tr><tr class="non-stx-row"><td>Bryce Clayton</td><td>Unattached - KY</td><td>1</td><td>4</td><td></td><td class="dimmed-pr"></td><td>2:05.30</td></tr><tr class="non-stx-row"><td>Brendan Ruggles</td><td>Unattached - KY</td><td>1</td><td>5</td><td></td><td class="dimmed-pr"></td><td>2:06.39</td></tr><tr class="non-stx-row"><td>Ben Crask</td><td>South Oldham</td><td>1</td><td>6</td><td></td><td class="dimmed-pr"></td><td>2:08.45</td></tr><tr class="non-stx-row"><td>Micah Steineker</td><td>Unattached - KY</td><td>1</td><td>7</td><td></td><td class="dimmed-pr"></td><td>2:10.56</td></tr><tr class="non-stx-row"><td>Noah Stinson</td><td>CKY Homeschool</td><td>1</td><td>8</td><td></td><td class="dimmed-pr"></td><td>2:14.51</td></tr><tr class="non-stx-row"><td>Matthew Federico</td><td>Trinity (Louisville)</td><td>1</td><td>9</td><td></td><td class="dimmed-pr"></td><td>2:14.87</td></tr><tr><td><a href='../athletes/brodie_terkhorn.html'>Brodie Terkhorn</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>10</td><td></td><td class="dimmed-pr">2:11.41</td><td class="pr">2:17.96</td></tr><tr class="non-stx-row"><td>Wesley Shannon</td><td>Shelby Park</td><td>1</td><td>11</td><td></td><td class="dimmed-pr"></td><td>2:22.64</td></tr><tr class="non-stx-row"><td>Jack Spraul</td><td>St. Charles West High School</td><td>1</td><td>12</td><td></td><td class="dimmed-pr"></td><td>2:28.64</td></tr><tr class="non-stx-row"><td>Eli McCoy</td><td>Trinity (Louisville)</td><td>1</td><td>13</td><td></td><td class="dimmed-pr"></td><td>2:33.38</td></tr><tr class="non-stx-row"><td>Brayden Sills</td><td>Trinity (Louisville)</td><td>1</td><td>14</td><td></td><td class="dimmed-pr"></td><td>2:33.51</td></tr><tr class="non-stx-row"><td>Rilon Craddock</td><td>Trinity (Louisville)</td><td>1</td><td>15</td><td></td><td class="dimmed-pr"></td><td>2:35.96</td></tr><tr class="non-stx-row"><td>Josh Matheny</td><td>Trinity (Louisville)</td><td>1</td><td>16</td><td></td><td class="dimmed-pr"></td><td>2:38.47</td></tr><tr class="non-stx-row"><td>Peyton Lomax</td><td>Trinity (Louisville)</td><td>1</td><td>17</td><td></td><td class="dimmed-pr"></td><td>2:46.27</td></tr></tbody></table></div></div><div class='card'><h2>1 Mile</h2><div class="table-wrap"><table><thead><tr><th>Athlete</th><th>Team</th><th>Group</th><th>Place</th><th>Indoor PR</th><th class="dimmed-pr">Outdoor PR</th><th>Result</th></tr></thead><tbody><tr class="non-stx-row"><td>Philip Lamartiniere</td><td>Tates Creek</td><td>1</td><td>1</td><td></td><td class="dimmed-pr"></td><td>4:28.70</td></tr><tr class="non-stx-row"><td>Luke Robinson</td><td>Shelby Park</td><td>1</td><td>2</td><td></td><td class="dimmed-pr"></td><td>4:29.18</td></tr><tr class="non-stx-row"><td>Jake Pyles</td><td>Unattached - KY</td><td>1</td><td>3</td><td></td><td class="dimmed-pr"></td><td>4:29.55</td></tr><tr class="non-stx-row"><td>Spenser Wolf</td><td>Forest Park High School</td><td>1</td><td>4</td><td></td><td class="dimmed-pr"></td><td>4:30.46</td></tr><tr class="non-stx-row"><td>Jacob Tapscott</td><td>Unattached - KY</td><td>1</td><td>5</td><td></td><td class="dimmed-pr"></td><td>4:42.64</td></tr><tr class="non-stx-row"><td>Bryce Clayton</td><td>Unattached - KY</td><td>1</td><td>6</td><td></td><td class="dimmed-pr"></td><td>4:50.27</td></tr><tr class="non-stx-row"><td>Roman Sierpina</td><td>Louisville Collegiate</td><td>1</td><td>7</td><td></td><td class="dimmed-pr"></td><td>4:52.18</td></tr><tr class="non-stx-row"><td>Samuel Walls</td><td>Bullitt Central</td><td>1</td><td>8</td><td></td><td class="dimmed-pr"></td><td>4:52.91</td></tr><tr class="non-stx-row"><td>Zach Woodall</td><td>Trinity (Louisville)</td><td>1</td><td>9</td><td></td><td class="dimmed-pr"></td><td>4:56.61</td></tr><tr class="non-stx-row"><td>Noah Mathews</td><td>Unattached - KY</td><td>1</td><td>10</td><td></td><td class="dimmed-pr"></td><td>4:57.20</td></tr><tr class="non-stx-row"><td>Reece Wolf</td><td>Forest Park High School</td><td>1</td><td>11</td><td></td><td class="dimmed-pr"></td><td>4:59.15</td></tr><tr class="non-stx-row"><td>Austin Litton</td><td>St. Charles West High School</td><td>1</td><td>12</td><td></td><td class="dimmed-pr"></td><td>4:59.68</td></tr><tr class="non-stx-row"><td>Aj Kern</td><td>South Oldham</td><td>1</td><td>13</td><td></td><td class="dimmed-pr"></td><td>4:59.87</td></tr><tr class="non-stx-row"><td>Lucas Orton</td><td>South Oldham</td><td>1</td><td>14</td><td></td><td class="dimmed-pr"></td><td>5:00.06</td></tr><tr class="non-stx-row"><td>Jake Hamill</td><td>South Oldham</td><td>1</td><td>15</td><td></td><td class="dimmed-pr"></td><td>5:03.75</td></tr><tr class="non-stx-row"><td>Brooks Jones</td><td>Ballard</td><td>1</td><td>16</td><td></td><td class="dimmed-pr"></td><td>5:03.91</td></tr><tr class="non-stx-row"><td>Knight Pineda</td><td>Shelby Park</td><td>1</td><td>17</td><td></td><td class="dimmed-pr"></td><td>5:04.93</td></tr><tr class="non-stx-row"><td>Jacob McBride</td><td>South Oldham</td><td>1</td><td>18</td><td></td><td class="dimmed-pr"></td><td>5:05.29</td></tr><tr class="non-stx-row"><td>Owen McGreevy</td><td>Trinity (Louisville)</td><td>1</td><td>19</td><td></td><td class="dimmed-pr"></td><td>5:05.77</td></tr><tr class="non-stx-row"><td>Levi Madden</td><td>Shelby Park</td><td>1</td><td>20</td><td></td><td class="dimmed-pr"></td><td>5:08.37</td></tr><tr class="non-stx-row"><td>Cole Glover</td><td>University Heights</td><td>1</td><td>21</td><td></td><td class="dimmed-pr"></td><td>5:09.66</td></tr><tr><td><a href='../athletes/luke_napier.html'>Luke Napier</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>22</td><td>5:03.73</td><td class="dimmed-pr">4:56.12</td><td>5:13.37</td></tr><tr class="non-stx-row"><td>Gabriel Cease</td><td>Ballard</td><td>1</td><td>23</td><td></td><td class="dimmed-pr"></td><td>5:16.33</td></tr><tr class="non-stx-row"><td>Jake James</td><td>South Oldham</td><td>1</td><td>24</td><td></td><td class="dimmed-pr"></td><td>5:19.21</td></tr><tr class="non-stx-row"><td>Isaac Clark</td><td>Ballard</td><td>1</td><td>25</td><td></td><td class="dimmed-pr"></td><td>5:20.86</td></tr><tr class="non-stx-row"><td>Elijah Eppley</td><td>Tates Creek</td><td>1</td><td>26</td><td></td><td class="dimmed-pr"></td><td>5:22.77</td></tr><tr class="non-stx-row"><td>Gabriel Storey</td><td>Trinity (Louisville)</td><td>1</td><td>27</td><td></td><td class="dimmed-pr"></td><td>5:25.17</td></tr><tr class="non-stx-row"><td>Calder Beasly</td><td>Louisville Collegiate</td><td>1</td><td>28</td><td></td><td class="dimmed-pr"></td><td>5:27.60</td></tr><tr class="non-stx-row"><td>Joseph Oeswein</td><td>Ballard</td><td>1</td><td>29</td><td></td><td class="dimmed-pr"></td><td>5:31.59</td></tr><tr class="non-stx-row"><td>Andrew Pence</td><td>Lincoln County</td><td>1</td><td>30</td><td></td><td class="dimmed-pr"></td><td>5:33.93</td></tr><tr class="non-stx-row"><td>Caden Bastin</td><td>Lincoln County</td><td>1</td><td>31</td><td></td><td class="dimmed-pr"></td><td>5:36.13</td></tr><tr class="non-stx-row"><td>Elijah Johnson</td><td>Lincoln County</td><td>1</td><td>32</td><td></td><td class="dimmed-pr"></td><td>5:36.76</td></tr><tr class="non-stx-row"><td>Caeden Rairick</td><td>South Oldham</td><td>1</td><td>33</td><td></td><td class="dimmed-pr"></td><td>5:38.38</td></tr><tr class="non-stx-row"><td>Josh Warren</td><td>Shelby Park</td><td>1</td><td>34</td><td></td><td class="dimmed-pr"></td><td>5:38.92</td></tr><tr class="non-stx-row"><td>John Kelley</td><td>Trinity (Louisville)</td><td>1</td><td>35</td><td></td><td class="dimmed-pr"></td><td>5:44.02</td></tr><tr class="non-stx-row"><td>Zach Ewald</td><td>Trinity (Louisville)</td><td>1</td><td>36</td><td></td><td class="dimmed-pr"></td><td>5:44.43</td></tr><tr class="non-stx-row"><td>Jacob Gard</td><td>South Oldham</td><td>1</td><td>37</td><td></td><td class="dimmed-pr"></td><td>5:46.88</td></tr><tr class="non-stx-row"><td>Toby Sallee</td><td>Lincoln County</td><td>1</td><td>38</td><td></td><td class="dimmed-pr"></td><td>5:48.86</td></tr><tr class="non-stx-row"><td>Brian Thornton</td><td>Pleasure Ridge Park</td><td>1</td><td>39</td><td></td><td class="dimmed-pr"></td><td>6:40.12</td></tr><tr class="non-stx-row"><td>Alex Wright</td><td>Trinity (Louisville)</td><td>1</td><td>40</td><td></td><td class="dimmed-pr"></td><td>7:30.76</td></tr></tbody></table></div></div><div class='card'><h2>4x800 Relay</h2><div class="table-wrap"><table><thead><tr><th>Athlete</th><th>Team</th><th>team_raw</th><th>Group</th><th>Place</th><th>Leg</th><th>Indoor PR</th><th class="dimmed-pr">Outdoor PR</th><th>Result</th><th>Total_Laps</th></tr></thead><tbody><tr class="non-stx-row"><td></td><td>St. Charles West High School</td><td>St. Charles West High School</td><td>1</td><td>1</td><td></td><td></td><td class="dimmed-pr"></td><td>9:05.53</td><td></td></tr><tr class="non-stx-row"><td></td><td>Ballard</td><td>Ballard</td><td>1</td><td>2</td><td></td><td></td><td class="dimmed-pr"></td><td>9:06.56</td><td></td></tr><tr><td></td><td class="stx-team-highlight">St Xavier (KY)</td><td>St. Xavier (KY)</td><td>1</td><td>3</td><td></td><td></td><td class="dimmed-pr"></td><td class="pr">9:18.31</td><td></td></tr></tbody></table></div></div><div class="footer">Generated at <code>2026-08-24 11:30:24</code> from <code>C:\Users\Bob\OneDrive\StX_XC_Track_V2\data\stx_track.db</code></div>
+
 <!-- STX_HEADER_SCRIPT_START -->
     <script>
       (() => {

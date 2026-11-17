@@ -348,7 +348,10 @@
       }
     </style>
     
-  <!-- STX_HEADER_CSS_START -->
+  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+<!-- STX_HEADER_CSS_START -->
     <style>
       @import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,600;9..40,700&family=Libre+Caslon+Text:ital,wght@0,400;1,400&display=swap');
 
@@ -544,12 +547,14 @@
       .stx-menu-feedback:hover, .stx-menu-feedback:focus-visible { background: transparent; }
       .stx-school-link { color: var(--stx-dark-green) !important; font-size: 13px; font-weight: 700; }
       @media (max-width: 780px) {
-        .stx-site-header { margin-bottom: 22px; }
-        .stx-header-inner { min-height: 68px; padding: 9px 16px; }
-        .stx-logo-image { width: 190px; }
-        .stx-brand-divider { height: 32px; }
-        .stx-section-name { font-size: 9px; }
-        .stx-menu-open { width: 42px; height: 42px; }
+        /* The header is intentionally compact on phones, where it is present
+           on every report page and should not displace the actual results. */
+        .stx-site-header { margin-bottom: 16px; }
+        .stx-header-inner { min-height: 54px; padding: 7px 14px; gap: 12px; }
+        .stx-logo-image { width: 154px; }
+        .stx-brand-divider { height: 26px; }
+        .stx-section-name { font-size: 8px; letter-spacing: .11em; }
+        .stx-menu-open { width: 38px; height: 38px; }
         .stx-site-menu { display: block; overflow-y: auto; background: var(--stx-green); }
         .stx-menu-brand-panel { min-height: 210px; padding: 78px 24px 28px; justify-content: flex-end; }
         .stx-menu-brand-panel::before { top: -80px; font-size: 330px; }
@@ -562,15 +567,13 @@
       @media (max-width: 460px) {
         .stx-brand { gap: 10px; }
         .stx-brand-divider, .stx-section-name { display: none; }
-        .stx-logo-image { width: 175px; }
+        .stx-logo-image { width: 142px; }
       }
       @media (prefers-reduced-motion: reduce) {
         .stx-site-menu, .stx-menu-open, .stx-menu-nav a { transition: none; }
       }
     </style>
     <!-- STX_HEADER_CSS_END -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
 </head>
 <body>
 <!-- STX_HEADER_HTML_START -->
@@ -607,6 +610,7 @@
       </div>
     </aside>
     <!-- STX_HEADER_HTML_END -->
+
 
     <div class="topbar">
       <div class="titlewrap">
@@ -666,6 +670,7 @@
           <div class='pr-parade-list'><span class='pr-parade-entry'><a href='../athletes/brooks_king.html'>King, Brooks</a>, <span class='pr-time'>14:19.10</span></span>; <span class='pr-parade-entry'><a href='../athletes/brad_loeser.html'>Loeser, Brad</a>, <span class='pr-time'>16:43.50</span></span>; <span class='pr-parade-entry'><a href='../athletes/jeremy_thomas.html'>Thomas, Jeremy</a>, <span class='pr-time'>16:51.90</span></span></div>
         </div>
         <section class='xc-print-current'><p class='subline muted'>September 30, 2009<br>Tom Sawyer State Park, Louisville, KY</p><div class='card'><h2>4000 Meter Run</h2><div class='xc-team-score-heading'><h3>Team Scores</h3></div><p class='muted'>No team scores loaded for this race.</p><h3 style='margin-top:24px'>Individual Results</h3><div class='table-wrap'><table class='xc-results-table'><thead><tr><th>Place</th><th>Athlete</th><th>Grade</th><th class='xc-result-year-0'>2009<span class='xc-result-date'>9/30</span></th><th>PR</th><th>Pace</th></tr></thead><tbody><tr><td>2</td><td><a href='../athletes/charlie_hammon.html'>Hammon, Charlie</a></td><td>9</td><td class='xc-result-cell xc-result-year-0 pr' title='Personal record'>13:52.40</td><td>14:19.90</td><td></td></tr><tr><td>4</td><td><a href='../athletes/brooks_king.html'>King, Brooks</a></td><td>9</td><td class='xc-result-cell xc-result-year-0 pr' title='Personal record (first race)'>14:19.10</td><td></td><td></td></tr><tr><td>5</td><td><a href='../athletes/alex_bush.html'>Bush, Alex</a></td><td>9</td><td class='xc-result-cell xc-result-year-0 pr' title='Personal record'>14:24.90</td><td>15:12.80</td><td></td></tr><tr><td>8</td><td><a href='../athletes/will_sack.html'>Sack, Will</a></td><td>9</td><td class='xc-result-cell xc-result-year-0 pr' title='Personal record'>14:53.10</td><td>15:42.90</td><td></td></tr><tr><td>10</td><td><a href='../athletes/bobby_koch.html'>Koch, Bobby</a></td><td>9</td><td class='xc-result-cell xc-result-year-0 pr' title='Personal record'>15:18.50</td><td>15:56.90</td><td></td></tr><tr><td>15</td><td><a href='../athletes/jacob_madalon.html'>Madalon, Jacob</a></td><td>9</td><td class='xc-result-cell xc-result-year-0 pr' title='Personal record'>15:55.90</td><td>18:09.50</td><td></td></tr><tr><td>16</td><td><a href='../athletes/josh_roux.html'>Roux, Josh</a></td><td>9</td><td class='xc-result-cell xc-result-year-0 pr' title='Personal record'>15:59.00</td><td>16:30.50</td><td></td></tr><tr><td>18</td><td><a href='../athletes/thomas_wichmann.html'>Wichmann, Thomas</a></td><td>9</td><td class='xc-result-cell xc-result-year-0 pr' title='Personal record'>16:27.10</td><td>16:57.70</td><td></td></tr><tr><td>19</td><td><a href='../athletes/brad_loeser.html'>Loeser, Brad</a></td><td>9</td><td class='xc-result-cell xc-result-year-0 pr' title='Personal record (first race)'>16:43.50</td><td></td><td></td></tr><tr><td>20</td><td><a href='../athletes/joe_hickey.html'>Hickey, Joe</a></td><td>9</td><td class='xc-result-cell xc-result-year-0 pr' title='Personal record'>16:49.00</td><td>17:48.50</td><td></td></tr><tr><td>22</td><td><a href='../athletes/jeremy_thomas.html'>Thomas, Jeremy</a></td><td>9</td><td class='xc-result-cell xc-result-year-0 pr' title='Personal record (first race)'>16:51.90</td><td></td><td></td></tr><tr><td>23</td><td><a href='../athletes/thomas_murphy.html'>Murphy, Thomas</a></td><td>9</td><td class='xc-result-cell xc-result-year-0 pr' title='Personal record'>16:52.40</td><td>18:08.80</td><td></td></tr><tr><td>26</td><td><a href='../athletes/blake_sheehy.html'>Sheehy, Blake</a></td><td>9</td><td class='xc-result-cell xc-result-year-0 pr' title='Personal record'>17:07.80</td><td>18:55.70</td><td></td></tr><tr><td>28</td><td><a href='../athletes/nick_sehlinger.html'>Sehlinger, Nick</a></td><td>9</td><td class='xc-result-cell xc-result-year-0 pr' title='Personal record'>17:51.30</td><td>17:56.50</td><td></td></tr><tr><td>31</td><td><a href='../athletes/griffin_knepp.html'>Knepp, Griffin</a></td><td>9</td><td class='xc-result-cell xc-result-year-0 pr' title='Personal record'>19:12.30</td><td>20:22.40</td><td></td></tr></tbody></table></div></div></section><div class="footer">Generated at <code>2026-08-24 12:06:29</code> from <code>C:\Users\Bob\OneDrive\StX_XC_Track_V2\data\stx_track.db</code></div>
+
 <!-- STX_HEADER_SCRIPT_START -->
     <script>
       (() => {

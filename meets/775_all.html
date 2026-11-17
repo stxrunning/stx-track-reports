@@ -348,7 +348,10 @@
       }
     </style>
     
-  <!-- STX_HEADER_CSS_START -->
+  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+<!-- STX_HEADER_CSS_START -->
     <style>
       @import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,600;9..40,700&family=Libre+Caslon+Text:ital,wght@0,400;1,400&display=swap');
 
@@ -544,12 +547,14 @@
       .stx-menu-feedback:hover, .stx-menu-feedback:focus-visible { background: transparent; }
       .stx-school-link { color: var(--stx-dark-green) !important; font-size: 13px; font-weight: 700; }
       @media (max-width: 780px) {
-        .stx-site-header { margin-bottom: 22px; }
-        .stx-header-inner { min-height: 68px; padding: 9px 16px; }
-        .stx-logo-image { width: 190px; }
-        .stx-brand-divider { height: 32px; }
-        .stx-section-name { font-size: 9px; }
-        .stx-menu-open { width: 42px; height: 42px; }
+        /* The header is intentionally compact on phones, where it is present
+           on every report page and should not displace the actual results. */
+        .stx-site-header { margin-bottom: 16px; }
+        .stx-header-inner { min-height: 54px; padding: 7px 14px; gap: 12px; }
+        .stx-logo-image { width: 154px; }
+        .stx-brand-divider { height: 26px; }
+        .stx-section-name { font-size: 8px; letter-spacing: .11em; }
+        .stx-menu-open { width: 38px; height: 38px; }
         .stx-site-menu { display: block; overflow-y: auto; background: var(--stx-green); }
         .stx-menu-brand-panel { min-height: 210px; padding: 78px 24px 28px; justify-content: flex-end; }
         .stx-menu-brand-panel::before { top: -80px; font-size: 330px; }
@@ -562,15 +567,13 @@
       @media (max-width: 460px) {
         .stx-brand { gap: 10px; }
         .stx-brand-divider, .stx-section-name { display: none; }
-        .stx-logo-image { width: 175px; }
+        .stx-logo-image { width: 142px; }
       }
       @media (prefers-reduced-motion: reduce) {
         .stx-site-menu, .stx-menu-open, .stx-menu-nav a { transition: none; }
       }
     </style>
     <!-- STX_HEADER_CSS_END -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
 </head>
 <body>
 <!-- STX_HEADER_HTML_START -->
@@ -607,6 +610,7 @@
       </div>
     </aside>
     <!-- STX_HEADER_HTML_END -->
+
 
     <div class="topbar">
       <div class="titlewrap">
@@ -661,6 +665,7 @@
           <div class='pr-parade-list'><span class='pr-parade-entry'><a href='../athletes/ryan_appel.html'>Appel, Ryan</a>, <span class='pr-time'>19:39.40</span></span>; <span class='pr-parade-entry'><a href='../athletes/drew_nelson.html'>Nelson, Drew</a>, <span class='pr-time'>20:03.80</span></span>; <span class='pr-parade-entry'><a href='../athletes/chip_raque.html'>Raque, Chip</a>, <span class='pr-time'>20:32.90</span></span>; <span class='pr-parade-entry'><a href='../athletes/mason_dunaway.html'>Dunaway, Mason</a>, <span class='pr-time'>20:57.40</span></span>; <span class='pr-parade-entry'><a href='../athletes/will_sack.html'>Sack, Will</a>, <span class='pr-time'>21:24.20</span></span>; <span class='pr-parade-entry'><a href='../athletes/bobby_koch.html'>Koch, Bobby</a>, <span class='pr-time'>21:32.80</span></span>; <span class='pr-parade-entry'><a href='../athletes/ben_koch.html'>Koch, Ben</a>, <span class='pr-time'>21:45.70</span></span>; <span class='pr-parade-entry'><a href='../athletes/jay_klapheke.html'>Klapheke, Jay</a>, <span class='pr-time'>22:48.50</span></span>; <span class='pr-parade-entry'><a href='../athletes/blake_sheehy.html'>Sheehy, Blake</a>, <span class='pr-time'>23:21.80</span></span>; <span class='pr-parade-entry'><a href='../athletes/jacob_madalon.html'>Madalon, Jacob</a>, <span class='pr-time'>24:08.00</span></span>; <span class='pr-parade-entry'><a href='../athletes/griffin_knepp.html'>Knepp, Griffin</a>, <span class='pr-time'>26:17.60</span></span></div>
         </div>
         <section class='xc-print-current'><p class='subline muted'>September 15, 2009<br>McNeely Lake Park, Louisville, KY</p><div class='card'><h2>5K</h2><div class='xc-team-score-heading'><h3>Team Scores</h3></div><p class='muted'>No team scores loaded for this race.</p><h3 style='margin-top:24px'>Individual Results</h3><div class='table-wrap'><table class='xc-results-table'><thead><tr><th>Place</th><th>Athlete</th><th>Grade</th><th class='xc-result-year-0'>2009<span class='xc-result-date'>9/15</span></th><th>PR</th><th>Pace</th></tr></thead><tbody><tr><td>6</td><td><a href='../athletes/aaron_flannery.html'>Flannery, Aaron</a></td><td>12</td><td class='xc-result-cell xc-result-year-0'>18:35.20</td><td>17:35.80</td><td>5:59</td></tr><tr><td>7</td><td><a href='../athletes/ted_graves.html'>Graves, Ted</a></td><td>12</td><td class='xc-result-cell xc-result-year-0'>18:51.30</td><td>17:26.60</td><td>6:04</td></tr><tr><td>18</td><td><a href='../athletes/ryan_appel.html'>Appel, Ryan</a></td><td>12</td><td class='xc-result-cell xc-result-year-0 pr' title='Personal record (first race)'>19:39.40</td><td></td><td>6:20</td></tr><tr><td>23</td><td><a href='../athletes/ben_wainwright.html'>Wainwright, Ben</a></td><td>10</td><td class='xc-result-cell xc-result-year-0'>19:46.70</td><td>19:10.50</td><td>6:22</td></tr><tr><td>25</td><td><a href='../athletes/justin_allard.html'>Allard, Justin</a></td><td>11</td><td class='xc-result-cell xc-result-year-0'>19:51.30</td><td>19:02.10</td><td>6:23</td></tr><tr><td>27</td><td><a href='../athletes/eric_beyerle.html'>Beyerle, Eric</a></td><td>11</td><td class='xc-result-cell xc-result-year-0'>19:57.70</td><td>18:32.20</td><td>6:26</td></tr><tr><td>28</td><td><a href='../athletes/clay_wright.html'>Wright, Clay</a></td><td>11</td><td class='xc-result-cell xc-result-year-0'>20:02.20</td><td>18:10.20</td><td>6:27</td></tr><tr><td>29</td><td><a href='../athletes/drew_nelson.html'>Nelson, Drew</a></td><td>12</td><td class='xc-result-cell xc-result-year-0 pr' title='Personal record (first race)'>20:03.80</td><td></td><td>6:27</td></tr><tr><td>37</td><td><a href='../athletes/chip_raque.html'>Raque, Chip</a></td><td>10</td><td class='xc-result-cell xc-result-year-0 pr' title='Personal record (first race)'>20:32.90</td><td></td><td>6:37</td></tr><tr><td>39</td><td><a href='../athletes/adam_dant.html'>Dant, Adam</a></td><td>10</td><td class='xc-result-cell xc-result-year-0'>20:35.30</td><td>18:31.30</td><td>6:38</td></tr><tr><td>45</td><td><a href='../athletes/willie_thompson.html'>Thompson, Willie</a></td><td>11</td><td class='xc-result-cell xc-result-year-0'>20:51.30</td><td>19:31.20</td><td>6:43</td></tr><tr><td>46</td><td><a href='../athletes/ryan_resiert.html'>Resiert, Ryan</a></td><td>11</td><td class='xc-result-cell xc-result-year-0'>20:51.80</td><td>19:41.10</td><td>6:43</td></tr><tr><td>48</td><td><a href='../athletes/mason_dunaway.html'>Dunaway, Mason</a></td><td>9</td><td class='xc-result-cell xc-result-year-0 pr' title='Personal record (first race)'>20:57.40</td><td></td><td>6:45</td></tr><tr><td>50</td><td><a href='../athletes/devin_schroeder.html'>Schroeder, Devin</a></td><td>11</td><td class='xc-result-cell xc-result-year-0'>21:08.50</td><td>20:50.00</td><td>6:48</td></tr><tr><td>51</td><td><a href='../athletes/taylor_crismon.html'>Crismon, Taylor</a></td><td>11</td><td class='xc-result-cell xc-result-year-0'>21:11.30</td><td>20:53.50</td><td>6:49</td></tr><tr><td>53</td><td><a href='../athletes/adam_kleine_kracht.html'>Kleine-Kracht, Adam</a></td><td>10</td><td class='xc-result-cell xc-result-year-0'>21:13.20</td><td>20:00.30</td><td>6:50</td></tr><tr><td>58</td><td><a href='../athletes/will_sack.html'>Sack, Will</a></td><td>9</td><td class='xc-result-cell xc-result-year-0 pr' title='Personal record (first race)'>21:24.20</td><td></td><td>6:53</td></tr><tr><td>64</td><td><a href='../athletes/bobby_koch.html'>Koch, Bobby</a></td><td>9</td><td class='xc-result-cell xc-result-year-0 pr' title='Personal record (first race)'>21:32.80</td><td></td><td>6:56</td></tr><tr><td>67</td><td><a href='../athletes/ben_koch.html'>Koch, Ben</a></td><td>10</td><td class='xc-result-cell xc-result-year-0 pr' title='Personal record (first race)'>21:45.70</td><td></td><td>7:00</td></tr><tr><td>94</td><td><a href='../athletes/jay_klapheke.html'>Klapheke, Jay</a></td><td>9</td><td class='xc-result-cell xc-result-year-0 pr' title='Personal record (first race)'>22:48.50</td><td></td><td>7:20</td></tr><tr><td>105</td><td><a href='../athletes/blake_sheehy.html'>Sheehy, Blake</a></td><td>9</td><td class='xc-result-cell xc-result-year-0 pr' title='Personal record (first race)'>23:21.80</td><td></td><td>7:31</td></tr><tr><td>117</td><td><a href='../athletes/jacob_madalon.html'>Madalon, Jacob</a></td><td>9</td><td class='xc-result-cell xc-result-year-0 pr' title='Personal record (first race)'>24:08.00</td><td></td><td>7:46</td></tr><tr><td>139</td><td><a href='../athletes/griffin_knepp.html'>Knepp, Griffin</a></td><td>9</td><td class='xc-result-cell xc-result-year-0 pr' title='Personal record (first race)'>26:17.60</td><td></td><td>8:28</td></tr><tr><td>155</td><td><a href='../athletes/david_bossmeyer.html'>Bossmeyer, David</a></td><td>10</td><td class='xc-result-cell xc-result-year-0'>27:36.10</td><td>26:53.90</td><td>8:53</td></tr></tbody></table></div></div></section><div class="footer">Generated at <code>2026-08-24 12:06:45</code> from <code>C:\Users\Bob\OneDrive\StX_XC_Track_V2\data\stx_track.db</code></div>
+
 <!-- STX_HEADER_SCRIPT_START -->
     <script>
       (() => {

@@ -348,7 +348,10 @@
       }
     </style>
     
-  <!-- STX_HEADER_CSS_START -->
+  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+<!-- STX_HEADER_CSS_START -->
     <style>
       @import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,600;9..40,700&family=Libre+Caslon+Text:ital,wght@0,400;1,400&display=swap');
 
@@ -544,12 +547,14 @@
       .stx-menu-feedback:hover, .stx-menu-feedback:focus-visible { background: transparent; }
       .stx-school-link { color: var(--stx-dark-green) !important; font-size: 13px; font-weight: 700; }
       @media (max-width: 780px) {
-        .stx-site-header { margin-bottom: 22px; }
-        .stx-header-inner { min-height: 68px; padding: 9px 16px; }
-        .stx-logo-image { width: 190px; }
-        .stx-brand-divider { height: 32px; }
-        .stx-section-name { font-size: 9px; }
-        .stx-menu-open { width: 42px; height: 42px; }
+        /* The header is intentionally compact on phones, where it is present
+           on every report page and should not displace the actual results. */
+        .stx-site-header { margin-bottom: 16px; }
+        .stx-header-inner { min-height: 54px; padding: 7px 14px; gap: 12px; }
+        .stx-logo-image { width: 154px; }
+        .stx-brand-divider { height: 26px; }
+        .stx-section-name { font-size: 8px; letter-spacing: .11em; }
+        .stx-menu-open { width: 38px; height: 38px; }
         .stx-site-menu { display: block; overflow-y: auto; background: var(--stx-green); }
         .stx-menu-brand-panel { min-height: 210px; padding: 78px 24px 28px; justify-content: flex-end; }
         .stx-menu-brand-panel::before { top: -80px; font-size: 330px; }
@@ -562,15 +567,13 @@
       @media (max-width: 460px) {
         .stx-brand { gap: 10px; }
         .stx-brand-divider, .stx-section-name { display: none; }
-        .stx-logo-image { width: 175px; }
+        .stx-logo-image { width: 142px; }
       }
       @media (prefers-reduced-motion: reduce) {
         .stx-site-menu, .stx-menu-open, .stx-menu-nav a { transition: none; }
       }
     </style>
     <!-- STX_HEADER_CSS_END -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
 </head>
 <body>
 <!-- STX_HEADER_HTML_START -->
@@ -607,6 +610,7 @@
       </div>
     </aside>
     <!-- STX_HEADER_HTML_END -->
+
 
     <div class="topbar">
       <div class="titlewrap">
@@ -647,6 +651,7 @@
       <div class='pr-parade-list'><span class='pr-parade-entry'><a href='../athletes/tristan_hindorff.html'>Tristan Hindorff</a>, <span class='pr-time'>4:37.08</span></span>; <span class='pr-parade-entry'><a href='../athletes/cole_cornett.html'>Cole Cornett</a>, <span class='pr-time'>4:51.85</span></span>; <span class='pr-parade-entry'><a href='../athletes/hobs_ashburner.html'>Hobs Ashburner</a>, <span class='pr-time'>4:54.45</span></span></div>
     </div>
     <div class='card'><h2>1600 Meters</h2><div class="table-wrap"><table><thead><tr><th>Athlete</th><th>Team</th><th>Group</th><th>Place</th><th class="dimmed-pr">Indoor PR</th><th>Outdoor PR</th><th>Result</th></tr></thead><tbody><tr class="non-stx-row"><td>Natnael Weldemichael</td><td>Beechwood</td><td>1</td><td>1</td><td class="dimmed-pr"></td><td></td><td>4:21.98</td></tr><tr class="non-stx-row"><td>Drew Moore</td><td>Conner</td><td>1</td><td>2</td><td class="dimmed-pr"></td><td></td><td>4:25.54</td></tr><tr class="non-stx-row"><td>George Johnson</td><td>Conner</td><td>1</td><td>3</td><td class="dimmed-pr"></td><td></td><td>4:26.32</td></tr><tr class="non-stx-row"><td>Carson Milner</td><td>Walton-Verona</td><td>1</td><td>4</td><td class="dimmed-pr"></td><td></td><td>4:30.00</td></tr><tr class="non-stx-row"><td>Dixon Ryan</td><td>St. Henry District</td><td>1</td><td>5</td><td class="dimmed-pr"></td><td></td><td>4:32.94</td></tr><tr class="non-stx-row"><td>Ryan Branch</td><td>Bishop Brossart</td><td>1</td><td>6</td><td class="dimmed-pr"></td><td></td><td>4:35.54</td></tr><tr><td><a href='../athletes/tristan_hindorff.html'>Tristan Hindorff</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>7</td><td class="dimmed-pr"></td><td>4:38.99</td><td class="pr">4:37.08</td></tr><tr class="non-stx-row"><td>Lincoln Herald</td><td>Grant County</td><td>1</td><td>8</td><td class="dimmed-pr"></td><td></td><td>4:40.03</td></tr><tr class="non-stx-row"><td>Joel McCain</td><td>Williamstown</td><td>1</td><td>9</td><td class="dimmed-pr"></td><td></td><td>4:45.56</td></tr><tr><td><a href='../athletes/cole_cornett.html'>Cole Cornett</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>10</td><td class="dimmed-pr"></td><td>4:54.74</td><td class="pr">4:51.85</td></tr><tr class="non-stx-row"><td>Landon LaCroix</td><td>Cooper</td><td>1</td><td>11</td><td class="dimmed-pr"></td><td></td><td>4:53.31</td></tr><tr><td><a href='../athletes/hobs_ashburner.html'>Hobs Ashburner</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>12</td><td class="dimmed-pr"></td><td>5:01.13</td><td class="pr">4:54.45</td></tr><tr class="non-stx-row"><td>Brady Baker</td><td>Campbell County</td><td>1</td><td>13</td><td class="dimmed-pr"></td><td></td><td>4:55.75</td></tr><tr class="non-stx-row"><td>Joey Grannen</td><td>Villa Madonna</td><td>1</td><td>14</td><td class="dimmed-pr"></td><td></td><td>4:57.51</td></tr><tr class="non-stx-row"><td>Nick Long</td><td>Bellevue</td><td>1</td><td>15</td><td class="dimmed-pr"></td><td></td><td>5:02.35</td></tr><tr class="non-stx-row"><td>Noah Miller</td><td>Cooper</td><td>1</td><td>16</td><td class="dimmed-pr"></td><td></td><td>5:02.60</td></tr><tr class="non-stx-row"><td>Aiden Bauer</td><td>Campbell County</td><td>1</td><td>17</td><td class="dimmed-pr"></td><td></td><td>5:02.81</td></tr><tr class="non-stx-row"><td>Charlie Barsan</td><td>St. Henry District</td><td>1</td><td>18</td><td class="dimmed-pr"></td><td></td><td>5:02.97</td></tr><tr class="non-stx-row"><td>Parker Turnbull</td><td>Ryle</td><td>1</td><td>19</td><td class="dimmed-pr"></td><td></td><td>5:03.03</td></tr><tr class="non-stx-row"><td>Isaac Cockrell</td><td>Walton-Verona</td><td>1</td><td>20</td><td class="dimmed-pr"></td><td></td><td>5:03.78</td></tr><tr class="non-stx-row"><td>Aaron Lopez</td><td>Simon Kenton</td><td>1</td><td>21</td><td class="dimmed-pr"></td><td></td><td>5:06.21</td></tr><tr class="non-stx-row"><td>Carter Engle</td><td>Holy Cross (Covington)</td><td>1</td><td>22</td><td class="dimmed-pr"></td><td></td><td>5:08.74</td></tr><tr class="non-stx-row"><td>Nick Heck</td><td>Bishop Brossart</td><td>1</td><td>23</td><td class="dimmed-pr"></td><td></td><td>5:10.44</td></tr><tr class="non-stx-row"><td>Mark Antrobus</td><td>Villa Madonna</td><td>1</td><td>24</td><td class="dimmed-pr"></td><td></td><td>5:12.16</td></tr><tr class="non-stx-row"><td>Robby Beckerich</td><td>Bishop Brossart</td><td>1</td><td>25</td><td class="dimmed-pr"></td><td></td><td>5:15.14</td></tr><tr class="non-stx-row"><td>Jacob Scott</td><td>Bellevue</td><td>1</td><td>26</td><td class="dimmed-pr"></td><td></td><td>5:16.71</td></tr><tr class="non-stx-row"><td>Eli Craven</td><td>Calvary Christian</td><td>1</td><td>27</td><td class="dimmed-pr"></td><td></td><td>5:18.45</td></tr><tr class="non-stx-row"><td>Javonte Yangoua</td><td>Williamstown</td><td>1</td><td>28</td><td class="dimmed-pr"></td><td></td><td>5:28.95</td></tr><tr class="non-stx-row"><td>Ian Giblin</td><td>Covington Latin</td><td>1</td><td>29</td><td class="dimmed-pr"></td><td></td><td>5:30.16</td></tr><tr class="non-stx-row"><td>Andrew Powers</td><td>Grant County</td><td>1</td><td>30</td><td class="dimmed-pr"></td><td></td><td>5:33.78</td></tr><tr><td><a href='../athletes/jeremy_lopez.html'>Jeremy Lopez</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>31</td><td class="dimmed-pr"></td><td>5:29.55</td><td>5:35.68</td></tr><tr class="non-stx-row"><td>Baldwin MendezPaz</td><td>Ludlow</td><td>1</td><td>32</td><td class="dimmed-pr"></td><td></td><td>5:40.01</td></tr><tr class="non-stx-row"><td>Andrew Browning</td><td>Covington Latin</td><td>1</td><td>33</td><td class="dimmed-pr"></td><td></td><td>5:42.29</td></tr><tr class="non-stx-row"><td>Carson Berry</td><td>Scott</td><td>1</td><td>34</td><td class="dimmed-pr"></td><td></td><td>6:01.98</td></tr><tr class="non-stx-row"><td>Braden Fromeyer</td><td>Dayton</td><td>1</td><td>35</td><td class="dimmed-pr"></td><td></td><td>6:07.10</td></tr><tr class="non-stx-row"><td>Will Fuller</td><td>Holy Cross (Covington)</td><td>1</td><td>36</td><td class="dimmed-pr"></td><td></td><td>6:48.45</td></tr><tr class="non-stx-row"><td>Milo Meiners</td><td>Scott</td><td>1</td><td>37</td><td class="dimmed-pr"></td><td></td><td>7:30.07</td></tr></tbody></table></div></div><div class='card'><h2>4x800 Relay</h2><div class="table-wrap"><table><thead><tr><th>Athlete</th><th>Team</th><th>team_raw</th><th>Group</th><th>Place</th><th>Leg</th><th class="dimmed-pr">Indoor PR</th><th>Outdoor PR</th><th>Result</th><th>Total_Laps</th></tr></thead><tbody><tr class="non-stx-row"><td></td><td>Bishop Brossart</td><td>Bishop Brossart</td><td>1</td><td>1</td><td></td><td class="dimmed-pr"></td><td></td><td>8:25.46</td><td></td></tr><tr class="non-stx-row"><td></td><td>Conner</td><td>Conner</td><td>1</td><td>2</td><td></td><td class="dimmed-pr"></td><td></td><td>8:28.06</td><td></td></tr><tr class="non-stx-row"><td></td><td>Cooper</td><td>Cooper</td><td>1</td><td>3</td><td></td><td class="dimmed-pr"></td><td></td><td>8:33.27</td><td></td></tr><tr class="non-stx-row"><td></td><td>St. Henry District</td><td>St. Henry District</td><td>1</td><td>4</td><td></td><td class="dimmed-pr"></td><td></td><td>8:38.90</td><td></td></tr><tr class="non-stx-row"><td></td><td>Calvary Christian</td><td>Calvary Christian</td><td>1</td><td>5</td><td></td><td class="dimmed-pr"></td><td></td><td>8:40.00</td><td></td></tr><tr class="non-stx-row"><td></td><td>Williamstown</td><td>Williamstown</td><td>1</td><td>6</td><td></td><td class="dimmed-pr"></td><td></td><td>8:41.52</td><td></td></tr><tr class="non-stx-row"><td></td><td>Walton-Verona</td><td>Walton-Verona</td><td>1</td><td>7</td><td></td><td class="dimmed-pr"></td><td></td><td>8:46.16</td><td></td></tr><tr><td></td><td class="stx-team-highlight">St Xavier (KY)</td><td>St. Xavier (KY)</td><td>1</td><td>8</td><td></td><td class="dimmed-pr"></td><td></td><td class="pr">8:47.77</td><td></td></tr><tr class="non-stx-row"><td></td><td>Villa Madonna</td><td>Villa Madonna</td><td>1</td><td>9</td><td></td><td class="dimmed-pr"></td><td></td><td>8:50.18</td><td></td></tr><tr class="non-stx-row"><td></td><td>Holy Cross (Covington)</td><td>Holy Cross (Covington)</td><td>1</td><td>10</td><td></td><td class="dimmed-pr"></td><td></td><td>8:58.23</td><td></td></tr><tr class="non-stx-row"><td></td><td>Ryle</td><td>Ryle</td><td>1</td><td>11</td><td></td><td class="dimmed-pr"></td><td></td><td>9:02.09</td><td></td></tr><tr class="non-stx-row"><td></td><td>Simon Kenton</td><td>Simon Kenton</td><td>1</td><td>12</td><td></td><td class="dimmed-pr"></td><td></td><td>9:05.70</td><td></td></tr><tr class="non-stx-row"><td></td><td>Campbell County</td><td>Campbell County</td><td>1</td><td>13</td><td></td><td class="dimmed-pr"></td><td></td><td>9:07.80</td><td></td></tr><tr class="non-stx-row"><td></td><td>Scott</td><td>Scott</td><td>1</td><td>14</td><td></td><td class="dimmed-pr"></td><td></td><td>9:08.32</td><td></td></tr><tr class="non-stx-row"><td></td><td>Beechwood</td><td>Beechwood</td><td>1</td><td>15</td><td></td><td class="dimmed-pr"></td><td></td><td>9:13.59</td><td></td></tr><tr class="non-stx-row"><td></td><td>Bellevue</td><td>Bellevue</td><td>1</td><td>16</td><td></td><td class="dimmed-pr"></td><td></td><td>9:14.64</td><td></td></tr><tr class="non-stx-row"><td></td><td>Covington Latin</td><td>Covington Latin</td><td>1</td><td>18</td><td></td><td class="dimmed-pr"></td><td></td><td>11:59.84</td><td></td></tr></tbody></table></div></div><div class="footer">Generated at <code>2026-08-24 11:30:04</code> from <code>C:\Users\Bob\OneDrive\StX_XC_Track_V2\data\stx_track.db</code></div>
+
 <!-- STX_HEADER_SCRIPT_START -->
     <script>
       (() => {

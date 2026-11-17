@@ -348,7 +348,10 @@
       }
     </style>
     
-  <!-- STX_HEADER_CSS_START -->
+  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+<!-- STX_HEADER_CSS_START -->
     <style>
       @import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,600;9..40,700&family=Libre+Caslon+Text:ital,wght@0,400;1,400&display=swap');
 
@@ -544,12 +547,14 @@
       .stx-menu-feedback:hover, .stx-menu-feedback:focus-visible { background: transparent; }
       .stx-school-link { color: var(--stx-dark-green) !important; font-size: 13px; font-weight: 700; }
       @media (max-width: 780px) {
-        .stx-site-header { margin-bottom: 22px; }
-        .stx-header-inner { min-height: 68px; padding: 9px 16px; }
-        .stx-logo-image { width: 190px; }
-        .stx-brand-divider { height: 32px; }
-        .stx-section-name { font-size: 9px; }
-        .stx-menu-open { width: 42px; height: 42px; }
+        /* The header is intentionally compact on phones, where it is present
+           on every report page and should not displace the actual results. */
+        .stx-site-header { margin-bottom: 16px; }
+        .stx-header-inner { min-height: 54px; padding: 7px 14px; gap: 12px; }
+        .stx-logo-image { width: 154px; }
+        .stx-brand-divider { height: 26px; }
+        .stx-section-name { font-size: 8px; letter-spacing: .11em; }
+        .stx-menu-open { width: 38px; height: 38px; }
         .stx-site-menu { display: block; overflow-y: auto; background: var(--stx-green); }
         .stx-menu-brand-panel { min-height: 210px; padding: 78px 24px 28px; justify-content: flex-end; }
         .stx-menu-brand-panel::before { top: -80px; font-size: 330px; }
@@ -562,15 +567,13 @@
       @media (max-width: 460px) {
         .stx-brand { gap: 10px; }
         .stx-brand-divider, .stx-section-name { display: none; }
-        .stx-logo-image { width: 175px; }
+        .stx-logo-image { width: 142px; }
       }
       @media (prefers-reduced-motion: reduce) {
         .stx-site-menu, .stx-menu-open, .stx-menu-nav a { transition: none; }
       }
     </style>
     <!-- STX_HEADER_CSS_END -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
 </head>
 <body>
 <!-- STX_HEADER_HTML_START -->
@@ -607,6 +610,7 @@
       </div>
     </aside>
     <!-- STX_HEADER_HTML_END -->
+
 
     <div class="topbar">
       <div class="titlewrap">
@@ -647,6 +651,7 @@
       <div class='pr-parade-list'><span class='pr-parade-entry'><a href='../athletes/zach_beavin.html'>Zach Beavin</a>, <span class='pr-time'>4:25.84</span></span>; <span class='pr-parade-entry'><a href='../athletes/connor_sheryak.html'>Connor Sheryak</a>, <span class='pr-time'>4:27.74</span></span></div>
     </div>
     <div class='card'><h2>1 Mile</h2><div class="table-wrap"><table><thead><tr><th>Athlete</th><th>Team</th><th>Group</th><th>Place</th><th class="dimmed-pr">Indoor PR</th><th>Outdoor PR</th><th>Result</th></tr></thead><tbody><tr class="non-stx-row"><td>Jared Skrabacz</td><td>Warren South</td><td>1</td><td>1</td><td class="dimmed-pr"></td><td></td><td>4:17.40</td></tr><tr class="non-stx-row"><td>Andrew Stewart</td><td>North Hardin</td><td>1</td><td>2</td><td class="dimmed-pr"></td><td></td><td>4:17.71</td></tr><tr class="non-stx-row"><td>Jacob Thomson</td><td>Holy Cross - Lou</td><td>1</td><td>3</td><td class="dimmed-pr"></td><td></td><td>4:18.88</td></tr><tr class="non-stx-row"><td>Justin House</td><td>Apollo</td><td>1</td><td>4</td><td class="dimmed-pr"></td><td></td><td>4:21.23</td></tr><tr class="non-stx-row"><td>Patrick Gregory</td><td>Butler</td><td>1</td><td>5</td><td class="dimmed-pr"></td><td></td><td>4:22.09</td></tr><tr class="non-stx-row"><td>Zac Garrard</td><td>Owensboro</td><td>1</td><td>6</td><td class="dimmed-pr"></td><td></td><td>4:23.66</td></tr><tr class="non-stx-row"><td>Cory Kleinjan</td><td>Spencer County</td><td>1</td><td>7</td><td class="dimmed-pr"></td><td></td><td>4:24.62</td></tr><tr class="non-stx-row"><td>Reece Johns</td><td>DuPont Manual</td><td>1</td><td>8</td><td class="dimmed-pr"></td><td></td><td>4:25.45</td></tr><tr class="non-stx-row"><td>Sean Hurd</td><td>Christian County</td><td>1</td><td>9</td><td class="dimmed-pr"></td><td></td><td>4:25.72</td></tr><tr><td><a href='../athletes/zach_beavin.html'>Zach Beavin</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>10</td><td class="dimmed-pr">4:50.01</td><td>4:46.95</td><td class="pr">4:25.84</td></tr><tr><td><a href='../athletes/connor_sheryak.html'>Connor Sheryak</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>11</td><td class="dimmed-pr">4:35.75</td><td></td><td class="pr">4:27.74</td></tr><tr><td><a href='../athletes/austin_carter.html'>Austin Carter</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>12</td><td class="dimmed-pr">4:19.87</td><td>4:24.22</td><td>4:27.84</td></tr><tr class="non-stx-row"><td>Sam Meredith</td><td>Trinity</td><td>1</td><td>13</td><td class="dimmed-pr"></td><td></td><td>4:28.08</td></tr><tr class="non-stx-row"><td>Luke Weishaar</td><td>Oldham County</td><td>1</td><td>14</td><td class="dimmed-pr"></td><td></td><td>4:28.62</td></tr><tr class="non-stx-row"><td>James Brown</td><td>Bell County</td><td>1</td><td>15</td><td class="dimmed-pr"></td><td></td><td>4:29.49</td></tr></tbody></table></div></div><div class="footer">Generated at <code>2026-08-24 12:02:13</code> from <code>C:\Users\Bob\OneDrive\StX_XC_Track_V2\data\stx_track.db</code></div>
+
 <!-- STX_HEADER_SCRIPT_START -->
     <script>
       (() => {

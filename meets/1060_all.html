@@ -348,7 +348,10 @@
       }
     </style>
     
-  <!-- STX_HEADER_CSS_START -->
+  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+<!-- STX_HEADER_CSS_START -->
     <style>
       @import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,600;9..40,700&family=Libre+Caslon+Text:ital,wght@0,400;1,400&display=swap');
 
@@ -544,12 +547,14 @@
       .stx-menu-feedback:hover, .stx-menu-feedback:focus-visible { background: transparent; }
       .stx-school-link { color: var(--stx-dark-green) !important; font-size: 13px; font-weight: 700; }
       @media (max-width: 780px) {
-        .stx-site-header { margin-bottom: 22px; }
-        .stx-header-inner { min-height: 68px; padding: 9px 16px; }
-        .stx-logo-image { width: 190px; }
-        .stx-brand-divider { height: 32px; }
-        .stx-section-name { font-size: 9px; }
-        .stx-menu-open { width: 42px; height: 42px; }
+        /* The header is intentionally compact on phones, where it is present
+           on every report page and should not displace the actual results. */
+        .stx-site-header { margin-bottom: 16px; }
+        .stx-header-inner { min-height: 54px; padding: 7px 14px; gap: 12px; }
+        .stx-logo-image { width: 154px; }
+        .stx-brand-divider { height: 26px; }
+        .stx-section-name { font-size: 8px; letter-spacing: .11em; }
+        .stx-menu-open { width: 38px; height: 38px; }
         .stx-site-menu { display: block; overflow-y: auto; background: var(--stx-green); }
         .stx-menu-brand-panel { min-height: 210px; padding: 78px 24px 28px; justify-content: flex-end; }
         .stx-menu-brand-panel::before { top: -80px; font-size: 330px; }
@@ -562,15 +567,13 @@
       @media (max-width: 460px) {
         .stx-brand { gap: 10px; }
         .stx-brand-divider, .stx-section-name { display: none; }
-        .stx-logo-image { width: 175px; }
+        .stx-logo-image { width: 142px; }
       }
       @media (prefers-reduced-motion: reduce) {
         .stx-site-menu, .stx-menu-open, .stx-menu-nav a { transition: none; }
       }
     </style>
     <!-- STX_HEADER_CSS_END -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
 </head>
 <body>
 <!-- STX_HEADER_HTML_START -->
@@ -607,6 +610,7 @@
       </div>
     </aside>
     <!-- STX_HEADER_HTML_END -->
+
 
     <div class="topbar">
       <div class="titlewrap">
@@ -661,6 +665,7 @@
           <div class='pr-parade-list'><span class='pr-parade-entry'><a href='../athletes/jonny_vaughan.html'>Vaughan, Jonny</a>, <span class='pr-time'>18:34.30</span></span>; <span class='pr-parade-entry'><a href='../athletes/chris_aldi.html'>Aldi, Chris</a>, <span class='pr-time'>19:25.40</span></span>; <span class='pr-parade-entry'><a href='../athletes/alex_weber.html'>Weber, Alex</a>, <span class='pr-time'>19:28.00</span></span>; <span class='pr-parade-entry'><a href='../athletes/joshua_jacob.html'>Jacob, Joshua</a>, <span class='pr-time'>19:48.50</span></span>; <span class='pr-parade-entry'><a href='../athletes/dalton_bishop.html'>Bishop, Dalton</a>, <span class='pr-time'>20:15.60</span></span>; <span class='pr-parade-entry'><a href='../athletes/seth_goodwin.html'>Goodwin, Seth</a>, <span class='pr-time'>20:18.80</span></span>; <span class='pr-parade-entry'><a href='../athletes/adam_ransdell.html'>Ransdell, Adam</a>, <span class='pr-time'>21:40.80</span></span>; <span class='pr-parade-entry'><a href='../athletes/matthew_kanerviko.html'>Kanerviko, Matthew</a>, <span class='pr-time'>23:22.30</span></span>; <span class='pr-parade-entry'><a href='../athletes/kenny_fehr.html'>Fehr, Kenny</a>, <span class='pr-time'>24:08.50</span></span></div>
         </div>
         <section class='xc-print-current'><p class='subline muted'>September 24, 2014<br>Tom Sawyer State Park, Louisville, KY</p><div class='card'><h2>5K</h2><div class='xc-team-score-heading'><h3>Team Scores</h3></div><p class='muted'>No team scores loaded for this race.</p><h3 style='margin-top:24px'>Individual Results</h3><div class='table-wrap'><table class='xc-results-table'><thead><tr><th>Place</th><th>Athlete</th><th>Grade</th><th class='xc-result-year-0'>2014<span class='xc-result-date'>9/24</span></th><th>PR</th><th>Pace</th></tr></thead><tbody><tr><td>1</td><td><a href='../athletes/jonny_vaughan.html'>Vaughan, Jonny</a></td><td>9</td><td class='xc-result-cell xc-result-year-0 pr' title='Personal record'>18:34.30</td><td>19:08.70</td><td>5:59</td></tr><tr><td>2</td><td><a href='../athletes/eli_george.html'>George, Eli</a></td><td>12</td><td class='xc-result-cell xc-result-year-0'>18:47.70</td><td>17:49.20</td><td>6:03</td></tr><tr><td>5</td><td><a href='../athletes/matthew_bennett.html'>Bennett, Matthew</a></td><td>12</td><td class='xc-result-cell xc-result-year-0'>18:51.80</td><td>17:38.30</td><td>6:04</td></tr><tr><td>8</td><td><a href='../athletes/corbett_campell.html'>Campell, Corbett</a></td><td>12</td><td class='xc-result-cell xc-result-year-0'>19:17.50</td><td>18:34.20</td><td>6:13</td></tr><tr><td>9</td><td><a href='../athletes/chris_aldi.html'>Aldi, Chris</a></td><td>9</td><td class='xc-result-cell xc-result-year-0 pr' title='Personal record'>19:25.40</td><td>19:34.10</td><td>6:15</td></tr><tr><td>10</td><td><a href='../athletes/alex_weber.html'>Weber, Alex</a></td><td>9</td><td class='xc-result-cell xc-result-year-0 pr' title='Personal record'>19:28.00</td><td>19:36.10</td><td>6:16</td></tr><tr><td>14</td><td><a href='../athletes/joshua_jacob.html'>Jacob, Joshua</a></td><td>9</td><td class='xc-result-cell xc-result-year-0 pr' title='Personal record'>19:48.50</td><td>20:03.00</td><td>6:23</td></tr><tr><td>19</td><td><a href='../athletes/nick_grove.html'>Grove, Nick</a></td><td>11</td><td class='xc-result-cell xc-result-year-0'>20:02.10</td><td>18:38.40</td><td>6:27</td></tr><tr><td>21</td><td><a href='../athletes/dalton_bishop.html'>Bishop, Dalton</a></td><td>9</td><td class='xc-result-cell xc-result-year-0 pr' title='Personal record'>20:15.60</td><td>20:46.00</td><td>6:31</td></tr><tr><td>23</td><td><a href='../athletes/seth_goodwin.html'>Goodwin, Seth</a></td><td>9</td><td class='xc-result-cell xc-result-year-0 pr' title='Personal record'>20:18.80</td><td>20:19.20</td><td>6:32</td></tr><tr><td>30</td><td><a href='../athletes/thomas_knepshield.html'>Knepshield, Thomas</a></td><td>9</td><td class='xc-result-cell xc-result-year-0'>21:40.00</td><td>19:15.40</td><td>6:58</td></tr><tr><td>31</td><td><a href='../athletes/adam_ransdell.html'>Ransdell, Adam</a></td><td>9</td><td class='xc-result-cell xc-result-year-0 pr' title='Personal record'>21:40.80</td><td>21:58.10</td><td>6:59</td></tr><tr><td>32</td><td><a href='../athletes/seth_osterhage.html'>Osterhage, Seth</a></td><td>9</td><td class='xc-result-cell xc-result-year-0'>21:46.20</td><td>20:56.50</td><td>7:00</td></tr><tr><td>40</td><td><a href='../athletes/conner_lynn.html'>Lynn, Conner</a></td><td>9</td><td class='xc-result-cell xc-result-year-0'>23:00.90</td><td>22:00.60</td><td>7:24</td></tr><tr><td>41</td><td><a href='../athletes/henry_ackerson.html'>Ackerson, Henry</a></td><td>9</td><td class='xc-result-cell xc-result-year-0'>23:18.40</td><td>23:17.00</td><td>7:30</td></tr><tr><td>42</td><td><a href='../athletes/matthew_kanerviko.html'>Kanerviko, Matthew</a></td><td>9</td><td class='xc-result-cell xc-result-year-0 pr' title='Personal record'>23:22.30</td><td>23:52.60</td><td>7:31</td></tr><tr><td>48</td><td><a href='../athletes/alex_bright.html'>Bright, Alex</a></td><td>10</td><td class='xc-result-cell xc-result-year-0'>24:00.10</td><td>22:48.40</td><td>7:44</td></tr><tr><td>49</td><td><a href='../athletes/kenny_fehr.html'>Fehr, Kenny</a></td><td>9</td><td class='xc-result-cell xc-result-year-0 pr' title='Personal record'>24:08.50</td><td>25:41.20</td><td>7:46</td></tr><tr><td>55</td><td><a href='../athletes/nathan_vegh.html'>Vegh, Nathan</a></td><td>9</td><td class='xc-result-cell xc-result-year-0'>24:34.50</td><td>23:46.00</td><td>7:55</td></tr></tbody></table></div></div></section><div class="footer">Generated at <code>2026-08-24 11:50:35</code> from <code>C:\Users\Bob\OneDrive\StX_XC_Track_V2\data\stx_track.db</code></div>
+
 <!-- STX_HEADER_SCRIPT_START -->
     <script>
       (() => {

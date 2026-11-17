@@ -17,7 +17,266 @@
   .trend{width:100%;height:auto} .trend line{stroke:#8392a6} .trend polyline{fill:none;stroke:#0b63b6;stroke-width:3}
   .trend circle{fill:var(--gold);stroke:#6a4e00;stroke-width:1.5} .trend text{font-size:13px;fill:#536174}
   @media(max-width:760px){.cards{grid-template-columns:1fr 1fr}}
-</style></head><body>
+</style>
+<!-- STX_HEADER_CSS_START -->
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,600;9..40,700&family=Libre+Caslon+Text:ital,wght@0,400;1,400&display=swap');
+
+      :root {
+        --stx-green: #12543f;
+        --stx-dark-green: #062d20;
+        --stx-gold: #f3ba29;
+        --stx-cream: #f6f9f5;
+        --stx-ink: #17352b;
+      }
+      html.stx-menu-is-open, html.stx-menu-is-open body { overflow: hidden; }
+      .stx-site-header, .stx-site-menu { box-sizing: border-box; font-family: 'DM Sans', Arial, sans-serif; }
+      .stx-site-header *, .stx-site-menu * { box-sizing: border-box; }
+      .stx-site-header {
+        position: relative;
+        z-index: 9000;
+        width: 100vw;
+        max-width: 100vw;
+        margin: -24px -24px 30px;
+        background: var(--stx-dark-green);
+        color: #fff;
+      }
+      .stx-header-inner {
+        min-height: 94px;
+        padding: 14px clamp(22px, 5vw, 82px);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+      }
+      .stx-brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 17px;
+        color: #fff !important;
+        text-decoration: none !important;
+      }
+      .stx-logo-image { display: block; width: clamp(190px, 22vw, 250px); height: auto; }
+      .stx-brand-divider { width: 1px; height: 42px; background: rgba(255,255,255,.38); }
+      .stx-section-name {
+        max-width: 90px;
+        color: var(--stx-gold);
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: .14em;
+        line-height: 1.25;
+        text-transform: uppercase;
+      }
+      .stx-menu-open, .stx-menu-close {
+        border: 0;
+        cursor: pointer;
+        display: inline-grid;
+        place-items: center;
+        flex: 0 0 auto;
+      }
+      .stx-menu-open {
+        width: 55px;
+        height: 55px;
+        padding: 0;
+        border-radius: 50%;
+        background: var(--stx-gold);
+        color: var(--stx-dark-green);
+        transition: background .25s ease, transform .25s ease;
+      }
+      .stx-menu-open:hover, .stx-menu-open:focus-visible { background: #fff; transform: scale(1.04); }
+      .stx-menu-open-lines, .stx-menu-open-lines::before, .stx-menu-open-lines::after {
+        display: block;
+        width: 20px;
+        height: 2px;
+        background: currentColor;
+        border-radius: 4px;
+      }
+      .stx-menu-open-lines { position: relative; }
+      .stx-menu-open-lines::before, .stx-menu-open-lines::after { content: ''; position: absolute; left: 0; }
+      .stx-menu-open-lines::before { top: -6px; }
+      .stx-menu-open-lines::after { top: 6px; }
+      .stx-visually-hidden {
+        position: absolute !important;
+        width: 1px !important;
+        height: 1px !important;
+        padding: 0 !important;
+        margin: -1px !important;
+        overflow: hidden !important;
+        clip: rect(0, 0, 0, 0) !important;
+        white-space: nowrap !important;
+        border: 0 !important;
+      }
+      .stx-site-menu {
+        position: fixed;
+        z-index: 10000;
+        inset: 0;
+        display: grid;
+        grid-template-columns: minmax(320px, 42%) 1fr;
+        background: var(--stx-cream);
+        color: var(--stx-ink);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateX(100%);
+        transition: transform .38s ease, opacity .3s ease, visibility 0s linear .38s;
+      }
+      .stx-site-menu.is-open {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(0);
+        transition: transform .38s ease, opacity .3s ease;
+      }
+      .stx-menu-brand-panel {
+        position: relative;
+        overflow: hidden;
+        padding: clamp(40px, 6vw, 88px);
+        background: var(--stx-green);
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+      }
+      .stx-menu-brand-panel::before {
+        content: 'X';
+        position: absolute;
+        top: -120px;
+        left: -40px;
+        color: rgba(255,255,255,.055);
+        font: 700 540px/1 Georgia, serif;
+        transform: skew(-5deg);
+      }
+      .stx-menu-kicker { position: relative; margin: 0 0 18px; color: var(--stx-gold); font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
+      .stx-menu-title { position: relative; max-width: 520px; margin: 0; font: 400 clamp(39px, 5vw, 72px)/1.02 'Libre Caslon Text', Georgia, serif; }
+      .stx-menu-title em { display: block; color: var(--stx-gold); font-weight: 400; }
+      .stx-menu-content {
+        position: relative;
+        min-width: 0;
+        padding: clamp(88px, 11vh, 130px) clamp(36px, 8vw, 120px) 54px;
+        overflow-y: auto;
+      }
+      .stx-menu-close {
+        position: absolute;
+        top: 36px;
+        right: 42px;
+        width: 48px;
+        height: 48px;
+        padding: 0;
+        background: transparent;
+        color: var(--stx-dark-green);
+      }
+      .stx-menu-close::before, .stx-menu-close::after {
+        content: '';
+        position: absolute;
+        width: 28px;
+        height: 2px;
+        background: currentColor;
+      }
+      .stx-menu-close::before { transform: rotate(45deg); }
+      .stx-menu-close::after { transform: rotate(-45deg); }
+      .stx-menu-close:hover, .stx-menu-close:focus-visible { color: #8c6300; }
+      .stx-menu-label { margin: 0 0 24px; color: #64756f; font-size: 12px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; }
+      .stx-menu-nav { margin: 0; padding: 0; list-style: none; counter-reset: stx-nav; }
+      .stx-menu-nav li { counter-increment: stx-nav; border-top: 1px solid #ccd6d1; }
+      .stx-menu-nav li:last-child { border-bottom: 1px solid #ccd6d1; }
+      .stx-menu-nav a, .stx-menu-nav .stx-current-page {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 22px;
+        padding: 17px 6px;
+        color: var(--stx-dark-green);
+        font: 400 clamp(22px, 2.3vw, 34px)/1.15 'Libre Caslon Text', Georgia, serif;
+        text-decoration: none;
+        transition: color .2s ease, padding-left .2s ease;
+      }
+      .stx-menu-nav a::before, .stx-menu-nav .stx-current-page::before {
+        content: '0' counter(stx-nav);
+        width: 25px;
+        color: #7c9189;
+        font: 700 10px/1 'DM Sans', Arial, sans-serif;
+        letter-spacing: .1em;
+      }
+      .stx-menu-nav a::after { content: '\2192'; margin-left: auto; color: var(--stx-gold); font-family: Arial, sans-serif; }
+      .stx-menu-nav a:hover, .stx-menu-nav a:focus-visible { color: #8c6300; padding-left: 14px; }
+      .stx-menu-nav .stx-current-page { color: #8c6300; font-style: italic; }
+      .stx-menu-utility { margin-top: 34px; display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+      .stx-menu-feedback {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        padding: 10px 22px;
+        border: 1px solid var(--stx-gold);
+        border-radius: 4px;
+        background: var(--stx-gold);
+        color: var(--stx-dark-green) !important;
+        font-weight: 700;
+        text-decoration: none !important;
+      }
+      .stx-menu-feedback:hover, .stx-menu-feedback:focus-visible { background: transparent; }
+      .stx-school-link { color: var(--stx-dark-green) !important; font-size: 13px; font-weight: 700; }
+      @media (max-width: 780px) {
+        /* The header is intentionally compact on phones, where it is present
+           on every report page and should not displace the actual results. */
+        .stx-site-header { margin-bottom: 16px; }
+        .stx-header-inner { min-height: 54px; padding: 7px 14px; gap: 12px; }
+        .stx-logo-image { width: 154px; }
+        .stx-brand-divider { height: 26px; }
+        .stx-section-name { font-size: 8px; letter-spacing: .11em; }
+        .stx-menu-open { width: 38px; height: 38px; }
+        .stx-site-menu { display: block; overflow-y: auto; background: var(--stx-green); }
+        .stx-menu-brand-panel { min-height: 210px; padding: 78px 24px 28px; justify-content: flex-end; }
+        .stx-menu-brand-panel::before { top: -80px; font-size: 330px; }
+        .stx-menu-kicker { margin-bottom: 8px; font-size: 10px; }
+        .stx-menu-title { font-size: 36px; }
+        .stx-menu-content { padding: 26px 20px 42px; background: var(--stx-cream); }
+        .stx-menu-close { position: fixed; top: 15px; right: 14px; color: #fff; }
+        .stx-menu-nav a, .stx-menu-nav .stx-current-page { padding: 15px 2px; font-size: 21px; }
+      }
+      @media (max-width: 460px) {
+        .stx-brand { gap: 10px; }
+        .stx-brand-divider, .stx-section-name { display: none; }
+        .stx-logo-image { width: 142px; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .stx-site-menu, .stx-menu-open, .stx-menu-nav a { transition: none; }
+      }
+    </style>
+    <!-- STX_HEADER_CSS_END -->
+</head><body>
+<!-- STX_HEADER_HTML_START -->
+    <header class="stx-site-header">
+      <div class="stx-header-inner">
+        <a class="stx-brand" href="../index.html" aria-label="St. Xavier Running home">
+          <img class="stx-logo-image"
+            src="../assets/stx_logo.svg"
+            alt="Saint Xavier High School">
+          <span class="stx-brand-divider" aria-hidden="true"></span>
+          <span class="stx-section-name">Running</span>
+        </a>
+        <button class="stx-menu-open" type="button" aria-controls="stx-site-menu" aria-expanded="false">
+          <span class="stx-menu-open-lines" aria-hidden="true"></span>
+          <span class="stx-visually-hidden">Open site menu</span>
+        </button>
+      </div>
+    </header>
+    <aside class="stx-site-menu" id="stx-site-menu" aria-hidden="true">
+      <div class="stx-menu-brand-panel">
+        <p class="stx-menu-kicker">St. Xavier Running</p>
+        <p class="stx-menu-title">Built on tradition.<em>Driven by the team.</em></p>
+      </div>
+      <div class="stx-menu-content">
+        <button class="stx-menu-close" type="button">
+          <span class="stx-visually-hidden">Close site menu</span>
+        </button>
+        <p class="stx-menu-label">Explore the site</p>
+        <nav aria-label="Primary"><ol class="stx-menu-nav"><li><a href="../index.html">Home</a></li><li><a href="../records.html">StX Records</a></li><li><a href="../xc_course_history.html">XC Course History</a></li><li><a href="../depth_chart.html">Depth Chart</a></li><li><a href="../athlete_comparison.html">Athlete Comparison</a></li><li><a href="../freshman.html">Freshman</a></li><li><a href="../two_mile_progression.html">Two Mile Progression</a></li><li><a href="../data_downloads.html">Data Downloads</a></li><li><a href="../coach_sheets/index.html">Pre-Race Sheet Creator</a></li></ol></nav>
+        <div class="stx-menu-utility">
+          <a class="stx-menu-feedback" href="../feedback.html">Share Feedback</a>
+          <a class="stx-school-link" href="https://www.saintx.com/">Visit saintx.com&nbsp; ↗</a>
+        </div>
+      </div>
+    </aside>
+    <!-- STX_HEADER_HTML_END -->
+
 <header><p>High-school comparison · collected-data audit</p><h1>Ayden Taylor</h1>
 <p>Trinity (Louisville) · Class of 2027</p><a class="button" href="https://www.athletic.net/athlete/19147683" target="_blank" rel="noopener">athletic.net #19147683</a><a class="button" href="https://ky.milesplit.com/athletes/14124668-ayden-taylor" target="_blank" rel="noopener">milesplit.com #14124668</a></header>
 <main>
@@ -51,4 +310,35 @@
     <p><a href="ayden_taylor_performances.csv">Download Ayden's performance CSV</a></p>
     <div class="table-wrap"><table><thead><tr><th>Date</th><th>Season</th><th>Event</th><th>Mark</th><th>Place</th><th>Grade</th><th>Meet</th><th>Source key</th></tr></thead><tbody><tr><td>2023-08-26</td><td>2023 XC</td><td>5,000 Meters</td><td><a href="https://www.athletic.net/result/XwFDw46UzXvYV/" target="_blank" rel="noopener">16:52.8</a></td><td>15</td><td>9th</td><td>STXXC Tiger Run</td><td>XwFDw46UzXvYV</td></tr><tr><td>2023-09-16</td><td>2023 XC</td><td>5,000 Meters</td><td><a href="https://www.athletic.net/result/e2FnZvvFxPaD3/" target="_blank" rel="noopener">16:00.2</a></td><td>46</td><td>9th</td><td>Trinity/Valkyre Invitational</td><td>e2FnZvvFxPaD3</td></tr><tr><td>2023-09-30</td><td>2023 XC</td><td>5,000 Meters</td><td><a href="https://www.athletic.net/result/NwFrX3lcpVoLw/" target="_blank" rel="noopener">15:59.2</a></td><td>70</td><td>9th</td><td>Nike XC Town Twilight</td><td>NwFrX3lcpVoLw</td></tr><tr><td>2023-10-21</td><td>2023 XC</td><td>5,000 Meters</td><td><a href="https://www.athletic.net/result/oxFdlw3sdmeoL/" target="_blank" rel="noopener">15:49.5</a></td><td>6</td><td>9th</td><td>KHSAA Region 4 Class 3A</td><td>oxFdlw3sdmeoL</td></tr><tr><td>2023-10-28</td><td>2023 XC</td><td>5,000 Meters</td><td><a href="https://www.athletic.net/result/goF3eo8i8V4Zw/" target="_blank" rel="noopener">16:32.3</a></td><td>20</td><td>9th</td><td>KHSAA State Cross Country Championships</td><td>goF3eo8i8V4Zw</td></tr><tr><td>2023-11-19</td><td>2023 XC</td><td>5,000 Meters</td><td><a href="https://www.athletic.net/result/WBFM3LQh83B0q/" target="_blank" rel="noopener">16:03.6</a></td><td>112</td><td>9th</td><td>NXR Southeast Regional Championships</td><td>WBFM3LQh83B0q</td></tr><tr><td>2024-01-28</td><td>2024 INDOOR</td><td>1 Mile</td><td><a href="http://www.athletic.net/result/aniZD2wCRnFm1NzRtQ" target="_blank" rel="noopener">4:31.64</a></td><td>16</td><td>9th</td><td>Southeast Showdown</td><td>aniZD2wCRnFm1NzRtQ</td></tr><tr><td>2024-02-03</td><td>2024 INDOOR</td><td>800 Meters</td><td><a href="http://www.athletic.net/result/31irzZ0UASm1N4Mt1" target="_blank" rel="noopener">2:02.93</a></td><td>14</td><td>9th</td><td>Louisville Indoor Games</td><td>31irzZ0UASm1N4Mt1</td></tr><tr><td>2024-02-10</td><td>2024 INDOOR</td><td>1 Mile</td><td><a href="http://www.athletic.net/result/16irLYpIgAFo1qkliy" target="_blank" rel="noopener">4:34.20</a></td><td>36</td><td>9th</td><td>Eastern Indoors 2024</td><td>16irLYpIgAFo1qkliy</td></tr><tr><td>2024-03-23</td><td>2024 OUTDOOR</td><td>3200 Meters</td><td><a href="http://www.athletic.net/result/o3iVx4vcZ6SzZlg2Fe" target="_blank" rel="noopener">9:50.36</a></td><td>2</td><td>9th</td><td>OC Kick-Off Classic</td><td>o3iVx4vcZ6SzZlg2Fe</td></tr><tr><td>2024-04-12</td><td>2024 OUTDOOR</td><td>1 Mile</td><td><a href="http://www.athletic.net/result/QaiVxw2ulMFaMQXZcd" target="_blank" rel="noopener">4:30.22</a></td><td>3</td><td>9th</td><td>Franklin Central Flashes Showcase</td><td>QaiVxw2ulMFaMQXZcd</td></tr><tr><td>2024-04-20</td><td>2024 OUTDOOR</td><td>1 Mile</td><td><a href="http://www.athletic.net/result/QaiVKD8HlMFaMQXZcd" target="_blank" rel="noopener">4:27.39</a></td><td>30</td><td>9th</td><td>Eastern Relays</td><td>QaiVKD8HlMFaMQXZcd</td></tr><tr><td>2024-04-20</td><td>2024 OUTDOOR</td><td>3200 Meters</td><td><a href="http://www.athletic.net/result/2Ki8jZWHwDSzwYnKFr" target="_blank" rel="noopener">9:44.16</a></td><td>63</td><td>9th</td><td>Eastern Relays</td><td>2Ki8jZWHwDSzwYnKFr</td></tr><tr><td>2024-04-27</td><td>2024 OUTDOOR</td><td>1 Mile</td><td><a href="http://www.athletic.net/result/zvi6YLAinmFagWlJcm" target="_blank" rel="noopener">4:30.03</a></td><td>6</td><td>9th</td><td>Coach Cooper - Brother Borgia TF Inv</td><td>zvi6YLAinmFagWlJcm</td></tr><tr><td>2024-05-02</td><td>2024 OUTDOOR</td><td>1600 Meters</td><td><a href="http://www.athletic.net/result/VPizVDJsrLHOErzRcm" target="_blank" rel="noopener">DNS</a></td><td>—</td><td>9th</td><td>Ballard HS TF Derby Invite</td><td>VPizVDJsrLHOErzRcm</td></tr><tr><td>2024-05-15</td><td>2024 OUTDOOR</td><td>1600 Meters</td><td><a href="http://www.athletic.net/result/0NiW2gZC3VH8L5ymsm" target="_blank" rel="noopener">DNS</a></td><td>—</td><td>9th</td><td>Metro Meet of Champions</td><td>0NiW2gZC3VH8L5ymsm</td></tr><tr><td>2024-05-20</td><td>2024 OUTDOOR</td><td>1600 Meters</td><td><a href="http://www.athletic.net/result/YViYgNVTByH4W6vPHR" target="_blank" rel="noopener">4:27.73</a></td><td>3</td><td>9th</td><td>Class 3A Region 4</td><td>YViYgNVTByH4W6vPHR</td></tr><tr><td>2024-06-01</td><td>2024 OUTDOOR</td><td>1600 Meters</td><td><a href="http://www.athletic.net/result/E1ivzKdFXEHKaNd8t1" target="_blank" rel="noopener">4:31.32</a></td><td>15</td><td>9th</td><td>KHSAA Class 3A Track &amp; Field State Championship</td><td>E1ivzKdFXEHKaNd8t1</td></tr><tr><td>2024-08-24</td><td>2024 XC</td><td>5,000 Meters</td><td><a href="https://www.athletic.net/result/yoFPMVEh2zPap/" target="_blank" rel="noopener">15:50.9</a></td><td>15</td><td>10th</td><td>St Xavier Tiger Run</td><td>yoFPMVEh2zPap</td></tr><tr><td>2024-09-07</td><td>2024 XC</td><td>5,000 Meters</td><td><a href="https://www.athletic.net/result/3DFAgkmi5AdzD/" target="_blank" rel="noopener">16:16.0</a></td><td>5</td><td>10th</td><td>Mason Invitational</td><td>3DFAgkmi5AdzD</td></tr><tr><td>2024-09-21</td><td>2024 XC</td><td>5,000 Meters</td><td><a href="https://www.athletic.net/result/2qFZ4WosyXVQd/" target="_blank" rel="noopener">15:50.0</a></td><td>41</td><td>10th</td><td>Trinity/Valkyre HS Invitational</td><td>2qFZ4WosyXVQd</td></tr><tr><td>2024-09-28</td><td>2024 XC</td><td>5,000 Meters</td><td><a href="https://www.athletic.net/result/OyFLpXKtOL0Ag/" target="_blank" rel="noopener">16:51.9</a></td><td>6</td><td>10th</td><td>Hillbilly Run XC</td><td>OyFLpXKtOL0Ag</td></tr><tr><td>2024-10-05</td><td>2024 XC</td><td>5,000 Meters</td><td><a href="https://www.athletic.net/result/goF3loMh8V4Zw/" target="_blank" rel="noopener">16:01.5</a></td><td>76</td><td>10th</td><td>Great American XC Festival, Presented by Garmin</td><td>goF3loMh8V4Zw</td></tr><tr><td>2024-10-26</td><td>2024 XC</td><td>5,000 Meters</td><td><a href="https://www.athletic.net/result/2qFZ0aLUyXVQd/" target="_blank" rel="noopener">15:47.0</a></td><td>7</td><td>10th</td><td>KHSAA Region 4 Class 3A</td><td>2qFZ0aLUyXVQd</td></tr><tr><td>2024-11-02</td><td>2024 XC</td><td>5,000 Meters</td><td><a href="https://www.athletic.net/result/qyFoXJ4UQk2pJ/" target="_blank" rel="noopener">16:27.0</a></td><td>28</td><td>10th</td><td>KHSAA State XC Championships</td><td>qyFoXJ4UQk2pJ</td></tr><tr><td>2024-11-23</td><td>2024 XC</td><td>5,000 Meters</td><td><a href="https://www.athletic.net/result/z3FmEWWupXVme/" target="_blank" rel="noopener">16:36.5</a></td><td>197</td><td>10th</td><td>NXR Southeast Regional Championships</td><td>z3FmEWWupXVme</td></tr><tr><td>2025-04-19</td><td>2025 OUTDOOR</td><td>1 Mile</td><td><a href="http://www.athletic.net/result/j0izyQnhmMFPw5J3T4" target="_blank" rel="noopener">4:35.18</a></td><td>60</td><td>10th</td><td>Eastern Relays</td><td>j0izyQnhmMFPw5J3T4</td></tr><tr><td>2025-05-03</td><td>2025 OUTDOOR</td><td>3200 Meters</td><td><a href="http://www.athletic.net/result/DeiealeTZDSKpVgvtW" target="_blank" rel="noopener">9:38.9h</a></td><td>3</td><td>10th</td><td>Run for the Roses 3200</td><td>DeiealeTZDSKpVgvtW</td></tr><tr><td>2025-05-10</td><td>2025 OUTDOOR</td><td>1600 Meters</td><td><a href="http://www.athletic.net/result/2Ki8mneTwKHzwYnKFr" target="_blank" rel="noopener">4:25.90</a></td><td>5</td><td>10th</td><td>Metro Meet of Champions</td><td>2Ki8mneTwKHzwYnKFr</td></tr><tr><td>2025-05-10</td><td>2025 OUTDOOR</td><td>3200 Meters</td><td><a href="http://www.athletic.net/result/31ir4akcWPSm1N4Mt1" target="_blank" rel="noopener">9:38.9h</a></td><td>3</td><td>10th</td><td>Metro Meet of Champions</td><td>31ir4akcWPSm1N4Mt1</td></tr><tr><td>2025-05-21</td><td>2025 OUTDOOR</td><td>1600 Meters</td><td><a href="http://www.athletic.net/result/Mmia1PncqBHrV4ABhM" target="_blank" rel="noopener">4:25.48</a></td><td>3</td><td>10th</td><td>Class 3A Region 4</td><td>Mmia1PncqBHrV4ABhM</td></tr><tr><td>2025-05-29</td><td>2025 OUTDOOR</td><td>1600 Meters</td><td><a href="http://www.athletic.net/result/E1iPEgEtXEHKaNd8t1" target="_blank" rel="noopener">4:21.28</a></td><td>9</td><td>10th</td><td>KHSAA Class 3A Track &amp; Field State Championship</td><td>E1iPEgEtXEHKaNd8t1</td></tr><tr><td>2025-06-06</td><td>2025 OUTDOOR</td><td>1 Mile</td><td><a href="http://www.athletic.net/result/L6ipArVIWNF3DgzmTn" target="_blank" rel="noopener">4:20.92</a></td><td>6</td><td>10th</td><td>Mile Madness</td><td>L6ipArVIWNF3DgzmTn</td></tr><tr><td>2025-08-30</td><td>2025 XC</td><td>5000 Meters</td><td><a href="http://www.athletic.net/result/PlFWZEqHxA12p" target="_blank" rel="noopener">15:46.6</a></td><td>10</td><td>11th</td><td>St Xavier Tiger Run</td><td>PlFWZEqHxA12p</td></tr><tr><td>2025-08-30</td><td>2025 XC</td><td>5000 Meters</td><td><a href="http://www.athletic.net/result/YyFdKyjSo6Kzn" target="_blank" rel="noopener">15:46.7</a></td><td>10</td><td>11th</td><td>STXXC Tiger Run</td><td>YyFdKyjSo6Kzn</td></tr><tr><td>2025-09-06</td><td>2025 XC</td><td>5000 Meters</td><td><a href="http://www.athletic.net/result/aPFJewJIKk8np" target="_blank" rel="noopener">15:19.3</a></td><td>3</td><td>11th</td><td>Lafayette / Trinity Dual</td><td>aPFJewJIKk8np</td></tr><tr><td>2025-09-20</td><td>2025 XC</td><td>5000 Meters</td><td><a href="http://www.athletic.net/result/e2Fg3rNCxPaD3" target="_blank" rel="noopener">15:19.4</a></td><td>19</td><td>11th</td><td>Trinity / Valkyrie Invitational</td><td>e2Fg3rNCxPaD3</td></tr><tr><td>2025-10-04</td><td>2025 XC</td><td>5000 Meters</td><td><a href="http://www.athletic.net/result/d2FpwdyFy1ZwN" target="_blank" rel="noopener">15:29.4</a></td><td>27</td><td>11th</td><td>Great American XC Festival, Presented by Garmin</td><td>d2FpwdyFy1ZwN</td></tr><tr><td>2025-10-25</td><td>2025 XC</td><td>5000 Meters</td><td><a href="http://www.athletic.net/result/vwFZ18VsR3BLK" target="_blank" rel="noopener">15:38.7</a></td><td>2</td><td>11th</td><td>KHSAA Region 4 Class 3A</td><td>vwFZ18VsR3BLK</td></tr><tr><td>2025-11-01</td><td>2025 XC</td><td>5000 Meters</td><td><a href="http://www.athletic.net/result/wyF1Rw3Uwv0Mg" target="_blank" rel="noopener">15:53.4</a></td><td>8</td><td>11th</td><td>KHSAA State Cross Country Championships</td><td>wyF1Rw3Uwv0Mg</td></tr><tr><td>2025-11-22</td><td>2025 XC</td><td>5000 Meters</td><td><a href="http://www.athletic.net/result/5rFeEdgh0peQL" target="_blank" rel="noopener">15:50.7</a></td><td>67</td><td>11th</td><td>NXR Southeast Regional Championships</td><td>5rFeEdgh0peQL</td></tr><tr><td>2026-02-01</td><td>2026 INDOOR</td><td>1 Mile</td><td><a href="http://www.athletic.net/result/5OidLlkTNQFEvnMmIl" target="_blank" rel="noopener">4:15.91</a></td><td>3</td><td>11th</td><td>Southeast Showdown</td><td>5OidLlkTNQFEvnMmIl</td></tr><tr><td>2026-03-04</td><td>2026 INDOOR</td><td>1600 Meters</td><td><a href="http://www.athletic.net/result/m1iwjngiMPHenYjAf6" target="_blank" rel="noopener">4:15.57</a></td><td>5</td><td>11th</td><td>KHSAA Class 3A Indoor Track &amp; Field State Championships</td><td>m1iwjngiMPHenYjAf6</td></tr><tr><td>2026-03-04</td><td>2026 INDOOR</td><td>3200 Meters</td><td><a href="http://www.athletic.net/result/AWiM5kEUPRSz0nloFN" target="_blank" rel="noopener">9:21.14</a></td><td>3</td><td>11th</td><td>KHSAA Class 3A Indoor Track &amp; Field State Championships</td><td>AWiM5kEUPRSz0nloFN</td></tr><tr><td>2026-03-12</td><td>2026 INDOOR</td><td>800 Meters - Relay Split</td><td><a href="http://www.athletic.net/result/j0inl0DUkSPw5J3T4" target="_blank" rel="noopener">1:54.6h</a></td><td>20</td><td>11th</td><td>New Balance Nationals Indoor</td><td>j0inl0DUkSPw5J3T4</td></tr><tr><td>2026-03-15</td><td>2026 INDOOR</td><td>1 Mile</td><td><a href="http://www.athletic.net/result/kxinWVmUYOFZKvR6ho" target="_blank" rel="noopener">4:13.49</a></td><td>35</td><td>11th</td><td>New Balance Nationals Indoor</td><td>kxinWVmUYOFZKvR6ho</td></tr><tr><td>2026-03-25</td><td>2026 OUTDOOR</td><td>1600 Meters</td><td><a href="http://www.athletic.net/result/VPiX2VzSrLHOErzRcm" target="_blank" rel="noopener">4:18.65</a></td><td>4</td><td>11th</td><td>AOC Distance Night</td><td>VPiX2VzSrLHOErzRcm</td></tr><tr><td>2026-04-18</td><td>2026 OUTDOOR</td><td>1 Mile</td><td><a href="http://www.athletic.net/result/r8iOzQLsXoF4XAajHj" target="_blank" rel="noopener">4:18.87</a></td><td>12</td><td>11th</td><td>Eastern Relays</td><td>r8iOzQLsXoF4XAajHj</td></tr><tr><td>2026-04-25</td><td>2026 OUTDOOR</td><td>800 Meters</td><td><a href="http://www.athletic.net/result/0Ni0ZXNiqS8L5ymsm" target="_blank" rel="noopener">1:53.28</a></td><td>2</td><td>11th</td><td>Brother Borgia/Coach Cooper Invitational</td><td>0Ni0ZXNiqS8L5ymsm</td></tr><tr><td>2026-04-25</td><td>2026 OUTDOOR</td><td>800 Meters</td><td><a href="http://www.athletic.net/result/nlin6d0tVSK6gNqt1" target="_blank" rel="noopener">1:53.28</a></td><td>2</td><td>11th</td><td>Brothers Cooper-Borgia TF Invitational</td><td>nlin6d0tVSK6gNqt1</td></tr><tr><td>2026-05-01</td><td>2026 OUTDOOR</td><td>1 Mile</td><td><a href="http://www.athletic.net/result/kxinE5oCYOFZKvR6ho" target="_blank" rel="noopener">4:16.62</a></td><td>8</td><td>11th</td><td>Dream Mile (entries via KYMilesplit.com</td><td>kxinE5oCYOFZKvR6ho</td></tr><tr><td>2026-05-12</td><td>2026 OUTDOOR</td><td>1600 Meters</td><td><a href="http://www.athletic.net/result/XVi86odhRpHr5Wpwh8" target="_blank" rel="noopener">4:14.37</a></td><td>1</td><td>11th</td><td>Class 3A Region 4</td><td>XVi86odhRpHr5Wpwh8</td></tr><tr><td>2026-06-20</td><td>2026 OUTDOOR</td><td>1 Mile</td><td><a href="http://www.athletic.net/result/OoizmeWUaAFRMzJ2Iy" target="_blank" rel="noopener">4:12.01</a></td><td>23</td><td>11th</td><td>New Balance Nationals Outdoor</td><td>OoizmeWUaAFRMzJ2Iy</td></tr><tr><td>2026-06-21</td><td>2026 OUTDOOR</td><td>1500 Meters</td><td><a href="http://www.athletic.net/result/m1iwWEnImUenYjAf6" target="_blank" rel="noopener">3:52.18</a></td><td>17</td><td>11th</td><td>New Balance Nationals Outdoor</td><td>m1iwWEnImUenYjAf6</td></tr></tbody></table></div>
   </section>
-</main></body></html>
+</main>
+<!-- STX_HEADER_SCRIPT_START -->
+    <script>
+      (() => {
+        const menu = document.getElementById('stx-site-menu');
+        const openButton = document.querySelector('.stx-menu-open');
+        const closeButton = document.querySelector('.stx-menu-close');
+        if (!menu || !openButton || !closeButton) return;
+        let lastFocused = null;
+
+        function setMenu(open) {
+          menu.classList.toggle('is-open', open);
+          menu.setAttribute('aria-hidden', open ? 'false' : 'true');
+          openButton.setAttribute('aria-expanded', open ? 'true' : 'false');
+          document.documentElement.classList.toggle('stx-menu-is-open', open);
+          if (open) {
+            lastFocused = document.activeElement;
+            closeButton.focus();
+          } else if (lastFocused) {
+            lastFocused.focus();
+          }
+        }
+
+        openButton.addEventListener('click', () => setMenu(true));
+        closeButton.addEventListener('click', () => setMenu(false));
+        document.addEventListener('keydown', event => {
+          if (event.key === 'Escape' && menu.classList.contains('is-open')) setMenu(false);
+        });
+      })();
+    </script>
+    <!-- STX_HEADER_SCRIPT_END -->
+</body></html>

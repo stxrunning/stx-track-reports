@@ -348,7 +348,10 @@
       }
     </style>
     
-  <!-- STX_HEADER_CSS_START -->
+  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+<!-- STX_HEADER_CSS_START -->
     <style>
       @import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,600;9..40,700&family=Libre+Caslon+Text:ital,wght@0,400;1,400&display=swap');
 
@@ -544,12 +547,14 @@
       .stx-menu-feedback:hover, .stx-menu-feedback:focus-visible { background: transparent; }
       .stx-school-link { color: var(--stx-dark-green) !important; font-size: 13px; font-weight: 700; }
       @media (max-width: 780px) {
-        .stx-site-header { margin-bottom: 22px; }
-        .stx-header-inner { min-height: 68px; padding: 9px 16px; }
-        .stx-logo-image { width: 190px; }
-        .stx-brand-divider { height: 32px; }
-        .stx-section-name { font-size: 9px; }
-        .stx-menu-open { width: 42px; height: 42px; }
+        /* The header is intentionally compact on phones, where it is present
+           on every report page and should not displace the actual results. */
+        .stx-site-header { margin-bottom: 16px; }
+        .stx-header-inner { min-height: 54px; padding: 7px 14px; gap: 12px; }
+        .stx-logo-image { width: 154px; }
+        .stx-brand-divider { height: 26px; }
+        .stx-section-name { font-size: 8px; letter-spacing: .11em; }
+        .stx-menu-open { width: 38px; height: 38px; }
         .stx-site-menu { display: block; overflow-y: auto; background: var(--stx-green); }
         .stx-menu-brand-panel { min-height: 210px; padding: 78px 24px 28px; justify-content: flex-end; }
         .stx-menu-brand-panel::before { top: -80px; font-size: 330px; }
@@ -562,15 +567,13 @@
       @media (max-width: 460px) {
         .stx-brand { gap: 10px; }
         .stx-brand-divider, .stx-section-name { display: none; }
-        .stx-logo-image { width: 175px; }
+        .stx-logo-image { width: 142px; }
       }
       @media (prefers-reduced-motion: reduce) {
         .stx-site-menu, .stx-menu-open, .stx-menu-nav a { transition: none; }
       }
     </style>
     <!-- STX_HEADER_CSS_END -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
 </head>
 <body>
 <!-- STX_HEADER_HTML_START -->
@@ -608,6 +611,7 @@
     </aside>
     <!-- STX_HEADER_HTML_END -->
 
+
     <div class="topbar">
       <div class="titlewrap">
         <div class="date">1994-06-03</div>
@@ -642,6 +646,7 @@
       });
     </script>
     <div class='card'><h2>800 Meters</h2><div class="table-wrap"><table><thead><tr><th>Athlete</th><th>Team</th><th>Group</th><th>Place</th><th class="dimmed-pr">Indoor PR</th><th>Outdoor PR</th><th>Result</th></tr></thead><tbody><tr class="non-stx-row"><td>Jim Haun</td><td>Meade County</td><td>3</td><td>1</td><td class="dimmed-pr"></td><td></td><td>1:58.20</td></tr><tr class="non-stx-row"><td>Shaka Davis</td><td>Atherton</td><td>3</td><td>2</td><td class="dimmed-pr"></td><td></td><td>1:58.46</td></tr><tr class="non-stx-row"><td>Aaron Harbolt</td><td>Desales</td><td>3</td><td>3</td><td class="dimmed-pr"></td><td></td><td>1:58.50</td></tr><tr class="non-stx-row"><td>Tommy Noel</td><td>Male</td><td>3</td><td>4</td><td class="dimmed-pr"></td><td></td><td>1:59.20</td></tr><tr class="non-stx-row"><td>Josh Buffolino</td><td>Shelby County</td><td>3</td><td>5</td><td class="dimmed-pr"></td><td></td><td>2:00.06</td></tr><tr class="non-stx-row"><td>Chris Preston</td><td>Paul Dunbar</td><td>3</td><td>6</td><td class="dimmed-pr"></td><td></td><td>2:00.53</td></tr></tbody></table></div></div><div class='card'><h2>1600 Meters</h2><div class="table-wrap"><table><thead><tr><th>Athlete</th><th>Team</th><th>Group</th><th>Place</th><th class="dimmed-pr">Indoor PR</th><th>Outdoor PR</th><th>Result</th></tr></thead><tbody><tr class="non-stx-row"><td>Ryan Knight</td><td>Male</td><td>3</td><td>1</td><td class="dimmed-pr"></td><td></td><td>4:19.83</td></tr><tr class="non-stx-row"><td>Josh Buffolino</td><td>Shelby County</td><td>3</td><td>2</td><td class="dimmed-pr"></td><td></td><td>4:20.73</td></tr><tr class="non-stx-row"><td>Charlie Moore</td><td>Daviess County</td><td>3</td><td>3</td><td class="dimmed-pr"></td><td></td><td>4:21.23</td></tr><tr class="non-stx-row"><td>Jim Garnett</td><td>Christian County</td><td>3</td><td>4</td><td class="dimmed-pr"></td><td></td><td>4:24.33</td></tr><tr class="non-stx-row"><td>Aaron Harbolt</td><td>Desales</td><td>3</td><td>5</td><td class="dimmed-pr"></td><td></td><td>4:30.11</td></tr><tr class="non-stx-row"><td>Andy Dobelstein</td><td>Atherton</td><td>3</td><td>6</td><td class="dimmed-pr"></td><td></td><td>4:31.47</td></tr></tbody></table></div></div><div class='card'><h2>3200 Meters</h2><div class="table-wrap"><table><thead><tr><th>Athlete</th><th>Team</th><th>Group</th><th>Place</th><th class="dimmed-pr">Indoor PR</th><th>Outdoor PR</th><th>Result</th></tr></thead><tbody><tr class="non-stx-row"><td>Ryan Knight</td><td>Male</td><td>3</td><td>1</td><td class="dimmed-pr"></td><td></td><td>9:36.27</td></tr><tr class="non-stx-row"><td>Charlie Moore</td><td>Daviess County</td><td>3</td><td>2</td><td class="dimmed-pr"></td><td></td><td>9:36.84</td></tr><tr class="non-stx-row"><td>Mike Purvis</td><td>Butler</td><td>3</td><td>3</td><td class="dimmed-pr"></td><td></td><td>9:49.08</td></tr><tr class="non-stx-row"><td>Jon Eriksen</td><td>Daviess County</td><td>3</td><td>4</td><td class="dimmed-pr"></td><td></td><td>9:55.06</td></tr><tr class="non-stx-row"><td>Mike Lueke</td><td>Trinity (Whitesville)</td><td>3</td><td>5</td><td class="dimmed-pr"></td><td></td><td>9:56.19</td></tr><tr class="non-stx-row"><td>Brian Lilly</td><td>Holy Cross (Louisville)</td><td>3</td><td>6</td><td class="dimmed-pr"></td><td></td><td>10:01.16</td></tr></tbody></table></div></div><div class='card'><h2>4x800 Relay</h2><div class="table-wrap"><table><thead><tr><th>Athlete</th><th>Team</th><th>team_raw</th><th>Group</th><th>Place</th><th>Leg</th><th class="dimmed-pr">Indoor PR</th><th>Outdoor PR</th><th>Result</th><th>Total_Laps</th></tr></thead><tbody><tr class="non-stx-row"><td></td><td>Male</td><td>Male</td><td>3</td><td>1</td><td></td><td class="dimmed-pr"></td><td></td><td>8:03.54</td><td></td></tr><tr class="non-stx-row"><td></td><td>Marshall County</td><td>Marshall County</td><td>3</td><td>2</td><td></td><td class="dimmed-pr"></td><td></td><td>8:04.21</td><td></td></tr><tr class="non-stx-row"><td></td><td>Daviess County</td><td>Daviess County</td><td>3</td><td>3</td><td></td><td class="dimmed-pr"></td><td></td><td>8:09.75</td><td></td></tr><tr class="non-stx-row"><td></td><td>Shelby County</td><td>Shelby County</td><td>3</td><td>4</td><td></td><td class="dimmed-pr"></td><td></td><td>8:12.05</td><td></td></tr><tr><td></td><td class="stx-team-highlight">St Xavier (KY)</td><td>St Xavier (KY)</td><td>3</td><td>5</td><td></td><td class="dimmed-pr"></td><td></td><td class="pr">8:16.39</td><td></td></tr><tr class="non-stx-row"><td></td><td>North Hardin</td><td>North Hardin</td><td>3</td><td>6</td><td></td><td class="dimmed-pr"></td><td></td><td>8:16.55</td><td></td></tr></tbody></table></div></div><div class="footer">Generated at <code>2026-08-24 12:23:15</code> from <code>C:\Users\Bob\OneDrive\StX_XC_Track_V2\data\stx_track.db</code></div>
+
 <!-- STX_HEADER_SCRIPT_START -->
     <script>
       (() => {

@@ -348,7 +348,10 @@
       }
     </style>
     
-  <!-- STX_HEADER_CSS_START -->
+  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+<!-- STX_HEADER_CSS_START -->
     <style>
       @import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,600;9..40,700&family=Libre+Caslon+Text:ital,wght@0,400;1,400&display=swap');
 
@@ -544,12 +547,14 @@
       .stx-menu-feedback:hover, .stx-menu-feedback:focus-visible { background: transparent; }
       .stx-school-link { color: var(--stx-dark-green) !important; font-size: 13px; font-weight: 700; }
       @media (max-width: 780px) {
-        .stx-site-header { margin-bottom: 22px; }
-        .stx-header-inner { min-height: 68px; padding: 9px 16px; }
-        .stx-logo-image { width: 190px; }
-        .stx-brand-divider { height: 32px; }
-        .stx-section-name { font-size: 9px; }
-        .stx-menu-open { width: 42px; height: 42px; }
+        /* The header is intentionally compact on phones, where it is present
+           on every report page and should not displace the actual results. */
+        .stx-site-header { margin-bottom: 16px; }
+        .stx-header-inner { min-height: 54px; padding: 7px 14px; gap: 12px; }
+        .stx-logo-image { width: 154px; }
+        .stx-brand-divider { height: 26px; }
+        .stx-section-name { font-size: 8px; letter-spacing: .11em; }
+        .stx-menu-open { width: 38px; height: 38px; }
         .stx-site-menu { display: block; overflow-y: auto; background: var(--stx-green); }
         .stx-menu-brand-panel { min-height: 210px; padding: 78px 24px 28px; justify-content: flex-end; }
         .stx-menu-brand-panel::before { top: -80px; font-size: 330px; }
@@ -562,15 +567,13 @@
       @media (max-width: 460px) {
         .stx-brand { gap: 10px; }
         .stx-brand-divider, .stx-section-name { display: none; }
-        .stx-logo-image { width: 175px; }
+        .stx-logo-image { width: 142px; }
       }
       @media (prefers-reduced-motion: reduce) {
         .stx-site-menu, .stx-menu-open, .stx-menu-nav a { transition: none; }
       }
     </style>
     <!-- STX_HEADER_CSS_END -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
 </head>
 <body>
 <!-- STX_HEADER_HTML_START -->
@@ -607,6 +610,7 @@
       </div>
     </aside>
     <!-- STX_HEADER_HTML_END -->
+
 
     <div class="topbar">
       <div class="titlewrap">
@@ -647,6 +651,7 @@
       <div class='pr-parade-list'><span class='pr-parade-entry'><a href='../athletes/ryan_guenthner.html'>Ryan Guenthner</a>, <span class='pr-time'>15:44.58</span></span>; <span class='pr-parade-entry'><a href='../athletes/patrick_schaefer.html'>Patrick Schaefer</a>, <span class='pr-time'>15:45.79</span></span>; <span class='pr-parade-entry'><a href='../athletes/zachary_larkin.html'>Zachary Larkin</a>, <span class='pr-time'>15:49.86</span></span></div>
     </div>
     <div class='card'><h2>5000 Meters</h2><div class="table-wrap"><table><thead><tr><th>Athlete</th><th>Team</th><th>Group</th><th>Place</th><th class="dimmed-pr">Indoor PR</th><th>Outdoor PR</th><th>Result</th></tr></thead><tbody><tr class="non-stx-row"><td>Brennan Fields</td><td>Madison Central</td><td>1</td><td>1</td><td class="dimmed-pr"></td><td></td><td>15:27.20</td></tr><tr class="non-stx-row"><td>Jarit Perkins</td><td>Barr-Reeve High School</td><td>1</td><td>2</td><td class="dimmed-pr"></td><td></td><td>15:34.45</td></tr><tr class="non-stx-row"><td>Alex Mortimer</td><td>Tates Creek</td><td>1</td><td>3</td><td class="dimmed-pr"></td><td></td><td>15:34.93</td></tr><tr><td><a href='../athletes/ryan_guenthner.html'>Ryan Guenthner</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>4</td><td class="dimmed-pr"></td><td></td><td class="pr">15:44.58</td></tr><tr><td><a href='../athletes/patrick_schaefer.html'>Patrick Schaefer</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>5</td><td class="dimmed-pr"></td><td>15:49.80</td><td class="pr">15:45.79</td></tr><tr class="non-stx-row"><td>Keeton Thornsberry</td><td>Holy Cross (Louisville)</td><td>1</td><td>6</td><td class="dimmed-pr"></td><td></td><td>15:46.94</td></tr><tr><td><a href='../athletes/zachary_larkin.html'>Zachary Larkin</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>7</td><td class="dimmed-pr"></td><td>15:58.60</td><td class="pr">15:49.86</td></tr><tr class="non-stx-row"><td>Adam Huff</td><td>Lexington Christian</td><td>1</td><td>8</td><td class="dimmed-pr"></td><td></td><td>15:51.69</td></tr><tr class="non-stx-row"><td>Kyle Sprague</td><td>Tates Creek</td><td>1</td><td>9</td><td class="dimmed-pr"></td><td></td><td>15:56.41</td></tr><tr class="non-stx-row"><td>Trevor Warren</td><td>Trinity (Louisville)</td><td>1</td><td>10</td><td class="dimmed-pr"></td><td></td><td>16:03.24</td></tr><tr class="non-stx-row"><td>Yared Nuguse</td><td>Dupont Manual</td><td>1</td><td>11</td><td class="dimmed-pr"></td><td></td><td>16:12.07</td></tr><tr><td><a href='../athletes/cooper_marchal.html'>Cooper Marchal</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>12</td><td class="dimmed-pr"></td><td>16:12.90</td><td>16:15.93</td></tr><tr class="non-stx-row"><td>Christian Cole</td><td>Lexington Catholic</td><td>1</td><td>13</td><td class="dimmed-pr"></td><td></td><td>16:22.18</td></tr><tr class="non-stx-row"><td>Jack Meredith</td><td>Trinity (Louisville)</td><td>1</td><td>14</td><td class="dimmed-pr"></td><td></td><td>16:22.45</td></tr><tr class="non-stx-row"><td>Jack Baum</td><td>Trinity (Louisville)</td><td>1</td><td>15</td><td class="dimmed-pr"></td><td></td><td>16:29.99</td></tr><tr class="non-stx-row"><td>Emerson Wells</td><td>Eastern</td><td>1</td><td>16</td><td class="dimmed-pr"></td><td></td><td>16:31.08</td></tr><tr class="non-stx-row"><td>Tyler Dobbs</td><td>Daviess County</td><td>1</td><td>17</td><td class="dimmed-pr"></td><td></td><td>16:32.26</td></tr><tr class="non-stx-row"><td>Hunter Kurz</td><td>Daviess County</td><td>1</td><td>18</td><td class="dimmed-pr"></td><td></td><td>16:37.16</td></tr><tr class="non-stx-row"><td>Glavin Swain</td><td>Trinity (Louisville)</td><td>1</td><td>19</td><td class="dimmed-pr"></td><td></td><td>16:41.24</td></tr><tr class="non-stx-row"><td>Koby Ezell</td><td>Daviess County</td><td>1</td><td>20</td><td class="dimmed-pr"></td><td></td><td>16:45.34</td></tr><tr><td><a href='../athletes/joey_schrepferman.html'>Joey Schrepferman</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>21</td><td class="dimmed-pr"></td><td>16:21.00</td><td>16:50.12</td></tr><tr class="non-stx-row"><td>Donta Millay</td><td>Daviess County</td><td>1</td><td>22</td><td class="dimmed-pr"></td><td></td><td>16:50.39</td></tr><tr class="non-stx-row"><td>Caleb Joy</td><td>Lafayette</td><td>1</td><td>23</td><td class="dimmed-pr"></td><td></td><td>17:30.07</td></tr></tbody></table></div></div><div class="footer">Generated at <code>2026-08-24 11:46:21</code> from <code>C:\Users\Bob\OneDrive\StX_XC_Track_V2\data\stx_track.db</code></div>
+
 <!-- STX_HEADER_SCRIPT_START -->
     <script>
       (() => {

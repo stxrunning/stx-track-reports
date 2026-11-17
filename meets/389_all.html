@@ -348,7 +348,10 @@
       }
     </style>
     
-  <!-- STX_HEADER_CSS_START -->
+  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+<!-- STX_HEADER_CSS_START -->
     <style>
       @import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,600;9..40,700&family=Libre+Caslon+Text:ital,wght@0,400;1,400&display=swap');
 
@@ -544,12 +547,14 @@
       .stx-menu-feedback:hover, .stx-menu-feedback:focus-visible { background: transparent; }
       .stx-school-link { color: var(--stx-dark-green) !important; font-size: 13px; font-weight: 700; }
       @media (max-width: 780px) {
-        .stx-site-header { margin-bottom: 22px; }
-        .stx-header-inner { min-height: 68px; padding: 9px 16px; }
-        .stx-logo-image { width: 190px; }
-        .stx-brand-divider { height: 32px; }
-        .stx-section-name { font-size: 9px; }
-        .stx-menu-open { width: 42px; height: 42px; }
+        /* The header is intentionally compact on phones, where it is present
+           on every report page and should not displace the actual results. */
+        .stx-site-header { margin-bottom: 16px; }
+        .stx-header-inner { min-height: 54px; padding: 7px 14px; gap: 12px; }
+        .stx-logo-image { width: 154px; }
+        .stx-brand-divider { height: 26px; }
+        .stx-section-name { font-size: 8px; letter-spacing: .11em; }
+        .stx-menu-open { width: 38px; height: 38px; }
         .stx-site-menu { display: block; overflow-y: auto; background: var(--stx-green); }
         .stx-menu-brand-panel { min-height: 210px; padding: 78px 24px 28px; justify-content: flex-end; }
         .stx-menu-brand-panel::before { top: -80px; font-size: 330px; }
@@ -562,15 +567,13 @@
       @media (max-width: 460px) {
         .stx-brand { gap: 10px; }
         .stx-brand-divider, .stx-section-name { display: none; }
-        .stx-logo-image { width: 175px; }
+        .stx-logo-image { width: 142px; }
       }
       @media (prefers-reduced-motion: reduce) {
         .stx-site-menu, .stx-menu-open, .stx-menu-nav a { transition: none; }
       }
     </style>
     <!-- STX_HEADER_CSS_END -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
 </head>
 <body>
 <!-- STX_HEADER_HTML_START -->
@@ -607,6 +610,7 @@
       </div>
     </aside>
     <!-- STX_HEADER_HTML_END -->
+
 
     <div class="topbar">
       <div class="titlewrap">
@@ -647,6 +651,7 @@
       <div class='pr-parade-list'><span class='pr-parade-entry'><a href='../athletes/luke_napier.html'>Luke Napier</a>, <span class='pr-time'>5:03.73</span></span>; <span class='pr-parade-entry'><a href='../athletes/talbott_dilger.html'>Talbott Dilger</a>, <span class='pr-time'>5:06.95</span></span>; <span class='pr-parade-entry'><a href='../athletes/zach_blincoe.html'>Zach Blincoe</a>, <span class='pr-time'>5:25.70</span></span>; <span class='pr-parade-entry'><a href='../athletes/nolan_hester.html'>Nolan Hester</a>, <span class='pr-time'>8:55.51</span></span>; <span class='pr-parade-entry'><a href='../athletes/matthew_wantland.html'>Matthew Wantland</a>, <span class='pr-time'>9:22.57</span></span>; <span class='pr-parade-entry'><a href='../athletes/christian_smith.html'>Christian Smith</a>, <span class='pr-time'>9:46.31</span></span></div>
     </div>
     <div class='card'><h2>1 Mile</h2><div class="table-wrap"><table><thead><tr><th>Athlete</th><th>Team</th><th>Group</th><th>Place</th><th>Indoor PR</th><th class="dimmed-pr">Outdoor PR</th><th>Result</th></tr></thead><tbody><tr><td><a href='../athletes/matthew_wantland.html'>Matthew Wantland</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>1</td><td>4:39.78</td><td class="dimmed-pr">4:57.07</td><td>4:50.03</td></tr><tr class="non-stx-row"><td>Marcus Abel</td><td>Central Hardin</td><td>1</td><td>2</td><td></td><td class="dimmed-pr"></td><td>4:53.77</td></tr><tr class="non-stx-row"><td>Samuel Bennett</td><td>Central Hardin</td><td>1</td><td>3</td><td></td><td class="dimmed-pr"></td><td>4:54.05</td></tr><tr><td><a href='../athletes/luke_napier.html'>Luke Napier</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>4</td><td></td><td class="dimmed-pr">5:39.74</td><td class="pr">5:03.73</td></tr><tr><td><a href='../athletes/talbott_dilger.html'>Talbott Dilger</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>5</td><td></td><td class="dimmed-pr"></td><td class="pr">5:06.95</td></tr><tr class="non-stx-row"><td>Jackson Hughes</td><td>Thomas Nelson</td><td>1</td><td>6</td><td></td><td class="dimmed-pr"></td><td>5:11.60</td></tr><tr class="non-stx-row"><td>Michael Carnell</td><td>Meade County</td><td>1</td><td>7</td><td></td><td class="dimmed-pr"></td><td>5:14.22</td></tr><tr class="non-stx-row"><td>Brock Angell</td><td>Central Hardin</td><td>1</td><td>8</td><td></td><td class="dimmed-pr"></td><td>5:18.72</td></tr><tr class="non-stx-row"><td>Fidel Garcia</td><td>Meade County</td><td>1</td><td>9</td><td></td><td class="dimmed-pr"></td><td>5:19.28</td></tr><tr class="non-stx-row"><td>Benji Hobbs</td><td>Central Hardin</td><td>1</td><td>10</td><td></td><td class="dimmed-pr"></td><td>5:21.21</td></tr><tr><td><a href='../athletes/zach_blincoe.html'>Zach Blincoe</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>11</td><td></td><td class="dimmed-pr"></td><td class="pr">5:25.70</td></tr><tr class="non-stx-row"><td>JT Livers</td><td>Thomas Nelson</td><td>1</td><td>12</td><td></td><td class="dimmed-pr"></td><td>5:25.75</td></tr><tr class="non-stx-row"><td>Cameron Mattingly</td><td>Thomas Nelson</td><td>1</td><td>13</td><td></td><td class="dimmed-pr"></td><td>5:34.26</td></tr><tr class="non-stx-row"><td>Kiefer Court</td><td>Marshall County</td><td>1</td><td>14</td><td></td><td class="dimmed-pr"></td><td>5:37.36</td></tr><tr class="non-stx-row"><td>Aiden Muncy</td><td>Meade County</td><td>1</td><td>15</td><td></td><td class="dimmed-pr"></td><td>5:38.58</td></tr><tr class="non-stx-row"><td>Jett Sealock</td><td>Marshall County</td><td>1</td><td>16</td><td></td><td class="dimmed-pr"></td><td>5:38.58</td></tr><tr class="non-stx-row"><td>Daylan Miller</td><td>Thomas Nelson</td><td>1</td><td>17</td><td></td><td class="dimmed-pr"></td><td>5:59.93</td></tr><tr class="non-stx-row"><td>Sam Mouser</td><td>Thomas Nelson</td><td>1</td><td>18</td><td></td><td class="dimmed-pr"></td><td>6:04.20</td></tr><tr class="non-stx-row"><td>Noah Hale</td><td>Central Hardin</td><td>1</td><td>19</td><td></td><td class="dimmed-pr"></td><td>6:36.55</td></tr><tr class="non-stx-row"><td>Carter Whitt</td><td>Meade County</td><td>1</td><td>20</td><td></td><td class="dimmed-pr"></td><td>7:23.24</td></tr></tbody></table></div></div><div class='card'><h2>1500 Meters</h2><div class="table-wrap"><table><thead><tr><th>Athlete</th><th>Team</th><th>Group</th><th>Place</th><th>Indoor PR</th><th class="dimmed-pr">Outdoor PR</th><th>Result</th></tr></thead><tbody><tr class="non-stx-row"><td>Peyton Nash</td><td>Grayson County</td><td>1</td><td>1</td><td></td><td class="dimmed-pr"></td><td>4:27.64</td></tr><tr class="non-stx-row"><td>Marcus Abel</td><td>Central Hardin</td><td>1</td><td>2</td><td></td><td class="dimmed-pr"></td><td>4:38.33</td></tr><tr class="non-stx-row"><td>Tanner Hayes</td><td>Grayson County</td><td>1</td><td>3</td><td></td><td class="dimmed-pr"></td><td>4:47.46</td></tr><tr class="non-stx-row"><td>Houston Brooks</td><td>Grayson County</td><td>1</td><td>4</td><td></td><td class="dimmed-pr"></td><td>4:52.20</td></tr><tr class="non-stx-row"><td>Joseph Beasley</td><td>Grayson County</td><td>1</td><td>5</td><td></td><td class="dimmed-pr"></td><td>4:56.84</td></tr><tr class="non-stx-row"><td>Lucas Gallagher</td><td>Grayson County</td><td>1</td><td>6</td><td></td><td class="dimmed-pr"></td><td>5:02.86</td></tr><tr class="non-stx-row"><td>Liam Leake</td><td>Thomas Nelson</td><td>1</td><td>7</td><td></td><td class="dimmed-pr"></td><td>5:38.46</td></tr></tbody></table></div></div><div class='card'><h2>3000 Meters</h2><div class="table-wrap"><table><thead><tr><th>Athlete</th><th>Team</th><th>Group</th><th>Place</th><th>Indoor PR</th><th class="dimmed-pr">Outdoor PR</th><th>Result</th></tr></thead><tbody><tr><td><a href='../athletes/nolan_hester.html'>Nolan Hester</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>1</td><td>9:01.05</td><td class="dimmed-pr">9:17.80</td><td class="pr">8:55.51</td></tr><tr><td><a href='../athletes/ryan_burchett.html'>Ryan Burchett</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>2</td><td>9:13.67</td><td class="dimmed-pr">9:56.90</td><td>9:22.20</td></tr><tr><td><a href='../athletes/matthew_wantland.html'>Matthew Wantland</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>3</td><td>9:25.20</td><td class="dimmed-pr">10:12.80</td><td class="pr">9:22.57</td></tr><tr class="non-stx-row"><td>Samuel Bennett</td><td>Central Hardin</td><td>1</td><td>4</td><td></td><td class="dimmed-pr"></td><td>9:33.53</td></tr><tr class="non-stx-row"><td>Ethan McCarty</td><td>Marshall County</td><td>1</td><td>5</td><td></td><td class="dimmed-pr"></td><td>9:33.59</td></tr><tr><td><a href='../athletes/christian_smith.html'>Christian Smith</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>6</td><td></td><td class="dimmed-pr">10:33.10</td><td class="pr">9:46.31</td></tr><tr class="non-stx-row"><td>Jared Fairbanks</td><td>Central Hardin</td><td>1</td><td>7</td><td></td><td class="dimmed-pr"></td><td>10:34.36</td></tr><tr class="non-stx-row"><td>Cameron Mattingly</td><td>Thomas Nelson</td><td>1</td><td>8</td><td></td><td class="dimmed-pr"></td><td>10:48.67</td></tr><tr class="non-stx-row"><td>Luke Wilson</td><td>Meade County</td><td>1</td><td>9</td><td></td><td class="dimmed-pr"></td><td>10:58.45</td></tr><tr class="non-stx-row"><td>Lance Garner</td><td>Meade County</td><td>1</td><td>10</td><td></td><td class="dimmed-pr"></td><td>10:58.57</td></tr><tr class="non-stx-row"><td>Ilya O'Bryan</td><td>Marshall County</td><td>1</td><td>11</td><td></td><td class="dimmed-pr"></td><td>11:02.52</td></tr><tr class="non-stx-row"><td>Sawyer Collins</td><td>Marshall County</td><td>1</td><td>12</td><td></td><td class="dimmed-pr"></td><td>11:23.72</td></tr><tr class="non-stx-row"><td>Jayden Gonsalves</td><td>Meade County</td><td>1</td><td>13</td><td></td><td class="dimmed-pr"></td><td>11:38.39</td></tr><tr class="non-stx-row"><td>Colin Butler</td><td>Meade County</td><td>1</td><td>14</td><td></td><td class="dimmed-pr"></td><td>11:46.76</td></tr></tbody></table></div></div><div class='card'><h2>5000 Meters</h2><div class="table-wrap"><table><thead><tr><th>Athlete</th><th>Team</th><th>Group</th><th>Place</th><th>Indoor PR</th><th class="dimmed-pr">Outdoor PR</th><th>Result</th></tr></thead><tbody><tr class="non-stx-row"><td>Samuel Bennett</td><td>Central Hardin</td><td>1</td><td>1</td><td></td><td class="dimmed-pr"></td><td>16:23.29</td></tr><tr class="non-stx-row"><td>Duke Wilson</td><td>Meade County</td><td>1</td><td>2</td><td></td><td class="dimmed-pr"></td><td>17:33.99</td></tr><tr class="non-stx-row"><td>Jackson Hughes</td><td>Thomas Nelson</td><td>1</td><td>3</td><td></td><td class="dimmed-pr"></td><td>17:41.78</td></tr><tr class="non-stx-row"><td>Cameron Mattingly</td><td>Thomas Nelson</td><td>1</td><td>4</td><td></td><td class="dimmed-pr"></td><td>18:18.88</td></tr><tr class="non-stx-row"><td>Jared Fairbanks</td><td>Central Hardin</td><td>1</td><td>5</td><td></td><td class="dimmed-pr"></td><td>18:32.61</td></tr><tr class="non-stx-row"><td>JT Livers</td><td>Thomas Nelson</td><td>1</td><td>6</td><td></td><td class="dimmed-pr"></td><td>19:38.81</td></tr><tr class="non-stx-row"><td>Benji Hobbs</td><td>Central Hardin</td><td>1</td><td>7</td><td></td><td class="dimmed-pr"></td><td>19:45.24</td></tr><tr class="non-stx-row"><td>Sam Mouser</td><td>Thomas Nelson</td><td>1</td><td>8</td><td></td><td class="dimmed-pr"></td><td>20:11.49</td></tr><tr class="non-stx-row"><td>Tyler Payne</td><td>Central Hardin</td><td>1</td><td>9</td><td></td><td class="dimmed-pr"></td><td>20:45.13</td></tr><tr class="non-stx-row"><td>Daylan Miller</td><td>Thomas Nelson</td><td>1</td><td>10</td><td></td><td class="dimmed-pr"></td><td>21:15.70</td></tr></tbody></table></div></div><div class="footer">Generated at <code>2026-08-24 11:33:07</code> from <code>C:\Users\Bob\OneDrive\StX_XC_Track_V2\data\stx_track.db</code></div>
+
 <!-- STX_HEADER_SCRIPT_START -->
     <script>
       (() => {

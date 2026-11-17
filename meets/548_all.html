@@ -348,7 +348,10 @@
       }
     </style>
     
-  <!-- STX_HEADER_CSS_START -->
+  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+<!-- STX_HEADER_CSS_START -->
     <style>
       @import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,600;9..40,700&family=Libre+Caslon+Text:ital,wght@0,400;1,400&display=swap');
 
@@ -544,12 +547,14 @@
       .stx-menu-feedback:hover, .stx-menu-feedback:focus-visible { background: transparent; }
       .stx-school-link { color: var(--stx-dark-green) !important; font-size: 13px; font-weight: 700; }
       @media (max-width: 780px) {
-        .stx-site-header { margin-bottom: 22px; }
-        .stx-header-inner { min-height: 68px; padding: 9px 16px; }
-        .stx-logo-image { width: 190px; }
-        .stx-brand-divider { height: 32px; }
-        .stx-section-name { font-size: 9px; }
-        .stx-menu-open { width: 42px; height: 42px; }
+        /* The header is intentionally compact on phones, where it is present
+           on every report page and should not displace the actual results. */
+        .stx-site-header { margin-bottom: 16px; }
+        .stx-header-inner { min-height: 54px; padding: 7px 14px; gap: 12px; }
+        .stx-logo-image { width: 154px; }
+        .stx-brand-divider { height: 26px; }
+        .stx-section-name { font-size: 8px; letter-spacing: .11em; }
+        .stx-menu-open { width: 38px; height: 38px; }
         .stx-site-menu { display: block; overflow-y: auto; background: var(--stx-green); }
         .stx-menu-brand-panel { min-height: 210px; padding: 78px 24px 28px; justify-content: flex-end; }
         .stx-menu-brand-panel::before { top: -80px; font-size: 330px; }
@@ -562,15 +567,13 @@
       @media (max-width: 460px) {
         .stx-brand { gap: 10px; }
         .stx-brand-divider, .stx-section-name { display: none; }
-        .stx-logo-image { width: 175px; }
+        .stx-logo-image { width: 142px; }
       }
       @media (prefers-reduced-motion: reduce) {
         .stx-site-menu, .stx-menu-open, .stx-menu-nav a { transition: none; }
       }
     </style>
     <!-- STX_HEADER_CSS_END -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
 </head>
 <body>
 <!-- STX_HEADER_HTML_START -->
@@ -607,6 +610,7 @@
       </div>
     </aside>
     <!-- STX_HEADER_HTML_END -->
+
 
     <div class="topbar">
       <div class="titlewrap">
@@ -647,6 +651,7 @@
       <div class='pr-parade-list'><span class='pr-parade-entry'><a href='../athletes/thomas_weber.html'>Thomas Weber</a>, <span class='pr-time'>9:39.70</span></span>; <span class='pr-parade-entry'><a href='../athletes/tristan_hindorff.html'>Tristan Hindorff</a>, <span class='pr-time'>9:42.70</span></span>; <span class='pr-parade-entry'><a href='../athletes/whit_ruml.html'>Whit Ruml</a>, <span class='pr-time'>10:00.50</span></span>; <span class='pr-parade-entry'><a href='../athletes/nick_sanders.html'>Nick Sanders</a>, <span class='pr-time'>10:14.20</span></span>; <span class='pr-parade-entry'><a href='../athletes/sam_schweickhardt.html'>Sam Schweickhardt</a>, <span class='pr-time'>10:22.00</span></span>; <span class='pr-parade-entry'><a href='../athletes/anthony_passafiume.html'>Anthony Passafiume</a>, <span class='pr-time'>10:25.70</span></span>; <span class='pr-parade-entry'><a href='../athletes/vince_rink.html'>Vince Rink</a>, <span class='pr-time'>10:26.20</span></span>; <span class='pr-parade-entry'><a href='../athletes/hayden_willman.html'>Hayden Willman</a>, <span class='pr-time'>10:28.20</span></span>; <span class='pr-parade-entry'><a href='../athletes/nick_zoglman.html'>Nick Zoglman</a>, <span class='pr-time'>11:00.80</span></span>; <span class='pr-parade-entry'><a href='../athletes/william_korte.html'>William Korte</a>, <span class='pr-time'>11:14.90</span></span>; <span class='pr-parade-entry'><a href='../athletes/peter_white.html'>Peter White</a>, <span class='pr-time'>12:13.30</span></span>; <span class='pr-parade-entry'><a href='../athletes/henry_white.html'>Henry White</a>, <span class='pr-time'>14:12.00</span></span></div>
     </div>
     <div class='card'><h2>3200 Meters</h2><div class="table-wrap"><table><thead><tr><th>Athlete</th><th>Team</th><th>Group</th><th>Place</th><th class="dimmed-pr">Indoor PR</th><th>Outdoor PR</th><th>Result</th></tr></thead><tbody><tr><td><a href='../athletes/thomas_weber.html'>Thomas Weber</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>1</td><td class="dimmed-pr"></td><td>9:51.30</td><td class="pr">9:39.70</td></tr><tr><td><a href='../athletes/tristan_hindorff.html'>Tristan Hindorff</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>2</td><td class="dimmed-pr"></td><td>9:49.34</td><td class="pr">9:42.70</td></tr><tr><td><a href='../athletes/whit_ruml.html'>Whit Ruml</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>3</td><td class="dimmed-pr"></td><td>10:23.72</td><td class="pr">10:00.50</td></tr><tr><td><a href='../athletes/nick_sanders.html'>Nick Sanders</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>4</td><td class="dimmed-pr"></td><td>11:16.99</td><td class="pr">10:14.20</td></tr><tr><td><a href='../athletes/sam_schweickhardt.html'>Sam Schweickhardt</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>5</td><td class="dimmed-pr"></td><td>10:53.85</td><td class="pr">10:22.00</td></tr><tr><td><a href='../athletes/anthony_passafiume.html'>Anthony Passafiume</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>6</td><td class="dimmed-pr"></td><td>10:59.46</td><td class="pr">10:25.70</td></tr><tr><td><a href='../athletes/vince_rink.html'>Vince Rink</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>7</td><td class="dimmed-pr"></td><td>10:46.95</td><td class="pr">10:26.20</td></tr><tr><td><a href='../athletes/hayden_willman.html'>Hayden Willman</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>8</td><td class="dimmed-pr"></td><td>11:04.48</td><td class="pr">10:28.20</td></tr><tr><td><a href='../athletes/graham_brown.html'>Graham Brown</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>9</td><td class="dimmed-pr"></td><td>10:52.00</td><td>10:58.10</td></tr><tr><td><a href='../athletes/nick_zoglman.html'>Nick Zoglman</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>10</td><td class="dimmed-pr"></td><td>11:10.68</td><td class="pr">11:00.80</td></tr><tr><td><a href='../athletes/william_korte.html'>William Korte</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>11</td><td class="dimmed-pr"></td><td>11:19.76</td><td class="pr">11:14.90</td></tr><tr><td><a href='../athletes/henry_pudlo.html'>Henry Pudlo</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>12</td><td class="dimmed-pr"></td><td>10:55.50</td><td>11:26.50</td></tr><tr><td><a href='../athletes/peter_white.html'>Peter White</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>13</td><td class="dimmed-pr"></td><td></td><td class="pr">12:13.30</td></tr><tr><td><a href='../athletes/grant_lemmenes.html'>Grant Lemmenes</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>14</td><td class="dimmed-pr"></td><td>13:35.16</td><td>13:42.90</td></tr><tr><td><a href='../athletes/henry_white.html'>Henry White</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>15</td><td class="dimmed-pr"></td><td></td><td class="pr">14:12.00</td></tr></tbody></table></div></div><div class="footer">Generated at <code>2026-08-24 11:24:35</code> from <code>C:\Users\Bob\OneDrive\StX_XC_Track_V2\data\stx_track.db</code></div>
+
 <!-- STX_HEADER_SCRIPT_START -->
     <script>
       (() => {

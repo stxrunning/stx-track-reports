@@ -348,7 +348,10 @@
       }
     </style>
     
-  <!-- STX_HEADER_CSS_START -->
+  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+<!-- STX_HEADER_CSS_START -->
     <style>
       @import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,600;9..40,700&family=Libre+Caslon+Text:ital,wght@0,400;1,400&display=swap');
 
@@ -544,12 +547,14 @@
       .stx-menu-feedback:hover, .stx-menu-feedback:focus-visible { background: transparent; }
       .stx-school-link { color: var(--stx-dark-green) !important; font-size: 13px; font-weight: 700; }
       @media (max-width: 780px) {
-        .stx-site-header { margin-bottom: 22px; }
-        .stx-header-inner { min-height: 68px; padding: 9px 16px; }
-        .stx-logo-image { width: 190px; }
-        .stx-brand-divider { height: 32px; }
-        .stx-section-name { font-size: 9px; }
-        .stx-menu-open { width: 42px; height: 42px; }
+        /* The header is intentionally compact on phones, where it is present
+           on every report page and should not displace the actual results. */
+        .stx-site-header { margin-bottom: 16px; }
+        .stx-header-inner { min-height: 54px; padding: 7px 14px; gap: 12px; }
+        .stx-logo-image { width: 154px; }
+        .stx-brand-divider { height: 26px; }
+        .stx-section-name { font-size: 8px; letter-spacing: .11em; }
+        .stx-menu-open { width: 38px; height: 38px; }
         .stx-site-menu { display: block; overflow-y: auto; background: var(--stx-green); }
         .stx-menu-brand-panel { min-height: 210px; padding: 78px 24px 28px; justify-content: flex-end; }
         .stx-menu-brand-panel::before { top: -80px; font-size: 330px; }
@@ -562,15 +567,13 @@
       @media (max-width: 460px) {
         .stx-brand { gap: 10px; }
         .stx-brand-divider, .stx-section-name { display: none; }
-        .stx-logo-image { width: 175px; }
+        .stx-logo-image { width: 142px; }
       }
       @media (prefers-reduced-motion: reduce) {
         .stx-site-menu, .stx-menu-open, .stx-menu-nav a { transition: none; }
       }
     </style>
     <!-- STX_HEADER_CSS_END -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
 </head>
 <body>
 <!-- STX_HEADER_HTML_START -->
@@ -607,6 +610,7 @@
       </div>
     </aside>
     <!-- STX_HEADER_HTML_END -->
+
 
     <div class="topbar">
       <div class="titlewrap">
@@ -647,6 +651,7 @@
       <div class='pr-parade-list'><span class='pr-parade-entry'><a href='../athletes/tristan_hindorff.html'>Tristan Hindorff</a>, <span class='pr-time'>16:09.53</span></span>; <span class='pr-parade-entry'><a href='../athletes/luke_napier.html'>Luke Napier</a>, <span class='pr-time'>16:27.59</span></span>; <span class='pr-parade-entry'><a href='../athletes/thomas_weber.html'>Thomas Weber</a>, <span class='pr-time'>16:55.98</span></span></div>
     </div>
     <div class='card'><h2>5000 Meters</h2><div class="table-wrap"><table><thead><tr><th>Athlete</th><th>Team</th><th>Group</th><th>Place</th><th class="dimmed-pr">Indoor PR</th><th>Outdoor PR</th><th>Result</th></tr></thead><tbody><tr class="non-stx-row"><td>Philip Lamartiniere</td><td>Tates Creek</td><td>1</td><td>1</td><td class="dimmed-pr"></td><td></td><td>15:03.30</td></tr><tr class="non-stx-row"><td>Lane Hoyes</td><td>Thomas Nelson</td><td>1</td><td>2</td><td class="dimmed-pr"></td><td></td><td>15:10.36</td></tr><tr class="non-stx-row"><td>Joseph Impellitteri</td><td>Conner</td><td>1</td><td>3</td><td class="dimmed-pr"></td><td></td><td>15:11.17</td></tr><tr class="non-stx-row"><td>Brady Masters</td><td>Madison Central</td><td>1</td><td>4</td><td class="dimmed-pr"></td><td></td><td>15:12.45</td></tr><tr class="non-stx-row"><td>George Johnson</td><td>Conner</td><td>1</td><td>5</td><td class="dimmed-pr"></td><td></td><td>15:12.82</td></tr><tr class="non-stx-row"><td>Thomas Ashby</td><td>Apollo</td><td>1</td><td>6</td><td class="dimmed-pr"></td><td></td><td>15:14.20</td></tr><tr class="non-stx-row"><td>Riku Sugie</td><td>Thomas Nelson</td><td>1</td><td>7</td><td class="dimmed-pr"></td><td></td><td>15:23.39</td></tr><tr class="non-stx-row"><td>Drew Moore</td><td>Conner</td><td>1</td><td>8</td><td class="dimmed-pr"></td><td></td><td>15:31.21</td></tr><tr class="non-stx-row"><td>Ryan Hanak</td><td>Conner</td><td>1</td><td>9</td><td class="dimmed-pr"></td><td></td><td>15:37.73</td></tr><tr class="non-stx-row"><td>Reeve VanDemark</td><td>Tates Creek</td><td>1</td><td>10</td><td class="dimmed-pr"></td><td></td><td>15:44.01</td></tr><tr class="non-stx-row"><td>Noah Mathews</td><td>Paul Dunbar</td><td>1</td><td>11</td><td class="dimmed-pr"></td><td></td><td>15:47.98</td></tr><tr class="non-stx-row"><td>Dylan Ellis</td><td>Eastern</td><td>1</td><td>12</td><td class="dimmed-pr"></td><td></td><td>15:54.35</td></tr><tr class="non-stx-row"><td>Josiah Claunch</td><td>Highlands Latin</td><td>1</td><td>13</td><td class="dimmed-pr"></td><td></td><td>15:55.91</td></tr><tr class="non-stx-row"><td>Maxwell Young</td><td>Shelby County</td><td>1</td><td>14</td><td class="dimmed-pr"></td><td></td><td>16:05.75</td></tr><tr><td><a href='../athletes/tristan_hindorff.html'>Tristan Hindorff</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>15</td><td class="dimmed-pr"></td><td>16:37.20</td><td class="pr">16:09.53</td></tr><tr class="non-stx-row"><td>Owen McGreevy</td><td>Trinity (Louisville)</td><td>1</td><td>16</td><td class="dimmed-pr"></td><td></td><td>16:13.07</td></tr><tr class="non-stx-row"><td>Drew Burden</td><td>Madisonville North Hopkins</td><td>1</td><td>17</td><td class="dimmed-pr"></td><td></td><td>16:13.57</td></tr><tr class="non-stx-row"><td>Jase Crume</td><td>Woodford County</td><td>1</td><td>18</td><td class="dimmed-pr"></td><td></td><td>16:17.43</td></tr><tr class="non-stx-row"><td>Logan Warth</td><td>Conner</td><td>1</td><td>19</td><td class="dimmed-pr"></td><td></td><td>16:18.45</td></tr><tr class="non-stx-row"><td>Elliott Crumbo</td><td>Trinity (Louisville)</td><td>1</td><td>20</td><td class="dimmed-pr"></td><td></td><td>16:18.92</td></tr><tr><td><a href='../athletes/luke_napier.html'>Luke Napier</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>21</td><td class="dimmed-pr"></td><td>16:38.30</td><td class="pr">16:27.59</td></tr><tr class="non-stx-row"><td>Daniel Whitaker</td><td>Lafayette</td><td>1</td><td>22</td><td class="dimmed-pr"></td><td></td><td>16:27.65</td></tr><tr class="non-stx-row"><td>Nathan Hopper</td><td>Conner</td><td>1</td><td>23</td><td class="dimmed-pr"></td><td></td><td>16:27.84</td></tr><tr class="non-stx-row"><td>Tyler Bass</td><td>Bullitt East</td><td>1</td><td>24</td><td class="dimmed-pr"></td><td></td><td>16:28.13</td></tr><tr class="non-stx-row"><td>Eli Oetken</td><td>Trinity (Louisville)</td><td>1</td><td>25</td><td class="dimmed-pr"></td><td></td><td>16:29.99</td></tr><tr class="non-stx-row"><td>Jared Sandfoss</td><td>CKY Homeschool</td><td>1</td><td>26</td><td class="dimmed-pr"></td><td></td><td>16:30.21</td></tr><tr class="non-stx-row"><td>James Schroeder</td><td>Eastern</td><td>1</td><td>27</td><td class="dimmed-pr"></td><td></td><td>16:30.38</td></tr><tr class="non-stx-row"><td>Henry Robinson</td><td>Trinity (Louisville)</td><td>1</td><td>28</td><td class="dimmed-pr"></td><td></td><td>16:30.45</td></tr><tr class="non-stx-row"><td>Tedros (Tedi) Henderson</td><td>Atherton</td><td>1</td><td>29</td><td class="dimmed-pr"></td><td></td><td>16:30.90</td></tr><tr class="non-stx-row"><td>Noah Miller</td><td>Cooper</td><td>1</td><td>30</td><td class="dimmed-pr"></td><td></td><td>16:32.48</td></tr><tr class="non-stx-row"><td>Stephen Lochmueller</td><td>Madison Central</td><td>1</td><td>31</td><td class="dimmed-pr"></td><td></td><td>16:37.15</td></tr><tr class="non-stx-row"><td>Isaac Riggs</td><td>Bethlehem</td><td>1</td><td>32</td><td class="dimmed-pr"></td><td></td><td>16:42.32</td></tr><tr class="non-stx-row"><td>Evan Patel</td><td>North Oldham</td><td>1</td><td>33</td><td class="dimmed-pr"></td><td></td><td>16:47.98</td></tr><tr class="non-stx-row"><td>Ethan McElfresh</td><td>CKY Homeschool</td><td>1</td><td>34</td><td class="dimmed-pr"></td><td></td><td>16:51.15</td></tr><tr><td><a href='../athletes/thomas_weber.html'>Thomas Weber</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>35</td><td class="dimmed-pr"></td><td>17:19.00</td><td class="pr">16:55.98</td></tr><tr class="non-stx-row"><td>Ben Crask</td><td>South Oldham</td><td>1</td><td>36</td><td class="dimmed-pr"></td><td></td><td>16:56.68</td></tr><tr class="non-stx-row"><td>Andrew Fritz</td><td>Lafayette</td><td>1</td><td>37</td><td class="dimmed-pr"></td><td></td><td>17:02.33</td></tr><tr class="non-stx-row"><td>Sean Crady</td><td>Oldham County</td><td>1</td><td>38</td><td class="dimmed-pr"></td><td></td><td>17:02.88</td></tr><tr class="non-stx-row"><td>Caleb Ortiz</td><td>CKY Homeschool</td><td>1</td><td>39</td><td class="dimmed-pr"></td><td></td><td>17:04.18</td></tr><tr class="non-stx-row"><td>Clayton Nau</td><td>Highlands Latin</td><td>1</td><td>40</td><td class="dimmed-pr"></td><td></td><td>17:04.50</td></tr><tr class="non-stx-row"><td>Josh Thomas</td><td>Apollo</td><td>1</td><td>41</td><td class="dimmed-pr"></td><td></td><td>17:07.08</td></tr><tr class="non-stx-row"><td>Caleb Stidham</td><td>Cooper</td><td>1</td><td>42</td><td class="dimmed-pr"></td><td></td><td>17:11.95</td></tr><tr class="non-stx-row"><td>Charlie Hanak</td><td>Conner</td><td>1</td><td>43</td><td class="dimmed-pr"></td><td></td><td>17:13.89</td></tr><tr class="non-stx-row"><td>AJ Barker</td><td>Rowan County</td><td>1</td><td>44</td><td class="dimmed-pr"></td><td></td><td>17:16.82</td></tr><tr class="non-stx-row"><td>Gabriel Smith</td><td>Lafayette</td><td>1</td><td>45</td><td class="dimmed-pr"></td><td></td><td>17:18.74</td></tr><tr class="non-stx-row"><td>Warren Johnson</td><td>Conner</td><td>1</td><td>46</td><td class="dimmed-pr"></td><td></td><td>17:20.13</td></tr><tr class="non-stx-row"><td>Lucas Orton</td><td>South Oldham</td><td>1</td><td>47</td><td class="dimmed-pr"></td><td></td><td>17:21.34</td></tr><tr class="non-stx-row"><td>Benjamin Bitner</td><td>Highlands Latin</td><td>1</td><td>48</td><td class="dimmed-pr"></td><td></td><td>17:23.27</td></tr><tr class="non-stx-row"><td>George Mudd</td><td>CKY Homeschool</td><td>1</td><td>49</td><td class="dimmed-pr"></td><td></td><td>17:30.03</td></tr><tr class="non-stx-row"><td>Morgan Frederick</td><td>Trinity (Louisville)</td><td>1</td><td>50</td><td class="dimmed-pr"></td><td></td><td>17:31.26</td></tr><tr class="non-stx-row"><td>Asher Bitner</td><td>Highlands Latin</td><td>1</td><td>51</td><td class="dimmed-pr"></td><td></td><td>17:31.79</td></tr><tr class="non-stx-row"><td>Jacob Schweigardt</td><td>Tates Creek</td><td>1</td><td>52</td><td class="dimmed-pr"></td><td></td><td>17:34.38</td></tr><tr class="non-stx-row"><td>Emmitt Brock</td><td>Apollo</td><td>1</td><td>53</td><td class="dimmed-pr"></td><td></td><td>17:35.21</td></tr><tr class="non-stx-row"><td>Jacob McBride</td><td>South Oldham</td><td>1</td><td>54</td><td class="dimmed-pr"></td><td></td><td>17:38.26</td></tr><tr class="non-stx-row"><td>Luke Hamilton</td><td>CKY Homeschool</td><td>1</td><td>55</td><td class="dimmed-pr"></td><td></td><td>17:59.98</td></tr><tr class="non-stx-row"><td>Mason Brewer</td><td>Lafayette</td><td>1</td><td>56</td><td class="dimmed-pr"></td><td></td><td>18:28.12</td></tr><tr class="non-stx-row"><td>Alexander Stark</td><td>Lafayette</td><td>1</td><td>57</td><td class="dimmed-pr"></td><td></td><td>18:28.14</td></tr><tr class="non-stx-row"><td>Mason Rizzo</td><td>Highlands Latin</td><td>1</td><td>58</td><td class="dimmed-pr"></td><td></td><td>18:29.68</td></tr><tr class="non-stx-row"><td>Noah Stinson</td><td>CKY Homeschool</td><td>1</td><td>59</td><td class="dimmed-pr"></td><td></td><td>18:32.63</td></tr><tr class="non-stx-row"><td>Henry Kiser</td><td>CKY Homeschool</td><td>1</td><td>60</td><td class="dimmed-pr"></td><td></td><td>18:33.12</td></tr><tr class="non-stx-row"><td>Buzz Christensen</td><td>Lafayette</td><td>1</td><td>61</td><td class="dimmed-pr"></td><td></td><td>18:56.25</td></tr></tbody></table></div></div><div class="footer">Generated at <code>2026-08-24 11:30:18</code> from <code>C:\Users\Bob\OneDrive\StX_XC_Track_V2\data\stx_track.db</code></div>
+
 <!-- STX_HEADER_SCRIPT_START -->
     <script>
       (() => {

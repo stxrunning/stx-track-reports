@@ -348,7 +348,10 @@
       }
     </style>
     
-  <!-- STX_HEADER_CSS_START -->
+  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+<!-- STX_HEADER_CSS_START -->
     <style>
       @import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,600;9..40,700&family=Libre+Caslon+Text:ital,wght@0,400;1,400&display=swap');
 
@@ -544,12 +547,14 @@
       .stx-menu-feedback:hover, .stx-menu-feedback:focus-visible { background: transparent; }
       .stx-school-link { color: var(--stx-dark-green) !important; font-size: 13px; font-weight: 700; }
       @media (max-width: 780px) {
-        .stx-site-header { margin-bottom: 22px; }
-        .stx-header-inner { min-height: 68px; padding: 9px 16px; }
-        .stx-logo-image { width: 190px; }
-        .stx-brand-divider { height: 32px; }
-        .stx-section-name { font-size: 9px; }
-        .stx-menu-open { width: 42px; height: 42px; }
+        /* The header is intentionally compact on phones, where it is present
+           on every report page and should not displace the actual results. */
+        .stx-site-header { margin-bottom: 16px; }
+        .stx-header-inner { min-height: 54px; padding: 7px 14px; gap: 12px; }
+        .stx-logo-image { width: 154px; }
+        .stx-brand-divider { height: 26px; }
+        .stx-section-name { font-size: 8px; letter-spacing: .11em; }
+        .stx-menu-open { width: 38px; height: 38px; }
         .stx-site-menu { display: block; overflow-y: auto; background: var(--stx-green); }
         .stx-menu-brand-panel { min-height: 210px; padding: 78px 24px 28px; justify-content: flex-end; }
         .stx-menu-brand-panel::before { top: -80px; font-size: 330px; }
@@ -562,15 +567,13 @@
       @media (max-width: 460px) {
         .stx-brand { gap: 10px; }
         .stx-brand-divider, .stx-section-name { display: none; }
-        .stx-logo-image { width: 175px; }
+        .stx-logo-image { width: 142px; }
       }
       @media (prefers-reduced-motion: reduce) {
         .stx-site-menu, .stx-menu-open, .stx-menu-nav a { transition: none; }
       }
     </style>
     <!-- STX_HEADER_CSS_END -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
 </head>
 <body>
 <!-- STX_HEADER_HTML_START -->
@@ -607,6 +610,7 @@
       </div>
     </aside>
     <!-- STX_HEADER_HTML_END -->
+
 
     <div class="topbar">
       <div class="titlewrap">
@@ -647,6 +651,7 @@
       <div class='pr-parade-list'><span class='pr-parade-entry'><a href='../athletes/brodie_terkhorn.html'>Brodie Terkhorn</a>, <span class='pr-time'>10:00.09</span></span>; <span class='pr-parade-entry'><a href='../athletes/hobs_ashburner.html'>Hobs Ashburner</a>, <span class='pr-time'>10:02.87</span></span>; <span class='pr-parade-entry'><a href='../athletes/sam_shewmaker.html'>Sam Shewmaker</a>, <span class='pr-time'>10:46.85</span></span>; <span class='pr-parade-entry'><a href='../athletes/vince_rink.html'>Vince Rink</a>, <span class='pr-time'>10:46.95</span></span>; <span class='pr-parade-entry'><a href='../athletes/sam_schweickhardt.html'>Sam Schweickhardt</a>, <span class='pr-time'>10:58.76</span></span>; <span class='pr-parade-entry'><a href='../athletes/anthony_passafiume.html'>Anthony Passafiume</a>, <span class='pr-time'>10:59.46</span></span>; <span class='pr-parade-entry'><a href='../athletes/henry_pudlo.html'>Henry Pudlo</a>, <span class='pr-time'>11:02.34</span></span>; <span class='pr-parade-entry'><a href='../athletes/hayden_willman.html'>Hayden Willman</a>, <span class='pr-time'>11:08.17</span></span>; <span class='pr-parade-entry'><a href='../athletes/christopher_boylan_jr.html'>Christopher Boylan Jr</a>, <span class='pr-time'>11:26.05</span></span>; <span class='pr-parade-entry'><a href='../athletes/nick_sanders.html'>Nick Sanders</a>, <span class='pr-time'>11:50.84</span></span>; <span class='pr-parade-entry'><a href='../athletes/james_george.html'>James George</a>, <span class='pr-time'>12:00.82</span></span>; <span class='pr-parade-entry'><a href='../athletes/reese_thomasson.html'>Reese Thomasson</a>, <span class='pr-time'>12:02.68</span></span>; <span class='pr-parade-entry'><a href='../athletes/william_korte.html'>William Korte</a>, <span class='pr-time'>12:02.95</span></span>; <span class='pr-parade-entry'><a href='../athletes/zack_smith.html'>Zack Smith</a>, <span class='pr-time'>12:08.14</span></span>; <span class='pr-parade-entry'><a href='../athletes/william_frye.html'>William Frye</a>, <span class='pr-time'>12:11.90</span></span>; <span class='pr-parade-entry'><a href='../athletes/reid_cook.html'>Reid Cook</a>, <span class='pr-time'>13:12.92</span></span>; <span class='pr-parade-entry'><a href='../athletes/ryder_garcia.html'>Ryder Garcia</a>, <span class='pr-time'>13:29.67</span></span>; <span class='pr-parade-entry'><a href='../athletes/grant_lemmenes.html'>Grant Lemmenes</a>, <span class='pr-time'>13:35.16</span></span>; <span class='pr-parade-entry'><a href='../athletes/isaac_kent.html'>Isaac Kent</a>, <span class='pr-time'>13:58.48</span></span>; <span class='pr-parade-entry'><a href='../athletes/john_henry_longmeyer.html'>John Henry Longmeyer</a>, <span class='pr-time'>14:59.52</span></span></div>
     </div>
     <div class='card'><h2>3200 Meters</h2><div class="table-wrap"><table><thead><tr><th>Athlete</th><th>Team</th><th>Group</th><th>Place</th><th class="dimmed-pr">Indoor PR</th><th>Outdoor PR</th><th>Result</th></tr></thead><tbody><tr><td><a href='../athletes/sami_hattab.html'>Sami Hattab</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>1</td><td class="dimmed-pr"></td><td>9:12.12</td><td>9:49.49</td></tr><tr><td><a href='../athletes/brodie_terkhorn.html'>Brodie Terkhorn</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>2</td><td class="dimmed-pr"></td><td>10:18.24</td><td class="pr">10:00.09</td></tr><tr><td><a href='../athletes/hobs_ashburner.html'>Hobs Ashburner</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>3</td><td class="dimmed-pr"></td><td>10:13.50</td><td class="pr">10:02.87</td></tr><tr><td><a href='../athletes/tristan_hindorff.html'>Tristan Hindorff</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>4</td><td class="dimmed-pr"></td><td>9:49.52</td><td>10:03.28</td></tr><tr><td><a href='../athletes/isaac_baker.html'>Isaac Baker</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>5</td><td class="dimmed-pr"></td><td>10:09.90</td><td>10:20.19</td></tr><tr><td><a href='../athletes/thomas_weber.html'>Thomas Weber</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>6</td><td class="dimmed-pr"></td><td>9:51.30</td><td>10:43.40</td></tr><tr><td><a href='../athletes/sam_shewmaker.html'>Sam Shewmaker</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>7</td><td class="dimmed-pr"></td><td></td><td class="pr">10:46.85</td></tr><tr><td><a href='../athletes/vince_rink.html'>Vince Rink</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>8</td><td class="dimmed-pr"></td><td></td><td class="pr">10:46.95</td></tr><tr><td><a href='../athletes/whit_ruml.html'>Whit Ruml</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>9</td><td class="dimmed-pr"></td><td>10:52.10</td><td>10:54.22</td></tr><tr><td><a href='../athletes/sam_schweickhardt.html'>Sam Schweickhardt</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>10</td><td class="dimmed-pr"></td><td></td><td class="pr">10:58.76</td></tr><tr><td><a href='../athletes/anthony_passafiume.html'>Anthony Passafiume</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>11</td><td class="dimmed-pr"></td><td></td><td class="pr">10:59.46</td></tr><tr><td><a href='../athletes/henry_pudlo.html'>Henry Pudlo</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>12</td><td class="dimmed-pr"></td><td></td><td class="pr">11:02.34</td></tr><tr><td><a href='../athletes/hayden_willman.html'>Hayden Willman</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>13</td><td class="dimmed-pr"></td><td>11:10.90</td><td class="pr">11:08.17</td></tr><tr><td><a href='../athletes/talbott_dilger.html'>Talbott Dilger</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>14</td><td class="dimmed-pr"></td><td>10:24.08</td><td>11:14.92</td></tr><tr><td><a href='../athletes/nick_zoglman.html'>Nick Zoglman</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>15</td><td class="dimmed-pr"></td><td>11:14.00</td><td>11:19.25</td></tr><tr><td><a href='../athletes/christopher_boylan_jr.html'>Christopher Boylan Jr</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>16</td><td class="dimmed-pr"></td><td></td><td class="pr">11:26.05</td></tr><tr class="non-stx-row"><td>Nolan Crider</td><td>Unattached</td><td>1</td><td>17</td><td class="dimmed-pr"></td><td></td><td>11:38.85</td></tr><tr><td><a href='../athletes/nick_sanders.html'>Nick Sanders</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>18</td><td class="dimmed-pr"></td><td></td><td class="pr">11:50.84</td></tr><tr><td><a href='../athletes/james_george.html'>James George</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>19</td><td class="dimmed-pr"></td><td></td><td class="pr">12:00.82</td></tr><tr><td><a href='../athletes/reese_thomasson.html'>Reese Thomasson</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>20</td><td class="dimmed-pr"></td><td></td><td class="pr">12:02.68</td></tr><tr><td><a href='../athletes/william_korte.html'>William Korte</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>21</td><td class="dimmed-pr"></td><td></td><td class="pr">12:02.95</td></tr><tr><td><a href='../athletes/zack_smith.html'>Zack Smith</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>22</td><td class="dimmed-pr"></td><td></td><td class="pr">12:08.14</td></tr><tr><td><a href='../athletes/william_frye.html'>William Frye</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>23</td><td class="dimmed-pr"></td><td>12:16.06</td><td class="pr">12:11.90</td></tr><tr class="non-stx-row"><td>Quenton Horton</td><td>Unattached</td><td>1</td><td>24</td><td class="dimmed-pr"></td><td></td><td>12:16.27</td></tr><tr><td><a href='../athletes/owen_hillerich.html'>Owen Hillerich</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>25</td><td class="dimmed-pr"></td><td>12:32.80</td><td>13:06.92</td></tr><tr><td><a href='../athletes/reid_cook.html'>Reid Cook</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>26</td><td class="dimmed-pr"></td><td></td><td class="pr">13:12.92</td></tr><tr><td><a href='../athletes/ryder_garcia.html'>Ryder Garcia</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>27</td><td class="dimmed-pr"></td><td></td><td class="pr">13:29.67</td></tr><tr><td><a href='../athletes/grant_lemmenes.html'>Grant Lemmenes</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>28</td><td class="dimmed-pr"></td><td></td><td class="pr">13:35.16</td></tr><tr><td><a href='../athletes/isaac_kent.html'>Isaac Kent</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>29</td><td class="dimmed-pr"></td><td></td><td class="pr">13:58.48</td></tr><tr><td><a href='../athletes/john_henry_longmeyer.html'>John Henry Longmeyer</a></td><td class="stx-team-highlight">St Xavier (KY)</td><td>1</td><td>30</td><td class="dimmed-pr"></td><td></td><td class="pr">14:59.52</td></tr></tbody></table></div></div><div class="footer">Generated at <code>2026-08-24 11:27:09</code> from <code>C:\Users\Bob\OneDrive\StX_XC_Track_V2\data\stx_track.db</code></div>
+
 <!-- STX_HEADER_SCRIPT_START -->
     <script>
       (() => {
