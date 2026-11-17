@@ -6,6 +6,7 @@
   <title>Depth Chart</title>
   
     <style>
+      html, body { max-width:100%; overflow-x:hidden; }
       body { font-family: Arial, sans-serif; margin: 24px; }
       a { color: #0b5fff; text-decoration: none; }
       a:hover { text-decoration: underline; }
@@ -243,8 +244,11 @@
       .stx-site-header {
         position: relative;
         z-index: 9000;
-        width: 100vw;
-        max-width: 100vw;
+        /* Use negative margins to bleed through the page gutter. `100vw`
+           here can make iPhone Safari treat the document as wider than its
+           visual viewport and shrink every non-header element. */
+        width: auto;
+        max-width: none;
         margin: -24px -24px 30px;
         background: var(--stx-dark-green);
         color: #fff;
@@ -815,7 +819,7 @@
       </div>
     </div>
     </div></template>
-<div class="footer">Generated at <code>2026-11-16 21:40:54</code> from <code>C:\Users\Bob\OneDrive\StX_XC_Track_V2\data\stx_track.db</code></div>
+<div class="footer">Generated at <code>2026-11-17 06:55:53</code> from <code>C:\Users\Bob\OneDrive\StX_XC_Track_V2\data\stx_track.db</code></div>
 <!-- STX_HEADER_SCRIPT_START -->
     <script>
       (() => {
