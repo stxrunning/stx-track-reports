@@ -190,6 +190,29 @@
       .xc-top5-delta { display:block; font-size:11px; margin-top:2px; }
       .xc-top5-delta.slower { color:#a33; }
       .xc-top5-delta.faster { color:#176b2c; }
+      @media (max-width:680px) {
+        /* The desktop frozen pane is 332px wide. On phones it obscures every
+           race column, so use ordinary cells and let the complete chart scroll. */
+        .xc-table .xc-sticky-athlete,
+        .xc-table .xc-sticky-grad,
+        .xc-table .xc-sticky-pr,
+        .xc-table .xc-top5-label {
+          position:static;
+          left:auto;
+          width:auto;
+          min-width:0;
+          max-width:none;
+          box-shadow:none;
+        }
+        .xc-table th.xc-race-th { height:138px; width:52px; min-width:52px; max-width:52px; }
+        .xc-header-rotate { height:133px; width:52px; }
+        .xc-header-label { left:26px; bottom:5px; width:142px; font-size:11px; }
+        .xc-header-date { font-size:10px; margin-top:2px; }
+        .xc-table th, .xc-table td { padding:5px 6px; font-size:12px; }
+        .xc-table .xc-sticky-athlete { min-width:112px; }
+        .xc-table .xc-sticky-grad { min-width:52px; }
+        .xc-table .xc-sticky-pr { min-width:72px; }
+      }
    </style>
     
   <!-- STX_HEADER_CSS_START -->
@@ -781,7 +804,7 @@
       </div>
     </div>
     </div></template>
-<div class="footer">Generated at <code>2026-11-16 19:13:42</code> from <code>C:\Users\Bob\OneDrive\StX_XC_Track_V2\data\stx_track.db</code></div>
+<div class="footer">Generated at <code>2026-11-16 21:28:48</code> from <code>C:\Users\Bob\OneDrive\StX_XC_Track_V2\data\stx_track.db</code></div>
 <!-- STX_HEADER_SCRIPT_START -->
     <script>
       (() => {
