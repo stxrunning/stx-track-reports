@@ -1529,7 +1529,7 @@
         </div>
         
       </section>
-      <div class="footer">Generated at <code>2026-11-16 19:51:01</code> from <code>C:\Users\Bob\OneDrive\StX_XC_Track_V2\data\stx_track.db</code></div>
+      <div class="footer">Generated at <code>2026-11-16 19:57:09</code> from <code>C:\Users\Bob\OneDrive\StX_XC_Track_V2\data\stx_track.db</code></div>
     </div>
     <script>
       const coachStoragePrefix = "coach-pre-race-74";
@@ -2116,7 +2116,10 @@
           );
           document.querySelectorAll(".coach-track-time-bubble").forEach(bubble => {
             const key = `${(bubble.dataset.racer || "").toLowerCase()}|${bubble.dataset.event || ""}`;
-            bubble.classList.toggle("is-assigned", assignedMarks.has(key));
+            // A dash is an invitation to add an athlete without a recorded mark.
+            // Keep it visibly available even if an older saved sheet has stale state.
+            const hasRecordedMark = Boolean(bubble.dataset.prSeconds);
+            bubble.classList.toggle("is-assigned", hasRecordedMark && assignedMarks.has(key));
           });
         }
         if (selectedActiveRacer) {
