@@ -191,6 +191,17 @@
       .xc-top5-delta.slower { color:#a33; }
       .xc-top5-delta.faster { color:#176b2c; }
       @media (max-width:680px) {
+        /* Let the horizontal table use the full screen, not the padded card
+           content box. This gives it the same viewport width as the menu. */
+        .xc-table-wrap {
+          width:100vw;
+          max-width:100vw;
+          margin-left:calc(50% - 50vw);
+          margin-right:calc(50% - 50vw);
+          border-left:0;
+          border-right:0;
+        }
+
         /* The desktop frozen pane is 332px wide. On phones it obscures every
            race column, so use ordinary cells and let the complete chart scroll. */
         .xc-table .xc-sticky-athlete,
@@ -804,7 +815,7 @@
       </div>
     </div>
     </div></template>
-<div class="footer">Generated at <code>2026-11-16 21:28:48</code> from <code>C:\Users\Bob\OneDrive\StX_XC_Track_V2\data\stx_track.db</code></div>
+<div class="footer">Generated at <code>2026-11-16 21:40:54</code> from <code>C:\Users\Bob\OneDrive\StX_XC_Track_V2\data\stx_track.db</code></div>
 <!-- STX_HEADER_SCRIPT_START -->
     <script>
       (() => {
